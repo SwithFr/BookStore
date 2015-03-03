@@ -1,0 +1,51 @@
+include partials/_header
+include partials/_nav
+.content#content
+    form.form
+        input.form__input.form--search(placeholder='Chercher un livre, un auteur...')
+        input.form__input.form__submit.form--search--submit(type='submit')
+    .section.vedettes
+        .section__header
+            h2.section__title En vedette :
+            a.section__readMore(href="./views/books/byAuthor.html") Voir tout le classement
+        - for (var i = 0; i < 2; i++)
+            .section__block
+                img.section__block__img(src='./assets/img/book-img.jpg')
+                h3.section__block__title Un titre
+                p.section__block__author Auteur
+                p.section__block__content Ipsum vitae. Lacus netus mauris lorem montes enim cubilia urna dolor cubilia elementum. Purus ipsum nulla conubia et pharetra ante mus                   lorem taciti venenatis inceptos eu scelerisque ve. Ipsum vitae. Lacus netus mauris lorem montes enim cubilia urna dolor cubilia elementum. Purus ipsum nulla conubia et pharetra ante mus lorem taciti venenatis inceptos eu scelerisque ve.
+                a.section__readMore(href='./views/books/single.html') En voir plus
+                if user.role == 'admin' && logged
+                    .admin
+                        a.admin__link(href='./views/admin/edit.html') Edit
+                            i(class='icon-pencil')
+                        a.admin__link.admin--delete(href='./views/admin/delete.html') Suppr
+                            i(class='icon-cancel')
+    .section.author
+        .section__header
+            h2.section__title
+                a(href="./views/books/byAuthor.html") Un auteur au hasard
+            a.section__readMore(href="./views/books/byAuthor.html") Voir plus du même auteur
+        .section__block
+            h3.section__block__title Nom de l'auteur
+            p.section__block__year 1700 - 1800
+            p.section__block__content Ipsum vitae. Lacus netus mauris lorem montes enim cubilia urna dolor cubilia elementum. Purus ipsum nulla conubia et pharetra ante mus                   lorem taciti venenatis inceptos eu scelerisque ve. Ipsum vitae. Lacus netus mauris lorem montes enim cubilia urna dolor cubilia elementum. Purus ipsum nulla conubia et pharetra ante mus lorem taciti venenatis inceptos eu scelerisque ve. Ipsum vitae. Lacus netus mauris lorem montes enim cubilia urna dolor cubilia elementum. Purus ipsum nulla conubia et pharetra ante mus lorem taciti venenatis inceptos eu scelerisque ve. Ipsum vitae. Lacus netus mauris lorem montes enim cubilia urna dolor cubilia elementum. Purus ipsum nulla conubia et pharetra ante mus lorem taciti venenatis inceptos eu scelerisque ve.
+            .author__count
+                p.nb.author__nbBooks 20
+                p.nb.author__eval 4.5
+
+        .section__block
+            img.section__block__img(src='./assets/img/vHugo.jpg')
+    if logged && user.role == 'user'
+        .section.yours
+            .section__header
+                h2.section__title
+                    a(href="./views/books/byAuthor.html") Vos derniers ajouts
+                a.section__readMore(href="./views/books/byAuthor.html") Voir tous vos livres
+            - for (var i = 0; i < 4; i++)
+                .section__block
+                    img.section__block__img(src='./assets/img/book-img.jpg')
+                    h3.section__block__title Titre du livre
+                    p.section__block__year 2015
+                    p.section__block__category Aventure
+include partials/_footer

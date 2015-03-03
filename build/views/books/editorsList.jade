@@ -1,0 +1,74 @@
+include ../../partials/_headerPages
+include ../../partials/_navPages
+.content#content
+    form.form
+        input.form__input.form--search(placeholder='Chercher un editeur...')
+        input.form__input.form__submit.form--search--submit(type='submit')
+    .section
+        .section__header
+            h2.section__title Selectionnez un editeur
+        ul.filter__list
+            li.filter__item
+                a.filter--active(href='./editorsList.html') A
+            li.filter__item
+                a(href='./editorsList.html') B
+            li.filter__item
+                a(href='./editorsList.html') C
+            li.filter__item
+                a(href='./editorsList.html') D
+            li.filter__item
+                a(href='./editorsList.html') F
+            li.filter__item
+                a(href='./editorsList.html') G
+            li.filter__item
+                a(href='./editorsList.html') H
+            li.filter__item
+                a(href='./editorsList.html') I
+            li.filter__item
+                a(href='./editorsList.html') J
+            li.filter__item
+                a(href='./editorsList.html') K
+            li.filter__item
+                a(href='./editorsList.html') L
+            li.filter__item
+                a(href='./editorsList.html') M
+            li.filter__item
+                a(href='./editorsList.html') N
+            li.filter__item
+                a(href='./editorsList.html') O
+            li.filter__item
+                a(href='./editorsList.html') P
+            li.filter__item
+                a(href='./editorsList.html') Q
+            li.filter__item
+                a(href='./editorsList.html') R
+            li.filter__item
+                a(href='./editorsList.html') S
+            li.filter__item
+                a(href='./editorsList.html') T
+            li.filter__item
+                a(href='./editorsList.html') U
+            li.filter__item
+                a(href='./editorsList.html') V
+            li.filter__item
+                a(href='./editorsList.html') W
+            li.filter__item
+                a(href='./editorsList.html') X
+            li.filter__item
+                a(href='./editorsList.html') Y
+            li.filter__item
+                a(href='./editorsList.html') Z
+        .section__block
+            ul.editors__list
+                -for (var i = 0; i < 20; i++)
+                    li.editors__list__item
+                        a(href='./editorSingle.html') Editeur
+                        p.editor__infos 30 livres
+                        img.editor__img(src='../../assets/img/editor.jpg')
+                        if user.role == 'admin' && logged
+                            .admin
+                                a.admin__link(href='./views/admin/edit.html') Edit
+                                    i(class='icon-pencil')
+                                a.admin__link.admin--delete(href='./views/admin/delete.html') Suppr
+                                    i(class='icon-cancel')
+include ../../partials/_footerPages

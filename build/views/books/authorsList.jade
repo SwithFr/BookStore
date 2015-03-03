@@ -1,0 +1,76 @@
+include ../../partials/_headerPages
+include ../../partials/_navPages
+.content#content
+    form.form
+        input.form__input.form--search(placeholder='Chercher un auteur...')
+        input.form__input.form__submit.form--search--submit(type='submit')
+    .section
+        .section__header
+            h2.section__title Selectionnez un auteur
+        ul.filter__list
+            li.filter__item
+                a.filter--active(href='./authorsList.html') A
+            li.filter__item
+                a(href='./authorsList.html') B
+            li.filter__item
+                a(href='./authorsList.html') C
+            li.filter__item
+                a(href='./authorsList.html') D
+            li.filter__item
+                a(href='./authorsList.html') F
+            li.filter__item
+                a(href='./authorsList.html') G
+            li.filter__item
+                a(href='./authorsList.html') H
+            li.filter__item
+                a(href='./authorsList.html') I
+            li.filter__item
+                a(href='./authorsList.html') J
+            li.filter__item
+                a(href='./authorsList.html') K
+            li.filter__item
+                a(href='./authorsList.html') L
+            li.filter__item
+                a(href='./authorsList.html') M
+            li.filter__item
+                a(href='./authorsList.html') N
+            li.filter__item
+                a(href='./authorsList.html') O
+            li.filter__item
+                a(href='./authorsList.html') P
+            li.filter__item
+                a(href='./authorsList.html') Q
+            li.filter__item
+                a(href='./authorsList.html') R
+            li.filter__item
+                a(href='./authorsList.html') S
+            li.filter__item
+                a(href='./authorsList.html') T
+            li.filter__item
+                a(href='./authorsList.html') U
+            li.filter__item
+                a(href='./authorsList.html') V
+            li.filter__item
+                a(href='./authorsList.html') W
+            li.filter__item
+                a(href='./authorsList.html') X
+            li.filter__item
+                a(href='./authorsList.html') Y
+            li.filter__item
+                a(href='./authorsList.html') Z
+        .authors
+            ul.authors__list
+                - for(var i = 0; i < 20;i++)
+                    li.section__block.author__list__item
+                        h3.section__block__title: a(href='./authorSingle.html') Auteur
+                        .author.animated.fadeInDown
+                            p.section__block__year 1700 - 1800
+                            p.section__block__content Etiam augue eni diam nibh. Curae risus erat fringilla lectus diam consectetuer et ipsum convallis vivamus mollis ac vehicula diam volutpat. Purus fusce. Morbi netus ultrices fringilla ac semper nonummy...
+                            a.section__readMore(href='./authorSingle.html') Lire plus
+                        if user.role == 'admin' && logged
+                            .admin
+                                a.admin__link(href='./views/admin/edit.html') Edit
+                                    i(class='icon-pencil')
+                                a.admin__link.admin--delete(href='./views/admin/delete.html') Suppr
+                                    i(class='icon-cancel')
+include ../../partials/_footerPages

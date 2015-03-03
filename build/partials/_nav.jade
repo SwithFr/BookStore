@@ -1,0 +1,23 @@
+nav.nav#nav
+    .nav__content
+        h1.nav__title
+            a#main__title(href='/') Book Store
+        ul.nav__menu
+            li.nav__menu__item
+                block auteur
+                    a(href="./views/books/authorsList.html") Auteurs
+            li.nav__menu__item
+                block editeur
+                    a(href="./views/books/editorsList.html") Editeurs
+            li.nav__menu__item
+                block genre
+                    a(href="./views/books/categoriesList.html") Genres
+            li.nav__menu__item
+                block langue
+                    a(href="./views/books/languagesList.html") Langues
+            li.nav__menu__item
+                block annee
+                    a(href="./views/books/yearsList.html") Années
+            li.nav__menu__item
+                block bibli
+                    a(href="./views/books/yearsList.html") Bibliothèques

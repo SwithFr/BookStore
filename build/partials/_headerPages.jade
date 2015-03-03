@@ -1,0 +1,25 @@
+- var logged = true
+- var user = { role: 'user' }
+
+doctype
+html
+    head
+        meta(charset='utf-8')
+        link(rel='stylesheet', href='../../assets/css/main.css')
+        title Book Store
+    body
+        header.header.header--authors
+            .header__content
+                .header__title
+                    p Une nouvelle manière de découvir,
+                    p partager et lire des livres
+                .header__login
+                    if logged
+                        if user.role == 'admin'
+                            a.btn.btn--white(href="../admin/index.html") Administration
+                        else
+                            a.btn.btn--white(href="../users/index.html") Mon compte
+                        a.btn.btn--white(href="#") Déconnexion
+                    else
+                        a.btn.btn--white(href="../users/register.html") Créer un compte
+                        a.btn.btn--white(href="../users/login.html") Connexion
