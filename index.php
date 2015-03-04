@@ -3,11 +3,20 @@
 # On démarre la session
 session_start();
 
-# On inclue le fichier de librairie (petites fonctions utiles)
-//include('./components/lib.php');
+# On inclue les fichiers utiles
+include('./configs/constantes.php');
 
 # Ajout des dossier (controller,models) aux chemins d'inclusion
-set_include_path('components:controllers:models:' . get_include_path());
+set_include_path(
+    D_ASSETS . ':' .
+    D_COMPONENTS . ':' .
+    D_CONFIGS . ':' .
+    D_CONTROLLERS . ':' .
+    D_HELPERS . ':' .
+    D_MODELS . ':' .
+    D_VIEWS . ':' .
+    get_include_path()
+);
 
 # Chargement automatique des classes
 spl_autoload_register(
@@ -28,9 +37,9 @@ $controller = new $controllerName($request);
 # Récupération des données
 $data = call_user_func([$controller, $request->action]);
 
-if(!empty($data))
+if (!empty($data))
     extract($data);
 
 
 # On inclue le layout
-include('./views/layouts/'. $controller->layout .'.php');
+include(D_VIEWS . DS . 'layouts' . DS . $controller->layout . '.php');
