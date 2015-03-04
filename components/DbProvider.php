@@ -28,7 +28,7 @@ class DbProvider
     public static function getDb()
     {
         if (is_null(self::$_instance)) {
-            self::$_instance = new App();
+            self::$_instance = new DbProvider();
         }
         return self::$_instance->db;
     }
