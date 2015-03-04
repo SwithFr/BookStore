@@ -10,3 +10,6 @@
 *.rb
 
 *.psd
+
+configs/database.php
+0-TEMPLATE
