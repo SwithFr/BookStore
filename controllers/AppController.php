@@ -34,7 +34,7 @@ class AppController {
             $this->layout = "admin";
         }
 
-        # Génération de la vue
+        # Génération de la vue controller+s/action.php
         $this->view = $this->request->controller . 's/' . $this->request->action . '.php';
     }
 
