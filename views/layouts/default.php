@@ -1,14 +1,11 @@
-<!doctype html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="<?= D_ASSETS . DS; ?>css/main.css"/>
-    <title>BookStore</title>
-</head>
-<body>
+<?php require(D_VIEWS . DS . 'elements' . DS . 'header.php'); ?>
 
-<?php include(D_VIEWS . DS . $controller->view); ?>
+<?php require(D_VIEWS . DS . 'elements' . DS . 'nav.php'); ?>
 
-</body>
-</html>
+<div id="content" class="content">
+    <?php require(D_VIEWS . DS . 'elements' . DS . 'main-form.php'); ?>
+
+    <?php include(D_VIEWS . DS . $controller->view); ?>
+</div>
+
+<?php require(D_VIEWS . DS . 'elements' . DS . 'footer.php'); ?>
