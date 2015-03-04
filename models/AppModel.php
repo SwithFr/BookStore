@@ -19,5 +19,7 @@ class AppModel
     {
         if (is_null($this->db))
            $this->db = DbProvider::getDb();
+        
+        $this->table = strtolower(get_class($this)) . 's';
     }
 } 
