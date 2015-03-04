@@ -1,5 +1,5 @@
 <?php
 
 return $routes = [
-    'default' => 'A/C'
+    'default' => 'index/book'
 ];
