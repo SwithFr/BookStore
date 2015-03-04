@@ -8,9 +8,8 @@ class AppModel
 
     function __construct()
     {
-        if (!is_null($this->db)) {
+        if (is_null($this->db)) {
            $this->db = DbProvider::getDb();
         }
-        var_dump($this->db);die();
     }
 } 
