@@ -4,4 +4,4 @@
 class Book extends AppModel
 {
 
-} 
+}
