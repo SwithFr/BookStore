@@ -90,7 +90,8 @@ a, a:visited {
   float: left; }
 
 .section__block__img {
-  max-width: 100%; }
+  max-width: 100%;
+  width: 35%}
 
 .section__block__title {
   font-family: "Playfair Display", serif;
@@ -421,7 +422,7 @@ AUTHORS / YOURS
   float: left; }
 
 .author .section__block__content {
-  padding-right: 5%;
+  padding-right: 1.5em;
   font-weight: 300; }
 
 .yours .section__block {
