@@ -19,7 +19,6 @@ class Author extends AppModel
                 WHERE ref = \'authors\'
                 ORDER BY value DESC
                 LIMIT ' . $limit;
-        var_dump($sql);die();
         $pdost = $this->db->query($sql);
 
         if ($limit > 1)
