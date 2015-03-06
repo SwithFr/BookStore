@@ -6,7 +6,7 @@ class BooksController extends AppController
     public function index()
     {
         # Les 2 livres les mieux notés
-        $books = $this->Book->getPopular('books.id,title,first_name,last_name,summary',2);
+        $books = $this->Book->getPopular('books.id,title,first_name,last_name,summary,books.img',2);
 
         # l'auteur le mieux noté
         $this->loadModel('Author');
