@@ -90,8 +90,11 @@ a, a:visited {
   float: left; }
 
 .section__block__img {
-  max-width: 100%;
-  width: 35%}
+  max-width: 100%;}
+
+.vedettes .section__block__img {
+  width: 35%;
+}
 
 .section__block__title {
   font-family: "Playfair Display", serif;
@@ -412,7 +415,9 @@ VEDETTES
   margin-right: 4%; }
 
 .vedettes .section__block__content {
-  font-weight: 300; }
+  font-weight: 300;
+  padding-right: 1.5em;
+}
 
 /**
 AUTHORS / YOURS
@@ -422,7 +427,6 @@ AUTHORS / YOURS
   float: left; }
 
 .author .section__block__content {
-  padding-right: 1.5em;
   font-weight: 300; }
 
 .yours .section__block {
