@@ -37,9 +37,5 @@ $controller = new $controllerName($request);
 # Récupération des données
 $data = call_user_func([$controller, $request->action]);
 
-if (!empty($data))
-    extract($data);
-
-
 # On inclue le layout
 include(D_VIEWS . DS . 'layouts' . DS . $controller->layout . '.php');
