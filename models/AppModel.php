@@ -84,26 +84,4 @@ class AppModel
         return $req->fetchAll();
     }
 
-    /**
-     * Permet de récupérer les X entités les plus populaires
-     * @param string $fields
-     * @param int $limit
-     * @return array
-     */
-    public function getPopular($fields, $limit)
-    {
-        $sql = 'SELECT ' . $fields . '
-                FROM ' . $this->table . '
-                JOIN votes ON ref_id = ' . $this->table . '.id
-                WHERE ref = \'' . $this->table . '\'
-                ORDER BY value DESC
-                LIMIT ' . $limit;
-        $pdost = $this->db->query($sql);
-
-        if ($limit > 1)
-            return $pdost->fetchAll();
-
-        return $pdost->fetch();
-    }
-
 } 
