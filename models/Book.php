@@ -4,7 +4,7 @@
 class Book extends AppModel
 {
     /**
-     * Permet de récupérer les X entités les plus populaires
+     * Permet de récupérer les X livres les mieux notés
      * @param string $fields
      * @param int $limit
      * @return array
