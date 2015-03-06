@@ -10,7 +10,8 @@ class BooksController extends AppController
 
         # l'auteur le mieux noté
         $this->loadModel('Author');
-        $author = $this->Author->getPopular('first_name,last_name,bio,nb_livres,date_birth,date_death');
-        var_dump($author);die();
+        $author = $this->Author->getPopular('first_name,last_name,bio,nb_livres,date_birth,date_death',1);
+
+        return compact("books","author");
     }
 } 
