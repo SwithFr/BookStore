@@ -23,7 +23,12 @@ class AppModel
         $this->table = strtolower(get_class($this)) . 's';
     }
 
-    public function get(array $conditions = null, $table = null)
+    /**
+     * Permet de récupérer des infos depuis la bdd
+     * @param array $conditions
+     * @return array
+     */
+    public function get(array $conditions = null)
     {
 
         $query = "SELECT ";
@@ -35,11 +40,7 @@ class AppModel
             $query .= $conditions['fields'];
 
 
-        if (is_null($table)) {
-            $query .= " FROM " . $this->table;
-        } else {
-            $query .= " FROM " . $table;
-        }
+        $query .= " FROM " . $this->table;
 
         // Si on a un Where
         if (isset($conditions['where'])) {
@@ -82,4 +83,27 @@ class AppModel
 
         return $req->fetchAll();
     }
+
+    /**
+     * Permet de récupérer les X entités les plus populaires
+     * @param string $fields
+     * @param int $limit
+     * @return array
+     */
+    public function getPopular($fields, $limit)
+    {
+        $sql = 'SELECT ' . $fields . '
+                FROM ' . $this->table . '
+                JOIN votes ON ref_id = ' . $this->table . '.id
+                WHERE ref = \'' . $this->table . '\'
+                ORDER BY value DESC
+                LIMIT ' . $limit;
+        $pdost = $this->db->query($sql);
+
+        if ($limit > 1)
+            return $pdost->fetchAll();
+
+        return $pdost->fetch();
+    }
+
 } 
