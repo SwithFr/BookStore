@@ -78,7 +78,7 @@ class AppModel
         }
 
         // debug($query);
-        $req = $this->bdd->query($query);
+        $req = $this->db->query($query);
 
         return $req->fetchAll();
     }
