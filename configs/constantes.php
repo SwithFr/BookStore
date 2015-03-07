@@ -2,6 +2,7 @@
 
 # PATHS
 define('BASE',$_SERVER['SCRIPT_NAME']);
+define('ROOT',str_replace('index.php','',BASE));
 define('D_ASSETS','./assets');
 define('D_COMPONENTS','./components');
 define('D_CONFIGS','./configs');
