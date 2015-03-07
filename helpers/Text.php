@@ -9,7 +9,7 @@ class Text
      * @param $limit
      * @return string
      */
-    public function cut($text, $limit)
+    public static function cut($text, $limit)
     {
         return substr($text, 0, $limit) . "...";
     }
