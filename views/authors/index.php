@@ -1,3 +1,4 @@
+<?php require(D_VIEWS . DS . 'elements' . DS . 'main-form.php'); ?>
 <div class="section">
     <div class="section__header">
         <h2 class="section__title">Selectionnez un auteur</h2>
