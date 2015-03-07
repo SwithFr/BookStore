@@ -31,146 +31,17 @@
     </ul>
     <div class="authors">
         <ul class="authors__list">
-            <li class="section__block author__list__item">
-                <h3 class="section__block__title"><a href="./authorSingle.html">Auteur</a></h3>
-                <div class="author animated fadeInDown">
-                    <p class="section__block__year">1700 - 1800</p>
-                    <p class="section__block__content">Etiam augue eni diam nibh. Curae risus erat fringilla lectus diam consectetuer et ipsum convallis vivamus mollis ac vehicula diam volutpat. Purus fusce. Morbi netus ultrices fringilla ac semper nonummy...</p><a href="./authorSingle.html" class="section__readMore">Lire plus</a>
-                </div>
-            </li>
-            <li class="section__block author__list__item">
-                <h3 class="section__block__title"><a href="./authorSingle.html">Auteur</a></h3>
-                <div class="author animated fadeInDown">
-                    <p class="section__block__year">1700 - 1800</p>
-                    <p class="section__block__content">Etiam augue eni diam nibh. Curae risus erat fringilla lectus diam consectetuer et ipsum convallis vivamus mollis ac vehicula diam volutpat. Purus fusce. Morbi netus ultrices fringilla ac semper nonummy...</p><a href="./authorSingle.html" class="section__readMore">Lire plus</a>
-                </div>
-            </li>
-            <li class="section__block author__list__item">
-                <h3 class="section__block__title"><a href="./authorSingle.html">Auteur</a></h3>
-                <div class="author animated fadeInDown">
-                    <p class="section__block__year">1700 - 1800</p>
-                    <p class="section__block__content">Etiam augue eni diam nibh. Curae risus erat fringilla lectus diam consectetuer et ipsum convallis vivamus mollis ac vehicula diam volutpat. Purus fusce. Morbi netus ultrices fringilla ac semper nonummy...</p><a href="./authorSingle.html" class="section__readMore">Lire plus</a>
-                </div>
-            </li>
-            <li class="section__block author__list__item">
-                <h3 class="section__block__title"><a href="./authorSingle.html">Auteur</a></h3>
-                <div class="author animated fadeInDown">
-                    <p class="section__block__year">1700 - 1800</p>
-                    <p class="section__block__content">Etiam augue eni diam nibh. Curae risus erat fringilla lectus diam consectetuer et ipsum convallis vivamus mollis ac vehicula diam volutpat. Purus fusce. Morbi netus ultrices fringilla ac semper nonummy...</p><a href="./authorSingle.html" class="section__readMore">Lire plus</a>
-                </div>
-            </li>
-            <li class="section__block author__list__item">
-                <h3 class="section__block__title"><a href="./authorSingle.html">Auteur</a></h3>
-                <div class="author animated fadeInDown">
-                    <p class="section__block__year">1700 - 1800</p>
-                    <p class="section__block__content">Etiam augue eni diam nibh. Curae risus erat fringilla lectus diam consectetuer et ipsum convallis vivamus mollis ac vehicula diam volutpat. Purus fusce. Morbi netus ultrices fringilla ac semper nonummy...</p><a href="./authorSingle.html" class="section__readMore">Lire plus</a>
-                </div>
-            </li>
-            <li class="section__block author__list__item">
-                <h3 class="section__block__title"><a href="./authorSingle.html">Auteur</a></h3>
-                <div class="author animated fadeInDown">
-                    <p class="section__block__year">1700 - 1800</p>
-                    <p class="section__block__content">Etiam augue eni diam nibh. Curae risus erat fringilla lectus diam consectetuer et ipsum convallis vivamus mollis ac vehicula diam volutpat. Purus fusce. Morbi netus ultrices fringilla ac semper nonummy...</p><a href="./authorSingle.html" class="section__readMore">Lire plus</a>
-                </div>
-            </li>
-            <li class="section__block author__list__item">
-                <h3 class="section__block__title"><a href="./authorSingle.html">Auteur</a></h3>
-                <div class="author animated fadeInDown">
-                    <p class="section__block__year">1700 - 1800</p>
-                    <p class="section__block__content">Etiam augue eni diam nibh. Curae risus erat fringilla lectus diam consectetuer et ipsum convallis vivamus mollis ac vehicula diam volutpat. Purus fusce. Morbi netus ultrices fringilla ac semper nonummy...</p><a href="./authorSingle.html" class="section__readMore">Lire plus</a>
-                </div>
-            </li>
-            <li class="section__block author__list__item">
-                <h3 class="section__block__title"><a href="./authorSingle.html">Auteur</a></h3>
-                <div class="author animated fadeInDown">
-                    <p class="section__block__year">1700 - 1800</p>
-                    <p class="section__block__content">Etiam augue eni diam nibh. Curae risus erat fringilla lectus diam consectetuer et ipsum convallis vivamus mollis ac vehicula diam volutpat. Purus fusce. Morbi netus ultrices fringilla ac semper nonummy...</p><a href="./authorSingle.html" class="section__readMore">Lire plus</a>
-                </div>
-            </li>
-            <li class="section__block author__list__item">
-                <h3 class="section__block__title"><a href="./authorSingle.html">Auteur</a></h3>
-                <div class="author animated fadeInDown">
-                    <p class="section__block__year">1700 - 1800</p>
-                    <p class="section__block__content">Etiam augue eni diam nibh. Curae risus erat fringilla lectus diam consectetuer et ipsum convallis vivamus mollis ac vehicula diam volutpat. Purus fusce. Morbi netus ultrices fringilla ac semper nonummy...</p><a href="./authorSingle.html" class="section__readMore">Lire plus</a>
-                </div>
-            </li>
-            <li class="section__block author__list__item">
-                <h3 class="section__block__title"><a href="./authorSingle.html">Auteur</a></h3>
-                <div class="author animated fadeInDown">
-                    <p class="section__block__year">1700 - 1800</p>
-                    <p class="section__block__content">Etiam augue eni diam nibh. Curae risus erat fringilla lectus diam consectetuer et ipsum convallis vivamus mollis ac vehicula diam volutpat. Purus fusce. Morbi netus ultrices fringilla ac semper nonummy...</p><a href="./authorSingle.html" class="section__readMore">Lire plus</a>
-                </div>
-            </li>
-            <li class="section__block author__list__item">
-                <h3 class="section__block__title"><a href="./authorSingle.html">Auteur</a></h3>
-                <div class="author animated fadeInDown">
-                    <p class="section__block__year">1700 - 1800</p>
-                    <p class="section__block__content">Etiam augue eni diam nibh. Curae risus erat fringilla lectus diam consectetuer et ipsum convallis vivamus mollis ac vehicula diam volutpat. Purus fusce. Morbi netus ultrices fringilla ac semper nonummy...</p><a href="./authorSingle.html" class="section__readMore">Lire plus</a>
-                </div>
-            </li>
-            <li class="section__block author__list__item">
-                <h3 class="section__block__title"><a href="./authorSingle.html">Auteur</a></h3>
-                <div class="author animated fadeInDown">
-                    <p class="section__block__year">1700 - 1800</p>
-                    <p class="section__block__content">Etiam augue eni diam nibh. Curae risus erat fringilla lectus diam consectetuer et ipsum convallis vivamus mollis ac vehicula diam volutpat. Purus fusce. Morbi netus ultrices fringilla ac semper nonummy...</p><a href="./authorSingle.html" class="section__readMore">Lire plus</a>
-                </div>
-            </li>
-            <li class="section__block author__list__item">
-                <h3 class="section__block__title"><a href="./authorSingle.html">Auteur</a></h3>
-                <div class="author animated fadeInDown">
-                    <p class="section__block__year">1700 - 1800</p>
-                    <p class="section__block__content">Etiam augue eni diam nibh. Curae risus erat fringilla lectus diam consectetuer et ipsum convallis vivamus mollis ac vehicula diam volutpat. Purus fusce. Morbi netus ultrices fringilla ac semper nonummy...</p><a href="./authorSingle.html" class="section__readMore">Lire plus</a>
-                </div>
-            </li>
-            <li class="section__block author__list__item">
-                <h3 class="section__block__title"><a href="./authorSingle.html">Auteur</a></h3>
-                <div class="author animated fadeInDown">
-                    <p class="section__block__year">1700 - 1800</p>
-                    <p class="section__block__content">Etiam augue eni diam nibh. Curae risus erat fringilla lectus diam consectetuer et ipsum convallis vivamus mollis ac vehicula diam volutpat. Purus fusce. Morbi netus ultrices fringilla ac semper nonummy...</p><a href="./authorSingle.html" class="section__readMore">Lire plus</a>
-                </div>
-            </li>
-            <li class="section__block author__list__item">
-                <h3 class="section__block__title"><a href="./authorSingle.html">Auteur</a></h3>
-                <div class="author animated fadeInDown">
-                    <p class="section__block__year">1700 - 1800</p>
-                    <p class="section__block__content">Etiam augue eni diam nibh. Curae risus erat fringilla lectus diam consectetuer et ipsum convallis vivamus mollis ac vehicula diam volutpat. Purus fusce. Morbi netus ultrices fringilla ac semper nonummy...</p><a href="./authorSingle.html" class="section__readMore">Lire plus</a>
-                </div>
-            </li>
-            <li class="section__block author__list__item">
-                <h3 class="section__block__title"><a href="./authorSingle.html">Auteur</a></h3>
-                <div class="author animated fadeInDown">
-                    <p class="section__block__year">1700 - 1800</p>
-                    <p class="section__block__content">Etiam augue eni diam nibh. Curae risus erat fringilla lectus diam consectetuer et ipsum convallis vivamus mollis ac vehicula diam volutpat. Purus fusce. Morbi netus ultrices fringilla ac semper nonummy...</p><a href="./authorSingle.html" class="section__readMore">Lire plus</a>
-                </div>
-            </li>
-            <li class="section__block author__list__item">
-                <h3 class="section__block__title"><a href="./authorSingle.html">Auteur</a></h3>
-                <div class="author animated fadeInDown">
-                    <p class="section__block__year">1700 - 1800</p>
-                    <p class="section__block__content">Etiam augue eni diam nibh. Curae risus erat fringilla lectus diam consectetuer et ipsum convallis vivamus mollis ac vehicula diam volutpat. Purus fusce. Morbi netus ultrices fringilla ac semper nonummy...</p><a href="./authorSingle.html" class="section__readMore">Lire plus</a>
-                </div>
-            </li>
-            <li class="section__block author__list__item">
-                <h3 class="section__block__title"><a href="./authorSingle.html">Auteur</a></h3>
-                <div class="author animated fadeInDown">
-                    <p class="section__block__year">1700 - 1800</p>
-                    <p class="section__block__content">Etiam augue eni diam nibh. Curae risus erat fringilla lectus diam consectetuer et ipsum convallis vivamus mollis ac vehicula diam volutpat. Purus fusce. Morbi netus ultrices fringilla ac semper nonummy...</p><a href="./authorSingle.html" class="section__readMore">Lire plus</a>
-                </div>
-            </li>
-            <li class="section__block author__list__item">
-                <h3 class="section__block__title"><a href="./authorSingle.html">Auteur</a></h3>
-                <div class="author animated fadeInDown">
-                    <p class="section__block__year">1700 - 1800</p>
-                    <p class="section__block__content">Etiam augue eni diam nibh. Curae risus erat fringilla lectus diam consectetuer et ipsum convallis vivamus mollis ac vehicula diam volutpat. Purus fusce. Morbi netus ultrices fringilla ac semper nonummy...</p><a href="./authorSingle.html" class="section__readMore">Lire plus</a>
-                </div>
-            </li>
-            <li class="section__block author__list__item">
-                <h3 class="section__block__title"><a href="./authorSingle.html">Auteur</a></h3>
-                <div class="author animated fadeInDown">
-                    <p class="section__block__year">1700 - 1800</p>
-                    <p class="section__block__content">Etiam augue eni diam nibh. Curae risus erat fringilla lectus diam consectetuer et ipsum convallis vivamus mollis ac vehicula diam volutpat. Purus fusce. Morbi netus ultrices fringilla ac semper nonummy...</p><a href="./authorSingle.html" class="section__readMore">Lire plus</a>
-                </div>
-            </li>
+            <?php foreach($data['authors'] as $author): ?>
+                <li class="section__block author__list__item">
+                    <h3 class="section__block__title"><a href="./authorSingle.html"><?= $author->first_name . ' ' . $author->last_name; ?></a></h3>
+                    <div class="author animated fadeInDown">
+                        <p class="section__block__year"><?= $author->date_birth; ?> - <?= $author->date_death; ?></p>
+                        <p class="section__block__content">
+                            <?= $author->bio; ?>
+                        </p><a href="./authorSingle.html" class="section__readMore">Lire plus</a>
+                    </div>
+                </li>
+            <?php endforeach; ?>
         </ul>
     </div>
 </div>
