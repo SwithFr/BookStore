@@ -3,6 +3,9 @@
 
 class BooksController extends AppController
 {
+    /**
+     * PAGE D'ACCEUIL
+     */
     public function index()
     {
         # Les 2 livres les mieux notés
@@ -14,4 +17,5 @@ class BooksController extends AppController
 
         return compact("books","author");
     }
+
 } 
