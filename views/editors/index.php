@@ -1,3 +1,4 @@
+<?php require(D_VIEWS . DS . 'elements' . DS . 'editors-form.php'); ?>
 <div class="section">
     <div class="section__header">
         <h2 class="section__title">Selectionnez un editeur</h2>
