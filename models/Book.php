@@ -44,7 +44,6 @@ class Book extends AppModel
                 ' ORDER BY title ASC
                 LIMIT ' . $limit;
 
-        var_dump($sql);die();
         $pdost = $this->db->query($sql);
 
         if ($limit > 1)
