@@ -84,4 +84,18 @@ class AppModel
         return $req->fetchAll();
     }
 
+    /**
+     * Permet de récupérer la liste des entité dont le $search commence par $letter
+     * @param string $fields
+     * @param string $search
+     * @param string $letter
+     * @return array
+     */
+    public function getAllFromLetter($fields, $search, $letter)
+    {
+        $sql = 'SELECT ' . $fields . ' FROM ' . $this->table . ' WHERE ' . $search . ' LIKE \''.$letter.'%\'';
+        $pdost = $this->db->query($sql);
+        return $pdost->fetchAll();
+    }
+
 } 

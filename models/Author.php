@@ -27,16 +27,4 @@ class Author extends AppModel
         return $pdost->fetch();
     }
 
-    /**
-     * Permet de récupérer la liste des auteurs dont le nom commence par $letter
-     * @param string $fields
-     * @param string $letter
-     * @return array
-     */
-    public function getAllFromLetter($fields, $letter)
-    {
-        $sql = 'SELECT ' . $fields . ' FROM authors WHERE last_name LIKE \''.$letter.'%\'';
-        $pdost = $this->db->query($sql);
-        return $pdost->fetchAll();
-    }
 } 
