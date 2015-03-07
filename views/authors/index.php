@@ -37,7 +37,7 @@
                     <div class="author animated fadeInDown">
                         <p class="section__block__year"><?= $author->date_birth; ?> - <?= $author->date_death; ?></p>
                         <p class="section__block__content">
-                            <?= $author->bio; ?>
+                            <?= Text::cut($author->bio,250); ?>
                         </p><a href="./authorSingle.html" class="section__readMore">Lire plus</a>
                     </div>
                 </li>
