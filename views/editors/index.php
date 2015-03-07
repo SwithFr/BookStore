@@ -32,66 +32,11 @@
     </ul>
     <div class="section__block">
         <ul class="editors__list">
-            <li class="editors__list__item"><a href="./editorSingle.html">Editeur</a>
-                <p class="editor__infos">30 livres</p><img src="../../../assets/img/editor.jpg" class="editor__img">
-            </li>
-            <li class="editors__list__item"><a href="./editorSingle.html">Editeur</a>
-                <p class="editor__infos">30 livres</p><img src="../../../assets/img/editor.jpg" class="editor__img">
-            </li>
-            <li class="editors__list__item"><a href="./editorSingle.html">Editeur</a>
-                <p class="editor__infos">30 livres</p><img src="../../../assets/img/editor.jpg" class="editor__img">
-            </li>
-            <li class="editors__list__item"><a href="./editorSingle.html">Editeur</a>
-                <p class="editor__infos">30 livres</p><img src="../../../assets/img/editor.jpg" class="editor__img">
-            </li>
-            <li class="editors__list__item"><a href="./editorSingle.html">Editeur</a>
-                <p class="editor__infos">30 livres</p><img src="../../../assets/img/editor.jpg" class="editor__img">
-            </li>
-            <li class="editors__list__item"><a href="./editorSingle.html">Editeur</a>
-                <p class="editor__infos">30 livres</p><img src="../../../assets/img/editor.jpg" class="editor__img">
-            </li>
-            <li class="editors__list__item"><a href="./editorSingle.html">Editeur</a>
-                <p class="editor__infos">30 livres</p><img src="../../../assets/img/editor.jpg" class="editor__img">
-            </li>
-            <li class="editors__list__item"><a href="./editorSingle.html">Editeur</a>
-                <p class="editor__infos">30 livres</p><img src="../../../assets/img/editor.jpg" class="editor__img">
-            </li>
-            <li class="editors__list__item"><a href="./editorSingle.html">Editeur</a>
-                <p class="editor__infos">30 livres</p><img src="../../../assets/img/editor.jpg" class="editor__img">
-            </li>
-            <li class="editors__list__item"><a href="./editorSingle.html">Editeur</a>
-                <p class="editor__infos">30 livres</p><img src="../../../assets/img/editor.jpg" class="editor__img">
-            </li>
-            <li class="editors__list__item"><a href="./editorSingle.html">Editeur</a>
-                <p class="editor__infos">30 livres</p><img src="../../../assets/img/editor.jpg" class="editor__img">
-            </li>
-            <li class="editors__list__item"><a href="./editorSingle.html">Editeur</a>
-                <p class="editor__infos">30 livres</p><img src="../../../assets/img/editor.jpg" class="editor__img">
-            </li>
-            <li class="editors__list__item"><a href="./editorSingle.html">Editeur</a>
-                <p class="editor__infos">30 livres</p><img src="../../../assets/img/editor.jpg" class="editor__img">
-            </li>
-            <li class="editors__list__item"><a href="./editorSingle.html">Editeur</a>
-                <p class="editor__infos">30 livres</p><img src="../../../assets/img/editor.jpg" class="editor__img">
-            </li>
-            <li class="editors__list__item"><a href="./editorSingle.html">Editeur</a>
-                <p class="editor__infos">30 livres</p><img src="../../../assets/img/editor.jpg" class="editor__img">
-            </li>
-            <li class="editors__list__item"><a href="./editorSingle.html">Editeur</a>
-                <p class="editor__infos">30 livres</p><img src="../../../assets/img/editor.jpg" class="editor__img">
-            </li>
-            <li class="editors__list__item"><a href="./editorSingle.html">Editeur</a>
-                <p class="editor__infos">30 livres</p><img src="../../../assets/img/editor.jpg" class="editor__img">
-            </li>
-            <li class="editors__list__item"><a href="./editorSingle.html">Editeur</a>
-                <p class="editor__infos">30 livres</p><img src="../../../assets/img/editor.jpg" class="editor__img">
-            </li>
-            <li class="editors__list__item"><a href="./editorSingle.html">Editeur</a>
-                <p class="editor__infos">30 livres</p><img src="../../../assets/img/editor.jpg" class="editor__img">
-            </li>
-            <li class="editors__list__item"><a href="./editorSingle.html">Editeur</a>
-                <p class="editor__infos">30 livres</p><img src="../../../assets/img/editor.jpg" class="editor__img">
-            </li>
+            <?php foreach($data['editors'] as $editor): ?>
+                <li class="editors__list__item"><a href="./editorSingle.html"><?= $editor->name; ?></a>
+                    <p class="editor__infos">30 livres</p><img src="<?= D_ASSETS . DS . 'img' . DS . $editor->img; ?>" class="editor__img">
+                </li>
+            <?php endforeach; ?>
         </ul>
     </div>
 </div>
