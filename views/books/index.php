@@ -1,3 +1,4 @@
+<?php require(D_VIEWS . DS . 'elements' . DS . 'main-form.php'); ?>
 <div class="section vedettes">
     <div class="section__header">
         <h2 class="section__title">Livres les mieux notés :</h2><a href="./views/books/byAuthor.html" class="section__readMore">Voir tout le classement</a>
