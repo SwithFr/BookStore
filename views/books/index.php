@@ -4,7 +4,7 @@
     </div>
     <?php foreach($data['books'] as $book): ?>
         <div class="section__block">
-            <img src="./assets/img/<?= $book->img; ?>" class="section__block__img">
+            <img src="<?= D_ASSETS . DS . 'img' . DS . $book->img; ?>" class="section__block__img">
             <h3 class="section__block__title"><?= $book->title; ?></h3>
             <p class="section__block__author"><?= $book->first_name . ' ' . $book->last_name; ?></p>
             <p class="section__block__content">
