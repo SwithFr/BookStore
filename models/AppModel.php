@@ -98,4 +98,18 @@ class AppModel
         return $pdost->fetchAll();
     }
 
+    /**
+     * Permet de récupérer les données d'une entrée selon son id
+     * @param $id
+     * @return mixed
+     */
+    public function find($id)
+    {
+        $sql = 'SELECT * FROM ' . $this->table . ' WHERE id=:id';
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute([':id'=>$id]);
+
+        return $pdost->fetch();
+    }
+
 } 
