@@ -36,7 +36,8 @@ class UsersController extends AppController
             setcookie("user_role", $user->role, time() + 7 * 24 * 3600);
         }
         Session::setFlash('Vous êtes maintenant connecté.');
-        header("Location: " . $_SERVER['PHP_SELF']);
+        header("Location: " . Html::url('index','book'));
+        exit();
     }
 
     /**
@@ -51,6 +52,7 @@ class UsersController extends AppController
         setcookie("user_role", "", time() - 7 * 24 * 3600);
         Session::setFlash("Vous êtes bien déconnecté !");
         header('Location: ' . $_SERVER['PHP_SELF']);
+        exit();
     }
 
     /**
@@ -66,12 +68,13 @@ class UsersController extends AppController
                 return compact("errors");
             }
             if ($this->User->alreadyExist($_POST['login'], $_POST['email'])) {
-                Session::setFlash("Ce login ou email est déjà utilisé", 'error');
+                Session::setFlash("Ce login ou email est déjà utilisé !", 'error');
                 return false;
             }
             $this->User->create($_POST['login'], $_POST['password'], $_POST['email']);
-            Session::setFlash("Votre compte a bien été créé");
+            Session::setFlash("Votre compte a bien été créé !");
             header('Location: ' . Html::url('check', 'user'));
+            exit();
         }
     }
 } 
