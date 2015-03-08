@@ -25,4 +25,13 @@ class Session
             unset($_SESSION['flash']);
         }
     }
+
+    /**
+     * Permet de savoir si un utilisateur est connecté
+     * @return bool
+     */
+    public static function isLogged()
+    {
+        return isset($_SESSION['user_id']);
+    }
 } 
