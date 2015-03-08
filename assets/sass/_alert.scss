@@ -10,10 +10,6 @@
   -moz-border-radius: .2em;
   border-radius: .2em;
   transition: all .3s;
-
-  &:target {
-    opacity: 0;
-  }
 }
 
 .alert--error {

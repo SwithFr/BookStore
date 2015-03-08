@@ -19,4 +19,12 @@ function init() {
         title.style.fontSize = "1em";
         title.style.paddingTop = "0";
     }
+
+    document.getElementById("alert").addEventListener("click", fadeOut, false);
+
+    function fadeOut(e) {
+        e.preventDefault();
+        e.target.style.opacity = 0;
+        setTimeout(function(){e.target.style.display = 'none';},300);
+    }
 }
