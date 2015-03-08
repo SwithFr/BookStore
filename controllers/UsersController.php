@@ -52,7 +52,7 @@ class UsersController extends AppController
         setcookie("user_id", "", time() - 7 * 24 * 3600);
         setcookie("user_role", "", time() - 7 * 24 * 3600);
         Session::setFlash("Vous êtes bien déconnecté !");
-        header('Location: ' . $_SERVER['PHP_SELF']);
+        header('Location: ' . Html::url('index', 'book'));
         exit();
     }
 
