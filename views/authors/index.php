@@ -39,7 +39,7 @@
             <?php foreach($data['authors'] as $author): ?>
                 <li class="section__block author__list__item">
                     <h3 class="section__block__title"><a href="./authorSingle.html"><?= $author->first_name . ' ' . $author->last_name; ?></a></h3>
-                    <div class="author animated fadeInDown">
+                    <div class="author">
                         <p class="section__block__year"><?= $author->date_birth; ?> - <?= $author->date_death; ?></p>
                         <p class="section__block__content">
                             <?= Text::cut($author->bio,250); ?>
