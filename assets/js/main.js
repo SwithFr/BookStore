@@ -20,12 +20,15 @@ function init() {
         title.style.paddingTop = "0";
     }
 
-    if(document.getElementById("alert"))
+    if (document.getElementById("alert")) {
         document.getElementById("alert").addEventListener("click", fadeOut, false);
+    }
 
     function fadeOut(e) {
         e.preventDefault();
         e.target.style.opacity = 0;
-        setTimeout(function(){e.target.style.display = 'none';},300);
+        setTimeout(function () {
+            e.target.style.display = 'none';
+        }, 300);
     }
 }
