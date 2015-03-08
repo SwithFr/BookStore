@@ -15,11 +15,11 @@
         </div>
         <div class="header__login">
             <?php if(!isset($_COOKIE['user_id']) && !isset($_SESSION['user_id'])): ?>
-                <a href="<?= Html::url('register','user'); ?>" class="btn btn--white">Créer un compte</a>
-                <a href="<?= Html::url('check','user'); ?>" class="btn btn--white">Connexion</a>
+                <a href="<?= Html::url('register','user'); ?>" class="link link--white">Créer un compte</a>
+                <a href="<?= Html::url('check','user'); ?>" class="link link--white">Connexion</a>
             <?php else: ?>
-                <a href="<?= Html::url('profil','user'); ?>" class="btn btn--white">Mon compte</a>
-                <a href="<?= Html::url('disconnect','user'); ?>" class="btn btn--white">Déconnexion</a>
+                <a href="<?= Html::url('profil','user'); ?>" class="link link--white">Mon compte</a>
+                <a href="<?= Html::url('disconnect','user'); ?>" class="link link--white">Déconnexion</a>
             <?php endif; ?>
         </div>
     </div>
