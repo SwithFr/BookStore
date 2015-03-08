@@ -14,6 +14,6 @@
         <label class="form__label" for="remember">Se souvenir de moi</label>
         <input class="form__input form__input--large" type="checkbox" name="remember" id="remember"/>
 
-        <input class="form__submit btn btn--login" type="submit" value="Se connecter"/>
+        <input class="form__submit btn btn--send" type="submit" value="Se connecter"/>
     </form>
 </div>
