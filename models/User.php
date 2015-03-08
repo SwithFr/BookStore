@@ -43,4 +43,18 @@ class User extends AppModel
         $pdost = $this->db->prepare($sql);
         $pdost->execute([':login'=>$login,':password'=>$password,':email'=>$email]);
     }
+
+    /**
+     * Vérifie qu'on est pas déjà enregistré
+     * @param $login
+     * @param $email
+     * @return mixed
+     */
+    public function alreadyExist($login,$email)
+    {
+        $sql = 'SELECT count(id) FROM users WHERE login=:login OR email=:email';
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute([':login'=>$login,':email'=>$email]);
+        return $pdost->fetch();
+    }
 } 
