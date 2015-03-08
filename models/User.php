@@ -5,15 +5,15 @@ class User extends AppModel
 {
     public $rules = [
         'login' => [
-            ['ruleName'=>'notEmpty', 'message'=>'Le champ login est obligatoire'],
-            ['ruleName'=>'isString','message'=>'Doit être une chaine de caractère'],
+            ['ruleName' => 'notEmpty', 'message' => 'Le champ login est obligatoire'],
+            ['ruleName' => 'isString', 'message' => 'Doit être une chaine de caractère'],
         ],
         'password' => [
-            ['ruleName'=>'notEmpty', 'message'=>'Le champ mot de passe est obligatoire']
+            ['ruleName' => 'notEmpty', 'message' => 'Le champ mot de passe est obligatoire']
         ],
         'mail' => [
-            ['ruleName'=>'isMail', 'message'=>'Doit être un email valide'],
-            ['ruleName'=>'notEmpty', 'message'=>'Le champ email est obligatoire']
+            ['ruleName' => 'isMail', 'message' => 'Doit être un email valide'],
+            ['ruleName' => 'notEmpty', 'message' => 'Le champ email est obligatoire']
         ]
     ];
 
@@ -24,9 +24,9 @@ class User extends AppModel
      */
     public function getLogged($login)
     {
-        $sql = 'SELECT id,password,role FROM users WHERE login=\':login\'';
+        $sql = 'SELECT id,password,role FROM users WHERE login=:login';
         $pdost = $this->db->prepare($sql);
-        $pdost->execute([':login'=>$login]);
+        $pdost->execute([':login' => $login]);
 
         return $pdost->fetch();
     }
