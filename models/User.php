@@ -52,9 +52,11 @@ class User extends AppModel
      */
     public function alreadyExist($login,$email)
     {
-        $sql = 'SELECT count(id) FROM users WHERE login=:login OR email=:email';
+        $sql = 'SELECT count(id) as count FROM users WHERE login=:login OR email=:email';
         $pdost = $this->db->prepare($sql);
         $pdost->execute([':login'=>$login,':email'=>$email]);
-        return $pdost->fetch();
+        if ($pdost->fetch()->count == 0)
+            return false;
+        return true;
     }
 } 
