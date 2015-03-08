@@ -10,5 +10,6 @@ return $routes = [
     'U_check'         => 'check/user',
     'U_disconnect'    => 'disconnect/user',
     'U_register'      => 'register/user',
+    'U_account'        => 'account/user',
     'Er_unauthorized' => 'unauthorized/error'
 ];
