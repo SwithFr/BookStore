@@ -18,7 +18,7 @@
                 <a href="<?= Html::url('register','user'); ?>" class="link link--white">Créer un compte</a>
                 <a href="<?= Html::url('check','user'); ?>" class="link link--white">Connexion</a>
             <?php else: ?>
-                <a href="<?= Html::url('profil','user'); ?>" class="link link--white">Mon compte</a>
+                <a href="<?= Html::url('account','user'); ?>" class="link link--white">Mon compte</a>
                 <a href="<?= Html::url('disconnect','user'); ?>" class="link link--white">Déconnexion</a>
             <?php endif; ?>
         </div>
