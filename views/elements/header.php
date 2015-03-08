@@ -14,8 +14,13 @@
             <p>partager et lire des livres</p>
         </div>
         <div class="header__login">
-            <a href="<?= Html::url('register','user'); ?>" class="btn btn--white">Créer un compte</a>
-            <a href="<?= Html::url('check','user'); ?>" class="btn btn--white">Connexion</a>
+            <?php if(!isset($_COOKIE['user_id'])): ?>
+                <a href="<?= Html::url('register','user'); ?>" class="btn btn--white">Créer un compte</a>
+                <a href="<?= Html::url('check','user'); ?>" class="btn btn--white">Connexion</a>
+            <?php else: ?>
+                <a href="<?= Html::url('profil','user'); ?>" class="btn btn--white">Mon compte</a>
+                <a href="<?= Html::url('disconnect','user'); ?>" class="btn btn--white">Déconnexion</a>
+            <?php endif; ?>
         </div>
     </div>
 </header>
