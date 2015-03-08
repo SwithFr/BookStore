@@ -7,5 +7,5 @@ return $routes = [
     'G_index'    => 'index/genre',
     'B_populars' => 'populars/book',
     'L_index'    => 'index/librarie',
-    'U_check'    => 'ckeck/user'
+    'U_check'    => 'check/user'
 ];
