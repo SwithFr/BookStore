@@ -1,13 +1,19 @@
 <div class="section">
-    <form action="<?= Html::url('check','user'); ?>" method="post">
-        <label for="login">Login</label>
-        <span><?= isset($data['errors']['login']) ? $data['errors']['login'] : ''; ?></span>
-        <input type="text" name="login" id="login" value="<?= isset($_POST['login']) ? $_POST['login'] : ''; ?>"/>
-        <label for="password">Mot de passe</label>
-        <span><?= isset($data['errors']['password']) ? $data['errors']['password'] : ''; ?></span>
-        <input type="password" name="password" id="password"/>
-        <label for="remember">Se souvenir de moi</label>
-        <input type="checkbox" name="remember" id="remember"/>
-        <input type="submit" value="Se connecter"/>
+    <h2 class="section__title">Se connecter</h2>
+
+    <form class="form--login" action="<?= Html::url('check', 'user'); ?>" method="post">
+        <label class="form__label" for="login">Login</label>
+        <?= isset($data['errors']['login']) ? '<span class="has-error">' . $data['errors']['login'] . '</span>' : ''; ?></span>
+        <input class="form__input form__input--large" type="text" name="login" id="login"
+               value="<?= isset($_POST['login']) ? $_POST['login'] : ''; ?>"/>
+
+        <label class="form__label" for="password">Mot de passe</label>
+        <?= isset($data['errors']['password']) ? '<span class="has-error">' . $data['errors']['password'] . '</span>' : ''; ?>
+        <input class="form__input form__input--large" type="password" name="password" id="password"/>
+
+        <label class="form__label" for="remember">Se souvenir de moi</label>
+        <input class="form__input form__input--large" type="checkbox" name="remember" id="remember"/>
+
+        <input class="form__submit btn btn--login" type="submit" value="Se connecter"/>
     </form>
 </div>

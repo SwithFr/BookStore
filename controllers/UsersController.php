@@ -11,7 +11,8 @@ class UsersController extends AppController
             $v = new Validator();
             if (!$v->validate($_POST, $this->User->rules)) {
                 Session::setFlash("Verifiez vos informations !", 'error');
-                return compact($v->errors());
+                $errors = $v->errors();
+                return compact("errors");
             }
             $user = $this->User->getLogged($_POST['login']);
             if ($user->password != $_POST['password']) {

@@ -1,9 +1,28 @@
+/* BUTTONS */
 .btn {
+  padding: 1em;
+  margin: .5em 0;
+
   text-decoration: none;
   color: inherit;
-  margin: 1em 1em 1em 0;
+  font-size: 1em;
 }
 
-.btn--white, .btn--white:visited {
+.btn--login {
+  background-color: #ffd300;
+  transition: all .3s;
+  border: 1px solid #ffd300;
+
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+/* LINKS */
+.link {
+  margin: 0 1em 0 0;
+}
+
+.link--white, .link--white:visited {
   color: white;
 }

@@ -2,9 +2,7 @@
 @import "admin";
 @import "iconFont";
 
-/**
-HEADER
-**/
+/* HEADER */
 .header {
   height: 380px;
 }
@@ -58,10 +56,8 @@ HEADER
   font-family: $Playfair, serif;
 }
 
-/**
-SEARCH
-**/
-.form__input.form--search {
+/* SEARCH */
+.form--search {
   min-width: 300px;
   width: 30%;
   margin: 0 auto;
@@ -69,6 +65,7 @@ SEARCH
 
   line-height: 2;
 
+  border: none;
   border-bottom: 2px solid lightgray;
   transition: all .5s;
 
@@ -83,16 +80,15 @@ SEARCH
   top: .15em;
   padding: 0;
   margin: 0;
-  line-height: 2;
 
+  line-height: 3;
   color: transparent;
 
+  border: none;
   background: url("../img/search-icn.png") no-repeat 0 .3em;
 }
 
-/**
-NAV
-**/
+/* NAV */
 #main__title {
   transition: font-size .3s;
 }
@@ -129,9 +125,7 @@ NAV
   text-decoration: none;
 }
 
-/**
-VEDETTES
-**/
+/* HOME--BEST-BOOK */
 .vedettes .section__block {
   width: 50%;
 }
@@ -146,9 +140,7 @@ VEDETTES
   padding-right: 1.5em;
 }
 
-/**
-AUTHORS / YOURS
-**/
+/* HOME--BEST-AUTHOR */
 .author .section__block {
   width: 50%;
   float: left;
@@ -210,9 +202,7 @@ AUTHORS / YOURS
   border: 1px solid orangered;
 }
 
-/**
-FOOTER
-**/
+/* FOOTER */
 .footer {
   background: url("../img/footer-bkg.jpg") no-repeat center 200px fixed;
   height: 380px;
@@ -240,9 +230,7 @@ FOOTER
   color: white;
 }
 
-/**
-AUTHORS LIST
-**/
+/* AUTHORS-LIST */
 .authors:after {
   @extend .clearBoth;
 }
@@ -269,7 +257,7 @@ AUTHORS LIST
   border-bottom: 1px dotted orangered;
 }
 
-/* AUTHOR SINGLE */
+/* AUTHOR-SINGLE */
 .bio {
   width: 55%;
   margin-right: 5%;
@@ -290,9 +278,7 @@ AUTHORS LIST
   border-bottom: 1px dotted orangered;
 }
 
-/**
-EDITORS LIST
-**/
+/* EDITORS-LIST */
 .editors__list {
   margin-top: 1em;
   font-family: $Playfair;
@@ -333,9 +319,13 @@ EDITORS LIST
   top: .2em;
 }
 
-/**
-INDEX USER
-**/
+/* LOGIN */
+.form--login {
+  width: 50%;
+  margin: 0 auto;
+}
+
+/* INDEX PROFILE */
 .dashbord .section__block {
   width: 30%;
   margin-right: 5%;
