@@ -1,0 +1,17 @@
+body {
+  font: 16px/1.5 $Open, Arial, sans-serif;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+.content {
+  max-width: 960px;
+  width: 90%;
+  margin: 0 auto;
+}

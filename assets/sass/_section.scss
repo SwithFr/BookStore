@@ -1,0 +1,58 @@
+
+.section {
+  position: relative;
+  margin: 1em 0;
+  padding: 2em 0;
+
+  border-bottom: 1px dashed orangered;
+
+  &:after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+
+}
+
+.section__header {
+  margin-bottom: 1em;
+}
+
+.section__block {
+  position: relative;
+}
+
+.section__block, .section__block__img {
+  float: left;
+}
+
+.section__block__img {
+  max-width: 100%;
+}
+
+.section__title {
+  @extend .heading;
+}
+
+.section__block__title {
+  font-family: $Playfair, serif;
+  font-size: 1.5em;
+}
+
+.section__block__author {
+  font-style: italic;
+  color: darkgrey;
+}
+
+.section__readMore {
+  padding-top: 1em;
+  padding-left: 1em;
+
+  font-style: italic;
+  font-size: .8em;
+}
+
+.section__block__year, .section__block__category {
+  font-size: .8em;
+  color: gray;
+}

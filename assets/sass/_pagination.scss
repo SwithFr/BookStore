@@ -1,0 +1,12 @@
+/* FILTERLIST */
+.filter__item {
+  display: inline;
+  margin-right: .5em;
+
+  color: lightgray;
+
+  &:hover {
+    text-decoration: underline;
+    color: black;
+  }
+}
