@@ -11,7 +11,7 @@ class User extends AppModel
         'password' => [
             ['ruleName' => 'notEmpty', 'message' => 'Le champ mot de passe est obligatoire']
         ],
-        'mail' => [
+        'email' => [
             ['ruleName' => 'isMail', 'message' => 'Doit être un email valide'],
             ['ruleName' => 'notEmpty', 'message' => 'Le champ email est obligatoire']
         ]
@@ -29,5 +29,18 @@ class User extends AppModel
         $pdost->execute([':login' => $login]);
 
         return $pdost->fetch();
+    }
+
+    /**
+     * Ajoute un utilisateur en base de données
+     * @param $login
+     * @param $password
+     * @param $email
+     */
+    public function create($login,$password,$email)
+    {
+        $sql = 'INSERT INTO users(login,password,email) VALUES (:login,:password,:email)';
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute([':login'=>$login,':password'=>$password,':email'=>$email]);
     }
 } 
