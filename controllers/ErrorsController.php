@@ -10,7 +10,7 @@ class ErrorsController extends AppController
      */
     public function unauthorized()
     {
-        $message = "Hey bonhomme ! Je te conseille de pas aller plus loin...";
+        $message = "Hey bonhomme ! Je te conseille de ne pas aller plus loin...";
         return compact('message');
     }
 
