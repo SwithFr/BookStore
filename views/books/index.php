@@ -1,7 +1,8 @@
 <?php require(D_VIEWS . DS . 'elements' . DS . 'main-form.php'); ?>
 <div class="section vedettes">
     <div class="section__header">
-        <h2 class="section__title">Livres les mieux notés :</h2><a href="./views/books/byAuthor.html" class="section__readMore">Voir tout le classement</a>
+        <h2 class="section__title">Livres les mieux notés :</h2>
+        <a href="./views/books/byAuthor.html" class="section__readMore">Voir tout le classement</a>
     </div>
     <?php foreach($data['books'] as $book): ?>
         <div class="section__block">
@@ -17,7 +18,10 @@
 </div>
 <div class="section author">
     <div class="section__header">
-        <h2 class="section__title"><a href="./views/books/byAuthor.html">Auteur le mieux noté</a></h2><a href="./views/books/byAuthor.html" class="section__readMore">Voir plus du même auteur</a>
+        <h2 class="section__title">
+            <a href="./views/books/byAuthor.html">Auteur le mieux noté</a>
+        </h2>
+        <a href="./views/books/byAuthor.html" class="section__readMore">Voir plus du même auteur</a>
     </div>
     <div class="section__block">
         <h3 class="section__block__title"><?= $data['author']->first_name . ' ' . $data['author']->last_name; ?></h3>
@@ -30,6 +34,7 @@
             <p class="nb author__eval">4.5</p>
         </div>
     </div>
-    <div class="section__block"><img src="./assets/img/vHugo.jpg" class="section__block__img"></div>
-</div>
+    <div class="section__block">
+        <img src="./assets/img/vHugo.jpg" class="section__block__img">
+    </div>
 </div>
