@@ -65,6 +65,10 @@ class UsersController extends AppController
                 $errors = $v->errors();
                 return compact("errors");
             }
+            if ($this->User->alreadyExist($_POST['login'], $_POST['email'])) {
+                Session::setFlash("Ce login ou email est déjà utilisé", 'error');
+                return false;
+            }
             $this->User->create($_POST['login'], $_POST['password'], $_POST['email']);
             Session::setFlash("Votre compte a bien été créé");
             header('Location: ' . Html::url('check', 'user'));
