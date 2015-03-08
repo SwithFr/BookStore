@@ -77,4 +77,23 @@ class UsersController extends AppController
             exit();
         }
     }
+
+    /**
+     * PAGE UTILISATEUR
+     */
+    public function account()
+    {
+        if (!Session::isLogged()) {
+            Session::setFlash('Vous n‘êtes pas connecté !', 'error');
+            header('Location: ' . Html::url('notLogged', 'error'));
+            exit();
+        }
+        $user = $this->User->find($_SESSION['user_id']);
+        if (!$user) {
+            header('Location: ' . Html::url('unauthorized', 'error'));
+            exit();
+        }
+        $library = $this->User->hasLibrary($_SESSION['user_id']);
+        return compact('user', 'library');
+    }
 } 
