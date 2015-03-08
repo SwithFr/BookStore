@@ -17,12 +17,13 @@ class UsersController extends AppController
         }
     }
 
-    private function connect(User $user)
+    private function connect($user)
     {
         $_SESSION['id'] = $user->id;
         $_SESSION['role'] = $user->role;
         setcookie("user_id", $user->id, time() + 7 * 24 * 3600);
-//        header("Location: " . $_SERVER['PHP_SELF']);
+        setcookie("user_role", $user->role, time() + 7 * 24 * 3600);
+        header("Location: " . $_SERVER['PHP_SELF']);
     }
 
     public function disconnect()
@@ -31,6 +32,7 @@ class UsersController extends AppController
         unset($_SESSION['id']);
         unset($_SESSION['role']);
         setcookie("user_id", "", time() - 7 * 24 * 3600);
-//        header('Location: ' . $_SERVER['PHP_SELF']);
+        setcookie("user_role", "", time() - 7 * 24 * 3600);
+        header('Location: ' . $_SERVER['PHP_SELF']);
     }
 } 
