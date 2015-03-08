@@ -1,0 +1,51 @@
+@import "compass/reset";
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300);
+
+html {
+  width: 100%;
+  height: 100%;
+  margin:0;
+  padding:0;
+  background: url(../img/unauthorized.jpg) no-repeat top fixed;
+  -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+  background-size: cover; /* version standardisée */
+
+  font: 32px/1.5 "Open Sans", sans-serif;
+  color: white;
+}
+
+.content {
+  width: 25%;
+  margin: 0 auto;
+  position: relative;
+  top: 8em;
+}
+
+h1 {
+  margin-bottom: 1em;
+
+  color: #d04c51;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.message {
+  background-color: #d04c51;
+  padding: 1em;
+
+  text-align: center;
+}
+
+.btn--back, .btn--back:visited {
+  display: block;
+  padding: 1em;
+  margin: 2em 0;
+
+  font-size: .8em;
+  text-decoration: none;
+  color: black;
+  text-align: center;
+
+  background-color: #ffd300;
+}

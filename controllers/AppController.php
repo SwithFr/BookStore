@@ -48,7 +48,8 @@ class AppController {
         if (is_null($name)) {
             $name = ucfirst($this->request->controller);
         }
-        $this->$name = new $name();
+        if($name != 'Error')
+            $this->$name = new $name();
     }
 
 } 
