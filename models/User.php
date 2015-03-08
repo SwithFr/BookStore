@@ -59,4 +59,19 @@ class User extends AppModel
             return false;
         return true;
     }
+
+    /**
+     * Permet de savoir si l'utilisateur possède au moins une bibliothèque
+     * @param $user_id
+     * @return bool
+     */
+    public function hasLibrary($user_id)
+    {
+        $sql = 'SELECT count(id) as count FROM libraries WHERE user_id=:user_id';
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute([':user_id'=>$user_id]);
+        if ($pdost->fetch()->count == 0)
+            return false;
+        return true;
+    }
 } 
