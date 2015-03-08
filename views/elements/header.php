@@ -13,7 +13,9 @@
             <p>Une nouvelle manière de découvir,</p>
             <p>partager et lire des livres</p>
         </div>
-        <div class="header__login"><a href="./views/users/register.html" class="btn btn--white">Créer un compte</a><a href="./views/users/login.html" class="btn btn--white">Connexion</a>
+        <div class="header__login">
+            <a href="<?= Html::url('register','user'); ?>" class="btn btn--white">Créer un compte</a>
+            <a href="<?= Html::url('chceck','user'); ?>" class="btn btn--white">Connexion</a>
         </div>
     </div>
 </header>
