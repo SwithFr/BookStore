@@ -18,6 +18,17 @@
   }
 }
 
+
+.btn--add {
+  background-color: #a3be8c;
+  transition: all .3s;
+  border: 1px solid #a3be8c;
+
+  &:hover {
+    background-color: transparent;
+  }
+}
+
 /* LINKS */
 .link {
   margin: 0 1em 0 0;
