@@ -4,7 +4,7 @@ class UsersController extends AppController
 {
     public function check()
     {
-        if ($this->request->method === "POST") {
+        if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $v = new Validator();
             if (!$v->validate($_POST, $this->User->rules))
                 die('Pas bon :p');
