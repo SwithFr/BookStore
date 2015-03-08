@@ -8,5 +8,6 @@ return $routes = [
     'B_populars'   => 'populars/book',
     'L_index'      => 'index/librarie',
     'U_check'      => 'check/user',
-    'U_disconnect' => 'disconnect/user'
+    'U_disconnect' => 'disconnect/user',
+    'U_register'   => 'register/user'
 ];
