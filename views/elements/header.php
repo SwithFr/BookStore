@@ -15,7 +15,7 @@
         </div>
         <div class="header__login">
             <a href="<?= Html::url('register','user'); ?>" class="btn btn--white">Créer un compte</a>
-            <a href="<?= Html::url('chceck','user'); ?>" class="btn btn--white">Connexion</a>
+            <a href="<?= Html::url('check','user'); ?>" class="btn btn--white">Connexion</a>
         </div>
     </div>
 </header>
