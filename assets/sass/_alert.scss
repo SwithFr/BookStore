@@ -3,6 +3,17 @@
   width: 80%;
   margin: 2em auto;
   padding: 1em;
+
+  color: white;
+
+  -webkit-border-radius: .2em;
+  -moz-border-radius: .2em;
+  border-radius: .2em;
+  transition: all .3s;
+
+  &:target {
+    opacity: 0;
+  }
 }
 
 .alert--error {

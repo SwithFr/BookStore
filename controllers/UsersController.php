@@ -37,7 +37,7 @@ class UsersController extends AppController
             setcookie("user_role", $user->role, time() + 7 * 24 * 3600);
         }
         Session::setFlash('Vous êtes maintenant connecté.');
-        header("Location: " . Html::url('index','book'));
+        header("Location: " . Html::url('index', 'book'));
         exit();
     }
 

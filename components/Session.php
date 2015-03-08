@@ -1,7 +1,7 @@
 <?php
 
 
-class Session 
+class Session
 {
     /**
      * Permet de définir un message flash
@@ -21,7 +21,7 @@ class Session
     public static function flash()
     {
         if (isset($_SESSION['flash'])) {
-            echo "<a href='#' class='alert alert--" . $_SESSION['flash']['type'] . "'>" . $_SESSION['flash']['message'] . "</a>";
+            echo "<a href='#alert' id='alert' class='alert alert--" . $_SESSION['flash']['type'] . "'>" . $_SESSION['flash']['message'] . "</a>";
             unset($_SESSION['flash']);
         }
     }
