@@ -46,7 +46,6 @@ class UsersController extends AppController
      */
     public function disconnect()
     {
-        session_destroy();
         unset($_SESSION['user_id']);
         unset($_SESSION['user_role']);
         setcookie("user_id", "", time() - 7 * 24 * 3600);
