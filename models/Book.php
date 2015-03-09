@@ -89,4 +89,50 @@ class Book extends AppModel
 
         return $pdost->fetch();
     }
+
+    public function create($title, $summary, $isbn, $nbpages, $language_id, $genre_id, $location_id, $editor_id, $author_id, $library_id)
+    {
+        $sql = 'INSERT INTO books(title, summary, isbn, nbpages, language_id, genre_id, location_id, editor_id)
+                VALUES (:title, :summary, :isbn, :nbpages, :language_id, :genre_id, :location_id, :editor_id)';
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute([
+                ':title' => $title,
+                ':summary' => $summary,
+                ':isbn' => $isbn,
+                ':nbpages' => $nbpages,
+                ':language_id' => $language_id,
+                ':genre_id' => $genre_id,
+                ':location_id' => $location_id,
+                ':editor_id' => $editor_id]
+        );
+
+        $this->newAuthorBook($author_id, $this->db->lastInsertId(), $library_id);
+    }
+
+    /**
+     * Ajoute l'association dans la table author_book
+     * @param $author_id
+     * @param $book_id
+     * @param $library_id
+     */
+    private function newAuthorBook($author_id, $book_id, $library_id)
+    {
+        $sql = "INSERT INTO author_book(author_id, book_id)
+                VALUES ($author_id,$book_id)";
+        $this->db->query($sql);
+
+        $this->newBookLibrary($book_id,$library_id);
+    }
+
+    /**
+     * Ajoute l'association dans la table book_library
+     * @param $book_id
+     * @param $library_id
+     */
+    private function newBookLibrary($book_id, $library_id)
+    {
+        $sql = "INSERT INTO book_library(book_id,library_id)
+                VALUES ($book_id,$library_id)";
+        $this->db->query($sql);
+    }
 }
