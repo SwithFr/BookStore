@@ -9,8 +9,9 @@
 
         <label class="form__label" for="summary">Résumé</label>
         <?= isset($data['errors']['summary']) ? '<span class="has-error">' . $data['errors']['summary'] . '</span>' : ''; ?></span>
-        <input class="form__input form__input--large" type="text" name="summary" id="summary"
-               value="<?= isset($_POST['summary']) ? $_POST['summary'] : ''; ?>"/>
+        <textarea class="form__textarea" name="summary" id="summary">
+            <?= isset($_POST['summary']) ? $_POST['summary'] : ''; ?>
+        </textarea>
 
         <label class="form__label" for="isbn">Numéro ISBN</label>
         <?= isset($data['errors']['isbn']) ? '<span class="has-error">' . $data['errors']['isbn'] . '</span>' : ''; ?></span>
@@ -24,34 +25,30 @@
 
         <label class="form__label" for="genre_id">Selectionnez le genre</label>
         <select class="form__input" name="genre_id" id="genre_id">
-            <option value="1">test</option>
-            <option value="1">test</option>
-            <option value="1">test</option>
-            <option value="1">test</option>
+            <?php foreach($data['genres'] as $genre): ?>
+                <option value="<?= $genre->id; ?>"><?= $genre->name; ?></option>
+            <?php endforeach; ?>
         </select>
 
         <label class="form__label" for="language_id">Selectionnez la langue</label>
         <select class="form__input" name="language_id" id="language_id">
-            <option value="1">test</option>
-            <option value="1">test</option>
-            <option value="1">test</option>
-            <option value="1">test</option>
+            <?php foreach($data['languages'] as $language): ?>
+                <option value="<?= $language->id; ?>"><?= $language->name; ?></option>
+            <?php endforeach; ?>
         </select>
 
         <label class="form__label" for="editor_id">Selectionnez l'éditeur</label>
         <select class="form__input" name="editor_id" id="editor_id">
-            <option value="1">test</option>
-            <option value="1">test</option>
-            <option value="1">test</option>
-            <option value="1">test</option>
+            <?php foreach($data['editors'] as $editor): ?>
+                <option value="<?= $editor->id; ?>"><?= $editor->name; ?></option>
+            <?php endforeach; ?>
         </select>
 
         <label class="form__label" for="location_id">Selectionnez l'emplacement</label>
         <select class="form__input" name="location_id" id="location_id">
-            <option value="1">test</option>
-            <option value="1">test</option>
-            <option value="1">test</option>
-            <option value="1">test</option>
+            <?php foreach($data['locations'] as $location): ?>
+                <option value="<?= $location->id; ?>"><?= $location->name; ?></option>
+            <?php endforeach; ?>
         </select>
 
         <input class="form__submit btn btn--send" type="submit" value="Ajouter ce livre"/>
