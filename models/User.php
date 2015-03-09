@@ -24,7 +24,7 @@ class User extends AppModel
      */
     public function getLogged($login)
     {
-        $sql = 'SELECT id,password,role FROM users WHERE login=:login';
+        $sql = 'SELECT id,password,role,login FROM users WHERE login=:login';
         $pdost = $this->db->prepare($sql);
         $pdost->execute([':login' => $login]);
 
