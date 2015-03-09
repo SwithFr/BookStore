@@ -53,4 +53,15 @@ class AppController
             $this->$name = new $name();
     }
 
+    /**
+     * Permet de faire une redirection
+     * @param $action
+     * @param $controller
+     */
+    protected function redirect($action,$controller)
+    {
+        header('Location: ' . Html::url($action, $controller));
+        exit();
+    }
+
 } 
