@@ -26,7 +26,7 @@
         <label class="form__label" for="author_id">Selectionnez l'auteur</label>
         <select class="form__input" name="author_id" id="author_id">
             <?php foreach($data['authors'] as $author): ?>
-                <option value="<?= $author->id; ?>"><?= $author->name; ?></option>
+                <option value="<?= $author->id; ?>"><?= $author->first_name . ' ' . $author->last_name; ?></option>
             <?php endforeach; ?>
         </select>
 
