@@ -61,7 +61,11 @@ class AppController
      */
     protected function redirect($action, $controller, $params = null)
     {
-        header('Location: ' . Html::url($action, $controller) . '?' . http_build_query($params));
+        if (!is_null($params))
+            $query =  http_build_query($params);
+        else
+            $query = '';
+        header('Location: ' . Html::url($action, $controller) . $query);
         exit();
     }
 
