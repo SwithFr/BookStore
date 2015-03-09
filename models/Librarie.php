@@ -32,4 +32,13 @@ class Librarie extends AppModel
         $pdost->execute([':name' => $name, ':address' => $adress, ':tel' => $tel, ':email' => $email, ':user_id' => $user_id, ':private' => intval($private)]);
     }
 
+    public function getFromUser($user_id)
+    {
+        $sql = 'SELECT * FROM libraries WHERE user_id = :user_id';
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute([':user_id' => $user_id]);
+
+        return $pdost->fetch();
+    }
+
 } 
