@@ -19,7 +19,6 @@
   }
 }
 
-
 .btn--add {
   background-color: #a3be8c;
   transition: all .3s;
@@ -28,6 +27,14 @@
   &:hover {
     background-color: transparent;
   }
+}
+
+.btn--inline {
+  display: inline-block;
+}
+
+.btn--small {
+  font-size: .8em;
 }
 
 /* LINKS */
