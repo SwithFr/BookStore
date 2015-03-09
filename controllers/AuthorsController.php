@@ -12,7 +12,7 @@ class AuthorsController extends AppController
             $letter = $_GET['letter'];
             $authors = $this->Author->getAllFromLetter("*", 'last_name', $letter);
         } else
-            header("Location: " . $_SERVER['PHP_SELF'] . '?a=index&e=author&letter=A');
+            $this->redirect('index','author',['letter'=>'a']);
 
         return compact("authors", "letter");
     }

@@ -12,7 +12,7 @@ class EditorsController extends AppController
             $letter = $_GET['letter'];
             $editors = $this->Editor->getAllFromLetter("*", 'name', $letter);
         } else
-            header("Location: " . $_SERVER['PHP_SELF'] . '?a=index&e=editor&letter=a');
+            $this->redirect('index','author',['letter'=>'a']);
 
         return compact("editors", "letter");
     }
