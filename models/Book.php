@@ -34,19 +34,23 @@ class Book extends AppModel
      * @param int $limit
      * @return array|mixed
      */
-    public function getAllFromLibrary($fields, $id, $limit)
+    public function getAllFromLibrary($fields, $id, $limit = null)
     {
         $sql = 'SELECT ' . $fields . '
                 FROM books
-                JOIN book_library ON book_id = books.id
-                JOIN libraries ON library_id = libraries.id
-                WHERE library_id = ' . $id .
-                ' ORDER BY title ASC
-                LIMIT ' . $limit;
+                JOIN book_library ON book_library.book_id = books.id
+                JOIN libraries ON book_library.library_id = libraries.id
+                JOIN author_book ON author_book.book_id = books.id
+                JOIN authors ON author_book.author_id = authors.id
+                WHERE library_id = ' . $id . '
+                ORDER BY title ASC ';
 
+        if (!is_null($limit))
+            $sql .= 'LIMIT ' . $limit;
+        
         $pdost = $this->db->query($sql);
 
-        if ($limit > 1)
+        if ($limit > 1 || is_null($limit))
             return $pdost->fetchAll();
 
         return $pdost->fetch();
