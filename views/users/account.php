@@ -7,7 +7,7 @@
             <p class="alert alert--warning">
                 Veuillez d'abord créer une bibliothèque pour pouvoir ajouter des livres.
             </p>
-            <a class="btn btn--add" href="<?= Html::url('add','library'); ?>">Créer une bibliothèque</a>
+            <a class="btn btn--add" href="<?= Html::url('add','librarie'); ?>">Créer une bibliothèque</a>
         <?php else: ?>
             <div class="section__block">
                 <h3 class="section__block__title">Mes livres ajoutés</h3>
