@@ -21,8 +21,8 @@
                     </thead>
                     <tbody>
                         <?php foreach($data['books'] as $book): ?>
-                            <tr>
-                                <td class="books__list__item"><?= $book->title; ?></td>
+                            <tr class="books__list__item">
+                                <td><?= $book->title; ?></td>
                                 <td><?= $book->first_name . ' ' . $book->last_name; ?></td>
                                 <td class="actions">
                                     <a href="#">Edit<i class="icon-pencil"></i></a>
