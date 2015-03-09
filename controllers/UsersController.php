@@ -37,8 +37,7 @@ class UsersController extends AppController
             setcookie("user_role", $user->role, time() + 7 * 24 * 3600);
         }
         Session::setFlash('Vous êtes maintenant connecté.');
-        header("Location: " . Html::url('index', 'book'));
-        exit();
+        $this->redirect('index','book');
     }
 
     /**
@@ -51,8 +50,7 @@ class UsersController extends AppController
         setcookie("user_id", "", time() - 7 * 24 * 3600);
         setcookie("user_role", "", time() - 7 * 24 * 3600);
         Session::setFlash("Vous êtes bien déconnecté !");
-        header('Location: ' . Html::url('index', 'book'));
-        exit();
+        $this->redirect('index','book');
     }
 
     /**
@@ -73,8 +71,7 @@ class UsersController extends AppController
             }
             $this->User->create($_POST['login'], $_POST['password'], $_POST['email']);
             Session::setFlash("Votre compte a bien été créé !");
-            header('Location: ' . Html::url('check', 'user'));
-            exit();
+            $this->redirect('check','user');
         }
     }
 
@@ -83,11 +80,9 @@ class UsersController extends AppController
      */
     public function account()
     {
-        if (!Session::isLogged()) {
-            Session::setFlash('Vous n‘êtes pas connecté !', 'error');
-            header('Location: ' . Html::url('notLogged', 'error'));
-            exit();
-        }
+        if (!Session::isLogged())
+            $this->redirect('notLogged','error');
+
         $this->loadModel('Librarie');
         $this->loadModel('Book');
         $user_id = $_SESSION['user_id'];
