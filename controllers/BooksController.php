@@ -47,6 +47,8 @@ class BooksController extends AppController
                 return compact('genres', 'languages', 'editors', 'locations', 'authors', 'errors');
             }
 
+            Image::uploadBookImg();
+
             $this->Book->create(
                 $_POST['title'],
                 $_POST['summary'],
@@ -59,6 +61,9 @@ class BooksController extends AppController
                 $_POST['author_id'],
                 $library_id
             );
+
+            Session::setFlash('Le livre ' . $_POST['title'] . ' a bien été ajouté !');
+            $this->redirect('account','user');
         }
 
         return compact('genres', 'languages', 'editors', 'locations', 'authors');
