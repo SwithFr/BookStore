@@ -6,6 +6,7 @@ return $routes = [
     'E_index'         => 'index/editor',
     'G_index'         => 'index/genre',
     'B_populars'      => 'populars/book',
+    'B_add'           => 'add/book',
     'L_index'         => 'index/librarie',
     'L_add'           => 'add/librarie',
     'U_check'         => 'check/user',
