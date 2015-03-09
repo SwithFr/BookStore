@@ -88,12 +88,26 @@ class UsersController extends AppController
             header('Location: ' . Html::url('notLogged', 'error'));
             exit();
         }
-        $user = $this->User->find($_SESSION['user_id']);
+        $this->loadModel('Librarie');
+        $this->loadModel('Book');
+        $user_id = $_SESSION['user_id'];
+        $user = $this->User->find($user_id);
         if (!$user) {
             header('Location: ' . Html::url('unauthorized', 'error'));
             exit();
         }
-        $library = $this->User->hasLibrary($_SESSION['user_id']);
-        return compact('user', 'library');
+        if ($this->User->hasLibrary($user_id)) {
+            $hasLibrary = true;
+            $library = $this->Librarie->getFromUser($user_id);
+            $books = $this->Book->getAllFromLibrary(
+                'books.id, title, first_name, last_name',
+                $library->id
+            );
+        } else {
+            $hasLibrary = false;
+            $library = null;
+            $books = null;
+        }
+        return compact('user', 'hasLibrary', 'library','books');
     }
 } 
