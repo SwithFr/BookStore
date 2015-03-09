@@ -3,7 +3,7 @@
 
 class User extends AppModel
 {
-    protected  $rules = [
+    public  $rules = [
         'login' => [
             ['ruleName' => 'notEmpty', 'message' => 'Le champ login est obligatoire'],
             ['ruleName' => 'isString', 'message' => 'Doit être une chaine de caractère'],
