@@ -90,13 +90,14 @@ class Book extends AppModel
         return $pdost->fetch();
     }
 
-    public function create($title, $summary, $isbn, $nbpages, $language_id, $genre_id, $location_id, $editor_id, $author_id, $library_id)
+    public function create($title, $img, $summary, $isbn, $nbpages, $language_id, $genre_id, $location_id, $editor_id, $author_id, $library_id)
     {
-        $sql = 'INSERT INTO books(title, summary, isbn, nbpages, language_id, genre_id, location_id, editor_id)
-                VALUES (:title, :summary, :isbn, :nbpages, :language_id, :genre_id, :location_id, :editor_id)';
+        $sql = 'INSERT INTO books(title, img,summary, isbn, nbpages, language_id, genre_id, location_id, editor_id)
+                VALUES (:title, :img, :summary, :isbn, :nbpages, :language_id, :genre_id, :location_id, :editor_id)';
         $pdost = $this->db->prepare($sql);
         $pdost->execute([
                 ':title' => $title,
+                ':img' => $img,
                 ':summary' => $summary,
                 ':isbn' => $isbn,
                 ':nbpages' => $nbpages,

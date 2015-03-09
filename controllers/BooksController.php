@@ -53,6 +53,7 @@ class BooksController extends AppController
 
             $this->Book->create(
                 $_POST['title'],
+                $dest . $name,
                 $_POST['summary'],
                 $_POST['isbn'],
                 $_POST['nbpages'],
