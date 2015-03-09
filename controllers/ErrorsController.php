@@ -4,6 +4,7 @@
 class ErrorsController extends AppController
 {
     public $layout = 'error';
+
     /**
      * Fonction d'erreur lorsque l'on tente d'accèder à une page non permise
      * @return array

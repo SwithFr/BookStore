@@ -1,7 +1,7 @@
 <?php
 
 
-class DbProvider 
+class DbProvider
 {
 
     /**
@@ -29,7 +29,7 @@ class DbProvider
 
         try {
             $this->db = new PDO(
-                'mysql:dbname='. $this->settings['dbName'] . ';host:' . $this->settings['host'],
+                'mysql:dbname=' . $this->settings['dbName'] . ';host:' . $this->settings['host'],
                 $this->settings['username'],
                 $this->settings['password'],
                 $this->settings['options']

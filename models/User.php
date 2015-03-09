@@ -37,11 +37,11 @@ class User extends AppModel
      * @param $password
      * @param $email
      */
-    public function create($login,$password,$email)
+    public function create($login, $password, $email)
     {
         $sql = 'INSERT INTO users(login,password,email) VALUES (:login,:password,:email)';
         $pdost = $this->db->prepare($sql);
-        $pdost->execute([':login'=>$login,':password'=>$password,':email'=>$email]);
+        $pdost->execute([':login' => $login, ':password' => $password, ':email' => $email]);
     }
 
     /**
@@ -50,11 +50,11 @@ class User extends AppModel
      * @param $email
      * @return mixed
      */
-    public function alreadyExist($login,$email)
+    public function alreadyExist($login, $email)
     {
-        $sql = 'SELECT count(id) as count FROM users WHERE login=:login OR email=:email';
+        $sql = 'SELECT count(id) AS count FROM users WHERE login=:login OR email=:email';
         $pdost = $this->db->prepare($sql);
-        $pdost->execute([':login'=>$login,':email'=>$email]);
+        $pdost->execute([':login' => $login, ':email' => $email]);
         if ($pdost->fetch()->count == 0)
             return false;
         return true;
@@ -67,9 +67,9 @@ class User extends AppModel
      */
     public function hasLibrary($user_id)
     {
-        $sql = 'SELECT count(id) as count FROM libraries WHERE user_id=:user_id';
+        $sql = 'SELECT count(id) AS count FROM libraries WHERE user_id=:user_id';
         $pdost = $this->db->prepare($sql);
-        $pdost->execute([':user_id'=>$user_id]);
+        $pdost->execute([':user_id' => $user_id]);
         if ($pdost->fetch()->count == 0)
             return false;
         return true;

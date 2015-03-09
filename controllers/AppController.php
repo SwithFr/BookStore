@@ -1,6 +1,7 @@
 <?php
 
-class AppController {
+class AppController
+{
 
     /**
      * L'objet Request contenant les infos de l'url
@@ -30,7 +31,7 @@ class AppController {
         $this->loadModel();
 
         # Si on a une fonctin d'administration on charge le layout admin
-        if (preg_match("/admin_/",$this->request->action)) {
+        if (preg_match("/admin_/", $this->request->action)) {
             $this->layout = "admin";
         }
 
@@ -48,7 +49,7 @@ class AppController {
         if (is_null($name)) {
             $name = ucfirst($this->request->controller);
         }
-        if($name != 'Error')
+        if ($name != 'Error')
             $this->$name = new $name();
     }
 

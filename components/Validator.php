@@ -43,6 +43,10 @@ class Validator
 
     /**
      * Vérifie si les données ne sont pas vides
+     * @param $field
+     * @param $value
+     * @param null $message
+     * @return bool
      */
     public function notEmpty($field, $value, $message = null)
     {
@@ -70,6 +74,10 @@ class Validator
 
     /**
      * Vérifie si les données sont une chaine de caractères
+     * @param $field
+     * @param $value
+     * @param null $message
+     * @return bool
      */
     public function isString($field, $value, $message = null)
     {
@@ -91,6 +99,10 @@ class Validator
 
     /**
      * Vérifie si c'est un email au bon format
+     * @param $field
+     * @param $value
+     * @param null $message
+     * @return bool
      */
     public function isMail($field, $value, $message = null)
     {
@@ -114,6 +126,10 @@ class Validator
 
     /**
      * Vérifie si c'est un nombre
+     * @param $field
+     * @param $value
+     * @param null $message
+     * @return bool
      */
     public function isInt($field, $value, $message = null)
     {
@@ -134,7 +150,11 @@ class Validator
 
     }
 
-    // Retourne le message d'erreur du champ passé en paramettre
+    /**
+     * Retourne le message d'erreur du champ passé en paramettre
+     * @param $field
+     * @return null
+     */
     public function message($field)
     {
         if (isset($this->errors[$field]))
@@ -143,7 +163,10 @@ class Validator
             return null;
     }
 
-    // Retourne le tableau contenant toutes les erreurs
+    /**
+     * Retourne le tableau contenant toutes les erreurs
+     * @return array|null
+     */
     public function errors()
     {
         if (!empty($this->errors))

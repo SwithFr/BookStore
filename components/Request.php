@@ -36,7 +36,7 @@ class Request
 
             # Verification si action permise
             if (!in_array($route, $routes)) {
-                header('Location: ' . Html::url('unauthorized','error'));
+                header('Location: ' . Html::url('unauthorized', 'error'));
             }
         }
 

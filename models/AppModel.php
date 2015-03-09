@@ -1,13 +1,13 @@
 <?php
 
 
-class AppModel 
+class AppModel
 {
     /**
      * La connexion PDO
      * @var null|PDO
      */
-    protected  $db = null;
+    protected $db = null;
 
     /**
      * Le nom de la table
@@ -18,8 +18,8 @@ class AppModel
     function __construct()
     {
         if (is_null($this->db))
-           $this->db = DbProvider::getDb();
-        
+            $this->db = DbProvider::getDb();
+
         $this->table = strtolower(get_class($this)) . 's';
     }
 
@@ -93,7 +93,7 @@ class AppModel
      */
     public function getAllFromLetter($fields, $search, $letter)
     {
-        $sql = 'SELECT ' . $fields . ' FROM ' . $this->table . ' WHERE ' . $search . ' LIKE \''.$letter.'%\'';
+        $sql = 'SELECT ' . $fields . ' FROM ' . $this->table . ' WHERE ' . $search . ' LIKE \'' . $letter . '%\'';
         $pdost = $this->db->query($sql);
         return $pdost->fetchAll();
     }
@@ -107,7 +107,7 @@ class AppModel
     {
         $sql = 'SELECT * FROM ' . $this->table . ' WHERE id=:id';
         $pdost = $this->db->prepare($sql);
-        $pdost->execute([':id'=>$id]);
+        $pdost->execute([':id' => $id]);
 
         return $pdost->fetch();
     }

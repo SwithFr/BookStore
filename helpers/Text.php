@@ -1,7 +1,7 @@
 <?php
 
 
-class Text 
+class Text
 {
     /**
      * Permet de tronquer un texte
