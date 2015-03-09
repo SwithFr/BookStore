@@ -1,7 +1,10 @@
 <div id="content" class="content">
     <div class="section section--dashbord">
         <div class="section__header">
-            <h2 class="section__title">Bienvenue sur votre Dashboard <span class="user__login"><?= $data['user']->login; ?></span></h2>
+            <h2 class="section__title">
+                Bienvenue sur votre Dashboard
+                <span class="user__login"><a href="<?= Html::url('edit','user'); ?>" title="Editez vos informations"><?= $data['user']->login; ?></a></span>
+            </h2>
         </div>
         <?php if(!$data['hasLibrary']): ?>
             <p class="alert alert--warning">
@@ -32,6 +35,9 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
+            </div>
+            <div class="section__block">
+                <a class="btn btn--add" href="<?= Html::url('add','book'); ?>">Ajouter un livre</a>
             </div>
         <?php endif; ?>
     </div>
