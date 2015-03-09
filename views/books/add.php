@@ -23,6 +23,13 @@
         <input class="form__input form__input--large" type="text" name="nbpages" id="nbpages"
                value="<?= isset($_POST['nbpages']) ? $_POST['nbpages'] : ''; ?>"/>
 
+        <label class="form__label" for="author_id">Selectionnez l'auteur</label>
+        <select class="form__input" name="author_id" id="author_id">
+            <?php foreach($data['authors'] as $author): ?>
+                <option value="<?= $author->id; ?>"><?= $author->name; ?></option>
+            <?php endforeach; ?>
+        </select>
+
         <label class="form__label" for="genre_id">Selectionnez le genre</label>
         <select class="form__input" name="genre_id" id="genre_id">
             <?php foreach($data['genres'] as $genre): ?>
