@@ -57,10 +57,11 @@ class AppController
      * Permet de faire une redirection
      * @param $action
      * @param $controller
+     * @param null $params
      */
-    protected function redirect($action,$controller)
+    protected function redirect($action, $controller, $params = null)
     {
-        header('Location: ' . Html::url($action, $controller));
+        header('Location: ' . Html::url($action, $controller) . '?' . http_build_query($params));
         exit();
     }
 
