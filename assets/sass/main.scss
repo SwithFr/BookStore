@@ -329,6 +329,11 @@
 .user__login {
   font-weight: 700;
   color: #ffd300;
+  text-decoration: underline;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .section__block--library {
