@@ -7,6 +7,7 @@ return $routes = [
     'G_index'         => 'index/genre',
     'B_populars'      => 'populars/book',
     'L_index'         => 'index/librarie',
+    'L_add'           => 'add/librarie',
     'U_check'         => 'check/user',
     'U_disconnect'    => 'disconnect/user',
     'U_register'      => 'register/user',
