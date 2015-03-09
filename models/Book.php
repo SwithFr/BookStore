@@ -14,6 +14,26 @@ class Book extends AppModel
         'nbpages' => [
             ['ruleName' => 'notEmpty', 'message' => 'Le nombre de pages est obligatoire'],
             ['ruleName' => 'isInt', 'message' => 'Ceci n‘est pas un nombre']
+        ],
+        'genre_id' => [
+            ['ruleName' => 'notEmpty', 'message' => 'Le genre est obligatoire'],
+            ['ruleName' => 'isInt', 'message' => 'La valeur n‘est pas valide']
+        ],
+        'language_id' => [
+            ['ruleName' => 'notEmpty', 'message' => 'La langue est obligatoire'],
+            ['ruleName' => 'isInt', 'message' => 'La valeur n‘est pas valide']
+        ],
+        'editor_id' => [
+            ['ruleName' => 'notEmpty', 'message' => 'L‘editeur est obligatoire'],
+            ['ruleName' => 'isInt', 'message' => 'La valeur n‘est pas valide']
+        ],
+        'location_id' => [
+            ['ruleName' => 'notEmpty', 'message' => 'L‘emplacement est obligatoire'],
+            ['ruleName' => 'isInt', 'message' => 'La valeur n‘est pas valide']
+        ],
+        'author_id' => [
+            ['ruleName' => 'notEmpty', 'message' => 'L‘auteur est obligatoire'],
+            ['ruleName' => 'isInt', 'message' => 'La valeur n‘est pas valide']
         ]
     ];
 
