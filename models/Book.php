@@ -11,9 +11,6 @@ class Book extends AppModel
         'summary' => [
             ['ruleName' => 'notEmpty', 'message' => 'Le résumé est obligatoire']
         ],
-        'isbn' => [
-            ['ruleName' => 'notEmpty', 'message' => 'Le champ email est obligatoire']
-        ],
         'nbpages' => [
             ['ruleName' => 'notEmpty', 'message' => 'Le nombre de pages est obligatoire'],
             ['ruleName' => 'isInt', 'message' => 'Ceci n‘est pas un nombre']
