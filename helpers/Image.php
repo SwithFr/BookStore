@@ -7,8 +7,7 @@ class Image
     {
         if(!$_FILES['img']['error']) {
             # Générer un nom de fichier
-            $dest = D_ASSETS . DS . 'img' . DS . 'uploads' . DS . 'books' . DS . time() . pathinfo($_FILES['img']['name'],PATHINFO_EXTENSION);
-            var_dump($dest);die();
+            $dest = D_ASSETS . DS . 'img' . DS . 'uploads' . DS . 'books' . DS . time() . '.' . pathinfo($_FILES['img']['name'],PATHINFO_EXTENSION);
             $file = $_FILES['img']['tmp_name'];
             if(!@move_uploaded_file($file, './uploaded/' . $dest))
                 die("Il y a eu un problème");
