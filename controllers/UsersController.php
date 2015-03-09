@@ -7,7 +7,15 @@ class UsersController extends AppController
      */
     public function check()
     {
-        if ($_SERVER['REQUEST_METHOD'] === "POST" && !isset($_COOKIE['user_id'])) {
+        if (Session::isLogged())
+            $this->redirect('index','book');
+
+        if (isset($_COOKIE['user_login'])) {
+            $user = $this->User->getLogged($_COOKIE['user_login']);
+            $this->connect($user,true);
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $v = new Validator();
             if (!$v->validate($_POST, $this->User->rules)) {
                 Session::setFlash("Verifiez vos informations !", 'error');
@@ -18,7 +26,7 @@ class UsersController extends AppController
             if ($user->password != $_POST['password']) {
                 Session::setFlash("Identifiants inconnus !", 'error');
             } else {
-                $this->connect($user, $_POST['remember']);
+                $this->connect($user, isset($_POST['remember']));
             }
         }
     }
@@ -32,6 +40,7 @@ class UsersController extends AppController
     {
         $_SESSION['user_id'] = $user->id;
         $_SESSION['user_role'] = $user->role;
+        $_SESSION['user_login'] = $user->login;
         if ($remember) {
             setcookie("user_id", $user->id, time() + 7 * 24 * 3600);
             setcookie("user_role", $user->role, time() + 7 * 24 * 3600);
