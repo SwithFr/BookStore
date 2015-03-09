@@ -1,32 +1,32 @@
 <?php
 
 
-class Image 
+class Image
 {
-    public static function uploadBookImg()
+    public static function uploadBookImg($dest, $name)
     {
-        if(!$_FILES['img']['error']) {
+        if (!$_FILES['img']['error']) {
             # Générer un nom de fichier
-            $dest = D_ASSETS . DS . 'img' . DS . 'uploads' . DS . 'books' . DS . time() . '.' . pathinfo($_FILES['img']['name'],PATHINFO_EXTENSION);
+
             $file = $_FILES['img']['tmp_name'];
-            if(!@move_uploaded_file($file, './uploaded/' . $dest))
+            if (!move_uploaded_file($file, $dest . $name))
                 die("Il y a eu un problème");
 
             # Redimensionnement
             $percent = 0.5;
 
             // Get new dimensions
-            list($width, $height) = getimagesize('./uploaded/' . $dest);
+            list($width, $height) = getimagesize($dest . $name);
             $new_width = $width * $percent;
             $new_height = $height * $percent;
 
             // Resample
             $image_p = imagecreatetruecolor($new_width, $new_height);
-            $image = imagecreatefromjpeg('./uploaded/' . $dest);
+            $image = imagecreatefromjpeg($dest . $name);
 
             imagecopyresampled($image_p, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
 
-            imagejpeg($image_p,'./uploaded/resize/'.$dest,100);
+            imagejpeg($image_p, $dest . '@2x-' . $name, 100);
         }
     }
 } 

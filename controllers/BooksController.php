@@ -37,7 +37,7 @@ class BooksController extends AppController
         $editors = $this->Editor->get(['fields' => 'id,name']);
         $locations = $this->Location->getAllFromUserLibrary($_SESSION['user_id']);
         $library_id = $locations[0]->l_id; # Plutot que de faire une nouvelle requete je récupère l'id directement depuis l'association avec la table locations
-        $authors = $this->Author->get(['fields' => 'id,first_name,last_name','order'=>'last_name ASC']);
+        $authors = $this->Author->get(['fields' => 'id,first_name,last_name', 'order' => 'last_name ASC']);
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $v = new Validator();
@@ -47,7 +47,9 @@ class BooksController extends AppController
                 return compact('genres', 'languages', 'editors', 'locations', 'authors', 'errors');
             }
 
-            Image::uploadBookImg();
+            $name = time() . '.' . pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
+            $dest = D_ASSETS . DS . 'img' . DS . 'uploads' . DS . 'books' . DS;
+            Image::uploadBookImg($dest, $name);
 
             $this->Book->create(
                 $_POST['title'],
@@ -63,7 +65,7 @@ class BooksController extends AppController
             );
 
             Session::setFlash('Le livre ' . $_POST['title'] . ' a bien été ajouté !');
-            $this->redirect('account','user');
+            $this->redirect('account', 'user');
         }
 
         return compact('genres', 'languages', 'editors', 'locations', 'authors');
