@@ -35,10 +35,13 @@ class EditorsController extends AppController
                 return compact('errors');
             }
 
-            $name = time() . '.' . pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
-            $dest = D_ASSETS . DS . 'img' . DS . 'uploads' . DS . 'editors' . DS;
-            if (!empty($_FILES))
+            if (!empty($_FILES)) {
+                $name = time() . '.' . pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
+                $dest = D_ASSETS . DS . 'img' . DS . 'uploads' . DS . 'editors' . DS;
                 Image::uploadImg($dest, $name);
+            } else {
+                $dest = $name = '';
+            }
 
             $this->Editor->create($_POST['name'], $_POST['website'], $dest . $name, $_POST['history']);
             Session::setFlash('L‘éditeur ' . $_POST['first_name'] . ' ' . $_POST['last_name'] . ' a bien été ajouté !');
