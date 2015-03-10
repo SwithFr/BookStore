@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Components\Session;
+use Components\Validator;
 
 class LibrariesController extends AppController
 {
