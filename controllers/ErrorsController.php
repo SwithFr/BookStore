@@ -26,4 +26,14 @@ class ErrorsController extends AppController
         return compact('message');
     }
 
+    /**
+     * Fonction d'erreur lorsque qu'un parametre est manquant
+     * @return array
+     */
+    public function missingParams()
+    {
+        $message = "Tu n'aurais pas oublié quelque chose ?";
+        return compact('message');
+    }
+
 } 
