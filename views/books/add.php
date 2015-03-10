@@ -2,7 +2,7 @@
 <div class="section">
     <h2 class="section__title">Ajouter un livre</h2>
 
-    <form class="form--add" action="<?= Html::url('add', 'book'); ?>" method="post" enctype="multipart/form-data">
+    <form class="form--add" action="<?= Html::url('add', 'book'); ?>&library=<?= $data['library_id']; ?>" method="post" enctype="multipart/form-data">
         <label class="form__label" for="title">Titre du livre</label>
         <?= isset($data['errors']['title']) ? '<span class="has-error">' . $data['errors']['title'] . '</span>' : ''; ?></span>
         <input class="form__input form__input--large"
@@ -92,7 +92,7 @@
                     value="<?= $location->id; ?>"><?= $location->name; ?></option>
             <?php endforeach; ?>
         </select>
-        <a class="btn btn--add btn--inline btn--small" href="<?= Html::url('add', 'location'); ?>">Ajouter unemplacement</a>
+        <a class="btn btn--add btn--inline btn--small" href="<?= Html::url('add', 'location'); ?>">Ajouter un emplacement</a>
 
         <input class="form__submit btn btn--send"
                type="submit"
