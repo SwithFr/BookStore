@@ -33,6 +33,6 @@ class Session
      */
     public static function isLogged()
     {
-        return isset($_SESSION['user_id']);
+        return (isset($_SESSION['user_id']) || isset($_COOKIE['user_id']));
     }
 } 
