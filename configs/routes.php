@@ -5,6 +5,7 @@ return $routes = [
     'A_index'         => 'index/author',
     'A_add'           => 'add/author',
     'E_index'         => 'index/editor',
+    'E_add'           => 'add/editor',
     'G_index'         => 'index/genre',
     'B_populars'      => 'populars/book',
     'B_add'           => 'add/book',
