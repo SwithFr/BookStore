@@ -28,4 +28,21 @@ class Author extends AppModel
         return $pdost->fetch();
     }
 
-} 
+    /**
+     * Permet d'ajouter un auteur
+     * @param $first_name
+     * @param $last_name
+     * @param $img
+     * @param $date_birth
+     * @param $date_death
+     * @param $bio
+     */
+    public function create($first_name, $last_name, $img, $date_birth, $date_death, $bio)
+    {
+        $sql = 'INSERT INTO authors(first_name, last_name, img, date_birth, date_death, bio)
+                VALUES (:first_name, :last_name, :img, :date_birth, :date_death, :bio)';
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute([':first_name' => $first_name, ':last_name' => $last_name, ':img' => $img, ':date_birth' => $date_birth, ':date_death' => $date_death, ':bio' => $bio]);
+    }
+
+}
