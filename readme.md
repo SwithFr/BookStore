@@ -11,3 +11,4 @@ Le but de l'exercice est de réaliser un site pour la gestion d'une bibliothèqu
 - Ajout fonctions complexes **WIP**
 - Ajout comportements (créer branche behavior-dev)
 - Ajout des évènements (créer branche event-dev)
+- Faire les vérifications d'existence avant actions en bdd
