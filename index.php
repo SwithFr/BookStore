@@ -26,7 +26,7 @@ use Components\Request;
 $request = new Request();
 
 # Génération du nom du controller Model+s+Controller
-$controllerName = '\Controllers\\' . ucfirst($request->controller) . 's' . 'Controller';
+$controllerName = '\\Controllers\\' . ucfirst($request->controller) . 's' . 'Controller';
 
 # Initialisation du controller
 $controller = new $controllerName($request);
