@@ -81,7 +81,7 @@ class BooksController extends AppController
             $this->redirect('account', 'user');
         }
 
-        return compact('genres', 'languages', 'editors', 'locations', 'authors');
+        return compact('genres', 'languages', 'editors', 'locations', 'authors','library_id');
     }
 
 } 
