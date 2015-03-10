@@ -1,3 +1,4 @@
+<?php use Helpers\Html; ?>
 <div class="unauthorized">
     <div class="content">
         <h1>Action non autorisée !</h1>
