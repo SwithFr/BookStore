@@ -32,6 +32,9 @@ class BooksController extends AppController
         if (!Session::isLogged())
             $this->redirect('notLogged', 'error');
 
+        if (!isset($_GET['library']))
+            $this->redirect('missingParams','error');
+
         $this->loadModel('Genre');
         $this->loadModel('Language');
         $this->loadModel('Editor');
@@ -41,7 +44,7 @@ class BooksController extends AppController
         $languages = $this->Language->get(['fields' => 'id,name']);
         $editors = $this->Editor->get(['fields' => 'id,name']);
         $locations = $this->Location->getAllFromUserLibrary($_SESSION['user_id']);
-        $library_id = $locations[0]->l_id; # Plutot que de faire une nouvelle requete je récupère l'id directement depuis l'association avec la table locations
+        $library_id = $_GET['library']; # Plutot que de faire une nouvelle requete je récupère l'id directement depuis l'association avec la table locations
         $authors = $this->Author->get(['fields' => 'id,first_name,last_name', 'order' => 'last_name ASC']);
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
