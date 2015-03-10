@@ -35,9 +35,14 @@ class AuthorsController extends AppController
                 return compact('errors');
             }
 
-            $name = time() . '.' . pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
-            $dest = D_ASSETS . DS . 'img' . DS . 'uploads' . DS . 'authors' . DS;
-            Image::uploadImg($dest, $name);
+            if (!empty($_FILES)) {
+                $name = time() . '.' . pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
+                $dest = D_ASSETS . DS . 'img' . DS . 'uploads' . DS . 'authors' . DS;
+                Image::uploadImg($dest, $name);
+            } else {
+                $dest = $name = '';
+            }
+
             if(empty($_POST['date_death']))
                 $_POST['date_death'] = '0000-00-00';
 
