@@ -152,6 +152,28 @@ class Validator
     }
 
     /**
+     * Vérifie si $value est une date valide
+     * @param $field
+     * @param $value
+     * @param null $message
+     * @return bool
+     */
+    public function isDate($field, $value, $message = null)
+    {
+        if (validateDate($value) || empty(trim($value))) {
+            return true;
+        } else {
+
+            if ($message == null)
+                $message = "le champ $field n'est pas une date valide (AAAA-MM-JJ";
+
+            $this->errors[$field] = $message;
+            return false;
+
+        }
+    }
+
+    /**
      * Retourne le message d'erreur du champ passé en paramettre
      * @param $field
      * @return null
