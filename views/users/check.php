@@ -15,5 +15,6 @@
         <input class="form__input form__input--large" type="checkbox" name="remember" id="remember"/>
 
         <input class="form__submit btn btn--send" type="submit" value="Se connecter"/>
+        <a href="<?= Html::url('register','user'); ?>">Pas encore de compte ? Enregistrez-vous.</a>
     </form>
 </div>
