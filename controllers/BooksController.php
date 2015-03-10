@@ -52,9 +52,13 @@ class BooksController extends AppController
                 return compact('genres', 'languages', 'editors', 'locations', 'authors', 'errors');
             }
 
-            $name = time() . '.' . pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
-            $dest = D_ASSETS . DS . 'img' . DS . 'uploads' . DS . 'books' . DS;
-            Image::uploadImg($dest, $name);
+            if (!empty($_FILES)) {
+                $name = time() . '.' . pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
+                $dest = D_ASSETS . DS . 'img' . DS . 'uploads' . DS . 'books' . DS;
+                Image::uploadImg($dest, $name);
+            } else {
+                $dest = $name = '';
+            }
 
             $this->Book->create(
                 $_POST['title'],
