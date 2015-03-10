@@ -46,11 +46,12 @@ class BooksController extends AppController
         $this->loadModel('Editor');
         $this->loadModel('Location');
         $this->loadModel('Author');
+        $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : $_COOKIE['user_id'];
         $genres = $this->Genre->get(['fields' => 'id,name']);
         $languages = $this->Language->get(['fields' => 'id,name']);
         $editors = $this->Editor->get(['fields' => 'id,name']);
-        $locations = $this->Location->getAllFromUserLibrary($_SESSION['user_id']);
-        $library_id = $_GET['library']; # Plutot que de faire une nouvelle requete je récupère l'id directement depuis l'association avec la table locations
+        $locations = $this->Location->getAllFromUserLibrary($user_id);
+        $library_id = $_GET['library']; 
         $authors = $this->Author->get(['fields' => 'id,first_name,last_name', 'order' => 'last_name ASC']);
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -88,6 +89,15 @@ class BooksController extends AppController
         }
 
         return compact('genres', 'languages', 'editors', 'locations', 'authors','library_id');
+    }
+
+    public function edit()
+    {
+        if (!Session::isLogged())
+            $this->redirect('notLogged', 'error');
+
+        if (!isset($_GET['library']) || !isset($_GET['id']))
+            $this->redirect('missingParams','error');
     }
 
 } 
