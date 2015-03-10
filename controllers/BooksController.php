@@ -54,7 +54,7 @@ class BooksController extends AppController
 
             $name = time() . '.' . pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
             $dest = D_ASSETS . DS . 'img' . DS . 'uploads' . DS . 'books' . DS;
-            Image::uploadBookImg($dest, $name);
+            Image::uploadImg($dest, $name);
 
             $this->Book->create(
                 $_POST['title'],
