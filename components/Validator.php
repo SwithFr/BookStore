@@ -160,12 +160,23 @@ class Validator
      */
     public function isDate($field, $value, $message = null)
     {
-        if (validateDate($value) || empty(trim($value))) {
-            return true;
-        } else {
+        if ($message == null)
+            $message = "le champ $field n'est pas une date valide (AAAA-MM-JJ";
 
-            if ($message == null)
-                $message = "le champ $field n'est pas une date valide (AAAA-MM-JJ";
+        if (!preg_match('/-/',$value)) {
+
+            $this->errors[$field] = $message;
+            return false;
+
+        }
+
+        $date = explode('-',$value);
+
+        if (checkdate($date[1],$date[2],$date[0]) || empty(trim($value))) {
+
+            return true;
+
+        } else {
 
             $this->errors[$field] = $message;
             return false;
