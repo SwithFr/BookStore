@@ -35,7 +35,7 @@ class AuthorsController extends AppController
                 return compact('errors');
             }
 
-            if (!empty($_FILES)) {
+            if (!empty($_FILES['img']['name'])) {
                 $name = time() . '.' . pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
                 $dest = D_ASSETS . DS . 'img' . DS . 'uploads' . DS . 'authors' . DS;
                 Image::uploadImg($dest, $name);
