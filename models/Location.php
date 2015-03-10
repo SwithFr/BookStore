@@ -6,7 +6,7 @@ class Location extends AppModel
 {
     public function getAllFromUserLibrary($user_id)
     {
-        $sql = 'SELECT locations.id, locations.name, libraries.id as l_id
+        $sql = 'SELECT locations.id, locations.name
                 FROM locations
                 JOIN location_library ON location_id = locations.id
                 JOIN libraries ON library_id = libraries.id
