@@ -18,4 +18,9 @@ class AuthorsController extends AppController
         return compact("authors", "letter");
     }
 
+    public function add()
+    {
+
+    }
+
 } 
