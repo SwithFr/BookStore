@@ -123,7 +123,7 @@ class Book extends AppModel
                 VALUES ($author_id,$book_id)";
         $this->db->query($sql);
 
-        $this->newBookLibrary($book_id,$library_id);
+        $this->newBookLibrary($book_id, $library_id);
     }
 
     /**
@@ -136,5 +136,43 @@ class Book extends AppModel
         $sql = "INSERT INTO book_library(book_id,library_id)
                 VALUES ($book_id,$library_id)";
         $this->db->query($sql);
+    }
+
+    public function find($book_id)
+    {
+        $sql = 'SELECT books.id, title, books.img, summary, isbn, nbpages, language_id, genre_id, books.location_id, editor_id, author_id
+                FROM books
+                JOIN author_book ON book_id = books.id
+                JOIN authors ON author_id = authors.id
+                JOIN genres ON genre_id = genres.id
+                JOIN locations ON location_id = locations.id
+                JOIN languages ON books.language_id = languages.id
+                JOIN editors ON books.editor_id = editors.id
+                WHERE books.id=:book_id';
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute([':book_id' => $book_id]);
+        return $pdost->fetch();
+    }
+
+    public function update($data, $id)
+    {
+        $sql = 'UPDATE books
+                SET title = :title, summary = :summary, isbn = :isbn, nbpages = :nbpages,
+                    language_id = :language_id, genre_id = :genre_id, location_id = :location_id, editor_id = :editor_id
+                WHERE books.id = :id';
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute(
+            [
+                ':title' => $data['title'],
+                ':summary' => $data['summary'],
+                ':isbn' => $data['isbn'],
+                ':nbpages' => $data['nbpages'],
+                ':language_id' => $data['language_id'],
+                ':genre_id' => $data['genre_id'],
+                ':location_id' => $data['location_id'],
+                ':editor_id' => $data['editor_id'],
+                ':id' => $id
+            ]
+        );
     }
 }
