@@ -4,6 +4,27 @@ namespace Models;
 
 class Author extends AppModel
 {
+    public $rules = [
+        'first_name' => [
+            ['ruleName' => 'notEmpty', 'message' => 'Le prénom est obligatoire'],
+            ['ruleName' => 'isString', 'message' => 'Le prénom doit être une chaine de caractère']
+        ],
+        'last_name' => [
+            ['ruleName' => 'notEmpty', 'message' => 'Le nom est obligatoire'],
+            ['ruleName' => 'isString', 'message' => 'Le nom doit être une chaine de caractère']
+        ],
+        'bio' => [
+            ['ruleName' => 'notEmpty', 'message' => 'La biographie est obligatoire']
+        ],
+        'date_birth' => [
+            ['ruleName' => 'notEmpty', 'message' => 'Le genre est obligatoire'],
+            ['ruleName' => 'isDate', 'message' => 'La valeur n‘est pas valide']
+        ],
+        'date_death' => [
+            ['ruleName' => 'isDate', 'message' => 'La valeur n‘est pas valide']
+        ]
+    ];
+
     /**
      * Permet de récupérer les X Auteurs les mieux notés
      * @param string $fields
