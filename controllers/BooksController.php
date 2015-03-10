@@ -52,10 +52,10 @@ class BooksController extends AppController
             if (!$v->validate($_POST, $this->Book->rules)) {
                 $errors = $v->errors();
                 Session::setFlash('Veuillez vérifier vos informations', 'error');
-                return compact('genres', 'languages', 'editors', 'locations', 'authors', 'errors');
+                return compact('genres', 'languages', 'editors', 'locations', 'authors', 'errors','library_id');
             }
 
-            if (!empty($_FILES)) {
+            if (!empty($_FILES['img']['name'])) {
                 $name = time() . '.' . pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
                 $dest = D_ASSETS . DS . 'img' . DS . 'uploads' . DS . 'books' . DS;
                 Image::uploadImg($dest, $name);
