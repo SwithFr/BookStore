@@ -1,5 +1,6 @@
 <?php
 
+namespace Models;
 
 class Book extends AppModel
 {

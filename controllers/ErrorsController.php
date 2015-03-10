@@ -1,5 +1,6 @@
 <?php
 
+namespace Controllers;
 
 class ErrorsController extends AppController
 {

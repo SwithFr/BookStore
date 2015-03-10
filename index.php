@@ -19,17 +19,14 @@ set_include_path(
 );
 
 # Chargement automatique des classes
-spl_autoload_register(
-    function ($className) {
-        include($className . '.php');
-    }
-);
+require('./vendor/autoload.php');
+use Components\Request;
 
 # Initialisation de la requête
 $request = new Request();
 
 # Génération du nom du controller Model+s+Controller
-$controllerName = ucfirst($request->controller) . 's' . 'Controller';
+$controllerName = '\Controllers\\' . ucfirst($request->controller) . 's' . 'Controller';
 
 # Initialisation du controller
 $controller = new $controllerName($request);

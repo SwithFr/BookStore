@@ -1,5 +1,6 @@
 <?php
 
+namespace Helpers;
 
 class Text
 {

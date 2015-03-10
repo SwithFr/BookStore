@@ -1,3 +1,4 @@
+<?php use Helpers\Html; ?>
 <!doctype html>
 <html lang="fr">
 <head>

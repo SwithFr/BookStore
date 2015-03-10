@@ -1,5 +1,6 @@
 <?php
 
+namespace Controllers;
 
 class EditorsController extends AppController
 {

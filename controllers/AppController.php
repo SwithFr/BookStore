@@ -1,5 +1,10 @@
 <?php
 
+namespace Controllers;
+
+use Components\Request;
+use Helpers\Html;
+
 class AppController
 {
 
@@ -49,8 +54,10 @@ class AppController
         if (is_null($name)) {
             $name = ucfirst($this->request->controller);
         }
-        if ($name != 'Error')
-            $this->$name = new $name();
+        if ($name != 'Error') {
+            $model = '\Models\\' . $name;
+            $this->$name = new $model();
+        }
     }
 
     /**

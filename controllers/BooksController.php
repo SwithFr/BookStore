@@ -1,5 +1,9 @@
 <?php
 
+namespace Controllers;
+
+use Components\Session;
+use Helpers\Image;
 
 class BooksController extends AppController
 {

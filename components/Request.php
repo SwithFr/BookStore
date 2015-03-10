@@ -1,5 +1,7 @@
 <?php
 
+namespace Components;
+
 class Request
 {
 

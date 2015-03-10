@@ -1,5 +1,10 @@
 <?php
 
+namespace Controllers;
+
+use Components\Session;
+use Helpers\Html;
+
 class UsersController extends AppController
 {
     /**

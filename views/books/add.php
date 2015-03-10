@@ -1,3 +1,4 @@
+<?php use Helpers\Html; ?>
 <div class="section">
     <h2 class="section__title">Ajouter un livre</h2>
 

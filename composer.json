@@ -1,0 +1,19 @@
+{
+    "name": "swith/bookstore",
+    "description": "Exercice pour le cours de programmation cote server",
+    "authors": [
+        {
+            "name": "Jeremy Smith",
+            "email": "contact@swith.fr"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Controllers\\": "controllers",
+            "Models\\": "models",
+            "Components\\": "components",
+            "Helpers\\": "helpers"
+        }
+    }
+}

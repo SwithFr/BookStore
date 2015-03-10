@@ -1,5 +1,8 @@
 <?php
 
+namespace Models;
+
+use Components\DbProvider;
 
 class AppModel
 {
@@ -20,7 +23,7 @@ class AppModel
         if (is_null($this->db))
             $this->db = DbProvider::getDb();
 
-        $this->table = strtolower(get_class($this)) . 's';
+        $this->table = str_replace('models\\','',strtolower(get_class($this))) . 's';
     }
 
     /**

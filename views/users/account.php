@@ -1,3 +1,4 @@
+<?php use Helpers\Html; ?>
 <div id="content" class="content">
     <div class="section section--dashbord">
         <div class="section__header">

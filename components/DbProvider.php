@@ -1,5 +1,9 @@
 <?php
 
+namespace Components;
+
+use \PDO;
+use \PDOException;
 
 class DbProvider
 {

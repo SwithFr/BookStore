@@ -1,5 +1,8 @@
 <?php
 
+namespace Controllers;
+
+use Components\Session;
 
 class LibrariesController extends AppController
 {
@@ -9,7 +12,7 @@ class LibrariesController extends AppController
     public function add()
     {
         if (!Session::isLogged())
-            header('Location: ' . Html::url('notLogged', 'error'));
+            $this->redirect('notLogged','error');
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $v = new Validator();
