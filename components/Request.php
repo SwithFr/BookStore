@@ -2,6 +2,8 @@
 
 namespace Components;
 
+use Helpers\Html;
+
 class Request
 {
 
