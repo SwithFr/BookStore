@@ -20,8 +20,8 @@ class BooksController extends AppController
         # l'auteur le mieux noté
         $this->loadModel('Author');
         $author = $this->Author->getPopular('first_name,last_name,bio,nb_livres,date_birth,date_death', 1);
-        $d_b =Carbon::parse($author->date_birth);
-        $d_d =Carbon::parse($author->date_death);
+        $d_b = Carbon::parse($author->date_birth);
+        $d_d = Carbon::parse($author->date_death);
         $author->date_birth = $d_b->year;
         $author->date_death = $d_d->year;
 
@@ -33,13 +33,13 @@ class BooksController extends AppController
      * Formulaire d'ajout de livre
      * @return array
      */
-    public function add()
+    public function edit()
     {
         if (!Session::isLogged())
             $this->redirect('notLogged', 'error');
 
         if (!isset($_GET['library']))
-            $this->redirect('missingParams','error');
+            $this->redirect('missingParams', 'error');
 
         $this->loadModel('Genre');
         $this->loadModel('Language');
@@ -54,12 +54,37 @@ class BooksController extends AppController
         $library_id = $_GET['library'];
         $authors = $this->Author->get(['fields' => 'id,first_name,last_name', 'order' => 'last_name ASC']);
 
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+                $book = $this->Book->find($_GET['id']);
+                $d['title'] = $book->title;
+                $d['summary'] = $book->summary;
+                $d['isbn'] = $book->isbn;
+                $d['nbpages'] = $book->nbpages;
+                $d['author_id'] = $book->author_id;
+                $d['genre_id'] = $book->genre_id;
+                $d['language_id'] = $book->language_id;
+                $d['editor_id'] = $book->editor_id;
+                $d['location_id'] = $book->location_id;
+            }
+        }
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $d['title'] = $_POST['title'];
+            $d['summary'] = $_POST['summary'];
+            $d['isbn'] = $_POST['isbn'];
+            $d['nbpages'] = $_POST['nbpages'];
+            $d['author_id'] = $_POST['author_id'];
+            $d['genre_id'] = $_POST['genre_id'];
+            $d['language_id'] = $_POST['language_id'];
+            $d['editor_id'] = $_POST['editor_id'];
+            $d['location_id'] = $_POST['location_id'];
+
             $v = new Validator();
-            if (!$v->validate($_POST, $this->Book->rules)) {
+            if (!$v->validate($d, $this->Book->rules)) {
                 $errors = $v->errors();
                 Session::setFlash('Veuillez vérifier vos informations', 'error');
-                return compact('genres', 'languages', 'editors', 'locations', 'authors', 'errors','library_id');
+                return compact('genres', 'languages', 'editors', 'locations', 'authors', 'errors', 'library_id','d');
             }
 
             if (!empty($_FILES['img']['name'])) {
@@ -70,34 +95,30 @@ class BooksController extends AppController
                 $dest = $name = '';
             }
 
-            $this->Book->create(
-                $_POST['title'],
-                $dest . $name,
-                $_POST['summary'],
-                $_POST['isbn'],
-                $_POST['nbpages'],
-                $_POST['language_id'],
-                $_POST['genre_id'],
-                $_POST['location_id'],
-                $_POST['editor_id'],
-                $_POST['author_id'],
-                $library_id
-            );
+            if (!isset($_GET['id'])) {
+                $this->Book->create(
+                    $d['title'],
+                    $dest . $name,
+                    $d['summary'],
+                    $d['isbn'],
+                    $d['nbpages'],
+                    $d['language_id'],
+                    $d['genre_id'],
+                    $d['location_id'],
+                    $d['editor_id'],
+                    $d['author_id'],
+                    $library_id
+                );
 
-            Session::setFlash('Le livre ' . $_POST['title'] . ' a bien été ajouté !');
+                Session::setFlash('Le livre ' . $_POST['title'] . ' a bien été ajouté !');
+            } elseif(is_numeric($_GET['id'])) {
+                $this->Book->update($d,$_GET['id']);
+                Session::setFlash('Le livre ' . $_POST['title'] . ' a bien été modifié !');
+            }
             $this->redirect('account', 'user');
         }
 
-        return compact('genres', 'languages', 'editors', 'locations', 'authors','library_id');
-    }
-
-    public function edit()
-    {
-        if (!Session::isLogged())
-            $this->redirect('notLogged', 'error');
-
-        if (!isset($_GET['library']) || !isset($_GET['id']))
-            $this->redirect('missingParams','error');
+        return compact('genres', 'languages', 'editors', 'locations', 'authors', 'library_id', 'd');
     }
 
 } 
