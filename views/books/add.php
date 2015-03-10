@@ -92,7 +92,7 @@
                     value="<?= $location->id; ?>"><?= $location->name; ?></option>
             <?php endforeach; ?>
         </select>
-        <a class="btn btn--add btn--inline btn--small" href="<?= Html::url('add', 'location'); ?>">Ajouter un emplacement</a>
+        <a class="btn btn--add btn--inline btn--small" href="<?= Html::url('add', 'location'); ?>&library=<?= $data['library_id']; ?>">Ajouter un emplacement</a>
 
         <input class="form__submit btn btn--send"
                type="submit"
