@@ -42,6 +42,8 @@ class AuthorsController extends AppController
                 $_POST['date_death'] = '0000-00-00';
 
             $this->Author->create($_POST['first_name'], $_POST['last_name'], $dest . $name, $_POST['date_birth'], $_POST['date_death'], $_POST['bio']);
+            Session::setFlash('L‘auteur ' . $_POST['first_name'] . ' ' . $_POST['last_name'] . ' a bien été ajouté !');
+            $this->redirect('add','book');
         }
     }
 
