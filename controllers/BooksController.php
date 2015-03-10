@@ -51,7 +51,7 @@ class BooksController extends AppController
         $languages = $this->Language->get(['fields' => 'id,name']);
         $editors = $this->Editor->get(['fields' => 'id,name']);
         $locations = $this->Location->getAllFromUserLibrary($user_id);
-        $library_id = $_GET['library']; 
+        $library_id = $_GET['library'];
         $authors = $this->Author->get(['fields' => 'id,first_name,last_name', 'order' => 'last_name ASC']);
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
