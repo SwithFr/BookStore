@@ -15,6 +15,7 @@ return $routes = [
     'U_disconnect'    => 'disconnect/user',
     'U_register'      => 'register/user',
     'U_account'       => 'account/user',
+    'Lo_add'          => 'add/location',
     'Er_unauthorized' => 'unauthorized/error',
     'Er_notLogged'    => 'notLogged/error'
 ];
