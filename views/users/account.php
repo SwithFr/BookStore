@@ -38,7 +38,7 @@
                 </table>
             </div>
             <div class="section__block">
-                <a class="btn btn--add" href="<?= Html::url('add','book'); ?>">Ajouter un livre</a>
+                <a class="btn btn--add" href="<?= Html::url('add','book'); ?>&library=<?= $data['library']->id; ?>">Ajouter un livre</a>
             </div>
         <?php endif; ?>
     </div>
