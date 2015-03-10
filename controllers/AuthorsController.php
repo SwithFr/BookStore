@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Carbon\Carbon;
 use Components\Session;
 use Components\Validator;
 use Helpers\Image;
@@ -15,7 +16,13 @@ class AuthorsController extends AppController
     {
         if (isset($_GET['letter']) && !empty($_GET['letter']) && preg_match('/[A-Z]/', ucfirst($_GET['letter']))) {
             $letter = $_GET['letter'];
-            $authors = $this->Author->getAllFromLetter("*", 'last_name', $letter);
+            $authors = $this->Author->getAllFromLetter("first_name,last_name,date_birth,date_death,bio,id", 'last_name', $letter);
+            foreach ($authors as $a) {
+                $b = Carbon::parse($a->date_birth);
+                $d = Carbon::parse($a->date_death);
+                $a->date_birth = $b->year;
+                $a->date_death = $d->year;
+            }
         } else
             $this->redirect('index', 'author', ['letter' => 'a']);
 
