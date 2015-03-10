@@ -17,7 +17,7 @@ class Author extends AppModel
             ['ruleName' => 'notEmpty', 'message' => 'La biographie est obligatoire']
         ],
         'date_birth' => [
-            ['ruleName' => 'notEmpty', 'message' => 'Le genre est obligatoire'],
+            ['ruleName' => 'notEmpty', 'message' => 'La date de naissance est obligatoire'],
             ['ruleName' => 'isDate', 'message' => 'La valeur n‘est pas valide']
         ],
         'date_death' => [
