@@ -4,7 +4,7 @@ namespace Helpers;
 
 class Image
 {
-    public static function uploadBookImg($dest, $name)
+    public static function uploadImg($dest, $name)
     {
         if (!$_FILES['img']['error']) {
             # Générer un nom de fichier
