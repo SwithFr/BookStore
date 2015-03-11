@@ -26,7 +26,7 @@
         <h3 class="section__block__title"><a href="<?= Html::url('view','author',['id'=>$data['author']->id]); ?>"><?= $data['author']->first_name . ' ' . $data['author']->last_name; ?></a></h3>
         <p class="section__block__year"><?= $data['author']->date_birth; ?> - <?= $data['author']->date_death; ?></p>
         <p class="section__block__content">
-            <?= $data['author']->bio; ?>
+            <?= Text::cut($data['author']->bio,500); ?>
         </p>
         <div class="author__count">
             <p class="nb author__nbBooks"><?= $data['author']->nb_livres; ?></p>
