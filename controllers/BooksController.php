@@ -125,7 +125,11 @@ class BooksController extends AppController
 
     public function view()
     {
+        if (!isset($_GET['id']) || !is_numeric($_GET['id']))
+            $this->redirect('missingParams','error');
 
+        $book = $this->Book->find($_GET['id']);
+        return compact('book');
     }
 
 } 
