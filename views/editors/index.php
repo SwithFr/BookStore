@@ -32,10 +32,16 @@
         <li class="filter__item"><a href="<?= $_SERVER['PHP_SELF']; ?>?a=index&e=editor&letter=z" <?= ($data['letter'] == 'z' )?'class="filter--active"':''; ?>>Z</a></li>
     </ul>
     <div class="section__block">
+        <?php if(empty($data['editors'])): ?>
+            <h2>Aucun éditeur trouvé !</h2>
+        <?php endif; ?>
         <ul class="editors__list">
             <?php foreach($data['editors'] as $editor): ?>
-                <li class="editors__list__item"><a href="./editorSingle.html"><?= $editor->name; ?></a>
-                    <p class="editor__infos">30 livres</p><img src="<?= D_ASSETS . DS . 'img' . DS . $editor->img; ?>" class="editor__img">
+                <li class="editors__list__item">
+                    <img src="<?= D_ASSETS . DS . 'img' . DS . $editor->img; ?>" class="editor__img">
+                    <h2 class="editor__title"><a href="./editorSingle.html"><?= $editor->name; ?></a></h2>
+                    <span class="editor__infos">30 livres</span>
+                    <p><?= $editor->history; ?></p>
                 </li>
             <?php endforeach; ?>
         </ul>
