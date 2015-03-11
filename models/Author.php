@@ -36,8 +36,8 @@ class Author extends AppModel
         $sql = 'SELECT ' . $fields . '
                 FROM authors
                 JOIN votes ON ref_id = authors.id
-                JOIN author_book ON author_id = authors.id
-                JOIN books ON book_id = books.id
+                LEFT JOIN author_book ON author_id = authors.id
+                LEFT JOIN books ON book_id = books.id
                 WHERE ref = \'authors\'
                 ORDER BY value DESC
                 LIMIT ' . $limit;
