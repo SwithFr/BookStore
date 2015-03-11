@@ -85,7 +85,7 @@ class BooksController extends AppController
             if (!$v->validate($d, $this->Book->rules)) {
                 $errors = $v->errors();
                 Session::setFlash('Veuillez vérifier vos informations', 'error');
-                return compact('genres', 'languages', 'editors', 'locations', 'authors', 'errors', 'library_id','d');
+                return compact('genres', 'languages', 'editors', 'locations', 'authors', 'errors', 'library_id', 'd');
             }
 
             if (!empty($_FILES['img']['name'])) {
@@ -112,9 +112,9 @@ class BooksController extends AppController
                 );
 
                 Session::setFlash('Le livre ' . $_POST['title'] . ' a bien été ajouté !');
-            } elseif(is_numeric($_GET['id'])) {
+            } elseif (is_numeric($_GET['id'])) {
                 $d['img'] = $dest . $name;
-                $this->Book->update($d,$_GET['id']);
+                $this->Book->update($d, $_GET['id']);
                 Session::setFlash('Le livre ' . $_POST['title'] . ' a bien été modifié !');
             }
             $this->redirect('account', 'user');
