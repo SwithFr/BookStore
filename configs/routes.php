@@ -17,6 +17,7 @@ return $routes = [
     'B_populars'      => 'populars/book',
     'B_add'           => 'add/book',
     'B_edit'          => 'edit/book',
+    'B_view'          => 'view/book',
 
     # Routes bibliothèques
     'L_index'         => 'index/librarie',
