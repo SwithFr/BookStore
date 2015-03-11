@@ -53,6 +53,7 @@ class BooksController extends AppController
         $locations = $this->Location->getAllFromUserLibrary($user_id);
         $library_id = $_GET['library'];
         $authors = $this->Author->get(['fields' => 'id,first_name,last_name', 'order' => 'last_name ASC']);
+        $d = [];
 
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             if (isset($_GET['id']) && is_numeric($_GET['id'])) {
