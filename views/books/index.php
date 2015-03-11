@@ -1,4 +1,4 @@
-<?php require(D_VIEWS . DS . 'elements' . DS . 'main-form.php'); use Helpers\Html; ?>
+<?php require(D_VIEWS . DS . 'elements' . DS . 'main-form.php'); use Helpers\Html; use Helpers\Text; ?>
 <div class="section vedettes">
     <div class="section__header">
         <h2 class="section__title">Livres les mieux notés :</h2>
@@ -10,7 +10,7 @@
             <h3 class="section__block__title"><a href="<?= Html::url('view','book',['id'=>$book->id]); ?>"><?= $book->title; ?></a></h3>
             <p class="section__block__author"><?= $book->first_name . ' ' . $book->last_name; ?></p>
             <p class="section__block__content">
-                <?= $book->summary; ?>
+                <?= Text::cut($book->summary,500); ?>
             </p>
         </div>
     <?php endforeach; ?>
