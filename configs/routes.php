@@ -34,5 +34,6 @@ return $routes = [
 
     # Routes erreurs
     'Er_unauthorized' => 'unauthorized/error',
-    'Er_notLogged'    => 'notLogged/error'
+    'Er_notLogged'    => 'notLogged/error',
+    'Er_missingParams'=> 'missingParams/error'
 ];
