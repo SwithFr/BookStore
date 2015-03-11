@@ -129,6 +129,9 @@ class BooksController extends AppController
             $this->redirect('missingParams','error');
 
         $book = $this->Book->find($_GET['id']);
+        if (!$book)
+            Session::setFlash('Le livre est introuvable !','error');
+
         return compact('book');
     }
 
