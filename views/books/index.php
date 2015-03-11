@@ -1,4 +1,4 @@
-<?php require(D_VIEWS . DS . 'elements' . DS . 'main-form.php'); ?>
+<?php require(D_VIEWS . DS . 'elements' . DS . 'main-form.php'); use Helpers\Html; ?>
 <div class="section vedettes">
     <div class="section__header">
         <h2 class="section__title">Livres les mieux notés :</h2>
@@ -7,12 +7,11 @@
     <?php foreach($data['books'] as $book): ?>
         <div class="section__block">
             <img src="<?= D_ASSETS . DS . 'img' . DS . $book->img; ?>" class="section__block__img">
-            <h3 class="section__block__title"><?= $book->title; ?></h3>
+            <h3 class="section__block__title"><a href="<?= Html::url('view','book',['id'=>$book->id]); ?>"><?= $book->title; ?></a></h3>
             <p class="section__block__author"><?= $book->first_name . ' ' . $book->last_name; ?></p>
             <p class="section__block__content">
                 <?= $book->summary; ?>
             </p>
-            <a href="./views/books/single.html" class="section__readMore">En voir plus</a>
         </div>
     <?php endforeach; ?>
 </div>
@@ -24,7 +23,7 @@
         <a href="./views/books/byAuthor.html" class="section__readMore">Voir plus du même auteur</a>
     </div>
     <div class="section__block">
-        <h3 class="section__block__title"><?= $data['author']->first_name . ' ' . $data['author']->last_name; ?></h3>
+        <h3 class="section__block__title"><a href="<?= Html::url('view','author',['id'=>$data['author']->id]); ?>"><?= $data['author']->first_name . ' ' . $data['author']->last_name; ?></a></h3>
         <p class="section__block__year"><?= $data['author']->date_birth; ?> - <?= $data['author']->date_death; ?></p>
         <p class="section__block__content">
             <?= $data['author']->bio; ?>
@@ -35,6 +34,6 @@
         </div>
     </div>
     <div class="section__block">
-        <img src="./assets/img/vHugo.jpg" class="section__block__img">
+        <img src="<?= $data['author']->img; ?>" class="section__block__img">
     </div>
 </div>
