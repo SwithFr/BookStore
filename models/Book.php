@@ -170,13 +170,14 @@ class Book extends AppModel
     public function update($data, $id)
     {
         $sql = 'UPDATE books
-                SET title = :title, summary = :summary, isbn = :isbn, nbpages = :nbpages,
+                SET title = :title, img = :img, summary = :summary, isbn = :isbn, nbpages = :nbpages,
                     language_id = :language_id, genre_id = :genre_id, location_id = :location_id, editor_id = :editor_id
                 WHERE books.id = :id';
         $pdost = $this->db->prepare($sql);
         $pdost->execute(
             [
                 ':title' => $data['title'],
+                ':img' => $data['img'],
                 ':summary' => $data['summary'],
                 ':isbn' => $data['isbn'],
                 ':nbpages' => $data['nbpages'],
