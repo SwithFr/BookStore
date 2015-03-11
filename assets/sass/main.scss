@@ -149,6 +149,11 @@
 .author .section__block {
   width: 50%;
   float: left;
+
+  &:hover .section__block__title {
+    color: #d04c51;
+    text-decoration: underline;
+  }
 }
 
 .author .section__block__content {
