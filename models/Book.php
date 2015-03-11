@@ -127,6 +127,19 @@ class Book extends AppModel
     }
 
     /**
+     * Met à jour l'association dans la table author_book
+     * @param $author_id
+     * @param $book_id
+     */
+    private function updateAuthorBook($author_id, $book_id)
+    {
+        $sql = "UPDATE author_book
+                SET author_id = $author_id
+                WHERE book_id = $book_id";
+        $this->db->query($sql);
+    }
+
+    /**
      * Ajoute l'association dans la table book_library
      * @param $book_id
      * @param $library_id
@@ -174,5 +187,7 @@ class Book extends AppModel
                 ':id' => $id
             ]
         );
+
+        $this->updateAuthorBook($data['author_id'],$id);
     }
 }
