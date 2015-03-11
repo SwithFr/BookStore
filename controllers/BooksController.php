@@ -113,6 +113,7 @@ class BooksController extends AppController
 
                 Session::setFlash('Le livre ' . $_POST['title'] . ' a bien été ajouté !');
             } elseif(is_numeric($_GET['id'])) {
+                $d['img'] = $dest . $name;
                 $this->Book->update($d,$_GET['id']);
                 Session::setFlash('Le livre ' . $_POST['title'] . ' a bien été modifié !');
             }
