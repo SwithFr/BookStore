@@ -123,4 +123,9 @@ class BooksController extends AppController
         return compact('genres', 'languages', 'editors', 'locations', 'authors', 'library_id', 'd');
     }
 
+    public function view()
+    {
+
+    }
+
 } 
