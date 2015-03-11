@@ -1,7 +1,7 @@
 <div id="content" class="content">
     <div class="section">
         <div class="section__header">
-            <h2 class="section__title author__name">Titre du livre</h2>
+            <h2 class="section__title">Titre du livre</h2>
             <div class="section__block bio">
                 <p class="section__block__year">Publié en 2015</p>
                 <p class="section__block__category">Aventure</p>
