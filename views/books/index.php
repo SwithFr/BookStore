@@ -6,7 +6,7 @@
     </div>
     <?php foreach($data['books'] as $book): ?>
         <div class="section__block">
-            <img src="<?= D_ASSETS . DS . 'img' . DS . $book->img; ?>" class="section__block__img">
+            <img src="<?= $book->img; ?>" class="section__block__img">
             <h3 class="section__block__title"><a href="<?= Html::url('view','book',['id'=>$book->id]); ?>"><?= $book->title; ?></a></h3>
             <p class="section__block__author"><?= $book->first_name . ' ' . $book->last_name; ?></p>
             <p class="section__block__content">
