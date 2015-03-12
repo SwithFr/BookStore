@@ -1,4 +1,4 @@
-<?php require(D_VIEWS . DS . 'elements' . DS . 'editors-form.php'); ?>
+<?php require(D_VIEWS . DS . 'elements' . DS . 'editors-form.php'); use Helpers\Html; ?>
 <div class="section">
     <div class="section__header">
         <h2 class="section__title">Selectionnez un editeur</h2>
@@ -6,7 +6,7 @@
     <ul class="filter__list">
         <?php for($i='a'; $i<='z'; $i++): ?>
             <li class="filter__item">
-                <a href="<?= $_SERVER['PHP_SELF']; ?>?a=index&e=editor&letter=<?= $i; ?>" <?= ($data['letter'] == $i )?'class="filter--active"':''; ?>><?= ucfirst($i); ?></a>
+                <a href="<?= Html::url('index','editor',['letter'=>$i]); ?>" <?= ($data['letter'] == $i )?'class="filter--active"':''; ?>><?= ucfirst($i); ?></a>
                 <?php if($i=='z'){break;}; ?>
             </li>
         <?php endfor; ?>
