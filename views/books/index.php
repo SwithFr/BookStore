@@ -1,7 +1,7 @@
 <?php require(D_VIEWS . DS . 'elements' . DS . 'main-form.php'); use Helpers\Html; use Helpers\Text; ?>
 <div class="section vedettes">
     <div class="section__header">
-        <h2 class="section__title">Livres les mieux notés :</h2>
+        <h2 class="section__title title--inline">Livres les mieux notés :</h2>
         <a href="./views/books/byAuthor.html" class="section__readMore">Voir tout le classement</a>
     </div>
     <?php foreach($data['books'] as $book): ?>
@@ -17,9 +17,7 @@
 </div>
 <div class="section author">
     <div class="section__header">
-        <h2 class="section__title">
-            <a href="./views/books/byAuthor.html">Auteur le mieux noté</a>
-        </h2>
+        <h2 class="section__title title--inline">Auteur le mieux noté</h2>
         <a href="./views/books/byAuthor.html" class="section__readMore">Voir plus du même auteur</a>
     </div>
     <div class="section__block">
