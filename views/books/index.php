@@ -29,7 +29,7 @@
             <?= Text::cut($data['author']->bio,500); ?>
         </p>
         <div class="author__count">
-            <p class="nb author__nbBooks"><?= $data['author']->nb_livres; ?></p>
+            <p class="nb author__nbBooks">12</p>
             <p class="nb author__eval">4.5</p>
         </div>
     </div>
