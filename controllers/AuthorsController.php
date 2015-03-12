@@ -59,4 +59,9 @@ class AuthorsController extends AppController
         }
     }
 
+    public function view()
+    {
+
+    }
+
 } 
