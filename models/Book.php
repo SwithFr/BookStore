@@ -201,4 +201,16 @@ class Book extends AppModel
                 JOIN genres ON genre_id = genres.id';
         return $this->db->query($sql)->fetchAll();
     }
+
+    public function getAllFromAuthor($author_id)
+    {
+        $sql = 'SELECT title, books.id
+                FROM books
+                JOIN author_book ON book_id = books.id
+                JOIN authors ON author_id = authors.id
+                WHERE authors.id = :author_id';
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute([':author_id'=>$author_id]);
+        return $pdost->fetchAll();
+    }
 }
