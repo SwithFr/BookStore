@@ -154,8 +154,8 @@ class Book extends AppModel
     public function find($book_id)
     {
         $sql = 'SELECT books.id, title, books.img, summary, isbn, nbpages, language_id, genre_id, books.location_id, editor_id, author_id,
-                       genres.name as g_name,
-                       last_name, first_name, authors.id as a_id
+                       genres.name AS g_name,
+                       last_name, first_name, authors.id AS a_id
                 FROM books
                 JOIN author_book ON book_id = books.id
                 JOIN authors ON author_id = authors.id
@@ -191,6 +191,11 @@ class Book extends AppModel
             ]
         );
 
-        $this->updateAuthorBook($data['author_id'],$id);
+        $this->updateAuthorBook($data['author_id'], $id);
+    }
+
+    public function getWithGenre()
+    {
+
     }
 }
