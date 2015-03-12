@@ -71,7 +71,7 @@ class AuthorsController extends AppController
         $author = $this->Author->find($_GET['id']);
         if (!$author)
             Session::setFlash('L‘auteur est introuvable !','error');
-
+        
         $d_b = Carbon::parse($author->date_birth);
         $author->date_birth = $d_b->year;
         if ($author->date_death != '0000-00-00') {
@@ -81,7 +81,10 @@ class AuthorsController extends AppController
             $author->date_death = '';
         }
 
-        return compact('author');
+        $this->loadModel('Book');
+        $books = $this->Book->getAllFromAuthor($author->id);
+
+        return compact('author','books');
     }
 
 } 
