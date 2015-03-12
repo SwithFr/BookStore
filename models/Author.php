@@ -66,4 +66,13 @@ class Author extends AppModel
         $pdost->execute([':first_name' => $first_name, ':last_name' => $last_name, ':img' => $img, ':date_birth' => $date_birth, ':date_death' => $date_death, ':bio' => $bio]);
     }
 
+    public function find($author_id)
+    {
+        $sql = 'SELECT id,last_name, first_name, img, date_birth, date_death, bio
+                FROM authors
+                WHERE id=:author_id';
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute([':author_id' => $author_id]);
+        return $pdost->fetch();
+    }
 }
