@@ -11,7 +11,19 @@
                         <?= $data['author']->bio; ?>
                     </div>
                 </div>
-                <div class="section__block infos"><img src="<?= $data['author']->img; ?>" class="section__block__img"></div>
+                <div class="section__block infos">
+                    <img src="<?= $data['author']->img; ?>" class="section__block__img">
+                    <?php if(!empty($data['books'])): ?>
+                        <h3>Voir ses livres</h3>
+                        <ul>
+                            <?php foreach($data['books'] as $book): ?>
+                                <li>
+                                    <a href="<?= Html::url('view','book',['id'=>$book->id]); ?>"><?= $book->title; ?></a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
     </div>
