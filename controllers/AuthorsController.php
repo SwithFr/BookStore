@@ -19,9 +19,13 @@ class AuthorsController extends AppController
             $authors = $this->Author->getAllFromLetter("first_name,last_name,date_birth,date_death,bio,id", 'last_name', $letter);
             foreach ($authors as $a) {
                 $b = Carbon::parse($a->date_birth);
-                $d = Carbon::parse($a->date_death);
                 $a->date_birth = $b->year;
-                $a->date_death = $d->year;
+                if ($a->date_death != '0000-00-00') {
+                    $d_d = Carbon::parse($a->date_death);
+                    $a->date_death = $d_d->year;
+                } else {
+                    $a->date_death = '';
+                }
             }
         } else
             $this->redirect('index', 'author', ['letter' => 'a']);
@@ -67,6 +71,15 @@ class AuthorsController extends AppController
         $author = $this->Author->find($_GET['id']);
         if (!$author)
             Session::setFlash('L‘auteur est introuvable !','error');
+
+        $d_b = Carbon::parse($author->date_birth);
+        $author->date_birth = $d_b->year;
+        if ($author->date_death != '0000-00-00') {
+            $d_d = Carbon::parse($author->date_death);
+            $author->date_death = $d_d->year;
+        } else {
+            $author->date_death = '';
+        }
 
         return compact('author');
     }
