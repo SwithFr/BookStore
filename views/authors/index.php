@@ -4,32 +4,12 @@
         <h2 class="section__title">Selectionnez un auteur</h2>
     </div>
     <ul class="filter__list">
-        <li class="filter__item"><a href="<?= Html::url('index','author'); ?>&letter=a" <?= ($data['letter'] == 'a' )?'class="filter--active"':''; ?>>A</a></li>
-        <li class="filter__item"><a href="<?= Html::url('index','author'); ?>&letter=b" <?= ($data['letter'] == 'b' )?'class="filter--active"':''; ?>>B</a></li>
-        <li class="filter__item"><a href="<?= Html::url('index','author'); ?>&letter=c" <?= ($data['letter'] == 'c' )?'class="filter--active"':''; ?>>C</a></li>
-        <li class="filter__item"><a href="<?= Html::url('index','author'); ?>&letter=d" <?= ($data['letter'] == 'd' )?'class="filter--active"':''; ?>>D</a></li>
-        <li class="filter__item"><a href="<?= Html::url('index','author'); ?>&letter=e" <?= ($data['letter'] == 'e' )?'class="filter--active"':''; ?>>E</a></li>
-        <li class="filter__item"><a href="<?= Html::url('index','author'); ?>&letter=f" <?= ($data['letter'] == 'f' )?'class="filter--active"':''; ?>>F</a></li>
-        <li class="filter__item"><a href="<?= Html::url('index','author'); ?>&letter=g" <?= ($data['letter'] == 'g' )?'class="filter--active"':''; ?>>G</a></li>
-        <li class="filter__item"><a href="<?= Html::url('index','author'); ?>&letter=h" <?= ($data['letter'] == 'h' )?'class="filter--active"':''; ?>>H</a></li>
-        <li class="filter__item"><a href="<?= Html::url('index','author'); ?>&letter=i" <?= ($data['letter'] == 'i' )?'class="filter--active"':''; ?>>I</a></li>
-        <li class="filter__item"><a href="<?= Html::url('index','author'); ?>&letter=j" <?= ($data['letter'] == 'j' )?'class="filter--active"':''; ?>>J</a></li>
-        <li class="filter__item"><a href="<?= Html::url('index','author'); ?>&letter=k" <?= ($data['letter'] == 'k' )?'class="filter--active"':''; ?>>K</a></li>
-        <li class="filter__item"><a href="<?= Html::url('index','author'); ?>&letter=l" <?= ($data['letter'] == 'l' )?'class="filter--active"':''; ?>>L</a></li>
-        <li class="filter__item"><a href="<?= Html::url('index','author'); ?>&letter=m" <?= ($data['letter'] == 'm' )?'class="filter--active"':''; ?>>M</a></li>
-        <li class="filter__item"><a href="<?= Html::url('index','author'); ?>&letter=n" <?= ($data['letter'] == 'n' )?'class="filter--active"':''; ?>>N</a></li>
-        <li class="filter__item"><a href="<?= Html::url('index','author'); ?>&letter=o" <?= ($data['letter'] == 'o' )?'class="filter--active"':''; ?>>O</a></li>
-        <li class="filter__item"><a href="<?= Html::url('index','author'); ?>&letter=p" <?= ($data['letter'] == 'p' )?'class="filter--active"':''; ?>>P</a></li>
-        <li class="filter__item"><a href="<?= Html::url('index','author'); ?>&letter=q" <?= ($data['letter'] == 'q' )?'class="filter--active"':''; ?>>Q</a></li>
-        <li class="filter__item"><a href="<?= Html::url('index','author'); ?>&letter=r" <?= ($data['letter'] == 'r' )?'class="filter--active"':''; ?>>R</a></li>
-        <li class="filter__item"><a href="<?= Html::url('index','author'); ?>&letter=s" <?= ($data['letter'] == 's' )?'class="filter--active"':''; ?>>S</a></li>
-        <li class="filter__item"><a href="<?= Html::url('index','author'); ?>&letter=t" <?= ($data['letter'] == 't' )?'class="filter--active"':''; ?>>T</a></li>
-        <li class="filter__item"><a href="<?= Html::url('index','author'); ?>&letter=u" <?= ($data['letter'] == 'u' )?'class="filter--active"':''; ?>>U</a></li>
-        <li class="filter__item"><a href="<?= Html::url('index','author'); ?>&letter=v" <?= ($data['letter'] == 'v' )?'class="filter--active"':''; ?>>V</a></li>
-        <li class="filter__item"><a href="<?= Html::url('index','author'); ?>&letter=w" <?= ($data['letter'] == 'w' )?'class="filter--active"':''; ?>>W</a></li>
-        <li class="filter__item"><a href="<?= Html::url('index','author'); ?>&letter=x" <?= ($data['letter'] == 'x' )?'class="filter--active"':''; ?>>X</a></li>
-        <li class="filter__item"><a href="<?= Html::url('index','author'); ?>&letter=y" <?= ($data['letter'] == 'y' )?'class="filter--active"':''; ?>>Y</a></li>
-        <li class="filter__item"><a href="<?= Html::url('index','author'); ?>&letter=z" <?= ($data['letter'] == 'z' )?'class="filter--active"':''; ?>>Z</a></li>
+        <?php for($i='a'; $i<='z'; $i++): ?>
+            <li class="filter__item">
+                <a href="<?= Html::url('index','author',['letter'=>$i]); ?>" <?= ($data['letter'] == $i )?'class="filter--active"':''; ?>><?= ucfirst($i); ?></a>
+                <?php if($i=='z'){break;}; ?>
+            </li>
+        <?php endfor; ?>
     </ul>
     <div class="authors">
         <?php if(empty($data['authors'])): ?>
