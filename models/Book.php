@@ -196,6 +196,9 @@ class Book extends AppModel
 
     public function getWithGenre()
     {
-
+        $sql = 'SELECT title, name
+                FROM books
+                JOIN genres ON genre_id = genres.id';
+        return $this->db->query($sql)->fetchAll();
     }
 }
