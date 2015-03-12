@@ -33,6 +33,10 @@
   @extend .heading;
 }
 
+.title--inline {
+  display: inline;
+}
+
 .section__block__title {
   font-family: $Playfair, serif;
   font-size: 1.5em;
