@@ -61,7 +61,14 @@ class AuthorsController extends AppController
 
     public function view()
     {
+        if (!isset($_GET['id']) || !is_numeric($_GET['id']))
+            $this->redirect('missingParams','error');
 
+        $author = $this->Author->find($_GET['id']);
+        if (!$author)
+            Session::setFlash('L‘auteur est introuvable !','error');
+
+        return compact('author');
     }
 
 } 
