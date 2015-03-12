@@ -21,10 +21,13 @@ class BooksController extends AppController
         $this->loadModel('Author');
         $author = $this->Author->getPopular('authors.id,authors.img,first_name,last_name,bio,date_birth,date_death', 1);
         $d_b = Carbon::parse($author->date_birth);
-        $d_d = Carbon::parse($author->date_death);
         $author->date_birth = $d_b->year;
-        $author->date_death = $d_d->year;
-
+        if ($author->date_death != '0000-00-00') {
+            $d_d = Carbon::parse($author->date_death);
+            $author->date_death = $d_d->year;
+        } else {
+            $author->date_death = '';
+        }
 
         return compact("books", "author");
     }
