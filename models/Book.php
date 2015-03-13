@@ -46,7 +46,7 @@ class Book extends AppModel
      */
     public function getPopular($fields, $limit)
     {
-        $sql = 'SELECT ' . $fields . '
+        $sql = 'SELECT DISTINCT ' . $fields . '
                 FROM books
                 JOIN votes ON ref_id = books.id
                 JOIN author_book ON book_id = books.id
@@ -91,6 +91,20 @@ class Book extends AppModel
         return $pdost->fetch();
     }
 
+    /**
+     * Ajoute un livre
+     * @param $title
+     * @param $img
+     * @param $summary
+     * @param $isbn
+     * @param $nbpages
+     * @param $language_id
+     * @param $genre_id
+     * @param $location_id
+     * @param $editor_id
+     * @param $author_id
+     * @param $library_id
+     */
     public function create($title, $img, $summary, $isbn, $nbpages, $language_id, $genre_id, $location_id, $editor_id, $author_id, $library_id)
     {
         $sql = 'INSERT INTO books(title, img,summary, isbn, nbpages, language_id, genre_id, location_id, editor_id)
@@ -151,6 +165,11 @@ class Book extends AppModel
         $this->db->query($sql);
     }
 
+    /**
+     * Récupère un livre selon son id
+     * @param $book_id
+     * @return mixed
+     */
     public function find($book_id)
     {
         $sql = 'SELECT books.id, title, books.img, summary, isbn, nbpages, language_id, genre_id, books.location_id, editor_id, author_id,
@@ -169,6 +188,11 @@ class Book extends AppModel
         return $pdost->fetch();
     }
 
+    /**
+     * Met à jour les données d'un livre
+     * @param $data
+     * @param $id
+     */
     public function update($data, $id)
     {
         $sql = 'UPDATE books
@@ -194,6 +218,10 @@ class Book extends AppModel
         $this->updateAuthorBook($data['author_id'], $id);
     }
 
+    /**
+     * Récupère un livre et son genre
+     * @return array
+     */
     public function getWithGenre()
     {
         $sql = 'SELECT title, name
@@ -202,9 +230,14 @@ class Book extends AppModel
         return $this->db->query($sql)->fetchAll();
     }
 
+    /**
+     * Récupère les livres d'un autheur
+     * @param $author_id
+     * @return array
+     */
     public function getAllFromAuthor($author_id)
     {
-        $sql = 'SELECT title, books.id
+        $sql = 'SELECT DISTINCT title, books.id
                 FROM books
                 JOIN author_book ON book_id = books.id
                 JOIN authors ON author_id = authors.id
