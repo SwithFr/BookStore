@@ -144,4 +144,9 @@ class BooksController extends AppController
         return compact('book');
     }
 
+    public function populars()
+    {
+
+    }
+
 } 
