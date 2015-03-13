@@ -126,14 +126,20 @@ class BooksController extends AppController
         return compact('genres', 'languages', 'editors', 'locations', 'authors', 'library_id', 'd');
     }
 
+    /**
+     * Page d'un livre
+     * @return array
+     */
     public function view()
     {
         if (!isset($_GET['id']) || !is_numeric($_GET['id']))
             $this->redirect('missingParams','error');
 
         $book = $this->Book->find($_GET['id']);
-        if (!$book)
+        if (!$book) {
             Session::setFlash('Le livre est introuvable !','error');
+            $book = null;
+        }
 
         return compact('book');
     }
