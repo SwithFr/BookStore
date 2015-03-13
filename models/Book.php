@@ -58,10 +58,7 @@ class Book extends AppModel
 
         $pdost = $this->db->query($sql);
 
-        if ($limit > 1)
-            return $pdost->fetchAll();
-
-        return $pdost->fetch();
+        return $pdost->fetchAll();
     }
 
     /**
