@@ -44,7 +44,7 @@ class Book extends AppModel
      * @param int $limit
      * @return array|mixed
      */
-    public function getPopular($fields, $limit)
+    public function getPopular($fields, $limit = null)
     {
         $sql = 'SELECT DISTINCT ' . $fields . '
                 FROM books
@@ -52,8 +52,10 @@ class Book extends AppModel
                 JOIN author_book ON book_id = books.id
                 JOIN authors ON author_id = authors.id
                 WHERE ref = \'books\'
-                ORDER BY value DESC
-                LIMIT ' . $limit;
+                ORDER BY value DESC ';
+        if($limit)
+            $sql .= 'LIMIT ' . $limit;
+
         $pdost = $this->db->query($sql);
 
         if ($limit > 1)
