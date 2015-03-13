@@ -146,7 +146,9 @@ class BooksController extends AppController
 
     public function populars()
     {
-
+        $books = $this->Book->getPopular('books.id,title,first_name,last_name');
+        var_dump($books);die();
+        return compact('books');
     }
 
 } 
