@@ -144,10 +144,13 @@ class BooksController extends AppController
         return compact('book');
     }
 
+    /**
+     * Affiche le classement des livres
+     * @return array
+     */
     public function populars()
     {
-        $books = $this->Book->getPopular('books.id,title,first_name,last_name');
-        var_dump($books);die();
+        $books = $this->Book->getPopular('books.id,title,first_name,last_name,value');
         return compact('books');
     }
 
