@@ -1,8 +1,8 @@
 window.addEventListener("load", init, false);
 
 function init() {
-    window.addEventListener("scroll",fixNav,false);
-    if(document.getElementById("alert"))
+    window.addEventListener("scroll", fixNav, false);
+    if (document.getElementById("alert"))
         document.getElementById("alert").addEventListener("click", fadeOut, false);
 }
 
