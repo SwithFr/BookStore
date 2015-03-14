@@ -42,4 +42,20 @@ class LibrariesController extends AppController
 
         return compact('libraries');
     }
+
+    /**
+     * Page d'une bibliothèque
+     * @return array
+     */
+    public function view()
+    {
+        if (!isset($_GET['id']))
+            $this->redirect('missingParams', 'error');
+
+        $library = current($this->Librarie->get(['where' => 'id =' . $_GET['id'] . ' AND private = 0']));
+        $this->loadModel('Book');
+        $books = $this->Book->getAllFromLibrary('title, books.id, books.img, summary', $_GET['id']);
+
+        return compact('library', 'books');
+    }
 }
