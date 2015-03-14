@@ -53,7 +53,7 @@ class Book extends AppModel
                 JOIN authors ON author_id = authors.id
                 WHERE ref = \'books\'
                 ORDER BY value DESC ';
-        if($limit)
+        if ($limit)
             $sql .= 'LIMIT ' . $limit;
 
         $pdost = $this->db->query($sql);
@@ -242,7 +242,7 @@ class Book extends AppModel
                 JOIN authors ON author_id = authors.id
                 WHERE authors.id = :author_id';
         $pdost = $this->db->prepare($sql);
-        $pdost->execute([':author_id'=>$author_id]);
+        $pdost->execute([':author_id' => $author_id]);
         return $pdost->fetchAll();
     }
 }
