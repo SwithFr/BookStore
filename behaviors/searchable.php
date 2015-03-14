@@ -39,8 +39,6 @@ trait searchable
         $params = implode(" OR ", $params);
 
         $req = $this->db->query($query . $params);
-        var_dump($req->fetchAll());
-        die();
         return $req->fetchAll();
     }
 
