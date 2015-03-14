@@ -26,6 +26,12 @@ class AppController
      */
     public $view = null;
 
+    /**
+     * Si on a besoin de model ou non ?
+     * @var bool
+     */
+    public $noModel = false;
+
     function __construct(Request $request)
     {
         # On inject la requete
@@ -33,7 +39,8 @@ class AppController
             $this->request = $request;
 
         # On charge le model par defaut
-        $this->loadModel();
+        if (!$this->noModel)
+            $this->loadModel();
 
         # Si on a une fonctin d'administration on charge le layout admin
         if (preg_match("/admin_/", $this->request->action)) {
