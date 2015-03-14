@@ -23,6 +23,7 @@ return $routes = [
     # Routes bibliothèques
     'L_index'         => 'index/librarie',
     'L_add'           => 'add/librarie',
+    'L_view'          => 'view/librarie',
 
     # Routes utilisateurs
     'U_check'         => 'check/user',
