@@ -28,4 +28,10 @@ class LibrariesController extends AppController
             $this->redirect('account','user');
         }
     }
+
+    public function index()
+    {
+        $libraries = $this->Librarie->get(['fields'=>'id, name']);
+        return compact('libraries');
+    }
 }
