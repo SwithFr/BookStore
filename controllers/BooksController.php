@@ -133,11 +133,11 @@ class BooksController extends AppController
     public function view()
     {
         if (!isset($_GET['id']) || !is_numeric($_GET['id']))
-            $this->redirect('missingParams','error');
+            $this->redirect('missingParams', 'error');
 
         $book = $this->Book->find($_GET['id']);
         if (!$book) {
-            Session::setFlash('Le livre est introuvable !','error');
+            Session::setFlash('Le livre est introuvable !', 'error');
             $book = null;
         }
 
