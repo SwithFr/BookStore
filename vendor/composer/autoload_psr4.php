@@ -8,7 +8,6 @@ $baseDir = dirname($vendorDir);
 return array(
     'Models\\' => array($baseDir . '/models'),
     'Helpers\\' => array($baseDir . '/helpers'),
-    'Faker\\' => array($vendorDir . '/fzaninotto/faker/src/Faker'),
     'Controllers\\' => array($baseDir . '/controllers'),
     'Components\\' => array($baseDir . '/components'),
     'Behaviors\\' => array($baseDir . '/behaviors'),
