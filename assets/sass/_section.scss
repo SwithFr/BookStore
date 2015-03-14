@@ -19,6 +19,11 @@
 
 .section__block {
   position: relative;
+
+  &:hover .section__block__title {
+    color: #d04c51;
+    text-decoration: underline;
+  }
 }
 
 .section__block, .section__block__img {
