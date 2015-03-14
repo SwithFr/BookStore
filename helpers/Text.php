@@ -12,6 +12,12 @@ class Text
      */
     public static function cut($text, $limit)
     {
-        return substr($text, 0, $limit) . "...";
+        if (strlen($text) > $limit) {
+            $text = wordwrap($text, $limit, '\br');
+            $text = explode('\br', $text);
+            $text = $text[0] . '&nbsp;&hellip;';
+        }
+
+        return $text;
     }
 } 
