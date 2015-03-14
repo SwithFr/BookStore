@@ -33,6 +33,11 @@ class Librarie extends AppModel
         $pdost->execute([':name' => $name, ':address' => $adress, ':tel' => $tel, ':email' => $email, ':user_id' => $user_id, ':private' => intval($private)]);
     }
 
+    /**
+     * Récupère la bibliothèque d'un utilisateur
+     * @param $user_id
+     * @return mixed
+     */
     public function getFromUser($user_id)
     {
         $sql = 'SELECT * FROM libraries WHERE user_id = :user_id';
