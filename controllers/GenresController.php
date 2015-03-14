@@ -4,6 +4,10 @@ namespace Controllers;
 
 class GenresController extends AppController
 {
+    /**
+     * Liste tous les genres
+     * @return array
+     */
     public function index()
     {
         $this->loadModel('Book');

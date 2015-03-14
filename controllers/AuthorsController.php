@@ -54,24 +54,24 @@ class AuthorsController extends AppController
                 $dest = $name = '';
             }
 
-            if(empty($_POST['date_death']))
+            if (empty($_POST['date_death']))
                 $_POST['date_death'] = '0000-00-00';
 
             $this->Author->create($_POST['first_name'], $_POST['last_name'], $dest . $name, $_POST['date_birth'], $_POST['date_death'], $_POST['bio']);
             Session::setFlash('L‘auteur ' . $_POST['first_name'] . ' ' . $_POST['last_name'] . ' a bien été ajouté !');
-            $this->redirect('add','author');
+            $this->redirect('add', 'author');
         }
     }
 
     public function view()
     {
         if (!isset($_GET['id']) || !is_numeric($_GET['id']))
-            $this->redirect('missingParams','error');
+            $this->redirect('missingParams', 'error');
 
         $author = $this->Author->find($_GET['id']);
         if (!$author)
-            Session::setFlash('L‘auteur est introuvable !','error');
-        
+            Session::setFlash('L‘auteur est introuvable !', 'error');
+
         $d_b = Carbon::parse($author->date_birth);
         $author->date_birth = $d_b->year;
         if ($author->date_death != '0000-00-00') {
@@ -84,7 +84,7 @@ class AuthorsController extends AppController
         $this->loadModel('Book');
         $books = $this->Book->getAllFromAuthor($author->id);
 
-        return compact('author','books');
+        return compact('author', 'books');
     }
 
 } 

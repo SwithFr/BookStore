@@ -14,11 +14,11 @@ class UsersController extends AppController
     public function check()
     {
         if (Session::isLogged())
-            $this->redirect('index','book');
+            $this->redirect('index', 'book');
 
         if (isset($_COOKIE['user_login'])) {
             $user = $this->User->getLogged($_COOKIE['user_login']);
-            $this->connect($user,true);
+            $this->connect($user, true);
         }
 
         if ($_SERVER['REQUEST_METHOD'] === "POST") {
@@ -52,7 +52,7 @@ class UsersController extends AppController
             setcookie("user_role", $user->role, time() + 7 * 24 * 3600);
         }
         Session::setFlash('Vous êtes maintenant connecté.');
-        $this->redirect('index','book');
+        $this->redirect('index', 'book');
     }
 
     /**
@@ -65,7 +65,7 @@ class UsersController extends AppController
         setcookie("user_id", "", time() - 7 * 24 * 3600);
         setcookie("user_role", "", time() - 7 * 24 * 3600);
         Session::setFlash("Vous êtes bien déconnecté !");
-        $this->redirect('index','book');
+        $this->redirect('index', 'book');
     }
 
     /**
@@ -86,7 +86,7 @@ class UsersController extends AppController
             }
             $this->User->create($_POST['login'], $_POST['password'], $_POST['email']);
             Session::setFlash("Votre compte a bien été créé !");
-            $this->redirect('check','user');
+            $this->redirect('check', 'user');
         }
     }
 
@@ -96,7 +96,7 @@ class UsersController extends AppController
     public function account()
     {
         if (!Session::isLogged())
-            $this->redirect('notLogged','error');
+            $this->redirect('notLogged', 'error');
 
         $this->loadModel('Librarie');
         $this->loadModel('Book');
@@ -118,6 +118,6 @@ class UsersController extends AppController
             $library = null;
             $books = null;
         }
-        return compact('user', 'hasLibrary', 'library','books');
+        return compact('user', 'hasLibrary', 'library', 'books');
     }
 } 

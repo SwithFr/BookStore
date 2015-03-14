@@ -19,15 +19,15 @@ class LocationsController extends AppController
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $v = new Validator();
-            if(!$v->validate($_POST,$this->Location->rules)) {
+            if (!$v->validate($_POST, $this->Location->rules)) {
                 $errors = $v->errors();
                 Session::setFlash('Veuillez vérifier vos informations !', 'error');
-                return compact('errors','library_id');
+                return compact('errors', 'library_id');
             }
 
-            $this->Location->create($_POST['name'],$library_id);
+            $this->Location->create($_POST['name'], $library_id);
             Session::setFlash('Votre emplacement ' . $_POST['name'] . ' a bien été ajouté !');
-            $this->redirect('account','user');
+            $this->redirect('account', 'user');
         }
         return compact('library_id');
     }
