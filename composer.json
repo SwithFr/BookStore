@@ -16,7 +16,8 @@
             "Controllers\\": "controllers",
             "Models\\": "models",
             "Components\\": "components",
-            "Helpers\\": "helpers"
+            "Helpers\\": "helpers",
+            "Behaviors\\": "behaviors"
         }
     }
 }
