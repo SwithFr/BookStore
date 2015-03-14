@@ -2,8 +2,11 @@
 
 namespace Models;
 
+use Behaviors\searchable;
+
 class Book extends AppModel
 {
+    use searchable;
     public $rules = [
         'title' => [
             ['ruleName' => 'notEmpty', 'message' => 'Le titre est obligatoire'],
