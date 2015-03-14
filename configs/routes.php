@@ -1,7 +1,10 @@
 <?php
 
 return $routes = [
-    'default'         => 'index/book',
+    # Routes pages
+    'default'         => 'index/page',
+    'searchAll'       => 'searchAll/page',
+
     # Routes auteurs
     'A_index'         => 'index/author',
     'A_add'           => 'add/author',
@@ -15,6 +18,7 @@ return $routes = [
     'G_index'         => 'index/genre',
 
     # Routes livres
+    'B_index'         => 'index/book',
     'B_populars'      => 'populars/book',
     'B_add'           => 'add/book',
     'B_edit'          => 'edit/book',
