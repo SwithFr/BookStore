@@ -2,8 +2,8 @@
 
 namespace Components;
 
-use \PDO;
-use \PDOException;
+use PDO;
+use PDOException;
 
 class DbProvider
 {

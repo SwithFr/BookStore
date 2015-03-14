@@ -166,19 +166,19 @@ class Validator
         if (empty($value))
             return true;
 
-        if ((preg_match('/-/',$value) == 0)) {
+        if ((preg_match('/-/', $value) == 0)) {
             $this->errors[$field] = $message;
             return false;
         }
 
-        $date = explode('-',$value);
+        $date = explode('-', $value);
 
         if (!isset($date[0]) || !isset($date[1]) || !isset($date[2]) || !is_numeric($date[0]) || !is_numeric($date[1]) || !is_numeric($date[2])) {
             $this->errors[$field] = $message;
             return false;
         }
 
-        if (checkdate($date[1],$date[2],$date[0]) || empty(trim($value))) {
+        if (checkdate($date[1], $date[2], $date[0]) ||  empty(trim($value))) {
 
             return true;
 
