@@ -324,6 +324,33 @@
   max-width: 60%;
 }
 
+/* SEARCH */
+.results {
+  width: 100%;
+  margin-bottom: 2em;
+}
+
+.noResult {
+  margin-bottom: 2em;
+
+  font-size: 1.1em;
+  color: #b3b3b3;
+}
+
+.results__title {
+  font-size: 1.3em;
+}
+
+.results__link {
+  margin-bottom: .5em;
+  padding-left: 1em;
+
+  &:hover {
+    color: #d04c51;
+    text-decoration: underline;
+  }
+}
+
 /* LOGIN / REGISTER */
 .form--login, .form--register {
   width: 50%;
