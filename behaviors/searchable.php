@@ -12,8 +12,9 @@ trait searchable
      * @param  string $what ce que l'on doit chercher
      * @param  array $where sur quel champs
      * @param string $get ce que l'on veut récupérer
+     * @param null $table
      * @param  string $how Comment doit on chercher [around|exactly]
-     * @return
+     * @return mixed
      */
     public function search($what, Array $where, $get = '*', $table = null,$how = "around")
     {
