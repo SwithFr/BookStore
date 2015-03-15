@@ -248,4 +248,20 @@ class Book extends AppModel
         $pdost->execute([':author_id' => $author_id]);
         return $pdost->fetchAll();
     }
+
+    /**
+     * Récupère la bibliothèque d'un livre
+     * @param $book_id
+     * @return mixed
+     */
+    public function getLibrary($book_id)
+    {
+        $sql = 'SELECT name
+                FROM libraries
+                JOIN book_library ON library_id = libraries.id
+                WHERE book_id = :book_id AND private = 0';
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute([':book_id'=>$book_id]);
+        return $pdost->fetch();
+    }
 }
