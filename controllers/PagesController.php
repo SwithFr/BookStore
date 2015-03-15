@@ -37,7 +37,7 @@ class PagesController extends AppController
                     ],
                     'authors' => [
                         'what' => $request,
-                        'where' => ['last_name'],
+                        'where' => ['last_name','first_name'],
                         'get' => 'first_name, last_name, id'
                     ],
                     'genres' => [
@@ -47,6 +47,14 @@ class PagesController extends AppController
                     ]
                 ]
             );
+
+            foreach ($data['books'] as $book) {
+                $this->loadModel('Book');
+                $library = $this->Book->getLibrary($book->id);
+                $data['libraries'][$library->name][] = $book;
+            }
+
+            unset($data['books']);
         }
 
         return compact('data', 'request');
