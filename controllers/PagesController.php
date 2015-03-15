@@ -33,7 +33,7 @@ class PagesController extends AppController
                     'books' => [
                         'what' => $request,
                         'where' => ['title', 'summary'],
-                        'get' => 'title, id'
+                        'get' => 'title, books.id'
                     ],
                     'authors' => [
                         'what' => $request,
