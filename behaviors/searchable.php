@@ -22,7 +22,15 @@ trait searchable
         if (is_null($table))
             $table = $this->table;
 
-        $query = "SELECT DISTINCT $get FROM $table WHERE ";
+        if ($table == "books") {
+            $query = "SELECT DISTINCT $get FROM $table
+                      JOIN book_library ON book_id = books.id
+                      JOIN libraries ON library_id = libraries.id WHERE
+                      private = 0 AND (";
+        } else {
+            $query = "SELECT DISTINCT $get FROM $table WHERE ";
+        }
+
         $params = [];
         if ($how === "around") {
             $what = explode(" ", $what);
@@ -41,6 +49,8 @@ trait searchable
         }
 
         $params = implode(" OR ", $params);
+        if ($table == 'books')
+            $params .= ')';
 
         $req = $this->db->query($query . $params);
 
