@@ -10,15 +10,20 @@ use Helpers\Html;
         <div class="section__header">
             <h2 class="section__title">Résultats de la recherche pour <?= $data['request']; ?></h2>
         </div>
-        <?php if (empty($data['data']['books'])): ?>
+        <?php if (empty($data['data']['libraries'])): ?>
             <h2 class="noResult">Aucun livre trouvé !</h2>
         <?php else: ?>
             <div class="section__block results">
                 <h2 class="results__title">Le(s) Livre(s)</h2>
-                <?php foreach ($data['data']['books'] as $book): ?>
-                    <h3 class="results__link">
-                        <a href="<?= Html::url('view', 'book', ['id' => $book->id]); ?>"><?= $book->title; ?></a>
-                    </h3>
+                <?php foreach($data['data']['libraries'] as $k => $v): ?>
+                    <p>
+                        Dans la bibliothèque : <?= $k; ?>
+                    </p>
+                    <?php foreach ($v as $book): ?>
+                        <h3 class="results__link">
+                            <a href="<?= Html::url('view', 'book', ['id' => $book->id]); ?>"><?= $book->title; ?></a>
+                        </h3>
+                    <?php endforeach; ?>
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
