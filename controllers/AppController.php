@@ -38,10 +38,6 @@ class AppController
         if (!isset($this->request))
             $this->request = $request;
 
-        # On charge le model par defaut
-        if (!$this->noModel)
-            $this->loadModel();
-
         # Si on a une fonctin d'administration on charge le layout admin
         if (preg_match("/admin_/", $this->request->action)) {
             $this->layout = "admin";

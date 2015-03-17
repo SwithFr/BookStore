@@ -3,12 +3,20 @@
 namespace Controllers;
 
 use Carbon\Carbon;
+use Components\Request;
 use Components\Session;
 use Components\Validator;
 use Helpers\Image;
+use Models\Book;
 
 class BooksController extends AppController
 {
+    function __construct(Book $book, Request $request)
+    {
+        parent::__construct($request);
+        $this->Book = $book;
+    }
+
     /**
      * PAGE D'ACCEUIL
      */

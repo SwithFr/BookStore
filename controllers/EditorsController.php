@@ -2,12 +2,19 @@
 
 namespace Controllers;
 
+use Components\Request;
 use Components\Session;
 use Components\Validator;
 use Helpers\Image;
+use Models\Editor;
 
 class EditorsController extends AppController
 {
+    function __construct(Editor $editor, Request $request)
+    {
+        parent::__construct($request);
+        $this->Editor = $editor;
+    }
     /**
      * PAGE LISTE EDITEURS
      */

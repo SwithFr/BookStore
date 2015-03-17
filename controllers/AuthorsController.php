@@ -3,12 +3,20 @@
 namespace Controllers;
 
 use Carbon\Carbon;
+use Components\Request;
 use Components\Session;
 use Components\Validator;
 use Helpers\Image;
+use Models\Author;
 
 class AuthorsController extends AppController
 {
+    function __construct(Author $author, Request $request)
+    {
+        parent::__construct($request);
+        $this->Author = $author;
+    }
+
     /**
      * PAGE LISTE AUTEURS
      */
