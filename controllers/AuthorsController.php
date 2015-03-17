@@ -7,11 +7,11 @@ use Components\Request;
 use Components\Session;
 use Components\Validator;
 use Helpers\Image;
-use Models\Author;
+use Models\Interfaces\AuthorsRepositoryInterface;
 
 class AuthorsController extends AppController
 {
-    function __construct(Author $author, Request $request)
+    function __construct(AuthorsRepositoryInterface $author, Request $request)
     {
         parent::__construct($request);
         $this->Author = $author;
