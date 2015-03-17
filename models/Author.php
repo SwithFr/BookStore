@@ -2,7 +2,9 @@
 
 namespace Models;
 
-class Author extends AppModel
+use Models\Interfaces\AuthorsRepositoryInterface;
+
+class Author extends AppModel implements AuthorsRepositoryInterface
 {
     public $rules = [
         'first_name' => [
