@@ -2,12 +2,20 @@
 
 namespace Controllers;
 
+use Components\Request;
 use Components\Session;
 use Components\Validator;
 use Helpers\Html;
+use Models\Interfaces\UsersRepositoryInterface;
 
 class UsersController extends AppController
 {
+    function __construct(UsersRepositoryInterface $user, Request $request)
+    {
+        parent::__construct($request);
+        $this->User = $user;
+    }
+
     /**
      * FORMUALIRE DE CONNEXION
      */
