@@ -2,7 +2,7 @@
 <div class="section vedettes">
     <div class="section__header">
         <h2 class="section__title title--inline">Livres les mieux notés :</h2>
-        <a href="./views/books/byAuthor.html" class="section__readMore">Voir tout le classement</a>
+        <a href="<?= Html::url('populars','book'); ?>" class="section__readMore">Voir tout le classement</a>
     </div>
     <?php foreach($data['books'] as $book): ?>
         <div class="section__block">
@@ -18,7 +18,7 @@
 <div class="section author">
     <div class="section__header">
         <h2 class="section__title title--inline">Auteur le mieux noté</h2>
-        <a href="./views/books/byAuthor.html" class="section__readMore">Voir plus du même auteur</a>
+        <a href="<?= Html::url('view','author',['id'=>$data['author']->id]); ?>" class="section__readMore">Voir plus du même auteur</a>
     </div>
     <div class="section__block">
         <h3 class="section__block__title"><a href="<?= Html::url('view','author',['id'=>$data['author']->id]); ?>"><?= $data['author']->first_name . ' ' . $data['author']->last_name; ?></a></h3>
