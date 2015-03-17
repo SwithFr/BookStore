@@ -7,6 +7,8 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Models\\' => array($baseDir . '/models'),
+    'Illuminate\\Contracts\\' => array($vendorDir . '/illuminate/contracts'),
+    'Illuminate\\Container\\' => array($vendorDir . '/illuminate/container'),
     'Helpers\\' => array($baseDir . '/helpers'),
     'Controllers\\' => array($baseDir . '/controllers'),
     'Components\\' => array($baseDir . '/components'),
