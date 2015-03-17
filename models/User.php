@@ -2,9 +2,9 @@
 
 namespace Models;
 
-use Models\Interfaces\GenresRepositoryInterface;
+use Models\Interfaces\UsersRepositoryInterface;
 
-class User extends AppModel implements GenresRepositoryInterface
+class User extends AppModel implements UsersRepositoryInterface
 {
     public $rules = [
         'login' => [
