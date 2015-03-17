@@ -2,7 +2,9 @@
 
 namespace Models;
 
-class Librarie extends AppModel
+use Models\Interfaces\LibrariesRepositaryInterface;
+
+class Librarie extends AppModel implements LibrariesRepositaryInterface
 {
     public $table = 'libraries';
 

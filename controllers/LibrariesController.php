@@ -2,11 +2,19 @@
 
 namespace Controllers;
 
+use Components\Request;
 use Components\Session;
 use Components\Validator;
+use Models\Interfaces\LibrariesRepositaryInterface;
 
 class LibrariesController extends AppController
 {
+    function __construct(LibrariesRepositaryInterface $library, Request $request)
+    {
+        parent::__construct($request);
+        $this->Librarie = $library;
+    }
+
     /**
      * Formulaire d'ajout de librairie
      */
