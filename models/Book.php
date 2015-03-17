@@ -3,8 +3,9 @@
 namespace Models;
 
 use Behaviors\searchable;
+use Models\Intfs\BooksRepositoryInterface;
 
-class Book extends AppModel
+class Book extends AppModel implements BooksRepositoryInterface
 {
     use searchable;
     public $rules = [
@@ -106,6 +107,7 @@ class Book extends AppModel
      * @param $editor_id
      * @param $author_id
      * @param $library_id
+     * @return mixed|void
      */
     public function create($title, $img, $summary, $isbn, $nbpages, $language_id, $genre_id, $location_id, $editor_id, $author_id, $library_id)
     {
