@@ -2,11 +2,19 @@
 
 namespace Controllers;
 
+use Components\Request;
 use Components\Session;
 use Components\Validator;
+use Models\Interfaces\LocationsRepositoryInterface;
 
 class LocationsController extends AppController
 {
+    function __construct(LocationsRepositoryInterface $location, Request $request)
+    {
+        parent::__construct($request);
+        $this->Location = $location;
+    }
+
     public function add()
     {
         if (!Session::isLogged())

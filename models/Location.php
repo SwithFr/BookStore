@@ -2,7 +2,9 @@
 
 namespace Models;
 
-class Location extends AppModel
+use Models\Interfaces\LocationsRepositoryInterface;
+
+class Location extends AppModel implements LocationsRepositoryInterface
 {
     public $rules = [
         'name' => [
