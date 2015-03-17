@@ -7,11 +7,11 @@ use Components\Request;
 use Components\Session;
 use Components\Validator;
 use Helpers\Image;
-use Models\Book;
+use Models\Interfaces\BooksRepositoryInterface;
 
 class BooksController extends AppController
 {
-    function __construct(Book $book, Request $request)
+    function __construct(BooksRepositoryInterface $book, Request $request)
     {
         parent::__construct($request);
         $this->Book = $book;
