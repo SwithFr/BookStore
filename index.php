@@ -31,8 +31,7 @@ $container = new \Illuminate\Container\Container();
 # Génération du nom du controller Model+s+Controller
 $controllerName = '\\Controllers\\' . ucfirst($request->controller) . 's' . 'Controller';
 
-# Initialisation du controller
-//$controller = new $controllerName($request);
+# Initialisation du controller avec l'auto injection de dépendance
 $controller = $container->make($controllerName);
 
 # Récupération des données
