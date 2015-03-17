@@ -5,11 +5,11 @@ namespace Controllers;
 use Components\Request;
 use Components\Session;
 use Components\Validator;
-use Models\Interfaces\LibrariesRepositaryInterface;
+use Models\Interfaces\LibrariesRepositoryInterface;
 
 class LibrariesController extends AppController
 {
-    function __construct(LibrariesRepositaryInterface $library, Request $request)
+    function __construct(LibrariesRepositoryInterface $library, Request $request)
     {
         parent::__construct($request);
         $this->Librarie = $library;
