@@ -14,3 +14,5 @@
 configs/database.php
 0-TEMPLATE
 *.ids
+
+vendor/illuminate/container/
