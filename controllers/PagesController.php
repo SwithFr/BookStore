@@ -51,6 +51,7 @@ class PagesController extends AppController
             foreach ($data['books'] as $book) {
                 $this->loadModel('Book');
                 $library = $this->Book->getLibrary($book->id);
+                $data['libraries'][$library->name]['id'] = $library->id;
                 $data['libraries'][$library->name][] = $book;
             }
 
