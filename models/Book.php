@@ -3,7 +3,7 @@
 namespace Models;
 
 use Behaviors\searchable;
-use Models\Intfs\BooksRepositoryInterface;
+use Models\Interfaces\BooksRepositoryInterface;
 
 class Book extends AppModel implements BooksRepositoryInterface
 {
