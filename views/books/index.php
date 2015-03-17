@@ -41,9 +41,9 @@ use Helpers\Text;
         </p>
 
         <div class="author__count">
-            <p class="nb author__nbBooks">12</p>
+            <p><?= $data['author']->first_name . ' ' . $data['author']->last_name; ?> a écrit <span class="nb">12</span> livres</p>
 
-            <p class="nb author__eval">4.5</p>
+            <p>Et il a une note globale de <span class="nb">4.5</span</p>
         </div>
     </div>
     <div class="section__block">
