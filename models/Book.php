@@ -230,7 +230,8 @@ class Book extends AppModel implements BooksRepositoryInterface
     {
         $sql = 'SELECT DISTINCT title, name
                 FROM books
-                JOIN genres ON genre_id = genres.id';
+                JOIN genres ON genre_id = genres.id
+                ORDER BY name ASC';
         return $this->db->query($sql)->fetchAll();
     }
 
