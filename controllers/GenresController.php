@@ -2,8 +2,17 @@
 
 namespace Controllers;
 
+use Components\Request;
+use Models\Interfaces\GenresRepositoryInterface;
+
 class GenresController extends AppController
 {
+    function __construct(GenresRepositoryInterface $genre, Request $request)
+    {
+        parent::__construct($request);
+        $this->Genre = $genre;
+    }
+
     /**
      * Liste tous les genres
      * @return array

@@ -2,7 +2,9 @@
 
 namespace Models;
 
-class Genre extends AppModel
+use Models\Interfaces\GenresRepositoryInterface;
+
+class Genre extends AppModel implements GenresRepositoryInterface
 {
 
 } 
