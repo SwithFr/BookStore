@@ -187,24 +187,14 @@
 }
 
 .author__count {
-  position: absolute;
-  right: -5%;
-  top: 2em;
+  margin-top: 2em;
+  padding-top: .5em;
+
+  border-top: 1px solid gray;
 }
 
 .nb {
-  background-color: lightgray;
-  height: 26px;
-  width: 26px;
-  margin-bottom: 1em;
-
-  font-size: .8em;
-  line-height: 26px;
-  text-align: center;
-  color: white;
-
-  border-radius: 1.2em;
-  border: 1px solid orangered;
+  color: red;
 }
 
 /* FOOTER */
@@ -342,13 +332,25 @@
 }
 
 .results__link {
-  margin-bottom: .5em;
+  margin: .5em 0;
   padding-left: 1em;
 
   &:hover {
     color: #d04c51;
     text-decoration: underline;
   }
+}
+
+.request {
+  color: red;
+}
+
+.library {
+  margin: .5em 0;
+}
+
+.library__name {
+  text-decoration: underline;
 }
 
 /* LOGIN / REGISTER */
