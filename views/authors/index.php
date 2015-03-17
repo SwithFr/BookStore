@@ -13,7 +13,7 @@
     </ul>
     <div class="authors">
         <?php if(empty($data['authors'])): ?>
-            <h2>Aucun auteur trouvé !</h2>
+            <h2 class="noResult">Aucun auteur trouvé !</h2>
         <?php endif; ?>
         <ul class="authors__list">
             <?php foreach($data['authors'] as $author): ?>
@@ -25,7 +25,7 @@
                         <p class="section__block__year"><?= $author->date_birth; ?> - <?= $author->date_death; ?></p>
                         <p class="section__block__content">
                             <?= Text::cut($author->bio,250); ?>
-                        </p><a href="<?= Html::url('view','author',['id'=>$author->id]); ?>" class="section__readMore">Lire plus</a>
+                        </p><a href="<?= Html::url('view','author',['id'=>$author->id]); ?>" class="section__readMore author__readMore">Lire plus</a>
                     </div>
                 </li>
             <?php endforeach; ?>
