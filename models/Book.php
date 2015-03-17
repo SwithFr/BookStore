@@ -228,9 +228,10 @@ class Book extends AppModel implements BooksRepositoryInterface
      */
     public function getWithGenre()
     {
-        $sql = 'SELECT DISTINCT title, name
+        $sql = 'SELECT DISTINCT title, name, books.id, COUNT(books.id)
                 FROM books
                 JOIN genres ON genre_id = genres.id
+                GROUP BY title
                 ORDER BY name ASC';
         return $this->db->query($sql)->fetchAll();
     }
