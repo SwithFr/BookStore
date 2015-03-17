@@ -1,6 +1,6 @@
 <?php
 
-namespace Models\Intfs;
+namespace Models\Interfaces;
 
 interface BooksRepositoryInterface
 {
