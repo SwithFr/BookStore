@@ -24,7 +24,7 @@ class GenresController extends AppController
         $letters = [];
         $i = 0;
         foreach ($books as $book) {
-            $letters[$book->name][$i] = $book->title;
+            $letters[$book->name][$i] = $book;
             $i++;
         }
 
