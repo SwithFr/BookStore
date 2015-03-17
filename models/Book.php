@@ -258,12 +258,12 @@ class Book extends AppModel implements BooksRepositoryInterface
      */
     public function getLibrary($book_id)
     {
-        $sql = 'SELECT name
+        $sql = 'SELECT name, libraries.id
                 FROM libraries
                 JOIN book_library ON library_id = libraries.id
                 WHERE book_id = :book_id AND private = 0';
         $pdost = $this->db->prepare($sql);
-        $pdost->execute([':book_id'=>$book_id]);
+        $pdost->execute([':book_id' => $book_id]);
         return $pdost->fetch();
     }
 }
