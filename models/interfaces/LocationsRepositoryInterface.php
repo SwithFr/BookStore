@@ -19,11 +19,4 @@ interface LocationsRepositoryInterface
      * @return mixed
      */
     public function create($name, $library_id);
-
-    /**
-     * @param $library_id
-     * @param $location_id
-     * @return mixed
-     */
-    private function newLocationLibrary($library_id, $location_id);
 }
