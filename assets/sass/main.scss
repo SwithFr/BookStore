@@ -245,11 +245,18 @@
   margin-bottom: 2em;
   margin-right: 5%;
   width: 26%;
+  min-height: 22em;
 }
 
 .authors .section__block__title {
   margin-bottom: .6em;
   border-bottom: 1px dotted orangered;
+}
+
+.author__readMore {
+  position: absolute;
+  bottom: 0;
+  padding: 0;
 }
 
 /* AUTHOR-SINGLE */
@@ -278,8 +285,8 @@
 }
 
 .editors__list__item {
-  padding: .5em 0;
-  padding: .5em;
+  width: 46%;
+  padding: .5em 1em;
   margin-bottom: 1em;
   
   &:hover .editor__title {
