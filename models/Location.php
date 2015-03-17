@@ -31,6 +31,11 @@ class Location extends AppModel implements LocationsRepositoryInterface
         return $pdost->fetchAll();
     }
 
+    /**
+     * @param $name
+     * @param $library_id
+     * @return mixed|void
+     */
     public function create($name, $library_id)
     {
         $sql = 'INSERT INTO locations(name)
@@ -41,6 +46,11 @@ class Location extends AppModel implements LocationsRepositoryInterface
         $this->newLocationLibrary($library_id, $this->db->lastInsertId());
     }
 
+    /**
+     * @param $library_id
+     * @param $location_id
+     * @return mixed|void
+     */
     private function newLocationLibrary($library_id, $location_id)
     {
         $sql = 'INSERT INTO location_library(location_id, library_id)
