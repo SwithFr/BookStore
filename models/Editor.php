@@ -2,7 +2,9 @@
 
 namespace Models;
 
-class Editor extends AppModel
+use Models\Interfaces\EditorsRepositoryInterface;
+
+class Editor extends AppModel implements EditorsRepositoryInterface
 {
     public $rules = [
         'name' => [
