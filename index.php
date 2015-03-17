@@ -25,11 +25,15 @@ use Components\Request;
 # Initialisation de la requête
 $request = new Request();
 
+# Création du container d'injection de dépendances
+$container = new \Illuminate\Container\Container();
+
 # Génération du nom du controller Model+s+Controller
 $controllerName = '\\Controllers\\' . ucfirst($request->controller) . 's' . 'Controller';
 
 # Initialisation du controller
-$controller = new $controllerName($request);
+//$controller = new $controllerName($request);
+$controller = $container->make($controllerName);
 
 # Récupération des données
 $data = call_user_func([$controller, $request->action]);
