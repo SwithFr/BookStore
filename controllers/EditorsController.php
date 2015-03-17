@@ -52,7 +52,7 @@ class EditorsController extends AppController
 
             $this->Editor->create($_POST['name'], $_POST['website'], $dest . $name, $_POST['history']);
             Session::setFlash('L‘éditeur ' . $_POST['first_name'] . ' ' . $_POST['last_name'] . ' a bien été ajouté !');
-            $this->redirect('add', 'book');
+            $this->redirect('edit', 'book');
         }
     }
 } 
