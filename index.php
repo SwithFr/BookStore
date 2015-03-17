@@ -27,6 +27,9 @@ $request = new Request();
 
 # Création du container d'injection de dépendances
 $container = new \Illuminate\Container\Container();
+foreach (include('binding.php') as $interface => $concrete) {
+    $container->bind($interface,$concrete);
+}
 
 # Génération du nom du controller Model+s+Controller
 $controllerName = '\\Controllers\\' . ucfirst($request->controller) . 's' . 'Controller';
