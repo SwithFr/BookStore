@@ -8,7 +8,8 @@
         }
     ],
     "require": {
-        "nesbot/carbon": "~1.14"
+        "nesbot/carbon": "~1.14",
+        "illuminate/container": "5.0.x-dev"
     },
     "autoload": {
         "psr-4": {
