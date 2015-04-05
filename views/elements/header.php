@@ -1,4 +1,4 @@
-<?php use Helpers\Html; ?>
+<?php use Helpers\Html; use \Components\Session; ?>
 <!doctype html>
 <html lang="fr">
 <head>
@@ -15,7 +15,7 @@
             <p>partager et lire des livres</p>
         </div>
         <div class="header__login">
-            <?php if(!isset($_COOKIE['user_id']) && !isset($_SESSION['user_id'])): ?>
+            <?php if(!Session::isLogged()): ?>
                 <a href="<?= Html::url('register','user'); ?>" class="link link--white">Créer un compte</a>
                 <a href="<?= Html::url('check','user'); ?>" class="link link--white">Connexion</a>
             <?php else: ?>
