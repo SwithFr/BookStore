@@ -41,7 +41,7 @@ class BooksController extends AppController
     }
 
     /**
-     * Formulaire d'ajout de livre
+     * Formulaire d'ajout et édition de livre
      * @return array
      */
     public function edit()
