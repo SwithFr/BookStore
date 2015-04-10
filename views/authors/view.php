@@ -15,7 +15,7 @@
                     <img src="<?= $data['author']->img; ?>" class="section__block__img">
                     <?php if(!empty($data['books'])): ?>
                         <h3>Voir ses livres</h3>
-                        <ul>
+                        <ul id="books__list">
                             <?php foreach($data['books'] as $book): ?>
                                 <li>
                                     <a href="<?= Html::url('view','book',['id'=>$book->id]); ?>"><?= $book->title; ?></a>
