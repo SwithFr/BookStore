@@ -33,15 +33,14 @@ use Helpers\Text;
         <h3 class="section__block__title"><a
                 href="<?= Html::url('view', 'author', ['id' => $data['author']->id]); ?>"><?= $data['author']->first_name . ' ' . $data['author']->last_name; ?></a>
         </h3>
-
-        <p class="section__block__year"><?= $data['author']->date_birth; ?> - <?= $data['author']->date_death; ?></p>
+        <p class="section__block__year"><?= $data['author']->date_birth; ?><?= ($data['author']->date_death !== '') ? ' - ' . $data['author']->date_death : ''; ?></p>
 
         <p class="section__block__content">
             <?= Text::cut($data['author']->bio, 500); ?>
         </p>
 
         <div class="author__count">
-            <p><?= $data['author']->first_name . ' ' . $data['author']->last_name; ?> a écrit <span class="nb">12</span> livres</p>
+            <p><?= $data['author']->first_name . ' ' . $data['author']->last_name; ?> a écrit <a href="<?= Html::url('view', 'author', ['id' => $data['author']->id]); ?>#books__list"><span class="nb">12</span></a> livres</p>
 
             <p>Et il a une note globale de <span class="nb">4.5</span</p>
         </div>
