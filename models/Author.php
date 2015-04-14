@@ -68,6 +68,11 @@ class Author extends AppModel implements AuthorsRepositoryInterface
         $pdost->execute([':first_name' => $first_name, ':last_name' => $last_name, ':img' => $img, ':date_birth' => $date_birth, ':date_death' => $date_death, ':bio' => $bio]);
     }
 
+    /**
+     * Permet de récupérer un auteur selon son id
+     * @param $author_id
+     * @return mixed
+     */
     public function find($author_id)
     {
         $sql = 'SELECT id,last_name, first_name, img, date_birth, date_death, bio
@@ -76,5 +81,21 @@ class Author extends AppModel implements AuthorsRepositoryInterface
         $pdost = $this->db->prepare($sql);
         $pdost->execute([':author_id' => $author_id]);
         return $pdost->fetch();
+    }
+
+    /**
+     * Permet de récupérer les initiales des noms d'auteur
+     * @return array
+     */
+    public function getLetters()
+    {
+        $sql = 'SELECT DISTINCT(LEFT(last_name,1)) AS letter FROM authors ORDER BY letter ASC';
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute();
+        $letters = [];
+        foreach ($pdost->fetchAll(\PDO::FETCH_ASSOC) as $k => $v) {
+            $letters[] = $v['letter'];
+        }
+        return $letters;
     }
 }
