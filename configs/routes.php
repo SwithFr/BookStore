@@ -9,6 +9,7 @@ return $routes = [
     'A_index'         => 'index/author',
     'A_add'           => 'add/author',
     'A_view'          => 'view/author',
+    'A_search'        => 'search/author',
 
     # Routes éditeursdd
     'E_index'         => 'index/editor',
