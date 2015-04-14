@@ -42,6 +42,9 @@ class AuthorsController extends AppController
         return compact("authors", "letter", "letters");
     }
 
+    /**
+     * AJOUT D'UN AUTEUR
+     */
     public function add()
     {
         if (!Session::isLogged())
@@ -72,6 +75,10 @@ class AuthorsController extends AppController
         }
     }
 
+    /**
+     * PAGE D'UN AUTEUR
+     * @return array
+     */
     public function view()
     {
         if (!isset($_GET['id']) || !is_numeric($_GET['id']))
@@ -94,6 +101,22 @@ class AuthorsController extends AppController
         $books = $this->Book->getAllFromAuthor($author->id);
 
         return compact('author', 'books');
+    }
+
+    /**
+     * Rechercher un auteur
+     * @return array
+     */
+    public function search()
+    {
+        $authors = $request = null;
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['search']) && !empty($_POST['search'])) {
+            $request = $_POST['search'];
+            $authors = $this->Author->search($request, ['last_name', 'first_name'], 'first_name, last_name, id');
+        }
+
+        return compact('authors', 'request');
     }
 
 } 
