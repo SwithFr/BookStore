@@ -30,6 +30,9 @@ class EditorsController extends AppController
         return compact("editors", "letter", "letters");
     }
 
+    /**
+     * AJOUT D'UN EDITEUR
+     */
     public function add()
     {
         if (!Session::isLogged())
@@ -55,5 +58,21 @@ class EditorsController extends AppController
             Session::setFlash('L‘éditeur ' . $_POST['first_name'] . ' ' . $_POST['last_name'] . ' a bien été ajouté !');
             $this->redirect('edit', 'book');
         }
+    }
+
+    /**
+     * Rechercher un éditeur
+     * @return array
+     */
+    public function search()
+    {
+        $editors = $request = null;
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['search']) && !empty($_POST['search'])) {
+            $request = $_POST['search'];
+            $editors = $this->Editor->search($request, ['name'], 'name, id');
+        }
+
+        return compact('editors', 'request');
     }
 } 
