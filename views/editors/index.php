@@ -6,11 +6,14 @@
     <ul class="filter__list">
         <?php for($i='a'; $i<='z'; $i++): ?>
             <li class="filter__item">
-                <a href="<?= Html::url('index','editor',['letter'=>$i]); ?>" <?= ($data['letter'] == $i )?'class="filter--active"':''; ?>><?= ucfirst($i); ?></a>
+                <?php if(in_array(ucfirst($i),$data['letters'])): ?>
+                    <a href="<?= Html::url('index','editor',['letter'=>$i]); ?>" class="dispo-letter<?= ($data['letter'] == $i )?' filter--active':''; ?>"><?= ucfirst($i); ?></a>
+                <?php else: ?>
+                    <?= ucfirst($i); ?>
+                <?php endif; ?>
                 <?php if($i=='z'){break;}; ?>
             </li>
         <?php endfor; ?>
-
     </ul>
     <?php if(empty($data['editors'])): ?>
         <h2 class="noResult">Aucun éditeur trouvé !</h2>
