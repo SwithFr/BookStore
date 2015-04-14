@@ -21,12 +21,13 @@ class EditorsController extends AppController
     public function index()
     {
         if (isset($_GET['letter']) && !empty($_GET['letter']) && preg_match('/[A-Z]/', ucfirst($_GET['letter']))) {
+            $letters = $this->Editor->getLetters();
             $letter = $_GET['letter'];
             $editors = $this->Editor->getAllFromLetter("*", 'name', $letter);
         } else
             $this->redirect('index', 'author', ['letter' => 'a']);
 
-        return compact("editors", "letter");
+        return compact("editors", "letter", "letters");
     }
 
     public function add()
