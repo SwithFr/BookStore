@@ -6,7 +6,11 @@
     <ul class="filter__list">
         <?php for($i='a'; $i<='z'; $i++): ?>
             <li class="filter__item">
-                <a href="<?= Html::url('index','author',['letter'=>$i]); ?>" <?= ($data['letter'] == $i )?'class="filter--active"':''; ?>><?= ucfirst($i); ?></a>
+                <?php if(in_array(ucfirst($i),$data['letters'])): ?>
+                    <a href="<?= Html::url('index','author',['letter'=>$i]); ?>" class="dispo-letter<?= ($data['letter'] == $i )?' filter--active':''; ?>"><?= ucfirst($i); ?></a>
+                <?php else: ?>
+                    <?= ucfirst($i); ?>
+                <?php endif; ?>
                 <?php if($i=='z'){break;}; ?>
             </li>
         <?php endfor; ?>
@@ -25,11 +29,10 @@
                         <p class="section__block__year"><?= $author->date_birth; ?> - <?= $author->date_death; ?></p>
                         <p class="section__block__content">
                             <?= Text::cut($author->bio,250); ?>
-                        </p><a href="<?= Html::url('view','author',['id'=>$author->id]); ?>" class="section__readMore author__readMore">Lire plus</a>
+                        </p>
                     </div>
                 </li>
             <?php endforeach; ?>
         </ul>
     </div>
-</div>
 </div>
