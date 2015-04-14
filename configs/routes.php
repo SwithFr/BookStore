@@ -11,9 +11,10 @@ return $routes = [
     'A_view'          => 'view/author',
     'A_search'        => 'search/author',
 
-    # Routes éditeursdd
+    # Routes éditeurs
     'E_index'         => 'index/editor',
     'E_add'           => 'add/editor',
+    'E_search'        => 'search/editor',
 
     # Routes genres
     'G_index'         => 'index/genre',
