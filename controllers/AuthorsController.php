@@ -24,6 +24,7 @@ class AuthorsController extends AppController
     {
         if (isset($_GET['letter']) && !empty($_GET['letter']) && preg_match('/[A-Z]/', ucfirst($_GET['letter']))) {
             $letter = $_GET['letter'];
+            $letters = $this->Author->getLetters();
             $authors = $this->Author->getAllFromLetter("first_name,last_name,date_birth,date_death,bio,id", 'last_name', $letter);
             foreach ($authors as $a) {
                 $b = Carbon::parse($a->date_birth);
@@ -38,7 +39,7 @@ class AuthorsController extends AppController
         } else
             $this->redirect('index', 'author', ['letter' => 'a']);
 
-        return compact("authors", "letter");
+        return compact("authors", "letter", "letters");
     }
 
     public function add()
