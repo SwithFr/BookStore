@@ -4,9 +4,18 @@
   margin-right: .5em;
 
   color: lightgray;
+}
 
-  &:hover {
-    text-decoration: underline;
-    color: black;
-  }
+.dispo-letter:hover {
+  text-decoration: underline;
+  color: black;
+}
+
+.filter__list .filter--active {
+  color: black;
+  text-decoration: underline;
+}
+
+.filter__item .dispo-letter {
+  color: #000000;
 }
