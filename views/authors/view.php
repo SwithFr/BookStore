@@ -5,8 +5,7 @@
             <div class="section__header">
                 <h2 class="section__title"><?= $data['author']->first_name . ' ' . $data['author']->last_name; ?></h2>
                 <div class="section__block bio">
-                    <p class="section__block__year">
-                        <?= $data['author']->date_birth . ' - ' . $data['author']->date_death; ?>
+                    <p class="section__block__year"><?= $data['author']->date_birth; ?><?= ($data['author']->date_death !== '') ? ' - ' . $data['author']->date_death : ''; ?></p>
                     <div class="section__block__content">
                         <?= $data['author']->bio; ?>
                     </div>

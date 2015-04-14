@@ -26,7 +26,7 @@
                         <a href="<?= Html::url('view','author',['id'=>$author->id]); ?>"><?= $author->first_name . ' ' . $author->last_name; ?></a>
                     </h3>
                     <div class="author">
-                        <p class="section__block__year"><?= $author->date_birth; ?> - <?= $author->date_death; ?></p>
+                        <p class="section__block__year"><?= $author->date_birth; ?><?= ($author->date_death !== '') ? ' - ' . $author->date_death : ''; ?></p>
                         <p class="section__block__content">
                             <?= Text::cut($author->bio,250); ?>
                         </p>
