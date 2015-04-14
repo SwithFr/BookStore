@@ -27,4 +27,20 @@ class Editor extends AppModel implements EditorsRepositoryInterface
         $pdost = $this->db->prepare($sql);
         $pdost->execute([':name' => $name, ':website' => $website, ':img' => $img, ':history' => $history]);
     }
+
+    /**
+     * Permet de récupérer les initiales des noms des éditeurs
+     * @return array
+     */
+    public function getLetters()
+    {
+        $sql = 'SELECT DISTINCT(LEFT(name,1)) AS letter FROM editors ORDER BY letter ASC';
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute();
+        $letters = [];
+        foreach ($pdost->fetchAll(\PDO::FETCH_ASSOC) as $k => $v) {
+            $letters[] = $v['letter'];
+        }
+        return $letters;
+    }
 } 
