@@ -75,4 +75,23 @@ class EditorsController extends AppController
 
         return compact('editors', 'request');
     }
+
+    /**
+     * PAGE D'UN EDITEUR
+     * @return array
+     */
+    public function view()
+    {
+        if (!isset($_GET['id']) || !is_numeric($_GET['id']))
+            $this->redirect('missingParams', 'error');
+
+        $editor = $this->Editor->find($_GET['id']);
+        if (!$editor)
+            Session::setFlash('L‘éditeur est introuvable !', 'error');
+
+        $this->loadModel('Book');
+        $books = $this->Book->getAllFromEditor($editor->id);
+
+        return compact('editor', 'books');
+    }
 } 
