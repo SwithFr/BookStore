@@ -40,7 +40,7 @@ class PagesController extends AppController
                         'where' => ['last_name','first_name'],
                         'get' => 'first_name, last_name, id'
                     ],
-                    'genres' => [
+                    'editors' => [
                         'what' => $request,
                         'where' => ['name'],
                         'get' => 'name, id'
