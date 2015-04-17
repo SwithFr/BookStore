@@ -45,14 +45,14 @@ use Helpers\Html;
             </div>
         <?php endif; ?>
 
-        <?php if (empty($data['data']['genres'])): ?>
-            <h2 class="noResult">Aucun genre trouvé !</h2>
+        <?php if (empty($data['data']['editors'])): ?>
+            <h2 class="noResult">Aucun éditeur trouvé !</h2>
         <?php else: ?>
             <div class="section__block results">
                 <h2 class="results__title">Le(s) genre(s)</h2>
-                <?php foreach ($data['data']['genres'] as $genre): ?>
+                <?php foreach ($data['data']['editors'] as $editor): ?>
                     <h3 class="results__link">
-                        <a href="<?= Html::url('view', 'genre', ['id' => $genre->id]); ?>"><?= $genre->name; ?></a>
+                        <a href="<?= Html::url('view', 'editor', ['id' => $editor->id]); ?>"><?= $editor->name; ?></a>
                     </h3>
                 <?php endforeach; ?>
             </div>
