@@ -15,6 +15,7 @@ return $routes = [
     'E_index'         => 'index/editor',
     'E_add'           => 'add/editor',
     'E_search'        => 'search/editor',
+    'E_view'          => 'view/editor',
 
     # Routes genres
     'G_index'         => 'index/genre',
