@@ -254,6 +254,22 @@ class Book extends AppModel implements BooksRepositoryInterface
     }
 
     /**
+     * Récupère les livres d'un éditeur
+     * @param $editor_id
+     * @return array
+     */
+    public function getAllFromEditor($editor_id)
+    {
+        $sql = 'SELECT DISTINCT title, books.id, history
+                FROM books
+                JOIN editors ON editor_id = editors.id
+                WHERE editor_id = :editor_id';
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute([':editor_id' => $editor_id]);
+        return $pdost->fetchAll();
+    }
+
+    /**
      * Récupère la bibliothèque d'un livre
      * @param $book_id
      * @return mixed
