@@ -39,6 +39,9 @@
             </div>
             <div class="section__block">
                 <a class="btn btn--add" href="<?= Html::url('edit','book',['library'=>$data['library']->id]); ?>">Ajouter un livre</a>
+                <a class="btn btn--add" href="<?= Html::url('add','author'); ?>">Ajouter un auteur</a>
+                <a class="btn btn--add" href="<?= Html::url('add','editor'); ?>">Ajouter un éditeur</a>
+                <a class="btn btn--add" href="<?= Html::url('add','location',['library'=>$data['library']->id]); ?>">Ajouter un emplacement à votre bibliothèque</a>
             </div>
         <?php endif; ?>
     </div>
