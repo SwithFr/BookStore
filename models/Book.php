@@ -76,11 +76,11 @@ class Book extends AppModel implements BooksRepositoryInterface
     {
         $sql = 'SELECT ' . $fields . '
                 FROM books
-                JOIN book_library ON book_library.book_id = books.id
-                JOIN libraries ON book_library.library_id = libraries.id
-                JOIN author_book ON author_book.book_id = books.id
-                JOIN authors ON author_book.author_id = authors.id
-                WHERE library_id = ' . $id . '
+                LEFT JOIN book_library ON book_library.book_id = books.id
+                LEFT JOIN libraries ON book_library.library_id = libraries.id
+                LEFT JOIN author_book ON author_book.book_id = books.id
+                LEFT JOIN authors ON author_book.author_id = authors.id
+                WHERE library_id = ' . $id . ' AND private = 0
                 ORDER BY title ASC ';
 
         if (!is_null($limit))
@@ -196,6 +196,7 @@ class Book extends AppModel implements BooksRepositoryInterface
      * Met à jour les données d'un livre
      * @param $data
      * @param $id
+     * @return mixed|void
      */
     public function update($data, $id)
     {
