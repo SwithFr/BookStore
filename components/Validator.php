@@ -161,7 +161,7 @@ class Validator
     public function isDate($field, $value, $message = null)
     {
         if ($message == null)
-            $message = "le champ $field n'est pas une date valide (AAAA-MM-JJ";
+            $message = "le champ $field n'est pas une date valide (AAAA-MM-JJ)";
 
         if (empty($value))
             return true;
