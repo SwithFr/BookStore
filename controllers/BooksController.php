@@ -50,7 +50,7 @@ class BooksController extends AppController
             $this->redirect('notLogged', 'error');
         }
 
-        if (!isset($_GET['library'])) {
+        if (!isset($_GET['library']) || !is_numeric($_GET['library'])) {
             $this->redirect('missingParams', 'error');
         }
 
