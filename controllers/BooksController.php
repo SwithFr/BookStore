@@ -28,6 +28,7 @@ class BooksController extends AppController
         # l'auteur le mieux noté
         $this->loadModel('Author');
         $author = $this->Author->getPopular('authors.id,authors.img,first_name,last_name,bio,date_birth,date_death', 1);
+        $author->book_count = $this->Author->getBookCount($author->id);
         $d_b = Carbon::parse($author->date_birth);
         $author->date_birth = $d_b->year;
         if ($author->date_death != '0000-00-00') {
