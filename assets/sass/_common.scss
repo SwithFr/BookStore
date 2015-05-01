@@ -15,3 +15,11 @@ a, a:visited {
   width: 90%;
   margin: 0 auto;
 }
+
+.ariane {
+  color: #c0c5ce;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
