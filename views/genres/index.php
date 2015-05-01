@@ -12,7 +12,7 @@ use Helpers\Html;
             <h2 class="section__block__title"><?= $k; ?></h2>
             <?php foreach ($v as $w): ?>
                 <p>
-                    <a class="results__link" href="<?= Html::url('view', 'genre', ['id' => $w->id]); ?>"><?= $w->title; ?></a>
+                    <a class="results__link" href="<?= Html::url('view', 'book', ['id' => $w->id]); ?>"><?= $w->title; ?></a>
                 </p>
             <?php endforeach; ?>
         </div>
