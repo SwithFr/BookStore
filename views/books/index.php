@@ -40,7 +40,7 @@ use Helpers\Text;
         </p>
 
         <div class="author__count">
-            <p><?= $data['author']->first_name . ' ' . $data['author']->last_name; ?> a écrit <a href="<?= Html::url('view', 'author', ['id' => $data['author']->id]); ?>#books__list"><span class="nb">12</span></a> livres</p>
+            <p><?= $data['author']->first_name . ' ' . $data['author']->last_name; ?> a écrit <a href="<?= Html::url('view', 'author', ['id' => $data['author']->id]); ?>#books__list"><span class="nb"><?= $data['author']->book_count; ?></span></a> livres</p>
 
             <p>Et il a une note globale de <span class="nb">4.5</span</p>
         </div>
