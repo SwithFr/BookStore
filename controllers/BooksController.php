@@ -73,6 +73,7 @@ class BooksController extends AppController
                 $book = $this->Book->find($_GET['id']);
                 $d['title'] = $book->title;
                 $d['summary'] = $book->summary;
+                $d['img'] = $book->img;
                 $d['isbn'] = $book->isbn;
                 $d['nbpages'] = $book->nbpages;
                 $d['author_id'] = $book->author_id;
@@ -134,6 +135,47 @@ class BooksController extends AppController
         }
 
         return compact('genres', 'languages', 'editors', 'locations', 'authors', 'library_id', 'd');
+    }
+
+    /**
+     * Confirmer une suppression
+     * @return array
+     */
+    public function delete()
+    {
+        if (!Session::isLogged()) {
+            $this->redirect('notLogged', 'error');
+        }
+
+        if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+            $this->redirect('missingParams', 'error');
+        }
+
+        $book = $this->Book->find($_GET['id']);
+
+        if (!$book) {
+            $this->redirect('account','user');
+        }
+
+        return compact('book');
+    }
+
+    /**
+     * Supprimer un livre
+     */
+    public function goDelete(){
+        if (!Session::isLogged()) {
+            $this->redirect('notLogged', 'error');
+        }
+
+        if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+            $this->redirect('missingParams', 'error');
+        }
+
+        $this->Book->delete($_GET['id']);
+        $this->Book->deleteRelations($_GET['id']);
+        Session::setFlash('Le livre a bien été supprimé !');
+        $this->redirect('account','user');
     }
 
     /**
