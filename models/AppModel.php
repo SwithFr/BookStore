@@ -119,4 +119,14 @@ class AppModel
         return $pdost->fetch();
     }
 
+    /**
+     * Supprime un enregistrement
+     * @param $id
+     */
+    public function delete($id)
+    {
+        $sql = 'DELETE FROM ' . $this->table . ' WHERE id = ' . $id;
+        $this->db->query($sql);
+    }
+
 } 
