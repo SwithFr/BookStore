@@ -1,6 +1,8 @@
 <?php use Helpers\Html; ?>
 <div class="section">
 
+    <p class="ariane"><a href="<?= Html::url('account','user'); ?>">Retour</a></p>
+
     <?php if(isset($_GET['id'])): ?>
         <h2 class="section__title">Modifier un livre</h2>
         <form class="form--add"
@@ -30,10 +32,15 @@
                name="img"
                id="img"/>
 
+        <?php if(isset($data['d']['img'])): ?>
+            <img src="<?= $data['d']['img']; ?>" alt="" width="200px"/>
+        <?php endif; ?>
+
         <label class="form__label" for="summary">Résumé</label>
         <?= isset($data['errors']['summary']) ? '<span class="has-error">' . $data['errors']['summary'] . '</span>' : ''; ?></span>
         <textarea class="form__textarea"
                   name="summary"
+                  rows="10"
                   id="summary"><?= isset($data['d']['summary']) ? $data['d']['summary'] : ''; ?></textarea>
 
         <label class="form__label" for="isbn">Numéro ISBN</label>
