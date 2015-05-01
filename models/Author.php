@@ -99,4 +99,18 @@ class Author extends AppModel implements AuthorsRepositoryInterface
         }
         return $letters;
     }
+
+    /**
+     * Récupère le nombre de livres d'un auteur
+     * @param $author_id
+     * @return mixed
+     */
+    public function getBookCount($author_id)
+    {
+        $sql = 'SELECT COUNT(id) as count FROM author_book WHERE author_id = :author_id';
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute([':author_id'=>$author_id]);
+
+        return $pdost->fetch()->count;
+    }
 }
