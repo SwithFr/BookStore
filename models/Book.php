@@ -290,4 +290,17 @@ class Book extends AppModel implements BooksRepositoryInterface
         return $pdost->fetch();
     }
 
+    /**
+     * Supprime la liaison entre un livre et son auteur
+     * @param $book_id
+     */
+    public function deleteRelations($book_id)
+    {
+        $sql = 'DELETE FROM author_book WHERE book_id = ' . $book_id;
+        $this->db->query($sql);
+
+        $sql = 'DELETE FROM book_library WHERE book_id = ' . $book_id;
+        $this->db->query($sql);
+    }
+
 }
