@@ -13,10 +13,11 @@ class Html
      */
     public static function url($action, $controller, $params = null)
     {
-        if (!is_null($params))
+        if (!is_null($params)) {
             $query = '&' . http_build_query($params);
-        else
+        } else {
             $query = '';
+        }
         return $_SERVER['PHP_SELF'] . '?a=' . $action . '&e=' . $controller . $query;
     }
 }

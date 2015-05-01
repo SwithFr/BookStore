@@ -57,8 +57,9 @@ class Book extends AppModel implements BooksRepositoryInterface
                 JOIN authors ON author_id = authors.id
                 WHERE ref = \'books\'
                 ORDER BY value DESC ';
-        if ($limit)
+        if ($limit) {
             $sql .= 'LIMIT ' . $limit;
+        }
 
         $pdost = $this->db->query($sql);
 
@@ -83,13 +84,15 @@ class Book extends AppModel implements BooksRepositoryInterface
                 WHERE library_id = ' . $id . ' AND private = 0
                 ORDER BY title ASC ';
 
-        if (!is_null($limit))
+        if (!is_null($limit)) {
             $sql .= 'LIMIT ' . $limit;
+        }
 
         $pdost = $this->db->query($sql);
 
-        if ($limit > 1 || is_null($limit))
+        if ($limit > 1 || is_null($limit)) {
             return $pdost->fetchAll();
+        }
 
         return $pdost->fetch();
     }

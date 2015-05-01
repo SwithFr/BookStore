@@ -17,13 +17,15 @@ class LocationsController extends AppController
 
     public function add()
     {
-        if (!Session::isLogged())
+        if (!Session::isLogged()) {
             $this->redirect('notLogged', 'error');
+        }
 
-        if (!isset($_GET['library']))
+        if (!isset($_GET['library'])) {
             $this->redirect('missingParams', 'error');
-        else
+        } else {
             $library_id = $_GET['library'];
+        }
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $v = new Validator();

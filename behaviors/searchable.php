@@ -19,8 +19,9 @@ trait searchable
     public function search($what, Array $where, $get = '*', $table = null, $how = "around")
     {
 
-        if (is_null($table))
+        if (is_null($table)) {
             $table = $this->table;
+        }
 
         if ($table == "books") {
             $query = "SELECT DISTINCT $get FROM $table
@@ -49,8 +50,9 @@ trait searchable
         }
 
         $params = implode(" OR ", $params);
-        if ($table == 'books')
+        if ($table == 'books') {
             $params .= ')';
+        }
 
         $req = $this->db->query($query . $params);
 

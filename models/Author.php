@@ -45,8 +45,9 @@ class Author extends AppModel implements AuthorsRepositoryInterface
                 LIMIT ' . $limit;
         $pdost = $this->db->query($sql);
 
-        if ($limit > 1)
+        if ($limit > 1) {
             return $pdost->fetchAll();
+        }
 
         return $pdost->fetch();
     }

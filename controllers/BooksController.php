@@ -46,11 +46,13 @@ class BooksController extends AppController
      */
     public function edit()
     {
-        if (!Session::isLogged())
+        if (!Session::isLogged()) {
             $this->redirect('notLogged', 'error');
+        }
 
-        if (!isset($_GET['library']))
+        if (!isset($_GET['library'])) {
             $this->redirect('missingParams', 'error');
+        }
 
         $this->loadModel('Genre');
         $this->loadModel('Language');
@@ -140,8 +142,9 @@ class BooksController extends AppController
      */
     public function view()
     {
-        if (!isset($_GET['id']) || !is_numeric($_GET['id']))
+        if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
             $this->redirect('missingParams', 'error');
+        }
 
         $book = $this->Book->find($_GET['id']);
         if (!$book) {

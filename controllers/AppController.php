@@ -35,8 +35,9 @@ class AppController
     function __construct(Request $request)
     {
         # On inject la requete
-        if (!isset($this->request))
+        if (!isset($this->request)) {
             $this->request = $request;
+        }
 
         # Si on a une fonctin d'administration on charge le layout admin
         if (preg_match("/admin_/", $this->request->action)) {

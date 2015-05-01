@@ -36,8 +36,9 @@ class AuthorsController extends AppController
                     $a->date_death = '';
                 }
             }
-        } else
+        } else {
             $this->redirect('index', 'author', ['letter' => 'a']);
+        }
 
         return compact("authors", "letter", "letters");
     }
@@ -47,8 +48,9 @@ class AuthorsController extends AppController
      */
     public function add()
     {
-        if (!Session::isLogged())
+        if (!Session::isLogged()) {
             $this->redirect('notLogged', 'error');
+        }
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $v = new Validator();
@@ -66,8 +68,9 @@ class AuthorsController extends AppController
                 $dest = $name = '';
             }
 
-            if (empty($_POST['date_death']))
+            if (empty($_POST['date_death'])) {
                 $_POST['date_death'] = '0000-00-00';
+            }
 
             $this->Author->create($_POST['first_name'], $_POST['last_name'], $dest . $name, $_POST['date_birth'], $_POST['date_death'], $_POST['bio']);
             Session::setFlash('L‘auteur ' . $_POST['first_name'] . ' ' . $_POST['last_name'] . ' a bien été ajouté !');
@@ -81,12 +84,14 @@ class AuthorsController extends AppController
      */
     public function view()
     {
-        if (!isset($_GET['id']) || !is_numeric($_GET['id']))
+        if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
             $this->redirect('missingParams', 'error');
+        }
 
         $author = $this->Author->find($_GET['id']);
-        if (!$author)
+        if (!$author) {
             Session::setFlash('L‘auteur est introuvable !', 'error');
+        }
 
         $d_b = Carbon::parse($author->date_birth);
         $author->date_birth = $d_b->year;

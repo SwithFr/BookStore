@@ -10,8 +10,9 @@ class Image
             # Générer un nom de fichier
 
             $file = $_FILES['img']['tmp_name'];
-            if (!move_uploaded_file($file, $dest . $name))
+            if (!move_uploaded_file($file, $dest . $name)) {
                 die("Il y a eu un problème");
+            }
 
             # Redimensionnement
             $percent = 0.5;

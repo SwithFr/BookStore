@@ -61,8 +61,9 @@ class Validator
         } else {
 
             // Sinon on regarde si on a un message prévu ou pas
-            if ($message == null)
+            if ($message == null) {
                 $message = "le champ $field est obligatoire";
+            }
 
             // On ajoute le champ et son message dans le tableau d'erreur.
             $this->errors[$field] = $message;
@@ -89,8 +90,9 @@ class Validator
 
         } else {
 
-            if ($message == null)
+            if ($message == null) {
                 $message = "le champ $field est obligatoire";
+            }
 
             $this->errors[$field] = $message;
             return false;
@@ -114,8 +116,9 @@ class Validator
 
         } else {
 
-            if ($message == null)
+            if ($message == null) {
                 $message = "le champ $field n'est pas un email valide";
+            }
 
             $this->errors[$field] = $message;
 
@@ -141,8 +144,9 @@ class Validator
 
         } else {
 
-            if ($message == null)
+            if ($message == null) {
                 $message = "le champ $field n'est pas un nombre";
+            }
 
             $this->errors[$field] = $message;
             return false;
@@ -160,11 +164,13 @@ class Validator
      */
     public function isDate($field, $value, $message = null)
     {
-        if ($message == null)
+        if ($message == null) {
             $message = "le champ $field n'est pas une date valide (AAAA-MM-JJ)";
+        }
 
-        if (empty($value))
+        if (empty($value)) {
             return true;
+        }
 
         if ((preg_match('/-/', $value) == 0)) {
             $this->errors[$field] = $message;
@@ -199,8 +205,9 @@ class Validator
     {
         if (isset($this->errors[$field]))
             return $this->errors[$field];
-        else
+        else {
             return null;
+        }
     }
 
     /**
@@ -211,8 +218,9 @@ class Validator
     {
         if (!empty($this->errors))
             return $this->errors;
-        else
+        else {
             return null;
+        }
     }
 
 }

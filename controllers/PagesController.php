@@ -37,7 +37,7 @@ class PagesController extends AppController
                     ],
                     'authors' => [
                         'what' => $request,
-                        'where' => ['last_name','first_name'],
+                        'where' => ['last_name', 'first_name'],
                         'get' => 'first_name, last_name, id'
                     ],
                     'editors' => [

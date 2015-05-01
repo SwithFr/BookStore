@@ -58,8 +58,9 @@ class User extends AppModel implements UsersRepositoryInterface
         $sql = 'SELECT count(id) AS count FROM users WHERE login=:login OR email=:email';
         $pdost = $this->db->prepare($sql);
         $pdost->execute([':login' => $login, ':email' => $email]);
-        if ($pdost->fetch()->count == 0)
+        if ($pdost->fetch()->count == 0) {
             return false;
+        }
         return true;
     }
 
@@ -73,8 +74,9 @@ class User extends AppModel implements UsersRepositoryInterface
         $sql = 'SELECT count(id) AS count FROM libraries WHERE user_id=:user_id';
         $pdost = $this->db->prepare($sql);
         $pdost->execute([':user_id' => $user_id]);
-        if ($pdost->fetch()->count == 0)
+        if ($pdost->fetch()->count == 0) {
             return false;
+        }
         return true;
     }
 } 

@@ -15,6 +15,7 @@ class EditorsController extends AppController
         parent::__construct($request);
         $this->Editor = $editor;
     }
+
     /**
      * PAGE LISTE EDITEURS
      */
@@ -24,8 +25,9 @@ class EditorsController extends AppController
             $letters = $this->Editor->getLetters();
             $letter = $_GET['letter'];
             $editors = $this->Editor->getAllFromLetter("*", 'name', $letter);
-        } else
+        } else {
             $this->redirect('index', 'author', ['letter' => 'a']);
+        }
 
         return compact("editors", "letter", "letters");
     }
@@ -35,8 +37,9 @@ class EditorsController extends AppController
      */
     public function add()
     {
-        if (!Session::isLogged())
+        if (!Session::isLogged()) {
             $this->redirect('notLogged', 'error');
+        }
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $v = new Validator();
@@ -82,12 +85,14 @@ class EditorsController extends AppController
      */
     public function view()
     {
-        if (!isset($_GET['id']) || !is_numeric($_GET['id']))
+        if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
             $this->redirect('missingParams', 'error');
+        }
 
         $editor = $this->Editor->find($_GET['id']);
-        if (!$editor)
+        if (!$editor) {
             Session::setFlash('L‘éditeur est introuvable !', 'error');
+        }
 
         $this->loadModel('Book');
         $books = $this->Book->getAllFromEditor($editor->id);

@@ -21,8 +21,9 @@ class UsersController extends AppController
      */
     public function check()
     {
-        if (Session::isLogged())
+        if (Session::isLogged()) {
             $this->redirect('index', 'book');
+        }
 
         if (isset($_COOKIE['user_login'])) {
             $user = $this->User->getLogged($_COOKIE['user_login']);
@@ -103,8 +104,9 @@ class UsersController extends AppController
      */
     public function account()
     {
-        if (!Session::isLogged())
+        if (!Session::isLogged()) {
             $this->redirect('notLogged', 'error');
+        }
 
         $this->loadModel('Librarie');
         $this->loadModel('Book');

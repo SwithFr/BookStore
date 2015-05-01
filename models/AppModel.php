@@ -40,10 +40,11 @@ class AppModel
         $query = "SELECT ";
 
         // Si on a des champs définis
-        if (!isset($conditions['fields']))
+        if (!isset($conditions['fields'])) {
             $query .= "*";
-        else
+        } else {
             $query .= $conditions['fields'];
+        }
 
 
         $query .= " FROM " . $this->table;

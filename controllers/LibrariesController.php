@@ -20,8 +20,9 @@ class LibrariesController extends AppController
      */
     public function add()
     {
-        if (!Session::isLogged())
+        if (!Session::isLogged()) {
             $this->redirect('notLogged', 'error');
+        }
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $v = new Validator();
@@ -45,8 +46,9 @@ class LibrariesController extends AppController
     {
         $libraries = $this->Librarie->get(['fields' => 'id, name']);
 
-        if (!$libraries)
+        if (!$libraries) {
             Session::setFlash('La bibliothèque est introuvable !', 'error');
+        }
 
         return compact('libraries');
     }
@@ -57,8 +59,9 @@ class LibrariesController extends AppController
      */
     public function view()
     {
-        if (!isset($_GET['id']))
+        if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
             $this->redirect('missingParams', 'error');
+        }
 
         $library = current($this->Librarie->get(['where' => 'id =' . $_GET['id'] . ' AND private = 0']));
         $this->loadModel('Book');
