@@ -14,7 +14,7 @@
             <a class="btn btn--add" href="<?= Html::url('add','librarie'); ?>">Créer une bibliothèque</a>
         <?php else: ?>
             <div class="section__block section__block--library">
-                <h3 class="section__block__title section__block__title--library"><?= $data['library']->name; ?></h3>
+                <h3 class="section__block__title--library"><?= $data['library']->name; ?></h3>
                 <table class="books__list">
                     <thead>
                         <tr>
@@ -38,10 +38,10 @@
                 </table>
             </div>
             <div class="section__block">
-                <a class="btn btn--add" href="<?= Html::url('edit','book',['library'=>$data['library']->id]); ?>">Ajouter un livre</a>
-                <a class="btn btn--add" href="<?= Html::url('add','author'); ?>">Ajouter un auteur</a>
-                <a class="btn btn--add" href="<?= Html::url('add','editor'); ?>">Ajouter un éditeur</a>
-                <a class="btn btn--add" href="<?= Html::url('add','location',['library'=>$data['library']->id]); ?>">Ajouter un emplacement à votre bibliothèque</a>
+                <a class="btn btn--add btn--inline" href="<?= Html::url('edit','book',['library'=>$data['library']->id]); ?>">Ajouter un livre</a>
+                <a class="btn btn--add btn--inline" href="<?= Html::url('add','author'); ?>">Ajouter un auteur</a>
+                <a class="btn btn--add btn--inline" href="<?= Html::url('add','editor'); ?>">Ajouter un éditeur</a>
+                <a class="btn btn--add btn--inline" href="<?= Html::url('add','location',['library'=>$data['library']->id]); ?>">Ajouter un emplacement à votre bibliothèque</a>
             </div>
         <?php endif; ?>
     </div>
