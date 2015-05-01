@@ -61,7 +61,6 @@
                     value="<?= $author->id; ?>"><?= $author->first_name . ' ' . $author->last_name; ?></option>
             <?php endforeach; ?>
         </select>
-        <a class="btn btn--add btn--inline btn--small" href="<?= Html::url('add', 'author'); ?>">Ajouter un auteur</a>
 
         <label class="form__label" for="genre_id">Selectionnez le genre</label>
         <select class="form__input"
@@ -92,7 +91,6 @@
                     value="<?= $editor->id; ?>"><?= $editor->name; ?></option>
             <?php endforeach; ?>
         </select>
-        <a class="btn btn--add btn--inline btn--small" href="<?= Html::url('add', 'editor'); ?>">Ajouter un éditeur</a>
 
         <label class="form__label" for="location_id">Selectionnez l'emplacement</label>
         <select class="form__input"
@@ -103,7 +101,6 @@
                     value="<?= $location->id; ?>"><?= $location->name; ?></option>
             <?php endforeach; ?>
         </select>
-        <a class="btn btn--add btn--inline btn--small" href="<?= Html::url('add', 'location',['library'=>$data['library_id']]); ?>">Ajouter un emplacement</a>
 
         <?php if(isset($_GET['id'])): ?>
             <input class="form__submit btn btn--send"
