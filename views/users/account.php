@@ -30,7 +30,7 @@
                                 <td><?= $book->first_name . ' ' . $book->last_name; ?></td>
                                 <td class="actions">
                                     <a href="<?= Html::url('edit','book',['id'=>$book->id,'library'=>$data['library']->id]); ?>">Edit<i class="icon-pencil"></i></a>
-                                    <a href="#" class="admin--delete">Suppr<i class="icon-cancel"></i></a>
+                                    <a href="<?= Html::url('delete','book',['id'=>$book->id]); ?>" class="admin--delete">Suppr<i class="icon-cancel"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
