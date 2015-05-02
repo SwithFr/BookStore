@@ -42,7 +42,7 @@ use Helpers\Text;
         <div class="author__count">
             <p><?= $data['author']->first_name . ' ' . $data['author']->last_name; ?> a écrit <a href="<?= Html::url('view', 'author', ['id' => $data['author']->id]); ?>#books__list"><span class="nb"><?= $data['author']->book_count; ?></span></a> livres</p>
 
-            <p>Et il a une note globale de <span class="nb">4.5</span</p>
+            <p>Et il a une note globale de <span class="nb"><?= $data['author']->vote; ?></span> sur 5</p>
         </div>
     </div>
     <div class="section__block">
