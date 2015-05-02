@@ -2,10 +2,14 @@
 
 namespace Models;
 
+use Behaviors\Searchable;
 use Models\Interfaces\AuthorsRepositoryInterface;
 
 class Author extends AppModel implements AuthorsRepositoryInterface
 {
+
+    use Searchable;
+
     public $rules = [
         'first_name' => [
             ['ruleName' => 'notEmpty', 'message' => 'Le prénom est obligatoire'],
