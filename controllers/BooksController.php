@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Behaviors\Votable;
 use Carbon\Carbon;
 use Components\Request;
 use Components\Session;
@@ -215,7 +216,7 @@ class BooksController extends AppController
     {
         $v = new Votable();
         $v->vote('books', $_GET['ref_id'],$_COOKIE['user_id'], 1);
-        $this->redirect('view','author', ['id'=>$_GET['ref_id']]);
+        $this->redirect('view','book', ['id'=>$_GET['ref_id']]);
     }
 
     /**
@@ -225,7 +226,7 @@ class BooksController extends AppController
     {
         $v = new Votable();
         $v->vote('books', $_GET['ref_id'],$_COOKIE['user_id'], -1);
-        $this->redirect('view','author', ['id'=>$_GET['ref_id']]);
+        $this->redirect('view','book', ['id'=>$_GET['ref_id']]);
     }
 
 } 
