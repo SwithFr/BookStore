@@ -7,7 +7,8 @@ use Models\Interfaces\BooksRepositoryInterface;
 
 class Book extends AppModel implements BooksRepositoryInterface
 {
-    use searchable;
+    use Searchable;
+
     public $rules = [
         'title' => [
             ['ruleName' => 'notEmpty', 'message' => 'Le titre est obligatoire'],
