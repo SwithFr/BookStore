@@ -29,8 +29,8 @@ $v = new \Behaviors\Votable();
                         </ul>
                     <?php endif; ?>
                     <div class="<?= $v->getClass('authors', $data['author']->id); ?>">
-                        <a class="voteUp" href="<?= Html::url('voteUp', 'author', ['ref' => 'authors', 'ref_id' => $data['author']->id]); ?>">J'aime cet auteur</a> /
-                        <a class="voteDown" href="<?= Html::url('voteDown', 'author', ['ref' => 'authors', 'ref_id' => $data['author']->id]); ?>">Je n'aime pas cet auteur</a>
+                        <a class="voteUp" href="<?= Html::url('voteUp', 'author', ['ref_id' => $data['author']->id]); ?>">J'aime cet auteur</a> /
+                        <a class="voteDown" href="<?= Html::url('voteDown', 'author', ['ref_id' => $data['author']->id]); ?>">Je n'aime pas cet auteur</a>
                     </div>
                 </div>
             </div>
