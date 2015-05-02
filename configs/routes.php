@@ -10,6 +10,8 @@ return $routes = [
     'A_add'           => 'add/author',
     'A_view'          => 'view/author',
     'A_search'        => 'search/author',
+    'A_votU'          => 'voteUp/author',
+    'A_voteD'         => 'voteDown/author',
 
     # Routes éditeurs
     'E_index'         => 'index/editor',
@@ -28,6 +30,8 @@ return $routes = [
     'B_delete'        => 'delete/book',
     'B_godelete'      => 'goDelete/book',
     'B_view'          => 'view/book',
+    'B_voteU'         => 'voteUp/book',
+    'B_voteD'         => 'voteDown/book',
 
     # Routes bibliothèques
     'L_index'         => 'index/librarie',
