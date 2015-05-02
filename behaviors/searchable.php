@@ -4,7 +4,7 @@
 namespace Behaviors;
 
 
-trait searchable
+trait Searchable
 {
 
     /**
