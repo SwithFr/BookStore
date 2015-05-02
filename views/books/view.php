@@ -1,4 +1,5 @@
 <?php use Helpers\Html; ?>
+<?php $v = new \Behaviors\Votable(); ?>
 <?php if($data['book']): ?>
     <div id="content" class="content">
         <div class="section">
@@ -18,6 +19,10 @@
                     <img src="<?= $data['book']->img; ?>" class="section__block__img">
                     <p>Numéro ISBN : <?= $data['book']->isbn; ?></p>
                     <p>Nombre de pages : <?= $data['book']->nbpages; ?></p>
+                </div>
+                <div class="<?= $v->getClass('books', $data['book']->id); ?>">
+                    <a class="voteUp" href="<?= Html::url('voteUp', 'book', ['ref_id' => $data['book']->id]); ?>">J'aime ce livre</a> /
+                    <a class="voteDown" href="<?= Html::url('voteDown', 'book', ['ref_id' => $data['book']->id]); ?>">Je n'aime pas ce livre</a>
                 </div>
             </div>
         </div>
