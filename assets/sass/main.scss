@@ -427,3 +427,18 @@
 
   font-size: 1em;
 }
+
+.liked .voteUp, .disliked .voteDown {
+  color: #c0c5ce;
+  &:hover {
+    cursor: not-allowed;
+  }
+}
+
+.liked .voteUp {
+  color: #a3be8c;
+}
+
+.disliked .voteDown {
+  color: #d04c51;
+}
