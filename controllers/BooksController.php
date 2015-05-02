@@ -27,7 +27,7 @@ class BooksController extends AppController
 
         # l'auteur le mieux noté
         $this->loadModel('Author');
-        $author = $this->Author->getPopular('authors.id,authors.img,first_name,last_name,bio,date_birth,date_death', 1);
+        $author = $this->Author->getPopular('authors.id,authors.img,first_name,last_name,bio,date_birth,date_death,authors.vote', 1);
         $author->book_count = $this->Author->getBookCount($author->id);
         $d_b = Carbon::parse($author->date_birth);
         $author->date_birth = $d_b->year;
@@ -206,6 +206,26 @@ class BooksController extends AppController
     {
         $books = $this->Book->getPopular('books.id,title,first_name,last_name,value');
         return compact('books');
+    }
+
+    /**
+     * Aimer un auteur
+     */
+    public function voteUp()
+    {
+        $v = new Votable();
+        $v->vote('books', $_GET['ref_id'],$_COOKIE['user_id'], 1);
+        $this->redirect('view','author', ['id'=>$_GET['ref_id']]);
+    }
+
+    /**
+     * ne pas aimer un auteur
+     */
+    public function voteDown()
+    {
+        $v = new Votable();
+        $v->vote('books', $_GET['ref_id'],$_COOKIE['user_id'], -1);
+        $this->redirect('view','author', ['id'=>$_GET['ref_id']]);
     }
 
 } 
