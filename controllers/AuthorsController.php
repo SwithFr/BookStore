@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Behaviors\Votable;
 use Carbon\Carbon;
 use Components\Request;
 use Components\Session;
@@ -122,6 +123,26 @@ class AuthorsController extends AppController
         }
 
         return compact('authors', 'request');
+    }
+
+    /**
+     * Aimer un auteur
+     */
+    public function voteUp()
+    {
+        $v = new Votable();
+        $v->vote('authors', $_GET['ref_id'],$_COOKIE['user_id'], 1);
+        $this->redirect('view','author', ['id'=>$_GET['ref_id']]);
+    }
+
+    /**
+     * ne pas aimer un auteur
+     */
+    public function voteDown()
+    {
+        $v = new Votable();
+        $v->vote('authors', $_GET['ref_id'],$_COOKIE['user_id'], -1);
+        $this->redirect('view','author', ['id'=>$_GET['ref_id']]);
     }
 
 } 
