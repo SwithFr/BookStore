@@ -41,11 +41,9 @@ class Author extends AppModel implements AuthorsRepositoryInterface
     {
         $sql = 'SELECT ' . $fields . '
                 FROM authors
-                JOIN votes ON ref_id = authors.id
                 LEFT JOIN author_book ON author_id = authors.id
                 LEFT JOIN books ON book_id = books.id
-                WHERE ref = \'authors\'
-                ORDER BY value DESC
+                ORDER BY vote DESC
                 LIMIT ' . $limit;
         $pdost = $this->db->query($sql);
 
