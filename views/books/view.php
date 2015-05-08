@@ -20,10 +20,13 @@
                     <p>Numéro ISBN : <?= $data['book']->isbn; ?></p>
                     <p>Nombre de pages : <?= $data['book']->nbpages; ?></p>
                 </div>
-                <div class="<?= $v->getClass('books', $data['book']->id); ?>">
-                    <a class="voteUp" href="<?= Html::url('voteUp', 'book', ['ref_id' => $data['book']->id]); ?>">J'aime ce livre</a> /
-                    <a class="voteDown" href="<?= Html::url('voteDown', 'book', ['ref_id' => $data['book']->id]); ?>">Je n'aime pas ce livre</a>
-                </div>
+                <?php if( \Components\Session::isLogged() ): ?>
+                    <div class="<?= $v->getClass('books', $data['book']->id); ?>">
+                        <a class="voteUp" href="<?= Html::url('voteUp', 'book', ['ref_id' => $data['book']->id]); ?>">J'aime ce livre</a> /
+                        <a class="voteDown" href="<?= Html::url('voteDown', 'book', ['ref_id' => $data['book']->id]); ?>">Je n'aime pas ce livre</a>
+                    </div>
+                <?php endif; ?>
+                <p>Et il a une note globale de <span class="nb"><?= $data['book']->vote; ?></span> sur 5</p>
             </div>
         </div>
     </div>
