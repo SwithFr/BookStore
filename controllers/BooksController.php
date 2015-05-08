@@ -210,22 +210,24 @@ class BooksController extends AppController
     }
 
     /**
-     * Aimer un auteur
+     * Aimer un livre
      */
     public function voteUp()
     {
         $v = new Votable();
-        $v->vote('books', $_GET['ref_id'],$_COOKIE['user_id'], 1);
+        $user_id = isset( $_COOKIE['user_id'] ) ? $_COOKIE['user_id'] : $_SESSION['user_id'];
+        $v->vote('books', $_GET['ref_id'],$user_id, 1);
         $this->redirect('view','book', ['id'=>$_GET['ref_id']]);
     }
 
     /**
-     * ne pas aimer un auteur
+     * ne pas aimer un livre
      */
     public function voteDown()
     {
         $v = new Votable();
-        $v->vote('books', $_GET['ref_id'],$_COOKIE['user_id'], -1);
+        $user_id = isset( $_COOKIE['user_id'] ) ? $_COOKIE['user_id'] : $_SESSION['user_id'];
+        $v->vote('books', $_GET['ref_id'],$user_id, -1);
         $this->redirect('view','book', ['id'=>$_GET['ref_id']]);
     }
 
