@@ -131,7 +131,8 @@ class AuthorsController extends AppController
     public function voteUp()
     {
         $v = new Votable();
-        $v->vote('authors', $_GET['ref_id'],$_COOKIE['user_id'], 1);
+        $user_id = isset( $_COOKIE['user_id'] ) ? $_COOKIE['user_id'] : $_SESSION['user_id'];
+        $v->vote('authors', $_GET['ref_id'],$user_id, 1);
         $this->redirect('view','author', ['id'=>$_GET['ref_id']]);
     }
 
@@ -141,7 +142,8 @@ class AuthorsController extends AppController
     public function voteDown()
     {
         $v = new Votable();
-        $v->vote('authors', $_GET['ref_id'],$_COOKIE['user_id'], -1);
+        $user_id = isset( $_COOKIE['user_id'] ) ? $_COOKIE['user_id'] : $_SESSION['user_id'];
+        $v->vote('authors', $_GET['ref_id'],$user_id, -1);
         $this->redirect('view','author', ['id'=>$_GET['ref_id']]);
     }
 

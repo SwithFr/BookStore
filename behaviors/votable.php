@@ -119,7 +119,8 @@ class Votable extends AppModel
      */
     public function getClass($ref, $ref_id)
     {
-        $vote = $this->hasVoted($_COOKIE['user_id'], $ref, $ref_id);
+        $user_id = isset( $_COOKIE['user_id'] ) ? $_COOKIE['user_id'] : $_SESSION['user_id'];
+        $vote = $this->hasVoted($user_id, $ref, $ref_id);
         if ($vote) {
             return $vote->value == 1 ? 'liked' : 'disliked' ;
         }
