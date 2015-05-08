@@ -6,7 +6,7 @@
 
     <?php foreach($data['books'] as $book): ?>
         <h2><?= $book->title; ?></h2>
-        <p><?= $book->value; ?></p>
+        <p><?= $book->vote; ?></p>
 
     <?php endforeach; ?>
 

@@ -205,7 +205,7 @@ class BooksController extends AppController
      */
     public function populars()
     {
-        $books = $this->Book->getPopular('books.id,title,first_name,last_name,value');
+        $books = $this->Book->getPopular('books.id,title,first_name,last_name,books.vote');
         return compact('books');
     }
 
