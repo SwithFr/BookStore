@@ -78,7 +78,7 @@ class Author extends AppModel implements AuthorsRepositoryInterface
      */
     public function find($author_id)
     {
-        $sql = 'SELECT id,last_name, first_name, img, date_birth, date_death, bio
+        $sql = 'SELECT id,last_name, first_name, img, date_birth, date_death, bio, vote
                 FROM authors
                 WHERE id=:author_id';
         $pdost = $this->db->prepare($sql);
