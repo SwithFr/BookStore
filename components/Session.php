@@ -35,4 +35,9 @@ class Session
     {
         return (isset($_SESSION['user_id']) || isset($_COOKIE['user_id']));
     }
+
+    public static function getId()
+    {
+        return $_SESSION['user_id'] || $_COOKIE['user_id'];
+    }
 } 
