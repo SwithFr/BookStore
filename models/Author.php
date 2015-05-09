@@ -87,6 +87,21 @@ class Author extends AppModel implements AuthorsRepositoryInterface
     }
 
     /**
+     * Permet de récupérer un auteur selon son id
+     * @param $author_id
+     * @return mixed
+     */
+    public function findFromUser($author_id, $user_id)
+    {
+        $sql = 'SELECT id,last_name, first_name, img, date_birth, date_death, bio, vote
+                FROM authors
+                WHERE id=:author_id AND user_id = :user_id';
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute([':author_id' => $author_id, ':user_id' => $user_id]);
+        return $pdost->fetch();
+    }
+
+    /**
      * Permet de récupérer les initiales des noms d'auteur
      * @return array
      */
@@ -111,8 +126,25 @@ class Author extends AppModel implements AuthorsRepositoryInterface
     {
         $sql = 'SELECT COUNT(id) as count FROM author_book WHERE author_id = :author_id';
         $pdost = $this->db->prepare($sql);
-        $pdost->execute([':author_id'=>$author_id]);
+        $pdost->execute([':author_id' => $author_id]);
 
         return $pdost->fetch()->count;
+    }
+
+    /**
+     * Met à jour un auteur
+     * @param $first_name
+     * @param $last_name
+     * @param $bio
+     * @param $date_birth
+     * @param $date_death
+     * @param $img
+     * @param $author_id
+     */
+    public function update($first_name, $last_name, $bio, $date_birth, $date_death, $img, $author_id)
+    {
+        $sql = 'UPDATE authors SET first_name = :first_name, last_name = :last_name, bio = :bio, date_birth = :date_birth, date_death = :date_death, img = :img WHERE id = ' . $author_id;
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute(['first_name' => $first_name, 'last_name' => $last_name, 'bio' => $bio, 'date_birth' => $date_birth, 'date_death' => $date_death, 'img' => $img]);
     }
 }
