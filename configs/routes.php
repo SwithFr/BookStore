@@ -8,6 +8,7 @@ return $routes = [
     # Routes auteurs
     'A_index'         => 'index/author',
     'A_add'           => 'add/author',
+    'A_edit'          => 'edit/author',
     'A_view'          => 'view/author',
     'A_search'        => 'search/author',
     'A_votU'          => 'voteUp/author',
