@@ -131,9 +131,9 @@ class AuthorsController extends AppController
     public function voteUp()
     {
         $v = new Votable();
-        $user_id = isset( $_COOKIE['user_id'] ) ? $_COOKIE['user_id'] : $_SESSION['user_id'];
-        $v->vote('authors', $_GET['ref_id'],$user_id, 1);
-        $this->redirect('view','author', ['id'=>$_GET['ref_id']]);
+        $user_id = isset($_COOKIE['user_id']) ? $_COOKIE['user_id'] : $_SESSION['user_id'];
+        $v->vote('authors', $_GET['ref_id'], $user_id, 1);
+        $this->redirect('view', 'author', ['id' => $_GET['ref_id']]);
     }
 
     /**
@@ -142,9 +142,57 @@ class AuthorsController extends AppController
     public function voteDown()
     {
         $v = new Votable();
-        $user_id = isset( $_COOKIE['user_id'] ) ? $_COOKIE['user_id'] : $_SESSION['user_id'];
-        $v->vote('authors', $_GET['ref_id'],$user_id, -1);
-        $this->redirect('view','author', ['id'=>$_GET['ref_id']]);
+        $user_id = isset($_COOKIE['user_id']) ? $_COOKIE['user_id'] : $_SESSION['user_id'];
+        $v->vote('authors', $_GET['ref_id'], $user_id, -1);
+        $this->redirect('view', 'author', ['id' => $_GET['ref_id']]);
+    }
+
+    /**
+     * Editer un auteur
+     */
+    public function edit()
+    {
+        if (!Session::isLogged()) {
+            $this->redirect('notLogged', 'error');
+        }
+
+        if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+            $this->redirect('missingParams', 'error');
+        }
+
+        $author = $this->Author->find($_GET['id'], Session::getId());
+        if (!$author) {
+            Session::setFlash('L‘auteur est introuvable !', 'error');
+        }
+
+        $errors = [];
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $v = new Validator();
+            if ($v->validate($_POST, $this->Author->rules)) {
+                $author->first_name = $_POST['first_name'];
+                $author->last_name = $_POST['last_name'];
+                $author->bio = $_POST['bio'];
+                $author->date_birth = $_POST['date_birth'];
+                $author->date_death = $_POST['date_death'];
+                if (!empty($_FILES['img']['name'])) {
+                    $name = time() . '.' . pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
+                    $dest = D_ASSETS . DS . 'img' . DS . 'uploads' . DS . 'authors' . DS;
+                    $img = $dest . $name;
+                    Image::uploadImg($dest, $name);
+                } else {
+                    $img = $author->img;
+                }
+                $this->Author->update($_POST['first_name'], $_POST['last_name'], $_POST['bio'], $_POST['date_birth'], $_POST['date_death'], $img, $author->id);
+                Session::setFlash('Les informations ont été modifiées avec succès !');
+            } else {
+                Session::setFlash('Veuillez vérifier vos informations', 'error');
+                $errors = $v->errors();
+            }
+        }
+
+        return compact('author', 'errors');
+
     }
 
 } 
