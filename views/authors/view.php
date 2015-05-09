@@ -33,7 +33,8 @@ $v = new \Behaviors\Votable();
                         <a class="voteDown" href="<?= Html::url('voteDown', 'author', ['ref_id' => $data['author']->id]); ?>">Je n'aime pas cet auteur</a>
                     </div>
                 <?php endif; ?>
-                <p>Et il a une note globale de <span class="nb"><?= $data['author']->vote; ?></span> sur 5</p>
+                <p>Note globale de <span class="nb"><?= $data['author']->vote; ?></span> sur 5</p>
+                <p class="section__block__infos">Connectez-vous ou créez un compte pour voter pour cet auteur</p>
             </div>
         </div>
     </div>
