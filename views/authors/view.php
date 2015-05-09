@@ -27,14 +27,17 @@ $v = new \Behaviors\Votable();
                         <?php endforeach; ?>
                     </ul>
                 <?php endif; ?>
-                <?php if( \Components\Session::isLogged() ): ?>
-                    <div class="<?= $v->getClass('authors', $data['author']->id); ?>">
-                        <a class="voteUp" href="<?= Html::url('voteUp', 'author', ['ref_id' => $data['author']->id]); ?>">J'aime cet auteur</a> /
-                        <a class="voteDown" href="<?= Html::url('voteDown', 'author', ['ref_id' => $data['author']->id]); ?>">Je n'aime pas cet auteur</a>
-                    </div>
-                <?php endif; ?>
-                <p>Note globale de <span class="nb"><?= $data['author']->vote; ?></span> sur 5</p>
-                <p class="section__block__infos">Connectez-vous ou créez un compte pour voter pour cet auteur</p>
+                <div class="votes">
+                    <?php if( \Components\Session::isLogged() ): ?>
+                        <div class="<?= $v->getClass('authors', $data['author']->id); ?>">
+                            <a class="voteUp" href="<?= Html::url('voteUp', 'author', ['ref_id' => $data['author']->id]); ?>">J'aime cet auteur</a> /
+                            <a class="voteDown" href="<?= Html::url('voteDown', 'author', ['ref_id' => $data['author']->id]); ?>">Je n'aime pas cet auteur</a>
+                        </div>
+                    <?php else: ?>
+                        <p class="section__block__infos">Connectez-vous ou créez un compte pour voter pour cet auteur</p>
+                    <?php endif; ?>
+                    <p>Note globale de <span class="nb"><?= $data['author']->vote; ?></span> sur 5</p>
+                </div>
             </div>
         </div>
     </div>
