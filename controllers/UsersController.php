@@ -5,7 +5,6 @@ namespace Controllers;
 use Components\Request;
 use Components\Session;
 use Components\Validator;
-use Helpers\Html;
 use Models\Interfaces\UsersRepositoryInterface;
 
 class UsersController extends AppController
@@ -110,10 +109,11 @@ class UsersController extends AppController
 
         $this->loadModel('Librarie');
         $this->loadModel('Book');
+        $this->loadModel('Author');
         $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : $_COOKIE['user_id'];
         $user = $this->User->find($user_id);
         if (!$user) {
-            header('Location: ' . Html::url('unauthorized', 'error'));
+            $this->redirect('unauthorized', 'error');
             exit();
         }
         if ($this->User->hasLibrary($user_id)) {
@@ -128,6 +128,21 @@ class UsersController extends AppController
             $library = null;
             $books = null;
         }
-        return compact('user', 'hasLibrary', 'library', 'books');
+
+        $authors = $this->Author->get(
+            [
+                'where' => 'user_id =' . Session::getId()
+            ]
+        );
+
+        foreach ($authors as $a) {
+            if ($this->Author->getBookCount($a->id) > 0) {
+                $a->hasBooks = true;
+            }else {
+                $a->hasBooks = false;
+            }
+        }
+
+        return compact('user', 'hasLibrary', 'library', 'books', 'authors');
     }
 } 
