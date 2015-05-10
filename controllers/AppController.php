@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Components\Request;
+use Components\Session;
 use Helpers\Html;
 
 class AppController
@@ -39,9 +40,8 @@ class AppController
             $this->request = $request;
         }
 
-        # Si on a une fonctin d'administration on charge le layout admin
-        if (preg_match("/admin_/", $this->request->action)) {
-            $this->layout = "admin";
+        if ($this->request->needAuth && !Session::isLogged()) {
+            $this->redirect('notLogged', 'error');
         }
 
         # Génération de la vue controller+s/action.php

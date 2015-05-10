@@ -37,10 +37,6 @@ class EditorsController extends AppController
      */
     public function add()
     {
-        if (!Session::isLogged()) {
-            $this->redirect('notLogged', 'error');
-        }
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $v = new Validator();
             if (!$v->validate($_POST, $this->Editor->rules)) {
@@ -85,7 +81,7 @@ class EditorsController extends AppController
      */
     public function view()
     {
-        if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+        if (!$this->request->id) {
             $this->redirect('missingParams', 'error');
         }
 

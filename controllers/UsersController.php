@@ -103,10 +103,6 @@ class UsersController extends AppController
      */
     public function account()
     {
-        if (!Session::isLogged()) {
-            $this->redirect('notLogged', 'error');
-        }
-
         $this->loadModel('Librarie');
         $this->loadModel('Book');
         $this->loadModel('Author');

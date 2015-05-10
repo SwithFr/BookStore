@@ -17,10 +17,6 @@ class LocationsController extends AppController
 
     public function add()
     {
-        if (!Session::isLogged()) {
-            $this->redirect('notLogged', 'error');
-        }
-
         if (!isset($_GET['library'])) {
             $this->redirect('missingParams', 'error');
         } else {

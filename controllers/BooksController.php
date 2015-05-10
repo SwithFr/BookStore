@@ -48,10 +48,6 @@ class BooksController extends AppController
      */
     public function edit()
     {
-        if (!Session::isLogged()) {
-            $this->redirect('notLogged', 'error');
-        }
-
         if (!isset($_GET['library']) || !is_numeric($_GET['library'])) {
             $this->redirect('missingParams', 'error');
         }
@@ -71,7 +67,7 @@ class BooksController extends AppController
         $d = [];
 
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+            if ($this->request->id) {
                 $book = $this->Book->find($_GET['id']);
                 $d['title'] = $book->title;
                 $d['summary'] = $book->summary;
@@ -145,11 +141,8 @@ class BooksController extends AppController
      */
     public function delete()
     {
-        if (!Session::isLogged()) {
-            $this->redirect('notLogged', 'error');
-        }
 
-        if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+        if (!$this->request->id) {
             $this->redirect('missingParams', 'error');
         }
 
@@ -166,11 +159,7 @@ class BooksController extends AppController
      * Supprimer un livre
      */
     public function goDelete(){
-        if (!Session::isLogged()) {
-            $this->redirect('notLogged', 'error');
-        }
-
-        if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+        if (!$this->request->id) {
             $this->redirect('missingParams', 'error');
         }
 
@@ -186,7 +175,7 @@ class BooksController extends AppController
      */
     public function view()
     {
-        if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+        if (!$this->request->id) {
             $this->redirect('missingParams', 'error');
         }
 
