@@ -51,7 +51,7 @@ interface BooksRepositoryInterface
     /**
      * @return mixed
      */
-    public function getWithGenre();
+    public function getWithGenre($genre_id);
 
     /**
      * @param $author_id
