@@ -129,4 +129,19 @@ class AppModel
         $this->db->query($sql);
     }
 
+    /**
+     * Compte le nombre d'entrées d'une table
+     * @param null|int $user_id
+     * @return mixed
+     */
+    public function count($user_id = null)
+    {
+        $sql = 'SELECT COUNT(id) as count FROM ' . $this->table;
+        if($user_id) {
+            $sql .= ' WHERE user_id = ' . $user_id;
+        }
+        $pdost = $this->db->query($sql);
+        return $pdost->fetch()->count;
+    }
+
 } 
