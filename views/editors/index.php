@@ -20,10 +20,10 @@
     <?php endif; ?>
     <ul class="editors__list">
         <?php foreach($data['editors'] as $editor): ?>
-            <li class="section__block  editors__list__item">
+            <li class="section__block editors__list__item">
                 <img src="<?= D_ASSETS . DS . 'img' . DS . $editor->img; ?>" class="editor__img">
                 <h2 class="editor__title"><a href="<?= Html::url('view', 'editor', ['id' => $editor->id]); ?>"><?= $editor->name; ?></a></h2>
-                <span class="editor__infos">30 livres</span>
+                <span class="editor__infos"><span class="nb"><?= $editor->book_count; ?></span> livres sur ce site</span>
                 <p><?= $editor->history; ?></p>
             </li>
         <?php endforeach; ?>
