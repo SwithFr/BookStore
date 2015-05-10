@@ -68,7 +68,7 @@ class BooksController extends AppController
 
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             if ($this->request->id) {
-                $book = $this->Book->find($_GET['id']);
+                $book = $this->Book->findBook($_GET['id']);
                 $d['title'] = $book->title;
                 $d['summary'] = $book->summary;
                 $d['img'] = $book->img;
@@ -179,7 +179,7 @@ class BooksController extends AppController
             $this->redirect('missingParams', 'error');
         }
 
-        $book = $this->Book->find($_GET['id']);
+        $book = $this->Book->findBook($_GET['id']);
         if (!$book) {
             Session::setFlash('Le livre est introuvable !', 'error');
             $book = null;
