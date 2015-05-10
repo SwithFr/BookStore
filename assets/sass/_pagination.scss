@@ -19,3 +19,27 @@
 .filter__item .dispo-letter {
   color: #000000;
 }
+
+.pagniation {
+
+  margin-top: 1em;
+
+  .pagniation__item {
+    display: inline;
+    margin-right: 10px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .pagination--active {
+    color: gray;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+}
