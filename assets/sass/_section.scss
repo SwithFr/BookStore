@@ -24,6 +24,12 @@
     color: #d04c51;
     text-decoration: underline;
   }
+
+  &:after {
+    display: block;
+    content: '';
+    clear: both;
+  }
 }
 
 .section__block, .section__block__img {

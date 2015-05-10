@@ -288,12 +288,22 @@
 .editors__list {
   margin-top: 1em;
   font-family: $Playfair;
+  display: table;
+
+  &:after {
+    display: block;
+    content: '';
+    clear: both;
+  }
 }
 
 .editors__list__item {
-  width: 46%;
-  padding: .5em 1em;
   margin-bottom: 1em;
+  display: table-cell;
+  
+  &:nth-child(odd) {
+    border-right: 1em transparent solid;
+  }
   
   &:hover .editor__title {
     color: #d04c51;
