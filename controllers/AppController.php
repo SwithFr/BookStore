@@ -40,8 +40,10 @@ class AppController
             $this->request = $request;
         }
 
+        # Si on a besoin d'être connecté et qu'on ne l'est pas on est redirigé vers la page de connexion
         if ($this->request->needAuth && !Session::isLogged()) {
-            $this->redirect('notLogged', 'error');
+            Session::setFlash('Vous devez être connecté pour effectuer cette action','error');
+            $this->redirect('check', 'user');
         }
 
         # Génération de la vue controller+s/action.php
