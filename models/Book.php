@@ -228,15 +228,21 @@ class Book extends AppModel implements BooksRepositoryInterface
 
     /**
      * Récupère un livre et son genre
+     * @param $genre_id
+     * @param null $limit
      * @return array
      */
-    public function getWithGenre()
+    public function getWithGenre($genre_id, $limit = null)
     {
-        $sql = 'SELECT DISTINCT title, name, books.id, COUNT(books.id)
+        $sql = 'SELECT DISTINCT title, name, books.id
                 FROM books
                 LEFT JOIN genres ON genre_id = genres.id
+                WHERE genre_id = ' . $genre_id .'
                 GROUP BY title
                 ORDER BY name ASC';
+        if($limit) {
+            $sql .= ' LIMIT ' . $limit;
+        }
         return $this->db->query($sql)->fetchAll();
     }
 
