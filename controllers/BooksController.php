@@ -129,7 +129,7 @@ class BooksController extends AppController
                 $this->Book->update($d, $_GET['id']);
                 Session::setFlash('Le livre ' . $_POST['title'] . ' a bien été modifié !');
             }
-            $this->redirect('account', 'user');
+            $this->redirect('index', 'user');
         }
 
         return compact('genres', 'languages', 'editors', 'locations', 'authors', 'library_id', 'd');
@@ -149,7 +149,7 @@ class BooksController extends AppController
         $book = $this->Book->find($_GET['id']);
 
         if (!$book) {
-            $this->redirect('account','user');
+            $this->redirect('index','user');
         }
 
         return compact('book');
@@ -166,7 +166,7 @@ class BooksController extends AppController
         $this->Book->delete($_GET['id']);
         $this->Book->deleteRelations($_GET['id']);
         Session::setFlash('Le livre a bien été supprimé !');
-        $this->redirect('account','user');
+        $this->redirect('index','user');
     }
 
     /**

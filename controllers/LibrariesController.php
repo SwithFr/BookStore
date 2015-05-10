@@ -30,7 +30,7 @@ class LibrariesController extends AppController
             $private = isset($_POST['private']) ? true : false;
             $this->Librarie->create($_POST['name'], $_POST['address'], $_POST['tel'], $_POST['email'], $_SESSION['user_id'], $private);
             Session::setFlash('La bibliothèque ' . $_POST['name'] . 'a bien été ajoutée !');
-            $this->redirect('account', 'user');
+            $this->redirect('index', 'user');
         }
     }
 

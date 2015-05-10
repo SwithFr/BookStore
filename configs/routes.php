@@ -41,7 +41,7 @@ return $routes = [
     'needConnexion'   => [
 
         # Users
-        'U_account' => 'account/user',
+        'U_index'         => 'index/user',
 
         # Books
         'B_add'           => 'add/book',

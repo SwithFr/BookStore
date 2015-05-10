@@ -104,7 +104,7 @@ class UsersController extends AppController
     /**
      * PAGE UTILISATEUR
      */
-    public function account()
+    public function index()
     {
         $this->loadModel('Librarie');
         $this->loadModel('Book');

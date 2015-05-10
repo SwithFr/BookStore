@@ -33,7 +33,7 @@ class LocationsController extends AppController
 
             $this->Location->create($_POST['name'], $library_id);
             Session::setFlash('Votre emplacement ' . $_POST['name'] . ' a bien été ajouté !');
-            $this->redirect('account', 'user');
+            $this->redirect('index', 'user');
         }
         return compact('library_id');
     }
