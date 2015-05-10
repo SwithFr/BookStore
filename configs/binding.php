@@ -6,5 +6,6 @@ return [
     Models\Interfaces\GenresRepositoryInterface::class => Models\Genre::class,
     Models\Interfaces\UsersRepositoryInterface::class => Models\User::class,
     Models\Interfaces\LibrariesRepositoryInterface::class => Models\Librarie::class,
-    Models\Interfaces\LocationsRepositoryInterface::class => Models\Location::class
+    Models\Interfaces\LocationsRepositoryInterface::class => Models\Location::class,
+    Models\Interfaces\CommentsRepositoryInterface::class => Models\Comment::class
 ];
