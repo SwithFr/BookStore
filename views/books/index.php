@@ -10,15 +10,15 @@ use Helpers\Text;
     </div>
     <?php foreach ($data['books'] as $book): ?>
         <div class="section__block">
-            <img src="<?= $book->img; ?>" class="section__block__img">
+            <?= $book->img(); ?>
 
             <h3 class="section__block__title"><a
-                    href="<?= Html::url('view', 'book', ['id' => $book->id]); ?>"><?= $book->title; ?></a></h3>
+                    href="<?= $book->link() ?>"><?= $book->title; ?></a></h3>
 
-            <p class="section__block__author"><?= $book->first_name . ' ' . $book->last_name; ?></p>
+            <p class="section__block__author"><?= $book->getAuthorName(); ?></p>
 
             <p class="section__block__content">
-                <?= Text::cut($book->summary, 500); ?>
+                <?= $book->sumUp() ?>
             </p>
         </div>
     <?php endforeach; ?>
@@ -26,26 +26,26 @@ use Helpers\Text;
 <div class="section author">
     <div class="section__header">
         <h2 class="section__title title--inline">Auteur le mieux noté</h2>
-        <a href="<?= Html::url('view', 'author', ['id' => $data['author']->id]); ?>" class="section__readMore">Voir plus
+        <a href="<?= $data['author']->link(); ?>" class="section__readMore">Voir plus
             du même auteur</a>
     </div>
     <div class="section__block">
         <h3 class="section__block__title"><a
-                href="<?= Html::url('view', 'author', ['id' => $data['author']->id]); ?>"><?= $data['author']->first_name . ' ' . $data['author']->last_name; ?></a>
+                href="<?= $data['author']->link(); ?>"><?= $data['author']->name(); ?></a>
         </h3>
-        <p class="section__block__year"><?= $data['author']->date_birth; ?><?= ($data['author']->date_death !== '') ? ' - ' . $data['author']->date_death : ''; ?></p>
+        <p class="section__block__year"><?= $data['author']->date(); ?></p>
 
         <p class="section__block__content">
-            <?= Text::cut($data['author']->bio, 500); ?>
+            <?= $data['author']->sumUp(); ?>
         </p>
 
         <div class="author__count">
-            <p><?= $data['author']->first_name . ' ' . $data['author']->last_name; ?> a écrit <a href="<?= Html::url('view', 'author', ['id' => $data['author']->id]); ?>#books__list"><span class="nb"><?= $data['author']->book_count; ?></span></a> livres</p>
+            <p><?= $data['author']->name(); ?> a écrit <a href="<?= $data['author']->link(); ?>#books__list"><span class="nb"><?= $data['author']->book_count; ?></span></a> livres</p>
 
-            <p>Et il a une note globale de <span class="nb"><?= $data['author']->vote; ?></span> sur 5</p>
+            <p>Et a une note globale de <span class="nb"><?= $data['author']->vote; ?></span> sur 5</p>
         </div>
     </div>
     <div class="section__block">
-        <img src="<?= $data['author']->img; ?>" class="section__block__img">
+        <?= $data['author']->img(); ?>
     </div>
 </div>
