@@ -147,4 +147,30 @@ class Author extends AppModel implements AuthorsRepositoryInterface
         $pdost = $this->db->prepare($sql);
         $pdost->execute(['first_name' => $first_name, 'last_name' => $last_name, 'bio' => $bio, 'date_birth' => $date_birth, 'date_death' => $date_death, 'img' => $img]);
     }
+
+    /**
+     * Pagine les auteurs pour la page "admin"
+     * @param $nbpages
+     * @param $nbperpage
+     * @param $user_id
+     * @return array
+     */
+    public function paginateForAccount($nbpages, $nbperpage, $user_id)
+    {
+        if (!isset($_GET['page']) || $_GET['page'] < 1 || !is_numeric($_GET['page'])) {
+            $_GET['page'] = 1;
+        }
+
+        if ($_GET['page'] > $nbpages) {
+            $_GET['page'] = $nbpages;
+        }
+
+        $sql = "SELECT id, first_name, last_name
+                       FROM authors
+                       WHERE user_id = $user_id
+                       LIMIT " . $nbperpage * ($_GET['page'] - 1) . ',' . $nbperpage;
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute();
+        return $pdost->fetchAll();
+    }
 }
