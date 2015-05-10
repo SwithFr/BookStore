@@ -112,11 +112,16 @@ class AppModel
 
     /**
      * Permet de récupérer les données d'une entrée selon son id
+     * @param null $fields
      * @param $id
+     * @param bool $class
      * @return mixed
      */
-    public function find($fields = '*', $id, $class = false)
+    public function find($fields = null, $id, $class = false)
     {
+        if (is_null($fields)) {
+            $fields = '*';
+        }
         $sql = 'SELECT ' . $fields . ' FROM ' . $this->table . ' WHERE id=:id';
         $pdost = $this->db->prepare($sql);
         $pdost->execute([':id' => $id]);
