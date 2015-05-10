@@ -129,7 +129,7 @@ class UsersController extends AppController
         }
 
         $nbPerPage = 5;
-        $nbPages = ceil($this->Author->count(Session::getId()) / $nbPerPage);
+        $nbPages = ceil($this->Author->count('user_id = ' . Session::getId()) / $nbPerPage);
         $authors = $this->Author->paginateForAccount($nbPages, $nbPerPage, Session::getId());
 
         foreach ($authors as $a) {
