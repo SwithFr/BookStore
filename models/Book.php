@@ -61,8 +61,8 @@ class Book extends AppModel implements BooksRepositoryInterface
         }
 
         $pdost = $this->db->query($sql);
-
-        return $pdost->fetchAll();
+        $className = __NAMESPACE__ . "\\Entities\\BookEntity";
+        return $pdost->fetchAll(\PDO::FETCH_CLASS, $className);
     }
 
     /**
@@ -176,7 +176,7 @@ class Book extends AppModel implements BooksRepositoryInterface
      * @param $book_id
      * @return mixed
      */
-    public function find($book_id)
+    public function findBook($book_id)
     {
         $sql = 'SELECT books.id, title, books.img, summary, isbn, nbpages, language_id, genre_id, books.location_id, editor_id, books.vote,
                        genres.name AS g_name,
