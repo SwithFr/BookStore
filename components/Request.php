@@ -25,6 +25,18 @@ class Request
      */
     public $id = null;
 
+    /**
+     * Url demandée par l'utilisateu
+     * @var null|string
+     */
+    public $url = null;
+
+    /**
+     * Doit on être connecté pour une action ?
+     * @var bool
+     */
+    public $needAuth = false;
+
     function __construct()
     {
         $routes = include('./configs/routes.php');
@@ -37,10 +49,15 @@ class Request
             $this->action = $_REQUEST['a'];
             $this->controller = $_REQUEST['e'];
             $route = $this->action . '/' . $this->controller;
+            $this->url = $route;
 
             # Verification si action permise
             if (!in_array($route, $routes)) {
-                header('Location: ' . Html::url('unauthorized', 'error'));
+                if(!in_array($route,$routes['needConnexion'])) {
+                    header('Location: ' . Html::url('unauthorized', 'error'));
+                } else {
+                    $this->needAuth = true;
+                }
             }
         }
 
