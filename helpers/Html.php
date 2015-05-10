@@ -20,4 +20,27 @@ class Html
         }
         return $_SERVER['PHP_SELF'] . '?a=' . $action . '&e=' . $controller . $query;
     }
+
+    /**
+     * Créer une liste de pagination
+     * @param $nbPages
+     * @return string
+     */
+    public static function paginate($nbPages)
+    {
+        $html = '<ul class="pagniation">';
+        for ($i = 1; $i <= $nbPages; $i++) {
+            $active = ($i == $_GET['page']) ? 'pagination--active' : '';
+            $link = $active ? '' : Html::url('account', 'user', ['page' => $i]);
+
+            $html .= "<li class='pagniation__item $active'>";
+            if ($i == $_GET['page']) {
+                $html .= $i . "</li>";
+            } else {
+                $html .= "<a href='$link' >" . $i . "</a></li>";
+            }
+        }
+        $html .= '</ul>';
+        return $html;
+    }
 }
