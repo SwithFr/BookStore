@@ -17,6 +17,7 @@ return $routes = [
 
     # Routes genres
     'G_index'         => 'index/genre',
+    'G_view'         => 'view/genre',
 
     # Routes books
     'B_index'         => 'index/book',
