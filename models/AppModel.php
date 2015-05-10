@@ -131,14 +131,14 @@ class AppModel
 
     /**
      * Compte le nombre d'entrées d'une table
-     * @param null|int $user_id
+     * @param $condition
      * @return mixed
      */
-    public function count($user_id = null)
+    public function count($condition)
     {
         $sql = 'SELECT COUNT(id) as count FROM ' . $this->table;
-        if($user_id) {
-            $sql .= ' WHERE user_id = ' . $user_id;
+        if($condition) {
+            $sql .= ' WHERE ' . $condition;
         }
         $pdost = $this->db->query($sql);
         return $pdost->fetch()->count;
