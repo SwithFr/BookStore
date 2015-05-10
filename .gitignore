@@ -18,3 +18,5 @@ configs/database.php
 vendor/illuminate/container/
 
 *.css
+
+assets/css
