@@ -14,4 +14,14 @@ class CommentsController extends AppController
         $this->Comment = $comment;
     }
 
+    public function add($ref, $ref_id)
+    {
+
+    }
+
+    public function delete($ref, $ref_id)
+    {
+
+    }
+
 } 
