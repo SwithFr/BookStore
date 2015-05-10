@@ -5,51 +5,65 @@ return $routes = [
     'default'         => 'index/page',
     'searchAll'       => 'searchAll/page',
 
-    # Routes auteurs
+    # Routes authors
     'A_index'         => 'index/author',
-    'A_add'           => 'add/author',
-    'A_edit'          => 'edit/author',
     'A_view'          => 'view/author',
     'A_search'        => 'search/author',
-    'A_votU'          => 'voteUp/author',
-    'A_voteD'         => 'voteDown/author',
 
-    # Routes éditeurs
+    # Routes editors
     'E_index'         => 'index/editor',
-    'E_add'           => 'add/editor',
     'E_search'        => 'search/editor',
     'E_view'          => 'view/editor',
 
     # Routes genres
     'G_index'         => 'index/genre',
 
-    # Routes livres
+    # Routes books
     'B_index'         => 'index/book',
     'B_populars'      => 'populars/book',
-    'B_add'           => 'add/book',
-    'B_edit'          => 'edit/book',
-    'B_delete'        => 'delete/book',
-    'B_godelete'      => 'goDelete/book',
     'B_view'          => 'view/book',
-    'B_voteU'         => 'voteUp/book',
-    'B_voteD'         => 'voteDown/book',
 
-    # Routes bibliothèques
+    # Routes libraries
     'L_index'         => 'index/librarie',
-    'L_add'           => 'add/librarie',
     'L_view'          => 'view/librarie',
 
-    # Routes utilisateurs
+    # Routes users
     'U_check'         => 'check/user',
     'U_disconnect'    => 'disconnect/user',
     'U_register'      => 'register/user',
-    'U_account'       => 'account/user',
 
-    # Routes emplacements
-    'Lo_add'          => 'add/location',
-
-    # Routes erreurs
+    # Routes errors
     'Er_unauthorized' => 'unauthorized/error',
     'Er_notLogged'    => 'notLogged/error',
-    'Er_missingParams'=> 'missingParams/error'
+    'Er_missingParams'=> 'missingParams/error',
+
+    # Need connexion
+    'needConnexion'   => [
+
+        # Users
+        'U_account' => 'account/user',
+
+        # Books
+        'B_add'           => 'add/book',
+        'B_edit'          => 'edit/book',
+        'B_delete'        => 'delete/book',
+        'B_godelete'      => 'goDelete/book',
+        'B_voteU'         => 'voteUp/book',
+        'B_voteD'         => 'voteDown/book',
+
+        # Authors
+        'A_add'           => 'add/author',
+        'A_edit'          => 'edit/author',
+        'A_votU'          => 'voteUp/author',
+        'A_voteD'         => 'voteDown/author',
+
+        # Editors
+        'E_add'           => 'add/editor',
+
+        # Libray
+        'L_add'           => 'add/librarie',
+
+        # Locations
+        'Lo_add'          => 'add/location',
+    ]
 ];
