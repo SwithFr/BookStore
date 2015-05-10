@@ -20,13 +20,13 @@ class UsersController extends AppController
      */
     public function check()
     {
-        if (Session::isLogged()) {
-            $this->redirect('index', 'book');
-        }
-
-        if (isset($_COOKIE['user_login'])) {
+        if (isset($_COOKIE['user_login']) && isset($_COOKIE['user_id'])) {
             $user = $this->User->getLogged($_COOKIE['user_login']);
-            $this->connect($user, true);
+            $cookie_token = sha1($_COOKIE['user_id'] . sha1('fakeStringJusteForSecureToken') . $_COOKIE['user_login'] );
+            $user_token = sha1($user->id . sha1('fakeStringJusteForSecureToken') . $user->login);
+            if ($cookie_token == $user_token) {
+                $this->connect($user, true);
+            }
         }
 
         if ($_SERVER['REQUEST_METHOD'] === "POST") {
@@ -58,6 +58,7 @@ class UsersController extends AppController
         if ($remember) {
             setcookie("user_id", $user->id, time() + 7 * 24 * 3600);
             setcookie("user_role", $user->role, time() + 7 * 24 * 3600);
+            setcookie("user_login", $user->login, time() + 7 * 24 * 3600);
         }
         Session::setFlash('Vous êtes maintenant connecté.');
         $this->redirect('index', 'book');
@@ -70,8 +71,10 @@ class UsersController extends AppController
     {
         unset($_SESSION['user_id']);
         unset($_SESSION['user_role']);
+        unset($_SESSION['user_login']);
         setcookie("user_id", "", time() - 7 * 24 * 3600);
         setcookie("user_role", "", time() - 7 * 24 * 3600);
+        setcookie("user_login", "", time() - 7 * 24 * 3600);
         Session::setFlash("Vous êtes bien déconnecté !");
         $this->redirect('index', 'book');
     }
@@ -134,7 +137,7 @@ class UsersController extends AppController
         foreach ($authors as $a) {
             if ($this->Author->getBookCount($a->id) > 0) {
                 $a->hasBooks = true;
-            }else {
+            } else {
                 $a->hasBooks = false;
             }
         }
