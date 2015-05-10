@@ -1,7 +1,5 @@
 <?php require(D_VIEWS . DS . 'elements' . DS . 'main-form.php');
 use Helpers\Html;
-use Helpers\Text;
-
 ?>
 <div class="section vedettes">
     <div class="section__header">
