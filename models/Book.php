@@ -234,7 +234,7 @@ class Book extends AppModel implements BooksRepositoryInterface
     {
         $sql = 'SELECT DISTINCT title, name, books.id, COUNT(books.id)
                 FROM books
-                JOIN genres ON genre_id = genres.id
+                LEFT JOIN genres ON genre_id = genres.id
                 GROUP BY title
                 ORDER BY name ASC';
         return $this->db->query($sql)->fetchAll();
