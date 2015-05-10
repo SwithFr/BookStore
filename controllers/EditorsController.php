@@ -25,6 +25,10 @@ class EditorsController extends AppController
             $letters = $this->Editor->getLetters();
             $letter = $_GET['letter'];
             $editors = $this->Editor->getAllFromLetter("*", 'name', $letter);
+            $this->loadModel('Book');
+            foreach ($editors as $e) {
+                $e->book_count = $this->Book->count('editor_id = ' . $e->id);
+            }
         } else {
             $this->redirect('index', 'author', ['letter' => 'a']);
         }
