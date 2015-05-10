@@ -26,7 +26,7 @@ class AuthorsController extends AppController
         if (isset($_GET['letter']) && !empty($_GET['letter']) && preg_match('/[A-Z]/', ucfirst($_GET['letter']))) {
             $letter = $_GET['letter'];
             $letters = $this->Author->getLetters();
-            $authors = $this->Author->getAllFromLetter("first_name,last_name,date_birth,date_death,bio,id", 'last_name', $letter);
+            $authors = $this->Author->getAllFromLetter("first_name,last_name,date_birth,date_death,bio,id", 'last_name', $letter, 'Author');
             foreach ($authors as $a) {
                 $b = Carbon::parse($a->date_birth);
                 $a->date_birth = $b->year;
@@ -85,7 +85,7 @@ class AuthorsController extends AppController
             $this->redirect('missingParams', 'error');
         }
 
-        $author = $this->Author->find($_GET['id']);
+        $author = $this->Author->find('id,last_name, first_name, img, date_birth, date_death, bio, vote', $_GET['id'], 'Author');
         if (!$author) {
             Session::setFlash('L‘auteur est introuvable !', 'error');
         }
