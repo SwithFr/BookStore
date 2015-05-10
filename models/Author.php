@@ -50,7 +50,7 @@ class Author extends AppModel implements AuthorsRepositoryInterface
         if ($limit > 1) {
             return $pdost->fetchAll();
         }
-
+        $pdost->setFetchMode(\PDO::FETCH_CLASS, __NAMESPACE__ . "\\Entities\\AuthorEntity");
         return $pdost->fetch();
     }
 
@@ -69,21 +69,6 @@ class Author extends AppModel implements AuthorsRepositoryInterface
                 VALUES (:first_name, :last_name, :img, :date_birth, :date_death, :bio)';
         $pdost = $this->db->prepare($sql);
         $pdost->execute([':first_name' => $first_name, ':last_name' => $last_name, ':img' => $img, ':date_birth' => $date_birth, ':date_death' => $date_death, ':bio' => $bio]);
-    }
-
-    /**
-     * Permet de récupérer un auteur selon son id
-     * @param $author_id
-     * @return mixed
-     */
-    public function find($author_id)
-    {
-        $sql = 'SELECT id,last_name, first_name, img, date_birth, date_death, bio, vote
-                FROM authors
-                WHERE id=:author_id';
-        $pdost = $this->db->prepare($sql);
-        $pdost->execute([':author_id' => $author_id]);
-        return $pdost->fetch();
     }
 
     /**
