@@ -49,4 +49,13 @@ class AuthorEntity
     {
         return Text::cut($this->bio, $limit);
     }
+
+    /**
+     * Affiche l'image de l'auteur
+     * @return string
+     */
+    public function img()
+    {
+        return '<img src="' . $this->img . '" class="section__block__img">';
+    }
 }
