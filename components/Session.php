@@ -36,8 +36,12 @@ class Session
         return (isset($_SESSION['user_id']) || isset($_COOKIE['user_id']));
     }
 
+    /**
+     * Récupère le user_id si définit
+     * @return bool
+     */
     public static function getId()
     {
-        return $_SESSION['user_id'] || $_COOKIE['user_id'];
+        return isset($_SESSION['user_id']) ? $_SESSION['user_id'] : isset($_COOKIE['user_id']) ? $_COOKIE['user_id'] : false;
     }
 } 
