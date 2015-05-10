@@ -22,7 +22,7 @@ class UsersController extends AppController
     {
         if (isset($_COOKIE['user_login']) && isset($_COOKIE['user_id'])) {
             $user = $this->User->getLogged($_COOKIE['user_login']);
-            $cookie_token = sha1($_COOKIE['user_id'] . sha1('fakeStringJusteForSecureToken') . $_COOKIE['user_login'] );
+            $cookie_token = sha1($_COOKIE['user_id'] . sha1('fakeStringJusteForSecureToken') . $_COOKIE['user_login']);
             $user_token = sha1($user->id . sha1('fakeStringJusteForSecureToken') . $user->login);
             if ($cookie_token == $user_token) {
                 $this->connect($user, true);
@@ -128,11 +128,9 @@ class UsersController extends AppController
             $books = null;
         }
 
-        $authors = $this->Author->get(
-            [
-                'where' => 'user_id =' . Session::getId()
-            ]
-        );
+        $nbPerPage = 5;
+        $nbPages = ceil($this->Author->count(Session::getId()) / $nbPerPage);
+        $authors = $this->Author->paginateForAccount($nbPages, $nbPerPage, Session::getId());
 
         foreach ($authors as $a) {
             if ($this->Author->getBookCount($a->id) > 0) {
@@ -142,6 +140,6 @@ class UsersController extends AppController
             }
         }
 
-        return compact('user', 'hasLibrary', 'library', 'books', 'authors');
+        return compact('user', 'hasLibrary', 'library', 'books', 'authors', 'nbPages');
     }
 } 
