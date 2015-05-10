@@ -31,3 +31,15 @@ a, a:visited {
 .clearfix {
   clear: both;
 }
+
+.empty {
+  color: gray;
+  font-size: .9em;
+  font-style: italic;
+}
+
+.title--linked {
+  &:hover {
+    text-decoration: underline;
+  }
+}
