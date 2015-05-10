@@ -4,6 +4,7 @@ namespace Models;
 
 use Behaviors\searchable;
 use Components\DbProvider;
+use Models\Entities;
 
 class AppModel
 {
@@ -98,10 +99,14 @@ class AppModel
      * @param string $letter
      * @return array
      */
-    public function getAllFromLetter($fields, $search, $letter)
+    public function getAllFromLetter($fields, $search, $letter, $class = false)
     {
         $sql = 'SELECT ' . $fields . ' FROM ' . $this->table . ' WHERE ' . $search . ' LIKE \'' . $letter . '%\'';
         $pdost = $this->db->query($sql);
+        if ($class) {
+            $className = __NAMESPACE__ . "\\Entities\\" . $class . "Entity";
+            return $pdost->fetchAll(\PDO::FETCH_CLASS, $className);
+        }
         return $pdost->fetchAll();
     }
 
@@ -110,12 +115,14 @@ class AppModel
      * @param $id
      * @return mixed
      */
-    public function find($id)
+    public function find($fields = '*', $id, $class = false)
     {
-        $sql = 'SELECT * FROM ' . $this->table . ' WHERE id=:id';
+        $sql = 'SELECT ' . $fields . ' FROM ' . $this->table . ' WHERE id=:id';
         $pdost = $this->db->prepare($sql);
         $pdost->execute([':id' => $id]);
-
+        if ($class) {
+            $pdost->setFetchMode(\PDO::FETCH_CLASS, __NAMESPACE__ . "\\Entities\\" . $class . "Entity");
+        }
         return $pdost->fetch();
     }
 
@@ -137,7 +144,7 @@ class AppModel
     public function count($condition)
     {
         $sql = 'SELECT COUNT(id) as count FROM ' . $this->table;
-        if($condition) {
+        if ($condition) {
             $sql .= ' WHERE ' . $condition;
         }
         $pdost = $this->db->query($sql);
