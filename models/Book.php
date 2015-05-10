@@ -243,7 +243,7 @@ class Book extends AppModel implements BooksRepositoryInterface
         if($limit) {
             $sql .= ' LIMIT ' . $limit;
         }
-        return $this->db->query($sql)->fetchAll();
+        return $pdost->fetchAll(\PDO::FETCH_CLASS,  __NAMESPACE__ . '\\Entities\\BookEntity');
     }
 
     /**
@@ -260,7 +260,7 @@ class Book extends AppModel implements BooksRepositoryInterface
                 WHERE authors.id = :author_id';
         $pdost = $this->db->prepare($sql);
         $pdost->execute([':author_id' => $author_id]);
-        return $pdost->fetchAll();
+        return $pdost->fetchAll(\PDO::FETCH_CLASS,  __NAMESPACE__ . '\\Entities\\BookEntity');
     }
 
     /**
@@ -276,7 +276,7 @@ class Book extends AppModel implements BooksRepositoryInterface
                 WHERE editor_id = :editor_id';
         $pdost = $this->db->prepare($sql);
         $pdost->execute([':editor_id' => $editor_id]);
-        return $pdost->fetchAll();
+        return $pdost->fetchAll(\PDO::FETCH_CLASS,  __NAMESPACE__ . '\\Entities\\BookEntity');
     }
 
     /**
