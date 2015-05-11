@@ -2,13 +2,13 @@
 
 namespace Models;
 
-use Behaviors\searchable;
+use Behaviors\Searchable;
 use Components\DbProvider;
 use Models\Entities;
 
 class AppModel
 {
-    use searchable;
+    use Searchable;
 
     /**
      * La connexion PDO

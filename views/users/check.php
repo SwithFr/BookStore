@@ -3,7 +3,7 @@
     <h2 class="section__title">Se connecter</h2>
 
     <form class="form--login" action="<?= Html::url('check', 'user'); ?>" method="post">
-        <label class="form__label" for="login">Login</label>
+        <label class="form__label" for="login">Nom d'utilisateur</label>
         <?= isset($data['errors']['login']) ? '<span class="has-error">' . $data['errors']['login'] . '</span>' : ''; ?></span>
         <input class="form__input form__input--large" type="text" name="login" id="login"
                value="<?= isset($_POST['login']) ? $_POST['login'] : ''; ?>"/>

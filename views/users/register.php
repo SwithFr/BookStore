@@ -3,7 +3,7 @@
     <h2 class="section__title">Créer un compte</h2>
 
     <form class="form--register" action="<?= Html::url('register', 'user'); ?>" method="post">
-        <label class="form__label" for="login">Login</label>
+        <label class="form__label" for="login">Nom d'utilisateur (utilisé pour la connexion)</label>
         <?= isset($data['errors']['login']) ? '<span class="has-error">' . $data['errors']['login'] . '</span>' : ''; ?></span>
         <input class="form__input form__input--large" type="text" name="login" id="login"
                value="<?= isset($_POST['login']) ? $_POST['login'] : ''; ?>"/>
@@ -17,6 +17,6 @@
         <?= isset($data['errors']['password']) ? '<span class="has-error">' . $data['errors']['password'] . '</span>' : ''; ?></span>
         <input class="form__input form__input--large" type="password" name="password" id="password"/>
 
-        <input class="form__submit btn btn--send" type="submit" value="Se connecter"/>
+        <input class="form__submit btn btn--send" type="submit" value="S'enregistrer"/>
     </form>
 </div>
