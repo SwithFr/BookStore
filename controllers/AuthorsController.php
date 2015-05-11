@@ -101,8 +101,12 @@ class AuthorsController extends AppController
 
         $this->loadModel('Book');
         $books = $this->Book->getAllFromAuthor($author->id);
+        $this->loadModel('Comment');
+        $nbPerPage = 5;
+        $nbPages = ceil($this->Comment->count('ref_id = ' . $author->id . ' AND ref = "author"') / $nbPerPage);
+        $comments = $this->Comment->paginate($nbPages, $nbPerPage, $author->id,'author');
 
-        return compact('author', 'books');
+        return compact('author', 'books','comments','nbPages');
     }
 
     /**
