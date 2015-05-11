@@ -67,5 +67,23 @@ class Request
         }
     }
 
+    /**
+     * vérifie si la requete est en POST
+     * @return bool
+     */
+    public function isPost()
+    {
+        return $_SERVER['REQUEST_METHOD'] == 'POST';
+    }
+
+    /**
+     * Vérifie si la requete est en GET
+     * @return bool
+     */
+    public function isGet()
+    {
+        return $_SERVER['REQUEST_METHOD'] == 'GET';
+    }
+
 
 } 
