@@ -1,0 +1,37 @@
+.comment {
+  width: 100%;
+  margin: 1em 0;
+}
+
+.comment__author {
+  font-weight: bold;
+  font-family: 'Open Sans';
+}
+
+.comment__content {
+  padding-left: 1em;
+  color: gray;
+  font-style: italic;
+}
+
+.comment__actions {
+  text-align: right;
+}
+
+.com--delete {
+  margin-right: 1em;
+
+  color: #d04c51;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.com--edit {
+  color: #53d8fb;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
