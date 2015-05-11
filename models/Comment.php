@@ -54,7 +54,7 @@ class Comment extends AppModel implements CommentsRepositoryInterface
             $_GET['page'] = $nbpages;
         }
 
-        $sql = "SELECT login, comment, user_id, ref, ref_id
+        $sql = "SELECT login, comment, user_id, ref, ref_id, comments.id
                        FROM comments
                        JOIN users ON users.id = user_id
                        WHERE ref_id = $book_id AND ref = '$ref'

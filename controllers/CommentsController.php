@@ -40,13 +40,14 @@ class CommentsController extends AppController
 
     public function delete()
     {
-        if(!$this->request->checkParams(['ref'=>'string','ref_id'=>'id'])){
+        if(!$this->request->checkParams(['ref'=>'string','ref_id'=>'id','comment_id'=>'id'])){
             $this->redirect('missingParams','error');
         }
 
-        $this->Comment->delete($_GET['ref_id'],'ref = ' . $_GET['ref'] . ' AND ref_id = ' . $_GET['ref_id'] );
+        $this->Comment->delete($_GET['comment_id']);
         $this->Comment->updateUserCount(Session::getId());
         Session::setFlash('Votre commentaire a bien été supprimé !');
+        $this->redirect('view',$_GET['ref'],['id'=>$_GET['ref_id']]);
     }
 
 } 

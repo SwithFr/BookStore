@@ -42,7 +42,6 @@
                     <?php if($comment->user_id == Session::getId()): ?>
                         <div class="comment__actions">
                             <?= $comment->deleteLink(); ?>
-                            <?= $comment->editLink(); ?>
                         </div>
                     <?php endif; ?>
                 </div>
