@@ -223,4 +223,15 @@ class Validator
         }
     }
 
+    /**
+     * Stock les erreurs en session
+     * @param array $errors
+     */
+    public function sendError($errors = [])
+    {
+        foreach ($errors as $e) {
+            $_SESSION['errors'][$e] = $this->message($e);
+        }
+    }
+
 }
