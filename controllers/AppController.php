@@ -60,10 +60,8 @@ class AppController
         if (is_null($name)) {
             $name = ucfirst($this->request->controller);
         }
-        if ($name != 'Error') {
-            $model = '\Models\\' . $name;
-            $this->$name = new $model();
-        }
+        $model = '\Models\\' . $name;
+        $this->$name = new $model();
     }
 
     /**
