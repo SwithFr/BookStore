@@ -42,6 +42,28 @@ class Session
      */
     public static function getId()
     {
-        return isset($_SESSION['user_id']) ? $_SESSION['user_id'] : isset($_COOKIE['user_id']) ? $_COOKIE['user_id'] : false;
+        if (isset($_COOKIE['user_id'])) {
+            return $_COOKIE['user_id'];
+        }
+        return isset($_SESSION['user_id']) ? $_SESSION['user_id'] : false;
     }
-} 
+
+    public static function hasError($name)
+    {
+        return isset($_SESSION['errors'][$name]);
+    }
+
+    /**
+     * Récupère une erreur en session
+     * @param $name
+     * @return bool
+     */
+    public static function getError($name)
+    {
+        $error = $_SESSION['errors'][$name];
+        unset($_SESSION['errors'][$name]);
+        return $error;
+
+    }
+
+}
