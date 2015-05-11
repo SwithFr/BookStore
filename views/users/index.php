@@ -74,7 +74,7 @@
                 <?php endforeach; ?>
                 </tbody>
             </table>
-            <?= Html::paginate($data['nbPages']); ?>
+            <?= Html::paginate($data['nbPages'],'index','user'); ?>
         </div>
     <?php endif; ?>
 </div>
