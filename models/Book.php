@@ -174,9 +174,10 @@ class Book extends AppModel implements BooksRepositoryInterface
     /**
      * Récupère un livre selon son id
      * @param $book_id
+     * @param bool $class
      * @return mixed
      */
-    public function findBook($book_id)
+    public function findBook($book_id, $class = false)
     {
         $sql = 'SELECT books.id, title, books.img, summary, isbn, nbpages, language_id, genre_id, books.location_id, editor_id, books.vote,
                        genres.name AS g_name,
@@ -192,6 +193,9 @@ class Book extends AppModel implements BooksRepositoryInterface
                 WHERE books.id=:book_id';
         $pdost = $this->db->prepare($sql);
         $pdost->execute([':book_id' => $book_id]);
+        if($class) {
+            $pdost->setFetchMode(\PDO::FETCH_CLASS, __NAMESPACE__ . '\\Entities\\BookEntity');
+        }
         return $pdost->fetch();
     }
 
