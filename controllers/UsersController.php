@@ -37,7 +37,7 @@ class UsersController extends AppController
                 return compact("errors");
             }
             $user = $this->User->getLogged($_POST['login']);
-            if ($user->password != $_POST['password']) {
+            if ($user->password != sha1($_POST['password'])) {
                 Session::setFlash("Identifiants inconnus !", 'error');
             } else {
                 $this->connect($user, isset($_POST['remember']));
@@ -95,7 +95,7 @@ class UsersController extends AppController
                 Session::setFlash("Ce login ou email est déjà utilisé !", 'error');
                 return false;
             }
-            $this->User->create($_POST['login'], $_POST['password'], $_POST['email']);
+            $this->User->create($_POST['login'], sha1($_POST['password']), $_POST['email']);
             Session::setFlash("Votre compte a bien été créé !");
             $this->redirect('check', 'user');
         }
