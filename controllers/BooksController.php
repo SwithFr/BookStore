@@ -65,10 +65,10 @@ class BooksController extends AppController
         $library_id = $_GET['library'];
         $authors = $this->Author->get(['fields' => 'id,first_name,last_name', 'order' => 'last_name ASC']);
         $d = [];
+        $book = $this->Book->findBook($_GET['id']);
 
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             if ($this->request->id) {
-                $book = $this->Book->findBook($_GET['id']);
                 $d['title'] = $book->title;
                 $d['summary'] = $book->summary;
                 $d['img'] = $book->img;
@@ -103,15 +103,16 @@ class BooksController extends AppController
             if (!empty($_FILES['img']['name'])) {
                 $name = time() . '.' . pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
                 $dest = D_ASSETS . DS . 'img' . DS . 'uploads' . DS . 'books' . DS;
+                $d['img'] = $dest . $name;
                 Image::uploadImg($dest, $name);
             } else {
-                $dest = $name = '';
+                $d['img'] = $book->img;
             }
 
             if (!isset($_GET['id'])) {
                 $this->Book->create(
                     $d['title'],
-                    $dest . $name,
+                    $d['img'],
                     $d['summary'],
                     $d['isbn'],
                     $d['nbpages'],
@@ -125,7 +126,6 @@ class BooksController extends AppController
 
                 Session::setFlash('Le livre ' . $_POST['title'] . ' a bien été ajouté !');
             } elseif (is_numeric($_GET['id'])) {
-                $d['img'] = $dest . $name;
                 $this->Book->update($d, $_GET['id']);
                 Session::setFlash('Le livre ' . $_POST['title'] . ' a bien été modifié !');
             }
