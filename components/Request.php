@@ -85,5 +85,20 @@ class Request
         return $_SERVER['REQUEST_METHOD'] == 'GET';
     }
 
+    /**
+     * Vérifie si les parametres de l'url sont présents et numériques
+     * @param array $params
+     * @return bool
+     */
+    public function checkParams($params = [])
+    {
+        $valid = false;
+        foreach($params as $p) {
+            if(!isset($_REQUEST['$p']) || !is_numeric($_REQUEST[$p])){
+                $valid = false;
+            }
+        }
+        return $valid;
+    }
 
 } 
