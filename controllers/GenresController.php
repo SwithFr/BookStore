@@ -30,18 +30,19 @@ class GenresController extends AppController
         return compact('genres');
     }
 
-    public function viex()
+    public function view()
     {
         if (!$this->request->id) {
             $this->redirect('missingParams', 'error');
         }
 
-        $genre = $this->Genre->find($_GET['id']);
+        $genre = $this->Genre->find(null,$_GET['id']);
         if(!$genre) {
             Session::setFlash('Cette catégorie n‘existe pas','error');
             $this->redirect('index','genre');
         }
 
+        $this->loadModel('Book');
         $genre->books =  $genre->books = $this->Book->getWithGenre($genre->id);
 
         return compact('genre');
