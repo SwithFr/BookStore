@@ -49,7 +49,7 @@ class AuthorsController extends AppController
      */
     public function add()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($this->request->isPost()) {
             $v = new Validator();
             if (!$v->validate($_POST, $this->Author->rules)) {
                 Session::setFlash('Veuillez vérifier vos informations', 'error');
@@ -159,7 +159,7 @@ class AuthorsController extends AppController
 
         $errors = [];
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($this->request->isPost()) {
             $v = new Validator();
             if ($v->validate($_POST, $this->Author->rules)) {
                 $author->first_name = $_POST['first_name'];

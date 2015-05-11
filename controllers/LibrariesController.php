@@ -20,7 +20,7 @@ class LibrariesController extends AppController
      */
     public function add()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($this->request->isPost()) {
             $v = new Validator();
             if (!$v->validate($_POST, $this->Librarie->rules)) {
                 Session::setFlash("Verifiez vos informations !", 'error');

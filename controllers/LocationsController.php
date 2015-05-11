@@ -23,7 +23,7 @@ class LocationsController extends AppController
             $library_id = $_GET['library'];
         }
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($this->request->isPost()) {
             $v = new Validator();
             if (!$v->validate($_POST, $this->Location->rules)) {
                 $errors = $v->errors();

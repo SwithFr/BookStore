@@ -24,7 +24,7 @@ class PagesController extends AppController
     {
         $data = null;
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($this->request->isPost()) {
             $request = $_POST['search'];
 
             $this->loadModel('AppModel');

@@ -67,7 +67,7 @@ class BooksController extends AppController
         $d = [];
         $book = $this->Book->findBook($_GET['id']);
 
-        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        if ($this->request->isGet()) {
             if ($this->request->id) {
                 $d['title'] = $book->title;
                 $d['summary'] = $book->summary;
@@ -82,7 +82,7 @@ class BooksController extends AppController
             }
         }
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($this->request->isPost()) {
             $d['title'] = $_POST['title'];
             $d['summary'] = $_POST['summary'];
             $d['isbn'] = $_POST['isbn'];

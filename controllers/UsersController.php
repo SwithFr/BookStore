@@ -29,7 +29,7 @@ class UsersController extends AppController
             }
         }
 
-        if ($_SERVER['REQUEST_METHOD'] === "POST") {
+        if ($this->request->isPost()) {
             $v = new Validator();
             if (!$v->validate($_POST, $this->User->rules)) {
                 Session::setFlash("Verifiez vos informations !", 'error');
@@ -84,7 +84,7 @@ class UsersController extends AppController
      */
     public function register()
     {
-        if ($_SERVER['REQUEST_METHOD'] === "POST" && !isset($_COOKIE['user_id'])) {
+        if ($this->request->isPost() && !isset($_COOKIE['user_id'])) {
             $v = new Validator();
             if (!$v->validate($_POST, $this->User->rules)) {
                 Session::setFlash("Verifiez vos informations !", 'error');
