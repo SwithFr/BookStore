@@ -38,9 +38,9 @@ use Helpers\Html;
         </p>
 
         <div class="author__count">
-            <p><?= $data['author']->name(); ?> a écrit <a href="<?= $data['author']->link(); ?>#books__list"><span class="nb"><?= $data['author']->book_count; ?></span></a> livres</p>
+            <p><?= $data['author']->name(); ?> a écrit <a href="<?= $data['author']->link(); ?>#books__list"><span class="nb nb-p"><?= $data['author']->book_count; ?></span></a> livres</p>
 
-            <p><span class="nb"><?= $data['author']->vote; ?></span> % de satisfaction.</p>
+            <p><?= $data['author']->score(); ?></p>
         </div>
     </div>
     <div class="section__block">

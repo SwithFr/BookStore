@@ -45,5 +45,4 @@ class BookEntity
     {
         return Text::cut($this->summary, $limit);
     }
-
 } 

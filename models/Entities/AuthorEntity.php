@@ -7,7 +7,7 @@ namespace Models\Entities;
 use Helpers\Html;
 use Helpers\Text;
 
-class AuthorEntity
+class AuthorEntity extends AppEntity
 {
     /**
      * Affiche le nom et prénom

@@ -200,7 +200,15 @@
 }
 
 .nb {
+  font-weight: bold;
+}
+
+.nb-n {
   color: #bf616a;
+}
+
+.nb-p {
+  color: #05e997;
 }
 
 /* FOOTER */
@@ -302,7 +310,7 @@
   &:nth-child(odd) {
     border-right: 1em transparent solid;
   }
-  
+
   &:hover .editor__title {
     color: #d04c51;
     text-decoration: underline;

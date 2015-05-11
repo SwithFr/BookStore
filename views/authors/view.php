@@ -36,7 +36,7 @@ $v = new \Behaviors\Votable();
                     <?php else: ?>
                         <p class="section__block__infos">Connectez-vous ou créez un compte pour voter pour cet auteur</p>
                     <?php endif; ?>
-                    <p><span class="nb"><?= $data['author']->vote; ?></span> % de satisfaction.</p>
+                    <p><?= $data['author']->score(); ?></p>
                 </div>
             </div>
         </div>
