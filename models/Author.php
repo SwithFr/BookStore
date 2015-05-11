@@ -146,7 +146,7 @@ class Author extends AppModel implements AuthorsRepositoryInterface
             $_GET['page'] = 1;
         }
 
-        if ($_GET['page'] > $nbpages) {
+        if ($_GET['page'] > $nbpages && $nbpages != 0) {
             $_GET['page'] = $nbpages;
         }
 
