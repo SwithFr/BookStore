@@ -65,10 +65,10 @@ class BooksController extends AppController
         $library_id = $_GET['library'];
         $authors = $this->Author->get(['fields' => 'id,first_name,last_name', 'order' => 'last_name ASC']);
         $d = [];
-        $book = $this->Book->findBook($_GET['id']);
 
         if ($this->request->isGet()) {
             if ($this->request->id) {
+                $book = $this->Book->findBook($_GET['id']);
                 $d['title'] = $book->title;
                 $d['summary'] = $book->summary;
                 $d['img'] = $book->img;
@@ -85,6 +85,7 @@ class BooksController extends AppController
         if ($this->request->isPost()) {
             $d['title'] = $_POST['title'];
             $d['summary'] = $_POST['summary'];
+            $d['img'] = $_POST['img'];
             $d['isbn'] = $_POST['isbn'];
             $d['nbpages'] = $_POST['nbpages'];
             $d['author_id'] = $_POST['author_id'];
@@ -105,8 +106,6 @@ class BooksController extends AppController
                 $dest = D_ASSETS . DS . 'img' . DS . 'uploads' . DS . 'books' . DS;
                 $d['img'] = $dest . $name;
                 Image::uploadImg($dest, $name);
-            } else {
-                $d['img'] = $book->img;
             }
 
             if (!isset($_GET['id'])) {
@@ -146,7 +145,7 @@ class BooksController extends AppController
             $this->redirect('missingParams', 'error');
         }
 
-        $book = $this->Book->find($_GET['id']);
+        $book = $this->Book->findBook($_GET['id']);
 
         if (!$book) {
             $this->redirect('index','user');
