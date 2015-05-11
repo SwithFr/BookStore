@@ -11,6 +11,10 @@
   &:visited {
     color: inherit;
   }
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .btn--send {
