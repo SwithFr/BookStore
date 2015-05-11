@@ -100,15 +100,16 @@ class Votable extends AppModel
         $sql = "SELECT COUNT(id) as count, value FROM votes WHERE ref = '$ref' AND ref_id = :ref_id GROUP BY value";
         $pdost = $this->db->prepare($sql);
         $pdost->execute([':ref_id' => $ref_id]);
-        $res = $pdost->fetchAll();
-        $result = $totalCount = 0;
-        foreach ($res as $k => $v) {
-            $totalCount += $v->count;
-            $result += $v->value * $v->count;
+        $results = $pdost->fetchAll();
+        $negatifs = $positifs = 0;
+        foreach ($results as $result) {
+            if ($result->value == -1) {
+                $negatifs = $result->count;
+            } else {
+                $positifs = $result->count;
+            }
         }
-        // Result est alors compris en 0 et 1 --> on converti en pourcentage
-        $score = ($result * 100) / $totalCount;
-        return $score;
+        return round( (($positifs - $negatifs < 0) ? 0 : $positifs - $negatifs) / ($positifs + $negatifs), 4) * 100;
     }
 
     /**
@@ -119,10 +120,10 @@ class Votable extends AppModel
      */
     public function getClass($ref, $ref_id)
     {
-        $user_id = isset( $_COOKIE['user_id'] ) ? $_COOKIE['user_id'] : $_SESSION['user_id'];
+        $user_id = isset($_COOKIE['user_id']) ? $_COOKIE['user_id'] : $_SESSION['user_id'];
         $vote = $this->hasVoted($user_id, $ref, $ref_id);
         if ($vote) {
-            return $vote->value == 1 ? 'liked' : 'disliked' ;
+            return $vote->value == 1 ? 'liked' : 'disliked';
         }
     }
 
