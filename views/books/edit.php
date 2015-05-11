@@ -60,7 +60,7 @@
                id="nbpages"
                value="<?= isset($data['d']['nbpages']) ? $data['d']['nbpages'] : ''; ?>"/>
 
-        <label class="form__label" for="author_id">Selectionnez l'auteur</label>
+        <label class="form__label" for="author_id">Sélectionnez l'auteur</label>
         <select class="form__input"
                 name="author_id"
                 id="author_id">
@@ -70,7 +70,7 @@
             <?php endforeach; ?>
         </select>
 
-        <label class="form__label" for="genre_id">Selectionnez le genre</label>
+        <label class="form__label" for="genre_id">Sélectionnez le genre</label>
         <select class="form__input"
                 name="genre_id"
                 id="genre_id">
@@ -80,7 +80,7 @@
             <?php endforeach; ?>
         </select>
 
-        <label class="form__label" for="language_id">Selectionnez la langue</label>
+        <label class="form__label" for="language_id">Sélectionnez la langue</label>
         <select class="form__input"
                 name="language_id"
                 id="language_id">
@@ -90,7 +90,7 @@
             <?php endforeach; ?>
         </select>
 
-        <label class="form__label" for="editor_id">Selectionnez l'éditeur </label>
+        <label class="form__label" for="editor_id">Sélectionnez l'éditeur </label>
         <select class="form__input"
                 name="editor_id"
                 id="editor_id">
@@ -100,7 +100,7 @@
             <?php endforeach; ?>
         </select>
 
-        <label class="form__label" for="location_id">Selectionnez l'emplacement</label>
+        <label class="form__label" for="location_id">Sélectionnez l'emplacement</label>
         <select class="form__input"
                 name="location_id"
                 id="location_id">
