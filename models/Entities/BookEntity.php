@@ -7,7 +7,7 @@ namespace Models\Entities;
 use Helpers\Html;
 use Helpers\Text;
 
-class BookEntity
+class BookEntity extends AppEntity
 {
     /**
      * Affiche le nom de l'auteur bien formaté
