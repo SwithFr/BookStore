@@ -106,8 +106,8 @@ class Votable extends AppModel
             $totalCount += $v->count;
             $result += $v->value * $v->count;
         }
-        // Result est alors compris en 0 et 1 --> on converti en un nombre compris entre 0 et 5
-        $score = ($result * 5) / $totalCount;
+        // Result est alors compris en 0 et 1 --> on converti en pourcentage
+        $score = ($result * 100) / $totalCount;
         return $score;
     }
 

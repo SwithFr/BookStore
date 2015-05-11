@@ -27,7 +27,7 @@
                     <?php else: ?>
                         <p class="section__block__infos">Connectez-vous ou créez un compte pour voter pour ce livre.</p>
                     <?php endif; ?>
-                    <p>Note globale de <span class="nb"><?= $data['book']->vote; ?></span> sur 5</p>
+                    <p><span class="nb"><?= $data['book']->vote; ?></span> % de satisfaction.</p>
                 </div>
             </div>
         </div>

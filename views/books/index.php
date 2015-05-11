@@ -40,7 +40,7 @@ use Helpers\Html;
         <div class="author__count">
             <p><?= $data['author']->name(); ?> a écrit <a href="<?= $data['author']->link(); ?>#books__list"><span class="nb"><?= $data['author']->book_count; ?></span></a> livres</p>
 
-            <p>Et a une note globale de <span class="nb"><?= $data['author']->vote; ?></span> sur 5</p>
+            <p><span class="nb"><?= $data['author']->vote; ?></span> % de satisfaction.</p>
         </div>
     </div>
     <div class="section__block">
