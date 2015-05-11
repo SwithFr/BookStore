@@ -24,23 +24,31 @@ class Html
     /**
      * Créer une liste de pagination
      * @param $nbPages
+     * @param $action
+     * @param $controller
+     * @param array $params
      * @return string
      */
-    public static function paginate($nbPages)
+    public static function paginate($nbPages, $action, $controller, $params = [])
     {
-        $html = '<ul class="pagniation">';
-        for ($i = 1; $i <= $nbPages; $i++) {
-            $active = ($i == $_GET['page']) ? 'pagination--active' : '';
-            $link = $active ? '' : Html::url('account', 'user', ['page' => $i]);
+        if ($nbPages > 1) {
+            $html = '<ul class="pagniation">';
+            for ($i = 1; $i <= $nbPages; $i++) {
+                $params = array_merge($params, ['page' => $i]);
+                $active = ($i == $_GET['page']) ? 'pagination--active' : '';
+                $link = $active ? '' : Html::url($action, $controller, $params);
 
-            $html .= "<li class='pagniation__item $active'>";
-            if ($i == $_GET['page']) {
-                $html .= $i . "</li>";
-            } else {
-                $html .= "<a href='$link' >" . $i . "</a></li>";
+                $html .= "<li class='pagniation__item $active'>";
+                if ($i == $_GET['page']) {
+                    $html .= $i . "</li>";
+                } else {
+                    $html .= "<a href='$link' >" . $i . "</a></li>";
+                }
             }
+            $html .= '</ul>';
+        } else {
+            $html = '';
         }
-        $html .= '</ul>';
         return $html;
     }
 }
