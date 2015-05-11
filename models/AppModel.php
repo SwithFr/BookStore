@@ -134,10 +134,16 @@ class AppModel
     /**
      * Supprime un enregistrement
      * @param $id
+     * @param null $condition
      */
-    public function delete($id)
+    public function delete($id, $condition = null)
     {
-        $sql = 'DELETE FROM ' . $this->table . ' WHERE id = ' . $id;
+        $sql = 'DELETE FROM ' . $this->table;
+         if(is_null($condition)){
+            $sql .= ' WHERE id = ' . $id;
+         } else {
+             $sql .= ' WHERE ' . $condition;
+         }
         $this->db->query($sql);
     }
 
