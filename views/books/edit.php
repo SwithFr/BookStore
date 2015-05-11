@@ -35,6 +35,7 @@
         <?php if(isset($data['d']['img'])): ?>
             <img src="<?= $data['d']['img']; ?>" alt="" width="200px"/>
         <?php endif; ?>
+            <input name="img" type="hidden" value="<?= isset($data['d']['img']) ? $data['d']['img'] : ''; ?>"/>
 
         <label class="form__label" for="summary">Résumé</label>
         <?= isset($data['errors']['summary']) ? '<span class="has-error">' . $data['errors']['summary'] . '</span>' : ''; ?></span>
