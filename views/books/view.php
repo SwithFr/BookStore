@@ -32,4 +32,39 @@
             </div>
         </div>
     </div>
+    <div class="section">
+        <h2 class="section__title">Les commentaires :</h2>
+        <?php if(!empty($data['comments'])): ?>
+            <?php foreach($data['comments'] as $comment): ?>
+                <div class="comment">
+                    <p>Commentaire écrit par : <span class="comment__author"><?= $comment->login; ?></span></p>
+                    <p class="comment__content"><?= $comment->comment; ?></p>
+                    <?php if($comment->user_id == Session::getId()): ?>
+                        <div class="comment__actions">
+                            <?= $comment->deleteLink(); ?>
+                            <?= $comment->editLink(); ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            <?php endforeach; ?>
+            <?= Html::paginate($data['nbPages'],'view','book',['id'=>$data['book']->id]); ?>
+        <?php else: ?>
+            <p class="section__block__infos">Encore aucun commentaire sur ce livre, soyez le premier à en rédiger un.</p>
+        <?php endif; ?>
+
+    <?php if(Session::isLogged()): ?>
+            <form action="<?= Html::url('add','comment',['ref'=>'book','ref_id'=>$data['book']->id]); ?>" method="post" class="form--add">
+                <label for="text">Votre commentaire :</label>
+                <?= isset($data['errors']['title']) ? '<span class="has-error">' . $data['errors']['title'] . '</span>' : ''; ?></span>
+                <?php if(Session::hasError('text')): ?>
+                    <span class="has-error"><?= Session::getError('text'); ?></span>
+                <?php endif; ?>
+                <textarea class="form__textarea" name="text" id="test" rows="5"></textarea>
+                <input type="submit" value="Commenter" class="btn btn--send"/>
+            </form>
+    <?php else: ?>
+        <p class="section__block__infos">Connectez-vous ou créez un compte pour commenter ce livre.</p>
+    <?php endif; ?>
+    </div>
+
 <?php endif; ?>
