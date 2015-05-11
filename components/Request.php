@@ -93,9 +93,18 @@ class Request
     public function checkParams($params = [])
     {
         $valid = false;
-        foreach($params as $p) {
-            if(!isset($_REQUEST['$p']) || !is_numeric($_REQUEST[$p])){
+        foreach($params as $p => $type) {
+            if(!isset($_REQUEST[$p])){
+                die('pas def');
                 $valid = false;
+            } elseif ($type == 'id' && !is_numeric($_REQUEST[$p])) {
+                die('pas num');
+                $valid = false;
+            } elseif ($type == 'string' && !is_string($_REQUEST[$p])) {
+                die('pas string');
+                $valid = false;
+            } else {
+                $valid = true;
             }
         }
         return $valid;
