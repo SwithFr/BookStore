@@ -7,9 +7,9 @@ Le but de l'exercice est de réaliser un site pour la gestion d'une bibliothèqu
 #TODO
 - ~~Mise place de la structure~~ **done**
 - Mise en place du design **WIP**
-- Correction design
+- Responsive
 - ~~Ajout des fonctions simples~~ **done** 
-- Ajout fonctions complexes **WIP**
-- Ajout comportements **WIP**
-- Ajout des évènements
+- ~~Ajout des commentaires~~ **done** 
+- ~~Ajout des j'aime/j'aime pas~~ **done** 
+- Ajout des évènements 
 - Faire les vérifications d'existence avant actions en bdd
