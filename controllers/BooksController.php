@@ -185,7 +185,12 @@ class BooksController extends AppController
             $book = null;
         }
 
-        return compact('book');
+        $this->loadModel('Comment');
+        $nbPerPage = 5;
+        $nbPages = ceil($this->Comment->count('ref_id = ' . $book->id . ' AND ref = "book"') / $nbPerPage);
+        $comments = $this->Comment->paginate($nbPages, $nbPerPage, $book->id,'book');
+
+        return compact('book','comments','nbPages');
     }
 
     /**
