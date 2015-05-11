@@ -49,7 +49,7 @@ use Helpers\Html;
             <h2 class="noResult">Aucun éditeur trouvé !</h2>
         <?php else: ?>
             <div class="section__block results">
-                <h2 class="results__title">Le(s) genre(s)</h2>
+                <h2 class="results__title">Le(s) éditeur(s)</h2>
                 <?php foreach ($data['data']['editors'] as $editor): ?>
                     <h3 class="results__link">
                         <a href="<?= Html::url('view', 'editor', ['id' => $editor->id]); ?>"><?= $editor->name; ?></a>
