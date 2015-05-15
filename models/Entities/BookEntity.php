@@ -29,11 +29,12 @@ class BookEntity extends AppEntity
 
     /**
      * Affiche l'image du livre
+     * @param string $class
      * @return string
      */
-    public function img()
+    public function img($class = 'section__block__img')
     {
-        return '<img src="' . $this->img . '" class="section__block__img">';
+        return '<img src="' . $this->img . '" class="' . $class . '">';
     }
 
     /**
