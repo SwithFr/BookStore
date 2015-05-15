@@ -490,3 +490,26 @@
 .populars__authors {
   float: right;
 }
+
+.score {
+  text-align: right;
+}
+
+.popular__title {
+  font-size: 1.6em;
+}
+
+.popular {
+  padding: .5em 0;
+
+  border-bottom: 1px solid lightgray;
+
+  &:hover {
+    background-color: #ffdb4f;
+
+    h2 {
+      text-decoration: underline;
+      color: #d04c51;
+    }
+  }
+}
