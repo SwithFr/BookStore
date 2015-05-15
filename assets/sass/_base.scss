@@ -8,13 +8,13 @@ VARIABLES
 $Playfair: 'Playfair Display';
 $Open: 'Open Sans';
 
+/* SECTIONS */
+@import "section";
+
 /*
 COMMUN
 */
 @import "common";
-
-/* SECTIONS */
-@import "section";
 
 /* BUTTONS */
 @import "buttons";
