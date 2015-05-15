@@ -1,7 +1,7 @@
 <?php require(D_VIEWS . DS . 'elements' . DS . 'main-form.php'); use Helpers\Html; ?>
 <div class="section">
     <div class="section__header">
-        <h2 class="section__title">Les livres par genres</h2>
+        <h2 class="section__title">Classement</h2>
     </div>
 
     <?php foreach($data['books'] as $book): ?>
