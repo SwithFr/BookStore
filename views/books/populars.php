@@ -2,20 +2,24 @@
 <div class="section">
     <div class="section__block">
         <div class="section__header">
-            <h2 class="section__block__title">Classement des 10 meilleurs livres</h2>
+            <h2 class="popular__title">Classement des 10 meilleurs livres</h2>
         </div>
         <?php foreach($data['books'] as $book): ?>
-            <h2><?= $book->title; ?></h2>
-            <p><?= $book->score(); ?></p>
+            <div class="popular">
+                <h2><a href="<?= $book->link(); ?>"><?= $book->title; ?></a></h2>
+                <p class="score"><?= $book->score(); ?></p>
+            </div>
         <?php endforeach; ?>
     </div>
     <div class="section__block populars__authors">
         <div class="section__header">
-            <h2 class="section__block__title">Classement des 10 meilleurs Auteurs</h2>
+            <h2 class="popular__title">Classement des 10 meilleurs Auteurs</h2>
         </div>
         <?php foreach($data['authors'] as $author): ?>
-            <h2><?= $author->name(); ?></h2>
-            <p><?= $author->score(); ?></p>
+            <div class="popular">
+                <h2><a href="<?= $author->link(); ?>"><?= $author->name(); ?></a></h2>
+                <p class="score"><?= $author->score(); ?></p>
+            </div>
         <?php endforeach; ?>
     </div>
 </div>
