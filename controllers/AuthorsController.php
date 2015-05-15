@@ -156,7 +156,7 @@ class AuthorsController extends AppController
             $this->redirect('missingParams', 'error');
         }
 
-        $author = $this->Author->find($_GET['id'], Session::getId());
+        $author = $this->Author->find(null,$_GET['id'],'Author', 'user_id = ' . Session::getId());
         if (!$author) {
             Session::setFlash('L‘auteur est introuvable !', 'error');
         }

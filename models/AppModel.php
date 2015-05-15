@@ -115,14 +115,19 @@ class AppModel
      * @param null $fields
      * @param $id
      * @param bool $class
+     * @param null $otherCondition
      * @return mixed
      */
-    public function find($fields = null, $id, $class = false)
+    public function find($fields = null, $id, $class = false, $otherCondition = null)
     {
         if (is_null($fields)) {
             $fields = '*';
         }
         $sql = 'SELECT ' . $fields . ' FROM ' . $this->table . ' WHERE id=:id';
+
+        if($otherCondition) {
+            $sql .= ' AND ' . $otherCondition;
+        }
         $pdost = $this->db->prepare($sql);
         $pdost->execute([':id' => $id]);
         if ($class) {
