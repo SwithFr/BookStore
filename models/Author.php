@@ -37,21 +37,25 @@ class Author extends AppModel implements AuthorsRepositoryInterface
      * @param int $limit
      * @return array
      */
-    public function getPopular($fields, $limit)
+    public function getPopular($fields, $limit = null)
     {
         $sql = 'SELECT ' . $fields . '
                 FROM authors
                 LEFT JOIN author_book ON author_id = authors.id
                 LEFT JOIN books ON book_id = books.id
-                ORDER BY vote DESC
-                LIMIT ' . $limit;
+                ORDER BY vote DESC';
+
+        if($limit) {
+            $sql .= ' LIMIT ' . $limit;
+        }
+
         $pdost = $this->db->query($sql);
 
-        if ($limit > 1) {
-            return $pdost->fetchAll();
-        }
         $pdost->setFetchMode(\PDO::FETCH_CLASS, __NAMESPACE__ . "\\Entities\\AuthorEntity");
-        return $pdost->fetch();
+        if ($limit && $limit <= 1) {
+            return $pdost->fetch();
+        }
+        return $pdost->fetchAll();
     }
 
     /**
