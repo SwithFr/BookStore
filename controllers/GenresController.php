@@ -24,12 +24,15 @@ class GenresController extends AppController
         $genres = $this->Genre->get();
         foreach ($genres as $genre) {
             $genre->books = $this->Book->getWithGenre($genre->id, 5);
-            $genre->book_count = $this->Book->count('genre_id = ' . $genre->id);
         }
 
         return compact('genres');
     }
 
+    /**
+     * Affiche les livres d'un genre
+     * @return array
+     */
     public function view()
     {
         if (!$this->request->id) {
