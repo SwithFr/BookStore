@@ -61,8 +61,11 @@ class Book extends AppModel implements BooksRepositoryInterface
         }
 
         $pdost = $this->db->query($sql);
-        $className = __NAMESPACE__ . "\\Entities\\BookEntity";
-        return $pdost->fetchAll(\PDO::FETCH_CLASS, $className);
+        $pdost->setFetchMode(\PDO::FETCH_CLASS, __NAMESPACE__ . "\\Entities\\BookEntity");
+        if ($limit && $limit <= 1) {
+            return $pdost->fetch();
+        }
+        return $pdost->fetchAll();
     }
 
     /**
