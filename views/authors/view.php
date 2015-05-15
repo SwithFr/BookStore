@@ -18,10 +18,10 @@ $v = new \Behaviors\Votable();
             <div class="section__block infos">
                 <?= $data['author']->img(); ?>
                 <?php if (!empty($data['books'])): ?>
-                    <h3>Voir ses livres</h3>
-                    <ul id="books__list">
+                    <h3 class="head__list">Liste de ses livres</h3>
+                    <ul>
                         <?php foreach ($data['books'] as $book): ?>
-                            <li>
+                            <li class="books__list">
                                 <a href="<?= $book->link(); ?>"><?= $book->title; ?></a>
                             </li>
                         <?php endforeach; ?>
