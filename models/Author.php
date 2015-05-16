@@ -45,7 +45,7 @@ class Author extends AppModel implements AuthorsRepositoryInterface
                 LEFT JOIN books ON book_id = books.id
                 ORDER BY vote DESC';
 
-        if($limit) {
+        if ($limit) {
             $sql .= ' LIMIT ' . $limit;
         }
 
@@ -66,13 +66,14 @@ class Author extends AppModel implements AuthorsRepositoryInterface
      * @param $date_birth
      * @param $date_death
      * @param $bio
+     * @param $user_id
      */
-    public function create($first_name, $last_name, $img, $date_birth, $date_death, $bio)
+    public function create($first_name, $last_name, $img, $date_birth, $date_death, $bio, $user_id)
     {
-        $sql = 'INSERT INTO authors(first_name, last_name, img, date_birth, date_death, bio)
-                VALUES (:first_name, :last_name, :img, :date_birth, :date_death, :bio)';
+        $sql = 'INSERT INTO authors(first_name, last_name, img, date_birth, date_death, bio, user_id)
+                VALUES (:first_name, :last_name, :img, :date_birth, :date_death, :bio, :user_id)';
         $pdost = $this->db->prepare($sql);
-        $pdost->execute([':first_name' => $first_name, ':last_name' => $last_name, ':img' => $img, ':date_birth' => $date_birth, ':date_death' => $date_death, ':bio' => $bio]);
+        $pdost->execute([':first_name' => $first_name, ':last_name' => $last_name, ':img' => $img, ':date_birth' => $date_birth, ':date_death' => $date_death, ':bio' => $bio, ':user_id' => $user_id]);
     }
 
     /**

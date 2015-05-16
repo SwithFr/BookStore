@@ -69,7 +69,7 @@ class AuthorsController extends AppController
                 $_POST['date_death'] = '0000-00-00';
             }
 
-            $this->Author->create($_POST['first_name'], $_POST['last_name'], $dest . $name, $_POST['date_birth'], $_POST['date_death'], $_POST['bio']);
+            $this->Author->create($_POST['first_name'], $_POST['last_name'], $dest . $name, $_POST['date_birth'], $_POST['date_death'], $_POST['bio'], Session::getId());
             Session::setFlash('L‘auteur ' . $_POST['first_name'] . ' ' . $_POST['last_name'] . ' a bien été ajouté !');
             $this->redirect('index', 'user');
         }
@@ -104,9 +104,9 @@ class AuthorsController extends AppController
         $this->loadModel('Comment');
         $nbPerPage = 5;
         $nbPages = ceil($this->Comment->count('ref_id = ' . $author->id . ' AND ref = "author"') / $nbPerPage);
-        $comments = $this->Comment->paginate($nbPages, $nbPerPage, $author->id,'author');
+        $comments = $this->Comment->paginate($nbPages, $nbPerPage, $author->id, 'author');
 
-        return compact('author', 'books','comments','nbPages');
+        return compact('author', 'books', 'comments', 'nbPages');
     }
 
     /**
@@ -156,7 +156,7 @@ class AuthorsController extends AppController
             $this->redirect('missingParams', 'error');
         }
 
-        $author = $this->Author->find(null,$_GET['id'],'Author', 'user_id = ' . Session::getId());
+        $author = $this->Author->find(null, $_GET['id'], 'Author', 'user_id = ' . Session::getId());
         if (!$author) {
             Session::setFlash('L‘auteur est introuvable !', 'error');
         }
@@ -188,7 +188,39 @@ class AuthorsController extends AppController
         }
 
         return compact('author', 'errors');
+    }
 
+    /**
+     * Confirmer une suppression
+     * @return array
+     */
+    public function delete()
+    {
+        if (!$this->request->id) {
+            $this->redirect('missingParams', 'error');
+        }
+
+        $author = $this->Author->find(null,$_GET['id'],'Author', 'user_id = ' . Session::getId());
+
+        if (!$author) {
+            Session::setFlash('Vous ne pouvez supprimer cet auteur','error');
+            $this->redirect('index','user');
+        }
+
+        return compact('author');
+    }
+
+    /**
+     * Supprimer un auteur
+     */
+    public function goDelete(){
+        if (!$this->request->id) {
+            $this->redirect('missingParams', 'error');
+        }
+
+        $this->Author->delete($_GET['id']);
+        Session::setFlash('L‘auteur a bien été supprimé !');
+        $this->redirect('index','user');
     }
 
 } 
