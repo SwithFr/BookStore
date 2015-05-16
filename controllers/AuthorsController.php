@@ -223,4 +223,25 @@ class AuthorsController extends AppController
         $this->redirect('index','user');
     }
 
+    /**
+     * Gerer les auteurs que l'on a ajoutés
+     * @return array
+     */
+    public function manage()
+    {
+        $nbPerPage = 5;
+        $nbPages = ceil($this->Author->count('user_id = ' . Session::getId()) / $nbPerPage);
+        $authors = $this->Author->paginate($nbPages, $nbPerPage, Session::getId());
+
+        foreach ($authors as $a) {
+            if ($this->Author->getBookCount($a->id) > 0) {
+                $a->hasBooks = true;
+            } else {
+                $a->hasBooks = false;
+            }
+        }
+
+        return compact('authors','nbPages');
+    }
+
 } 
