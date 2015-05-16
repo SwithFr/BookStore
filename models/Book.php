@@ -302,7 +302,7 @@ class Book extends AppModel implements BooksRepositoryInterface
             $_GET['page'] = $nbpages;
         }
 
-        $sql = "SELECT books.id, title, first_name, last_name
+        $sql = "SELECT books.id, title, first_name, last_name, books.img, books.summary
                 FROM books
                 LEFT JOIN book_library ON book_library.book_id = books.id
                 LEFT JOIN libraries ON book_library.library_id = libraries.id
@@ -313,7 +313,7 @@ class Book extends AppModel implements BooksRepositoryInterface
                 LIMIT " . $nbperpage * ($_GET['page'] - 1) . "," . $nbperpage;
         $pdost = $this->db->prepare($sql);
         $pdost->execute();
-        return $pdost->fetchAll();
+        return $pdost->fetchAll(\PDO::FETCH_CLASS, __NAMESPACE__ . '\\Entities\\BookEntity');
     }
 
 }
