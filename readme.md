@@ -14,3 +14,4 @@ Le but de l'exercice est de réaliser un site pour la gestion d'une bibliothèqu
 - Ajout des évènements 
 - Faire les vérifications d'existence avant actions en bdd
 - Liste de lecture 
+- Vérification des dates
