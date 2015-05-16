@@ -16,4 +16,9 @@
     <?php else: ?>
         <a class="btn btn--add" href="<?= Html::url('manage','author'); ?>">Gérer vos auteurs</a>
     <?php endif; ?>
+    <?php if(!$data['hasEditor']): ?>
+        <a class="btn alert alert--warning clearfix" href="<?= Html::url('add','editor'); ?>">Vous n'avez pas encore ajouté d'éditeur, ajoutez en un !</a>
+    <?php else: ?>
+        <a class="btn btn--add" href="<?= Html::url('manage','editor'); ?>">Gérer vos éditeurs</a>
+    <?php endif; ?>
 </div>
