@@ -12,6 +12,8 @@ interface EditorsRepositoryInterface
      * @param string $website
      * @param string $img
      * @param string $history
+     * @param $user_id
+     * @return
      */
-    public function create($name, $website = '', $img = '', $history = '');
+    public function create($name, $website = '', $img = '', $history = '', $user_id);
 } 

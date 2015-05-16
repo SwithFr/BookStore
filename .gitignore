@@ -20,3 +20,4 @@ vendor/illuminate/container/
 *.css
 
 assets/css
+*.jpg

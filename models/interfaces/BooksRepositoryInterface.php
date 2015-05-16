@@ -39,7 +39,7 @@ interface BooksRepositoryInterface
      * @param $book_id
      * @return mixed
      */
-    public function find($book_id);
+    public function findBook($book_id);
 
     /**
      * @param $data
