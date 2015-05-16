@@ -106,40 +106,16 @@ class UsersController extends AppController
      */
     public function index()
     {
-        $this->loadModel('Librarie');
-        $this->loadModel('Book');
         $this->loadModel('Author');
         $user_id = Session::getId();
         $user = $this->User->find(null, $user_id);
         if (!$user) {
             $this->redirect('unauthorized', 'error');
-            exit();
         }
-        if ($this->User->hasLibrary($user_id)) {
-            $hasLibrary = true;
-            $library = $this->Librarie->getFromUser($user_id);
-            $books = $this->Book->getAllFromLibrary(
-                'books.id, title, first_name, last_name',
-                $library->id
-            );
-        } else {
-            $hasLibrary = false;
-            $library = null;
-            $books = null;
-        }
+        $hasLibrary = $this->User->count('user_id = ' . $user_id, 'libraries');
+        $hasAuthor = $this->User->count('user_id = ' . $user_id, 'authors');
+        $hasEditor = $this->User->count('user_id = ' . $user_id, 'editors');
 
-        $nbPerPage = 5;
-        $nbPages = ceil($this->Author->count('user_id = ' . $user_id) / $nbPerPage);
-        $authors = $this->Author->paginateForAccount($nbPages, $nbPerPage, $user_id);
-
-        foreach ($authors as $a) {
-            if ($this->Author->getBookCount($a->id) > 0) {
-                $a->hasBooks = true;
-            } else {
-                $a->hasBooks = false;
-            }
-        }
-
-        return compact('user', 'hasLibrary', 'library', 'books', 'authors', 'nbPages');
+        return compact('user', 'hasLibrary', 'hasAuthor', 'hasEditor');
     }
 } 
