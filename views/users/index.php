@@ -9,7 +9,7 @@
     <?php if(!$data['hasLibrary']): ?>
         <a class="btn alert alert--warning" href="<?= Html::url('add','librarie'); ?>">Veuillez d'abord créer une bibliothèque pour pouvoir ajouter des livres.</a>
     <?php else: ?>
-        <a class="btn btn--add" href="<?= Html::url('manage','librarie', ['user_id' => $data['user']->id]); ?>">Gérer votre bibliothèque</a>
+        <a class="btn btn--add" href="<?= Html::url('manage','librarie'); ?>">Gérer votre bibliothèque</a>
     <?php endif; ?>
     <?php if(!$data['hasAuthor']): ?>
         <a class="btn alert alert--warning clearfix" href="<?= Html::url('add','author'); ?>">Vous n'avez pas encore ajouté d'auteur, ajoutez en un !</a>
