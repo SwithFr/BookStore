@@ -19,13 +19,14 @@ class Editor extends AppModel implements EditorsRepositoryInterface
      * @param string $website
      * @param string $img
      * @param string $history
+     * @param $user_id
      */
-    public function create($name, $website = '', $img = '', $history = '')
+    public function create($name, $website = '', $img = '', $history = '', $user_id)
     {
-        $sql = 'INSERT INTO editors(name, website, img, history)
-                VALUES (:name, :website, :img, :history)';
+        $sql = 'INSERT INTO editors(name, website, img, history, user_id)
+                VALUES (:name, :website, :img, :history, :user_id)';
         $pdost = $this->db->prepare($sql);
-        $pdost->execute([':name' => $name, ':website' => $website, ':img' => $img, ':history' => $history]);
+        $pdost->execute([':name' => $name, ':website' => $website, ':img' => $img, ':history' => $history, ':user_id' => $user_id]);
     }
 
     /**
