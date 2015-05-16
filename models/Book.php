@@ -120,19 +120,6 @@ class Book extends AppModel implements BooksRepositoryInterface
     }
 
     /**
-     * Met à jour l'association dans la table author_book
-     * @param $author_id
-     * @param $book_id
-     */
-    private function updateAuthorBook($author_id, $book_id)
-    {
-        $sql = "UPDATE author_book
-                SET author_id = $author_id
-                WHERE book_id = $book_id";
-        $this->db->query($sql);
-    }
-
-    /**
      * Ajoute l'association dans la table book_library
      * @param $book_id
      * @param $library_id
@@ -166,7 +153,7 @@ class Book extends AppModel implements BooksRepositoryInterface
                 WHERE books.id=:book_id';
         $pdost = $this->db->prepare($sql);
         $pdost->execute([':book_id' => $book_id]);
-        if($class) {
+        if ($class) {
             $pdost->setFetchMode(\PDO::FETCH_CLASS, __NAMESPACE__ . '\\Entities\\BookEntity');
         }
         return $pdost->fetch();
@@ -204,6 +191,19 @@ class Book extends AppModel implements BooksRepositoryInterface
     }
 
     /**
+     * Met à jour l'association dans la table author_book
+     * @param $author_id
+     * @param $book_id
+     */
+    private function updateAuthorBook($author_id, $book_id)
+    {
+        $sql = "UPDATE author_book
+                SET author_id = $author_id
+                WHERE book_id = $book_id";
+        $this->db->query($sql);
+    }
+
+    /**
      * Récupère un livre et son genre
      * @param $genre_id
      * @param null $limit
@@ -214,14 +214,14 @@ class Book extends AppModel implements BooksRepositoryInterface
         $sql = 'SELECT DISTINCT title, name, books.id, img, summary
                 FROM books
                 LEFT JOIN genres ON genre_id = genres.id
-                WHERE genre_id = ' . $genre_id .'
+                WHERE genre_id = ' . $genre_id . '
                 GROUP BY title
                 ORDER BY name ASC';
-        if($limit) {
+        if ($limit) {
             $sql .= ' LIMIT ' . $limit;
         }
         $pdost = $this->db->query($sql);
-        return $pdost->fetchAll(\PDO::FETCH_CLASS,  __NAMESPACE__ . '\\Entities\\BookEntity');
+        return $pdost->fetchAll(\PDO::FETCH_CLASS, __NAMESPACE__ . '\\Entities\\BookEntity');
     }
 
     /**
@@ -238,7 +238,7 @@ class Book extends AppModel implements BooksRepositoryInterface
                 WHERE authors.id = :author_id';
         $pdost = $this->db->prepare($sql);
         $pdost->execute([':author_id' => $author_id]);
-        return $pdost->fetchAll(\PDO::FETCH_CLASS,  __NAMESPACE__ . '\\Entities\\BookEntity');
+        return $pdost->fetchAll(\PDO::FETCH_CLASS, __NAMESPACE__ . '\\Entities\\BookEntity');
     }
 
     /**
@@ -254,7 +254,7 @@ class Book extends AppModel implements BooksRepositoryInterface
                 WHERE editor_id = :editor_id';
         $pdost = $this->db->prepare($sql);
         $pdost->execute([':editor_id' => $editor_id]);
-        return $pdost->fetchAll(\PDO::FETCH_CLASS,  __NAMESPACE__ . '\\Entities\\BookEntity');
+        return $pdost->fetchAll(\PDO::FETCH_CLASS, __NAMESPACE__ . '\\Entities\\BookEntity');
     }
 
     /**

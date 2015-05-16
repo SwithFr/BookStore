@@ -19,12 +19,14 @@ use Helpers\Html;
                 <h2 class="results__title">Le(s) Livre(s)</h2>
                 <?php foreach ($data['data']['libraries'] as $k => $v): ?>
                     <p class="library">
-                        Dans la bibliothèque : <a class="library__name" href="<?= Html::url('view', 'librarie', ['id' => $v['id']]); ?>"><?= $k; ?></a>
+                        Dans la bibliothèque : <a class="library__name"
+                                                  href="<?= Html::url('view', 'librarie', ['id' => $v['id']]); ?>"><?= $k; ?></a>
                     </p>
                     <?php foreach ($v as $book): ?>
                         <?php if (!is_numeric($book)): ?>
                             <h3>
-                                <a class="results__link" href="<?= Html::url('view', 'book', ['id' => $book->id]); ?>"><?= $book->title; ?></a>
+                                <a class="results__link"
+                                   href="<?= Html::url('view', 'book', ['id' => $book->id]); ?>"><?= $book->title; ?></a>
                             </h3>
                         <?php endif; ?>
                     <?php endforeach; ?>

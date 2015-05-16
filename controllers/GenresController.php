@@ -39,14 +39,14 @@ class GenresController extends AppController
             $this->redirect('missingParams', 'error');
         }
 
-        $genre = $this->Genre->find(null,$_GET['id']);
-        if(!$genre) {
-            Session::setFlash('Cette catégorie n‘existe pas','error');
-            $this->redirect('index','genre');
+        $genre = $this->Genre->find(null, $_GET['id']);
+        if (!$genre) {
+            Session::setFlash('Cette catégorie n‘existe pas', 'error');
+            $this->redirect('index', 'genre');
         }
 
         $this->loadModel('Book');
-        $genre->books =  $genre->books = $this->Book->getWithGenre($genre->id);
+        $genre->books = $genre->books = $this->Book->getWithGenre($genre->id);
 
         return compact('genre');
     }

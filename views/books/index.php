@@ -1,5 +1,6 @@
 <?php require(D_VIEWS . DS . 'elements' . DS . 'main-form.php');
 use Helpers\Html;
+
 ?>
 <div class="section vedettes">
     <div class="section__header">
@@ -31,6 +32,7 @@ use Helpers\Html;
         <h3 class="section__block__title"><a
                 href="<?= $data['author']->link(); ?>"><?= $data['author']->name(); ?></a>
         </h3>
+
         <p class="section__block__year"><?= $data['author']->date(); ?></p>
 
         <p class="section__block__content">
@@ -38,7 +40,8 @@ use Helpers\Html;
         </p>
 
         <div class="author__count">
-            <p><?= $data['author']->name(); ?> a écrit <a href="<?= $data['author']->link(); ?>#books__list"><span class="nb nb-p"><?= $data['author']->book_count; ?></span></a> livres</p>
+            <p><?= $data['author']->name(); ?> a écrit <a href="<?= $data['author']->link(); ?>#books__list"><span
+                        class="nb nb-p"><?= $data['author']->book_count; ?></span></a> livres</p>
 
             <p><?= $data['author']->score(); ?></p>
         </div>

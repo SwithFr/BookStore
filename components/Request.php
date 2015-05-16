@@ -53,7 +53,7 @@ class Request
 
             # Verification si action permise
             if (!in_array($route, $routes)) {
-                if(!in_array($route,$routes['needConnexion'])) {
+                if (!in_array($route, $routes['needConnexion'])) {
                     header('Location: ' . Html::url('unauthorized', 'error'));
                 } else {
                     $this->needAuth = true;
@@ -93,8 +93,8 @@ class Request
     public function checkParams($params = [])
     {
         $valid = false;
-        foreach($params as $p => $type) {
-            if(!isset($_REQUEST[$p])){
+        foreach ($params as $p => $type) {
+            if (!isset($_REQUEST[$p])) {
                 die('pas def');
                 $valid = false;
             } elseif ($type == 'id' && !is_numeric($_REQUEST[$p])) {

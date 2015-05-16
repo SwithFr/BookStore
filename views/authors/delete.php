@@ -1,5 +1,5 @@
 <?php use Helpers\Html; ?>
-<?php use Helpers\Text; ?>
+<?php ?>
 <div class="section">
     <div class="section__block">
         <?= $data['author']->img(); ?>
@@ -12,5 +12,6 @@
         </p>
     </div>
 </div>
-<a class="btn btn--delete btn--inline" href="<?= Html::url('goDelete','author',['id'=>$data['author']->id]); ?>">Confirmer la suppression</a>
-<a class="btn btn--add btn--inline" href="<?= Html::url('index','user'); ?>">Annuler</a>
+<a class="btn btn--delete btn--inline" href="<?= Html::url('goDelete', 'author', ['id' => $data['author']->id]); ?>">Confirmer
+    la suppression</a>
+<a class="btn btn--add btn--inline" href="<?= Html::url('index', 'user'); ?>">Annuler</a>

@@ -62,9 +62,9 @@ class BooksController extends AppController
         $languages = $this->Language->get(['fields' => 'id,name']);
         $editors = $this->Editor->get(['fields' => 'id,name']);
         $locations = $this->Location->getAllFromUserLibrary($user_id);
-        if(!$locations) {
-            Session::setFlash('Vous n‘avez pas d‘emplacement pour cette bibliothèque ! Ajoutez en un avant d‘ajouter un livre','error');
-            $this->redirect('manage','librarie');
+        if (!$locations) {
+            Session::setFlash('Vous n‘avez pas d‘emplacement pour cette bibliothèque ! Ajoutez en un avant d‘ajouter un livre', 'error');
+            $this->redirect('manage', 'librarie');
         }
         $library_id = $_GET['library'];
         $authors = $this->Author->get(['fields' => 'id,first_name,last_name', 'order' => 'last_name ASC']);
@@ -152,8 +152,8 @@ class BooksController extends AppController
         $book = $this->Book->findBook($_GET['id']);
 
         if (!$book) {
-            Session::setFlash('Ce livre est introuvable','error');
-            $this->redirect('manage','librarie');
+            Session::setFlash('Ce livre est introuvable', 'error');
+            $this->redirect('manage', 'librarie');
         }
 
         return compact('book');
@@ -162,7 +162,8 @@ class BooksController extends AppController
     /**
      * Supprimer un livre
      */
-    public function goDelete(){
+    public function goDelete()
+    {
         if (!$this->request->id) {
             $this->redirect('missingParams', 'error');
         }
@@ -170,7 +171,7 @@ class BooksController extends AppController
         $this->Book->delete($_GET['id']);
         $this->Book->deleteRelations($_GET['id']);
         Session::setFlash('Le livre a bien été supprimé !');
-        $this->redirect('manage','librarie');
+        $this->redirect('manage', 'librarie');
     }
 
     /**
@@ -192,9 +193,9 @@ class BooksController extends AppController
         $this->loadModel('Comment');
         $nbPerPage = 5;
         $nbPages = ceil($this->Comment->count('ref_id = ' . $book->id . ' AND ref = "book"') / $nbPerPage);
-        $comments = $this->Comment->paginate($nbPages, $nbPerPage, $book->id,'book');
+        $comments = $this->Comment->paginate($nbPages, $nbPerPage, $book->id, 'book');
 
-        return compact('book','comments','nbPages');
+        return compact('book', 'comments', 'nbPages');
     }
 
     /**
@@ -203,10 +204,10 @@ class BooksController extends AppController
      */
     public function populars()
     {
-        $books = $this->Book->getPopular('books.id,title,books.vote',10);
+        $books = $this->Book->getPopular('books.id,title,books.vote', 10);
         $this->loadModel('Author');
-        $authors = $this->Author->getPopular('authors.id,first_name,last_name,authors.vote',10);
-        return compact('books','authors');
+        $authors = $this->Author->getPopular('authors.id,first_name,last_name,authors.vote', 10);
+        return compact('books', 'authors');
     }
 
     /**
@@ -215,9 +216,9 @@ class BooksController extends AppController
     public function voteUp()
     {
         $v = new Votable();
-        $user_id = isset( $_COOKIE['user_id'] ) ? $_COOKIE['user_id'] : $_SESSION['user_id'];
-        $v->vote('books', $_GET['ref_id'],$user_id, 1);
-        $this->redirect('view','book', ['id'=>$_GET['ref_id']]);
+        $user_id = isset($_COOKIE['user_id']) ? $_COOKIE['user_id'] : $_SESSION['user_id'];
+        $v->vote('books', $_GET['ref_id'], $user_id, 1);
+        $this->redirect('view', 'book', ['id' => $_GET['ref_id']]);
     }
 
     /**
@@ -226,9 +227,9 @@ class BooksController extends AppController
     public function voteDown()
     {
         $v = new Votable();
-        $user_id = isset( $_COOKIE['user_id'] ) ? $_COOKIE['user_id'] : $_SESSION['user_id'];
-        $v->vote('books', $_GET['ref_id'],$user_id, -1);
-        $this->redirect('view','book', ['id'=>$_GET['ref_id']]);
+        $user_id = isset($_COOKIE['user_id']) ? $_COOKIE['user_id'] : $_SESSION['user_id'];
+        $v->vote('books', $_GET['ref_id'], $user_id, -1);
+        $this->redirect('view', 'book', ['id' => $_GET['ref_id']]);
     }
 
 } 

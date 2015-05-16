@@ -1,6 +1,7 @@
 <?php
-use Helpers\Html;
 use Components\Session;
+use Helpers\Html;
+
 $v = new \Behaviors\Votable();
 ?>
 <?php if ($data['author']): ?>
@@ -28,13 +29,18 @@ $v = new \Behaviors\Votable();
                     </ul>
                 <?php endif; ?>
                 <div class="votes">
-                    <?php if( \Components\Session::isLogged() ): ?>
+                    <?php if (\Components\Session::isLogged()): ?>
                         <div class="<?= $v->getClass('authors', $data['author']->id); ?>">
-                            <a class="voteUp" href="<?= Html::url('voteUp', 'author', ['ref_id' => $data['author']->id]); ?>">J'aime cet auteur</a> /
-                            <a class="voteDown" href="<?= Html::url('voteDown', 'author', ['ref_id' => $data['author']->id]); ?>">Je n'aime pas cet auteur</a>
+                            <a class="voteUp"
+                               href="<?= Html::url('voteUp', 'author', ['ref_id' => $data['author']->id]); ?>">J'aime
+                                cet auteur</a> /
+                            <a class="voteDown"
+                               href="<?= Html::url('voteDown', 'author', ['ref_id' => $data['author']->id]); ?>">Je
+                                n'aime pas cet auteur</a>
                         </div>
                     <?php else: ?>
-                        <p class="section__block__infos">Connectez-vous ou créez un compte pour voter pour cet auteur</p>
+                        <p class="section__block__infos">Connectez-vous ou créez un compte pour voter pour cet
+                            auteur</p>
                     <?php endif; ?>
                     <p><?= $data['author']->score(); ?></p>
                 </div>
@@ -43,27 +49,30 @@ $v = new \Behaviors\Votable();
     </div>
     <div class="section">
         <h2 class="section__title">Les commentaires :</h2>
-        <?php if(!empty($data['comments'])): ?>
-            <?php foreach($data['comments'] as $comment): ?>
+        <?php if (!empty($data['comments'])): ?>
+            <?php foreach ($data['comments'] as $comment): ?>
                 <div class="comment">
                     <p>Commentaire écrit par : <span class="comment__author"><?= $comment->login; ?></span></p>
+
                     <p class="comment__content"><?= $comment->comment; ?></p>
-                    <?php if($comment->user_id == Session::getId()): ?>
+                    <?php if ($comment->user_id == Session::getId()): ?>
                         <div class="comment__actions">
                             <?= $comment->deleteLink(); ?>
                         </div>
                     <?php endif; ?>
                 </div>
             <?php endforeach; ?>
-            <?= Html::paginate($data['nbPages'],'view','author',['id'=>$data['author']->id]); ?>
+            <?= Html::paginate($data['nbPages'], 'view', 'author', ['id' => $data['author']->id]); ?>
         <?php else: ?>
-            <p class="section__block__infos">Encore aucun commentaire sur ce livre, soyez le premier à en rédiger un.</p>
+            <p class="section__block__infos">Encore aucun commentaire sur ce livre, soyez le premier à en rédiger
+                un.</p>
         <?php endif; ?>
 
-        <?php if(Session::isLogged()): ?>
-            <form action="<?= Html::url('add','comment',['ref'=>'author','ref_id'=>$data['author']->id]); ?>" method="post" class="form--add">
+        <?php if (Session::isLogged()): ?>
+            <form action="<?= Html::url('add', 'comment', ['ref' => 'author', 'ref_id' => $data['author']->id]); ?>"
+                  method="post" class="form--add">
                 <label for="text">Votre commentaire :</label>
-                <?php if(Session::hasError('text')): ?>
+                <?php if (Session::hasError('text')): ?>
                     <span class="has-error"><?= Session::getError('text'); ?></span>
                 <?php endif; ?>
                 <textarea class="form__textarea" name="text" id="test" rows="5"></textarea>

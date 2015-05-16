@@ -11,7 +11,7 @@ class Comment extends AppModel implements CommentsRepositoryInterface
 {
     public $rules = [
         'text' => [
-            ['ruleName'=>'notEmpty','message'=>'Veuillez saisir un commentaire']
+            ['ruleName' => 'notEmpty', 'message' => 'Veuillez saisir un commentaire']
         ]
     ];
 

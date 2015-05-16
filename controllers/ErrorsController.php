@@ -36,7 +36,8 @@ class ErrorsController extends AppController
         return compact('message');
     }
 
-    public function wrongMethod(){
+    public function wrongMethod()
+    {
         $message = "Erreur de methode";
         return compact('message');
     }

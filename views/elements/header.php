@@ -1,4 +1,8 @@
-<?php use Helpers\Html; use \Components\Session; ?>
+<?php
+use Components\Session;
+use Helpers\Html;
+
+?>
 <!doctype html>
 <html lang="fr">
 <head>
@@ -12,15 +16,16 @@
     <div class="header__content">
         <div class="header__title">
             <p>Une nouvelle manière de découvir,</p>
+
             <p>partager et lire des livres</p>
         </div>
         <div class="header__login">
-            <?php if(!Session::isLogged()): ?>
-                <a href="<?= Html::url('register','user'); ?>" class="link link--white">Créer un compte</a>
-                <a href="<?= Html::url('check','user'); ?>" class="link link--white">Connexion</a>
+            <?php if (!Session::isLogged()): ?>
+                <a href="<?= Html::url('register', 'user'); ?>" class="link link--white">Créer un compte</a>
+                <a href="<?= Html::url('check', 'user'); ?>" class="link link--white">Connexion</a>
             <?php else: ?>
-                <a href="<?= Html::url('index','user'); ?>" class="link link--white">Mon compte</a>
-                <a href="<?= Html::url('disconnect','user'); ?>" class="link link--white">Déconnexion</a>
+                <a href="<?= Html::url('index', 'user'); ?>" class="link link--white">Mon compte</a>
+                <a href="<?= Html::url('disconnect', 'user'); ?>" class="link link--white">Déconnexion</a>
             <?php endif; ?>
         </div>
     </div>

@@ -197,20 +197,6 @@ class Validator
     }
 
     /**
-     * Retourne le message d'erreur du champ passé en paramettre
-     * @param $field
-     * @return null
-     */
-    public function message($field)
-    {
-        if (isset($this->errors[$field]))
-            return $this->errors[$field];
-        else {
-            return null;
-        }
-    }
-
-    /**
      * Retourne le tableau contenant toutes les erreurs
      * @return array|null
      */
@@ -231,6 +217,20 @@ class Validator
     {
         foreach ($errors as $e) {
             $_SESSION['errors'][$e] = $this->message($e);
+        }
+    }
+
+    /**
+     * Retourne le message d'erreur du champ passé en paramettre
+     * @param $field
+     * @return null
+     */
+    public function message($field)
+    {
+        if (isset($this->errors[$field]))
+            return $this->errors[$field];
+        else {
+            return null;
         }
     }
 

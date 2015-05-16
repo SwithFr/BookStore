@@ -57,7 +57,7 @@ class EditorsController extends AppController
                 $dest = $name = '';
             }
 
-            $this->Editor->create($_POST['name'], $_POST['website'], $dest . $name, $_POST['history'],Session::getId());
+            $this->Editor->create($_POST['name'], $_POST['website'], $dest . $name, $_POST['history'], Session::getId());
             Session::setFlash('L‘éditeur ' . $_POST['first_name'] . ' ' . $_POST['last_name'] . ' a bien été ajouté !');
             $this->redirect('index', 'user');
         }
@@ -89,7 +89,7 @@ class EditorsController extends AppController
             $this->redirect('missingParams', 'error');
         }
 
-        $editor = $this->Editor->find(null,$_GET['id']);
+        $editor = $this->Editor->find(null, $_GET['id']);
         if (!$editor) {
             Session::setFlash('L‘éditeur est introuvable !', 'error');
         }

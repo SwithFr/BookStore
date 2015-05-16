@@ -9,22 +9,20 @@ class DbProvider
 {
 
     /**
+     * L'instance du singleton
+     * @var null|DbProvider
+     */
+    private static $_instance = null;
+    /**
      * Les paramettres de la connexion à la base de données
      * @var array|mixed
      */
     private $settings = [];
-
     /**
      * La connexion PDO
      * @var null|PDO
      */
     private $db = null;
-
-    /**
-     * L'instance du singleton
-     * @var null|DbProvider
-     */
-    private static $_instance = null;
 
     private function __construct()
     {

@@ -1,5 +1,5 @@
 <?php use Helpers\Html; ?>
-<p class="ariane"><a href="<?= Html::url('manage','author'); ?>">Retour</a></p>
+<p class="ariane"><a href="<?= Html::url('manage', 'author'); ?>">Retour</a></p>
 <div class="section">
     <h2 class="section__title">Ajouter un auteur</h2>
 

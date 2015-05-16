@@ -24,7 +24,7 @@ class AuthorEntity extends AppEntity
      */
     public function link()
     {
-        return Html::url('view','author',['id'=>$this->id]);
+        return Html::url('view', 'author', ['id' => $this->id]);
     }
 
     /**
@@ -35,9 +35,9 @@ class AuthorEntity extends AppEntity
     {
         $date = $this->date_birth;
         if ($this->date_death !== '') {
-           $date .= ' - ' . $this->date_death;
+            $date .= ' - ' . $this->date_death;
         }
-        return $date ;
+        return $date;
     }
 
     /**

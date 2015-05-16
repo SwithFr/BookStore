@@ -1,4 +1,4 @@
-<form action="<?= \Helpers\Html::url('searchAll','page'); ?>" class="form" method="post">
+<form action="<?= \Helpers\Html::url('searchAll', 'page'); ?>" class="form" method="post">
     <input placeholder="Chercher un livre, un auteur..."
            class="form__input form--search"
            name="search"
