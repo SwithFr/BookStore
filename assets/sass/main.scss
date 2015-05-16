@@ -405,6 +405,8 @@
 
   &:hover {
     cursor: pointer;
+
+    color: #d0b142;
   }
 }
 
@@ -432,8 +434,10 @@
 
 .books__list {
   width: 100%;
+}
 
-  &:hover {
+.author__books__list {
+  a:hover {
     color: #d04c51;
     text-decoration: underline;
   }

@@ -9,4 +9,6 @@ ADMIN
 
   border-bottom: 1px dashed gray;
 }
-.admin--delete{color:orangered;}
+.admin--delete, .admin--delete:visited {
+  color:orangered;
+}
