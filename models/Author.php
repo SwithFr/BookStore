@@ -145,7 +145,7 @@ class Author extends AppModel implements AuthorsRepositoryInterface
      * @param $user_id
      * @return array
      */
-    public function paginateForAccount($nbpages, $nbperpage, $user_id)
+    public function paginate($nbpages, $nbperpage, $user_id)
     {
         if (!isset($_GET['page']) || $_GET['page'] < 1 || !is_numeric($_GET['page'])) {
             $_GET['page'] = 1;
