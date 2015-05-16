@@ -15,4 +15,4 @@
     </div>
 </div>
 <a class="btn btn--delete btn--inline" href="<?= Html::url('goDelete','book',['id'=>$data['book']->id]); ?>">Supprimer</a>
-<a class="btn btn--add btn--inline" href="<?= Html::url('account','user'); ?>">Annuler</a>
+<a class="btn btn--add btn--inline" href="<?= Html::url('index','user'); ?>">Annuler</a>
