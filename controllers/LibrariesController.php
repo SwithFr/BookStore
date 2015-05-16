@@ -65,4 +65,25 @@ class LibrariesController extends AppController
 
         return compact('library', 'books');
     }
+
+    /**
+     * Gerer une bibliothèque
+     * @return array
+     */
+    public function manage()
+    {
+        $library = $this->Librarie->getFromUser(Session::getId());
+        if (!$library) {
+            Session::setFlash('Une erreur est survenue', 'error');
+        }
+
+        $hasLocation = $this->Librarie->count('library_id = ' . $library->id, 'location_library');
+
+        $nbPerPage = 10;
+        $nbPages = ceil($this->Librarie->countBook($library->id) / $nbPerPage);
+        $this->loadModel('Book');
+        $books = $this->Book->paginate($nbPages, $nbPerPage, $library->id);
+
+        return compact('library', 'books', 'nbPages', 'hasLocation');
+    }
 }
