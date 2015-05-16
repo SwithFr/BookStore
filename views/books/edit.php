@@ -1,7 +1,7 @@
 <?php use Helpers\Html; ?>
 <div class="section">
 
-    <p class="ariane"><a href="<?= Html::url('account','user'); ?>">Retour</a></p>
+    <p class="ariane"><a href="<?= Html::url('manage','librarie'); ?>">Retour</a></p>
 
     <?php if(isset($_GET['id'])): ?>
         <h2 class="section__title">Modifier un livre</h2>
