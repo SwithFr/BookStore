@@ -39,7 +39,7 @@ class Author extends AppModel implements AuthorsRepositoryInterface
      */
     public function getPopular($fields, $limit = null)
     {
-        $sql = 'SELECT ' . $fields . '
+        $sql = 'SELECT DISTINCT ' . $fields . '
                 FROM authors
                 LEFT JOIN author_book ON author_id = authors.id
                 LEFT JOIN books ON book_id = books.id
