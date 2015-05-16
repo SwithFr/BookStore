@@ -69,37 +69,6 @@ class Book extends AppModel implements BooksRepositoryInterface
     }
 
     /**
-     * Permet de récupérer tous les livres d'une bibliotèque
-     * @param string $fields
-     * @param int $id
-     * @param int $limit
-     * @return array|mixed
-     */
-    public function getAllFromLibrary($fields, $id, $limit = null)
-    {
-        $sql = 'SELECT ' . $fields . '
-                FROM books
-                LEFT JOIN book_library ON book_library.book_id = books.id
-                LEFT JOIN libraries ON book_library.library_id = libraries.id
-                LEFT JOIN author_book ON author_book.book_id = books.id
-                LEFT JOIN authors ON author_book.author_id = authors.id
-                WHERE library_id = ' . $id . ' AND private = 0
-                ORDER BY title ASC ';
-
-        if (!is_null($limit)) {
-            $sql .= 'LIMIT ' . $limit;
-        }
-
-        $pdost = $this->db->query($sql);
-
-        if ($limit > 1 || is_null($limit)) {
-            return $pdost->fetchAll();
-        }
-
-        return $pdost->fetch();
-    }
-
-    /**
      * Ajoute un livre
      * @param $title
      * @param $img
@@ -314,6 +283,37 @@ class Book extends AppModel implements BooksRepositoryInterface
 
         $sql = 'DELETE FROM book_library WHERE book_id = ' . $book_id;
         $this->db->query($sql);
+    }
+
+    /**
+     * Pagine les auteurs pour la page "admin"
+     * @param array $nbpages
+     * @param $nbperpage
+     * @param $library_id
+     * @return array
+     */
+    public function paginate($nbpages, $nbperpage, $library_id)
+    {
+        if (!isset($_GET['page']) || $_GET['page'] < 1 || !is_numeric($_GET['page'])) {
+            $_GET['page'] = 1;
+        }
+
+        if ($_GET['page'] > $nbpages && $nbpages != 0) {
+            $_GET['page'] = $nbpages;
+        }
+
+        $sql = "SELECT books.id, title, first_name, last_name
+                FROM books
+                LEFT JOIN book_library ON book_library.book_id = books.id
+                LEFT JOIN libraries ON book_library.library_id = libraries.id
+                LEFT JOIN author_book ON author_book.book_id = books.id
+                LEFT JOIN authors ON author_book.author_id = authors.id
+                WHERE library_id = $library_id AND private = 0
+                ORDER BY title ASC
+                LIMIT " . $nbperpage * ($_GET['page'] - 1) . "," . $nbperpage;
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute();
+        return $pdost->fetchAll();
     }
 
 }
