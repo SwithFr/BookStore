@@ -150,7 +150,7 @@
   float: left;
 
   &:hover .section__block__title {
-    color: #d04c51;
+    color: orangered;
     text-decoration: underline;
   }
 }
@@ -204,7 +204,7 @@
 }
 
 .nb-n {
-  color: #bf616a;
+  color: orangered;
 }
 
 .nb-p {
@@ -305,14 +305,14 @@
 }
 
 .editors__list__item {
-  margin-bottom: 1em;
+  margin-bottom: 1.5em;
 
   &:nth-child(odd) {
-    border-right: 1em transparent solid;
+    border-bottom: 2em transparent solid;
   }
 
   &:hover .editor__title {
-    color: #d04c51;
+    color: orangered;
     text-decoration: underline;
   }
 }
@@ -374,13 +374,13 @@
   padding-left: 1em;
 
   &:hover {
-    color: #d04c51;
+    color: orangered;
     text-decoration: underline;
   }
 }
 
 .request {
-  color: red;
+  color: orangered;
 }
 
 .library {
@@ -438,7 +438,7 @@
 
 .author__books__list {
   a:hover {
-    color: #d04c51;
+    color: orangered;
     text-decoration: underline;
   }
 }
@@ -488,7 +488,7 @@
 }
 
 .disliked .voteDown {
-  color: #d04c51;
+  color: orangered;
 }
 
 .populars__authors {
@@ -513,7 +513,7 @@
 
     h2 {
       text-decoration: underline;
-      color: #d04c51;
+      color: orangered;
     }
   }
 }
