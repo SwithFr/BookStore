@@ -9,7 +9,7 @@
                 </div>
             </div>
             <div class="section__block infos">
-                <img src="./assets/img/<?= $data['editor']->img; ?>" class="section__block__img">
+                <img src="<?= $data['editor']->img; ?>" class="section__block__img">
                 <?php if(!empty($data['books'])): ?>
                     <h3>Livres édité :</h3>
                     <ul id="books__list">
