@@ -149,11 +149,14 @@ class AppModel
     /**
      * Compte le nombre d'entrées d'une table
      * @param $condition
+     * @param null $table
      * @return mixed
      */
-    public function count($condition)
+    public function count($condition, $table = null)
     {
-        $sql = 'SELECT COUNT(id) as count FROM ' . $this->table;
+        $sql = 'SELECT COUNT(id) as count FROM ';
+        $sql .= $table ? $table : $this->table;
+
         if ($condition) {
             $sql .= ' WHERE ' . $condition;
         }
