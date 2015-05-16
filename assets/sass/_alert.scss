@@ -15,14 +15,26 @@
 .alert--error {
   background-color: #d04c51;
   border: 1px solid #973c3f;
+
+  &:hover {
+    background-color: #d0594b;
+  }
 }
 
 .alert--success {
   background-color: #a3be8c;
   border: 1px solid #8ee986;
+
+  &:hover {
+    background-color: #6de98d;
+  }
 }
 
 .alert--warning {
   background-color: #ff9e00;
   border: 1px solid #d08770;
+
+  &:hover {
+    background-color: #ffbe00;
+  }
 }
