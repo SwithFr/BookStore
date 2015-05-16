@@ -12,5 +12,5 @@
         </p>
     </div>
 </div>
-<a class="btn btn--delete btn--inline" href="<?= Html::url('goDelete','author',['id'=>$data['author']->id]); ?>">Supprimer</a>
+<a class="btn btn--delete btn--inline" href="<?= Html::url('goDelete','author',['id'=>$data['author']->id]); ?>">Confirmer la suppression</a>
 <a class="btn btn--add btn--inline" href="<?= Html::url('index','user'); ?>">Annuler</a>
