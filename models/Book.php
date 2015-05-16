@@ -55,6 +55,7 @@ class Book extends AppModel implements BooksRepositoryInterface
                 FROM books
                 JOIN author_book ON book_id = books.id
                 JOIN authors ON author_id = authors.id
+                GROUP BY title
                 ORDER BY books.vote DESC ';
         if ($limit) {
             $sql .= 'LIMIT ' . $limit;
