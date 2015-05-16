@@ -61,9 +61,12 @@ class LibrariesController extends AppController
 
         $library = current($this->Librarie->get(['where' => 'id =' . $_GET['id'] . ' AND private = 0']));
         $this->loadModel('Book');
-        $books = $this->Book->getAllFromLibrary('title, books.id, books.img, summary', $_GET['id']);
+        $nbPerPage = 10;
+        $nbPages = ceil($this->Librarie->countBook($library->id) / $nbPerPage);
+        $this->loadModel('Book');
+        $books = $this->Book->paginate($nbPages, $nbPerPage, $library->id);
 
-        return compact('library', 'books');
+        return compact('library', 'books', 'nbPages');
     }
 
     /**
