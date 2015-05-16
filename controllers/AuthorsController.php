@@ -181,6 +181,7 @@ class AuthorsController extends AppController
                 }
                 $this->Author->update($_POST['first_name'], $_POST['last_name'], $_POST['bio'], $_POST['date_birth'], $_POST['date_death'], $img, $author->id);
                 Session::setFlash('Les informations ont été modifiées avec succès !');
+                $this->redirect('manage','author');
             } else {
                 Session::setFlash('Veuillez vérifier vos informations', 'error');
                 $errors = $v->errors();
@@ -204,7 +205,7 @@ class AuthorsController extends AppController
 
         if (!$author) {
             Session::setFlash('Vous ne pouvez supprimer cet auteur','error');
-            $this->redirect('index','user');
+            $this->redirect('manage','author');
         }
 
         return compact('author');
@@ -220,7 +221,7 @@ class AuthorsController extends AppController
 
         $this->Author->delete($_GET['id']);
         Session::setFlash('L‘auteur a bien été supprimé !');
-        $this->redirect('index','user');
+        $this->redirect('manage','author');
     }
 
     /**
