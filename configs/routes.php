@@ -57,9 +57,13 @@ return $routes = [
         'A_edit'          => 'edit/author',
         'A_votU'          => 'voteUp/author',
         'A_voteD'         => 'voteDown/author',
+        'A_delete'        => 'delete/author',
+        'A_goDelete'      => 'goDelete/author',
 
         # Editors
         'E_add'           => 'add/editor',
+        'E_delete'        => 'delete/editor',
+        'E_goDelete'      => 'goDelete/editor',
 
         # Libray
         'L_add'           => 'add/librarie',
