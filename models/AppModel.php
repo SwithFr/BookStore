@@ -125,7 +125,7 @@ class AppModel
         }
         $sql = 'SELECT ' . $fields . ' FROM ' . $this->table . ' WHERE id=:id';
 
-        if($otherCondition) {
+        if ($otherCondition) {
             $sql .= ' AND ' . $otherCondition;
         }
         $pdost = $this->db->prepare($sql);
@@ -142,7 +142,7 @@ class AppModel
      */
     public function delete($id)
     {
-        $sql = 'DELETE FROM ' . $this->table. ' WHERE id = ' . $id;
+        $sql = 'DELETE FROM ' . $this->table . ' WHERE id = ' . $id;
         $this->db->query($sql);
     }
 
@@ -152,7 +152,7 @@ class AppModel
      * @param null $table
      * @return mixed
      */
-    public function count($condition, $table = null)
+    public function count($condition = null, $table = null)
     {
         $sql = 'SELECT COUNT(id) as count FROM ';
         $sql .= $table ? $table : $this->table;
@@ -163,5 +163,4 @@ class AppModel
         $pdost = $this->db->query($sql);
         return $pdost->fetch()->count;
     }
-
 } 
