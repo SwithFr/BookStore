@@ -203,7 +203,7 @@ class BooksController extends AppController
      */
     public function populars()
     {
-        $books = $this->Book->getPopular('books.id,title,books.vote');
+        $books = $this->Book->getPopular('books.id,title,books.vote',10);
         $this->loadModel('Author');
         $authors = $this->Author->getPopular('authors.id,first_name,last_name,authors.vote',10);
         return compact('books','authors');
