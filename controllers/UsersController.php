@@ -109,7 +109,7 @@ class UsersController extends AppController
         $this->loadModel('Librarie');
         $this->loadModel('Book');
         $this->loadModel('Author');
-        $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : $_COOKIE['user_id'];
+        $user_id = Session::getId();
         $user = $this->User->find(null, $user_id);
         if (!$user) {
             $this->redirect('unauthorized', 'error');
