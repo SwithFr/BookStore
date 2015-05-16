@@ -19,9 +19,9 @@ $v = new \Behaviors\Votable();
                 <?= $data['author']->img(); ?>
                 <?php if (!empty($data['books'])): ?>
                     <h3 class="head__list">Liste de ses livres</h3>
-                    <ul>
+                    <ul class="author__books__list">
                         <?php foreach ($data['books'] as $book): ?>
-                            <li class="books__list">
+                            <li>
                                 <a href="<?= $book->link(); ?>"><?= $book->title; ?></a>
                             </li>
                         <?php endforeach; ?>
