@@ -62,6 +62,10 @@ class BooksController extends AppController
         $languages = $this->Language->get(['fields' => 'id,name']);
         $editors = $this->Editor->get(['fields' => 'id,name']);
         $locations = $this->Location->getAllFromUserLibrary($user_id);
+        if(!$locations) {
+            Session::setFlash('Vous n‘avez pas d‘emplacement pour cette bibliothèque ! Ajoutez en un avant d‘ajouter un livre','error');
+            $this->redirect('manage','librarie');
+        }
         $library_id = $_GET['library'];
         $authors = $this->Author->get(['fields' => 'id,first_name,last_name', 'order' => 'last_name ASC']);
         $d = [];
@@ -128,7 +132,7 @@ class BooksController extends AppController
                 $this->Book->update($d, $_GET['id']);
                 Session::setFlash('Le livre ' . $_POST['title'] . ' a bien été modifié !');
             }
-            $this->redirect('index', 'user');
+            $this->redirect('manage', 'librarie');
         }
 
         return compact('genres', 'languages', 'editors', 'locations', 'authors', 'library_id', 'd');
@@ -148,7 +152,8 @@ class BooksController extends AppController
         $book = $this->Book->findBook($_GET['id']);
 
         if (!$book) {
-            $this->redirect('index','user');
+            Session::setFlash('Ce livre est introuvable','error');
+            $this->redirect('manage','librarie');
         }
 
         return compact('book');
@@ -165,7 +170,7 @@ class BooksController extends AppController
         $this->Book->delete($_GET['id']);
         $this->Book->deleteRelations($_GET['id']);
         Session::setFlash('Le livre a bien été supprimé !');
-        $this->redirect('index','user');
+        $this->redirect('manage','librarie');
     }
 
     /**
