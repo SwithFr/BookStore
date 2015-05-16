@@ -42,11 +42,26 @@ class Librarie extends AppModel implements LibrariesRepositoryInterface
      */
     public function getFromUser($user_id)
     {
-        $sql = 'SELECT * FROM libraries WHERE user_id = :user_id';
+        $sql = 'SELECT name, id FROM libraries WHERE user_id = :user_id';
         $pdost = $this->db->prepare($sql);
         $pdost->execute([':user_id' => $user_id]);
 
         return $pdost->fetch();
+    }
+
+    /**
+     * Compte le nombre de livre dans une bibliothèque
+     * @param $library_id
+     * @return mixed
+     */
+    public function countBook($library_id)
+    {
+        $sql = 'SELECT COUNT(books.id) as count FROM books
+                LEFT JOIN book_library ON books.id = book_id
+                WHERE library_id = ' . $library_id;
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute();
+        return $pdost->fetch()->count;
     }
 
 } 
