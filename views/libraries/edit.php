@@ -53,7 +53,7 @@
                             <a href="<?= Html::url('edit', 'location', ['id' => $location->id]); ?>">Edit<i
                                     class="icon-pencil"></i></a>
                             <?php if (!$location->hasBooks): ?>
-                                <a href="<?= Html::url('delete', 'location', ['id' => $location->id]); ?>"
+                                <a href="<?= Html::url('delete', 'location', ['id' => $location->id,'library'=>$data['library']->id]); ?>"
                                    class="admin--delete">Suppr<i class="icon-cancel"></i></a>
                             <?php else: ?>
                                 <p class="section__block__infos">Cet emplacement est lié à des livres</p>
