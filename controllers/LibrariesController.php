@@ -89,4 +89,37 @@ class LibrariesController extends AppController
 
         return compact('library', 'books', 'nbPages', 'hasLocation');
     }
+
+    /**
+     * Editer une bibliothèque
+     */
+    public function edit()
+    {
+        if (!$this->request->checkParams(['library' => 'id'])) {
+            $this->redirect('missingParams', 'error');
+        }
+
+        $library = $this->Librarie->find(null, $_GET['library']);
+
+        $errors = [];
+
+        if ($this->request->isPost()) {
+            $library->name = $_POST['name'];
+            $library->address = $_POST['address'];
+            $library->tel = $_POST['tel'];
+            $library->email = $_POST['email'];
+            $library->private = isset($_POST['private']) ? true : false;
+            $v = new Validator();
+            if ($v->validate($_POST, $this->Librarie->rules)) {
+                Session::setFlash('Les informations on bien été modifiées.');
+                $this->Librarie->update($library->name, $library->address, $library->tel, $library->email, $library->private);
+                $this->redirect('manage', 'librarie');
+            } else {
+                Session::setFlash('Verifiez vos informations !', 'error');
+                $errors = $v->errors();
+            }
+        }
+
+        return compact('library', 'errors');
+    }
 }
