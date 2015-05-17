@@ -3,6 +3,8 @@
     Attention avant d'ajouter un livre, assurez-vous que l'auteur, l'éditeur... éxistent déjà, sinon ajoutez les avant !
 </div>
 <div class="btn__group">
+    <a class="btn btn--add btn--inline"
+       href="<?= Html::url('edit', 'librarie', ['library' => $data['library']->id]); ?>">Editer la bibliothèque</a>
     <a class="btn btn--add btn--inline" href="<?= Html::url('edit', 'book', ['library' => $data['library']->id]); ?>">Ajouter
         un livre</a>
     <a class="btn btn--add btn--inline" href="<?= Html::url('add', 'author'); ?>">Ajouter un auteur</a>
