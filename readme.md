@@ -15,3 +15,4 @@ Le but de l'exercice est de réaliser un site pour la gestion d'une bibliothèqu
 - Faire les vérifications d'existence avant actions en bdd
 - Liste de lecture 
 - Vérification des dates
+- Réussir à dire "anticonstitutionnellement" à l'envers 3 fois de suite
