@@ -48,7 +48,7 @@ class BooksController extends AppController
      */
     public function edit()
     {
-        if (!isset($_GET['library']) || !is_numeric($_GET['library'])) {
+        if (!$this->request->checkParams(['library' => 'id'])) {
             $this->redirect('missingParams', 'error');
         }
 
