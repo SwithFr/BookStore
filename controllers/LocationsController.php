@@ -17,10 +17,8 @@ class LocationsController extends AppController
 
     public function add()
     {
-        if (!isset($_GET['library'])) {
+        if (!$this->request->checkParams(['library' => 'id'])) {
             $this->redirect('missingParams', 'error');
-        } else {
-            $library_id = $_GET['library'];
         }
 
         if ($this->request->isPost()) {
@@ -31,10 +29,37 @@ class LocationsController extends AppController
                 return compact('errors', 'library_id');
             }
 
-            $this->Location->create($_POST['name'], $library_id);
+            $this->Location->create($_POST['name'], $_GET['library']);
             Session::setFlash('Votre emplacement ' . $_POST['name'] . ' a bien été ajouté !');
-            $this->redirect('index', 'user');
+            $this->redirect('manage', 'library');
         }
-        return compact('library_id');
+    }
+
+    public function edit()
+    {
+        if (!$this->request->id) {
+            $this->redirect('missingParams', 'error');
+        }
+
+        $location = $this->Location->find(null, $_GET['id']);
+        if (!$location) {
+            Session::setFlash('Cet emplacement n‘existe pas', 'error');
+        }
+
+        $errors = [];
+
+        if ($this->request->isPost()) {
+            $location->name = $_POST['name'];
+            $v = new Validator();
+            if ($v->validate($_POST, $this->Location->rules)) {
+                Session::setFlash('L‘emplcament à bien été modifié');
+                $this->Location->update($location->name, $location->id);
+            } else {
+                Session::setFlash('Verifiez vos informations', 'error');
+                $errors = $v->errors();
+            }
+        }
+
+        return compact('location', 'errors');
     }
 } 
