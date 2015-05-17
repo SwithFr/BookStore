@@ -20,10 +20,10 @@
                 <tbody>
                 <?php foreach ($data['authors'] as $author): ?>
                     <tr class="books__list__item">
-                        <td><?= $author->first_name . ' ' . $author->last_name; ?></td>
+                        <td><?= $author->name(); ?></td>
                         </td>
                         <td class="actions">
-                            <a href="<?= Html::url('edit', 'author', ['id' => $author->id]); ?>">Edit<i
+                            <a href="<?= $author->link(); ?>">Edit<i
                                     class="icon-pencil"></i></a>
                             <?php if (!$author->hasBooks): ?>
                                 <a href="<?= Html::url('delete', 'author', ['id' => $author->id]); ?>"
