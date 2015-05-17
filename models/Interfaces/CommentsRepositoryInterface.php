@@ -4,6 +4,7 @@
 namespace Models\Interfaces;
 
 
-interface CommentsRepositoryInterface {
+interface CommentsRepositoryInterface
+{
 
 } 

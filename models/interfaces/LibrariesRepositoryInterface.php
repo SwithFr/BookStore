@@ -4,6 +4,7 @@
 namespace Models\Interfaces;
 
 
-interface LibrariesRepositoryInterface {
+interface LibrariesRepositoryInterface
+{
 
 } 

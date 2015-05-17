@@ -12,14 +12,6 @@ interface BooksRepositoryInterface
     public function getPopular($fields, $limit = null);
 
     /**
-     * @param $fields
-     * @param $id
-     * @param null $limit
-     * @return mixed
-     */
-    public function getAllFromLibrary($fields, $id, $limit = null);
-
-    /**
      * @param $title
      * @param $img
      * @param $summary

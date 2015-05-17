@@ -28,11 +28,4 @@ interface UsersRepositoryInterface
      * @return mixed
      */
     public function alreadyExist($login, $email);
-
-    /**
-     * Permet de savoir si l'utilisateur possède au moins une bibliothèque
-     * @param $user_id
-     * @return bool
-     */
-    public function hasLibrary($user_id);
 } 
