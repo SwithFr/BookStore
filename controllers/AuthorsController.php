@@ -164,13 +164,13 @@ class AuthorsController extends AppController
         $errors = [];
 
         if ($this->request->isPost()) {
+            $author->first_name = $_POST['first_name'];
+            $author->last_name = $_POST['last_name'];
+            $author->bio = $_POST['bio'];
+            $author->date_birth = $_POST['date_birth'];
+            $author->date_death = $_POST['date_death'];
             $v = new Validator();
             if ($v->validate($_POST, $this->Author->rules)) {
-                $author->first_name = $_POST['first_name'];
-                $author->last_name = $_POST['last_name'];
-                $author->bio = $_POST['bio'];
-                $author->date_birth = $_POST['date_birth'];
-                $author->date_death = $_POST['date_death'];
                 if (!empty($_FILES['img']['name'])) {
                     $name = time() . '.' . pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
                     $dest = D_ASSETS . DS . 'img' . DS . 'uploads' . DS . 'authors' . DS;
