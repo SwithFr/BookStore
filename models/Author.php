@@ -161,6 +161,6 @@ class Author extends AppModel implements AuthorsRepositoryInterface
                        LIMIT " . $nbperpage * ($_GET['page'] - 1) . ',' . $nbperpage;
         $pdost = $this->db->prepare($sql);
         $pdost->execute();
-        return $pdost->fetchAll();
+        return $pdost->fetchAll(\PDO::FETCH_CLASS, __NAMESPACE__ . '\\Entities\\AuthorEntity');
     }
 }
