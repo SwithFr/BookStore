@@ -15,6 +15,9 @@ class LocationsController extends AppController
         $this->Location = $location;
     }
 
+    /**
+     * Ajouter un emplacement
+     */
     public function add()
     {
         if (!$this->request->checkParams(['library' => 'id'])) {
@@ -35,6 +38,10 @@ class LocationsController extends AppController
         }
     }
 
+    /**
+     * Editer un emplacement
+     * @return array
+     */
     public function edit()
     {
         if (!$this->request->id) {
@@ -61,5 +68,32 @@ class LocationsController extends AppController
         }
 
         return compact('location', 'errors');
+    }
+
+    /**
+     * Confirmer la suppression
+     */
+    public function delete()
+    {
+        if (!$this->request->id) {
+            $this->redirect('missingParams', 'error');
+        }
+
+        $location = $this->Location->find(null, $_GET['id']);
+
+        if(!$location) {
+            Session::setFlash('Cet emplacement n‘existe pas', 'error');
+            $this->redirect('manage','librarie');
+        }
+
+        return compact('location');
+    }
+
+    /**
+     * Supprimer un emplacement
+     */
+    public function goDelete()
+    {
+
     }
 } 
