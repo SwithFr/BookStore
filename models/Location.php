@@ -58,4 +58,5 @@ class Location extends AppModel implements LocationsRepositoryInterface
         $pdost = $this->db->prepare($sql);
         $pdost->execute([':library_id' => $library_id, ':location_id' => $location_id]);
     }
-} 
+
+}
