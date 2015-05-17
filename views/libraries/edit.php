@@ -29,4 +29,40 @@
 
         <input class="form__submit btn btn--send" type="submit" value="Editer cette bibliothèque"/>
     </form>
+    <?php if (!$data['locations']): ?>
+        <p class="alert alert--warning clearfix">
+            Vous n'avez pas encore ajouté d'emplacement à cette bibliothèque
+        </p>
+    <?php else: ?>
+        <a class="btn btn--add btn--inline" href="<?= Html::url('add', 'location'); ?>">Ajouter un emplacement</a>
+        <div class="section__block section__block--library clearfix">
+            <h3 class="section__block__title--library">Vos emplacements</h3>
+            <table class="books__list">
+                <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($data['locations'] as $location): ?>
+                    <tr class="books__list__item">
+                        <td><?= $location->name; ?></td>
+                        </td>
+                        <td class="actions">
+                            <a href="<?= Html::url('edit', 'location', ['id' => $location->id]); ?>">Edit<i
+                                    class="icon-pencil"></i></a>
+                            <?php if (!$location->hasBooks): ?>
+                                <a href="<?= Html::url('delete', 'location', ['id' => $location->id]); ?>"
+                                   class="admin--delete">Suppr<i class="icon-cancel"></i></a>
+                            <?php else: ?>
+                                <p class="section__block__infos">Cet emplacement est lié à des livres</p>
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    <?php endif; ?>
 </div>
