@@ -28,7 +28,7 @@ class LibrariesController extends AppController
                 return compact("errors");
             }
             $private = isset($_POST['private']) ? true : false;
-            $this->Librarie->create($_POST['name'], $_POST['address'], $_POST['tel'], $_POST['email'], $_SESSION['user_id'], $private);
+            $this->Librarie->create($_POST['name'], $_POST['address'], $_POST['tel'], $_POST['email'], Session::getId(), $private);
             Session::setFlash('La bibliothèque ' . $_POST['name'] . 'a bien été ajoutée !');
             $this->redirect('index', 'user');
         }
@@ -101,6 +101,17 @@ class LibrariesController extends AppController
 
         $library = $this->Librarie->find(null, $_GET['library']);
 
+        if (!$library) {
+            Session::setFlash('Cette bibliothèque est introuvable', 'error');
+            $this->redirect('manage', 'librarie');
+        }
+
+        $this->loadModel('Location');
+        $locations = $this->Location->getAllFromUserLibrary($library->user_id);
+        foreach($locations as $l) {
+            $l->hasBooks = $this->Location->count('location_id = ' . $l->id, 'books');
+        }
+
         $errors = [];
 
         if ($this->request->isPost()) {
@@ -120,6 +131,6 @@ class LibrariesController extends AppController
             }
         }
 
-        return compact('library', 'errors');
+        return compact('library', 'errors', 'locations');
     }
 }
