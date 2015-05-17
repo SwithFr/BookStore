@@ -20,7 +20,7 @@ class CommentsController extends AppController
     public function add()
     {
         if (!$this->request->isPost()) {
-            $this->redirect('wrangMethod', 'error');
+            $this->redirect('wrongMethod', 'error');
         }
 
         if (!$this->request->checkParams(['ref' => 'string', 'ref_id' => 'id'])) {
