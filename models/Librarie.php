@@ -22,17 +22,32 @@ class Librarie extends AppModel implements LibrariesRepositoryInterface
     /**
      * Ajoute une librarie en base de données
      * @param $name
-     * @param $adress
+     * @param $address
      * @param $tel
      * @param $email
      * @param $user_id
      * @param $private
      */
-    public function create($name, $adress, $tel, $email, $user_id, $private)
+    public function create($name, $address, $tel, $email, $user_id, $private)
     {
         $sql = 'INSERT INTO libraries(name,address,tel,email,user_id,private) VALUES (:name,:address,:tel,:email,:user_id,:private)';
         $pdost = $this->db->prepare($sql);
-        $pdost->execute([':name' => $name, ':address' => $adress, ':tel' => $tel, ':email' => $email, ':user_id' => $user_id, ':private' => intval($private)]);
+        $pdost->execute([':name' => $name, ':address' => $address, ':tel' => $tel, ':email' => $email, ':user_id' => $user_id, ':private' => intval($private)]);
+    }
+
+    /**
+     * Met à jour une bibliothèque
+     * @param $name
+     * @param $address
+     * @param $tel
+     * @param $email
+     * @param $private
+     */
+    public function update($name, $address, $tel, $email, $private, $library_id)
+    {
+        $sql = 'UPDATE libraries SET name = :name, address = :address, tel = :tel, email = :email, private = :private WHERE id = ' . $library_id;
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute([':name' => $name, ':address' => $address, ':tel' => $tel, ':email' => $email, ':private' => intval($private)]);
     }
 
     /**
