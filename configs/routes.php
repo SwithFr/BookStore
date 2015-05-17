@@ -74,6 +74,7 @@ return $routes = [
 
         # Locations
         'Lo_add' => 'add/location',
+        'Lo_edit' => 'edit/location',
 
         # Comments
         'C_add' => 'add/comment',
