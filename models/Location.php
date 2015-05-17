@@ -47,6 +47,18 @@ class Location extends AppModel implements LocationsRepositoryInterface
     }
 
     /**
+     * Met à jour un emplacement
+     * @param $name
+     * @param $location_id
+     */
+    public function update($name, $location_id)
+    {
+        $sql = 'UPDATE locations SET name = :name WHERE id = ' . $location_id;
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute([':name' => $name]);
+    }
+
+    /**
      * @param $library_id
      * @param $location_id
      * @return mixed|void
