@@ -112,7 +112,7 @@ class LibrariesController extends AppController
             $v = new Validator();
             if ($v->validate($_POST, $this->Librarie->rules)) {
                 Session::setFlash('Les informations on bien été modifiées.');
-                $this->Librarie->update($library->name, $library->address, $library->tel, $library->email, $library->private);
+                $this->Librarie->update($library->name, $library->address, $library->tel, $library->email, $library->private, $library->id);
                 $this->redirect('manage', 'librarie');
             } else {
                 Session::setFlash('Verifiez vos informations !', 'error');
