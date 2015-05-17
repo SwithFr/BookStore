@@ -69,6 +69,7 @@ return $routes = [
 
         # Libray
         'L_add' => 'add/librarie',
+        'L_edit' => 'edit/librarie',
         'L_manage' => 'manage/librarie',
 
         # Locations
