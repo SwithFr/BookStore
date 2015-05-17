@@ -8,6 +8,20 @@ trait Searchable
 {
 
     /**
+     * Effectue une recherche sur plusieurs tables
+     * @param array $research
+     * @return mixed
+     */
+    public function searchAll(Array $research)
+    {
+        foreach ($research as $table => $infos) {
+            $results[$table] = $this->search($infos['what'], $infos['where'], $infos['get'], $table);
+        }
+
+        return $results;
+    }
+
+    /**
      * Permet d'effectuer une chercher
      * @param  string $what ce que l'on doit chercher
      * @param  array $where sur quel champs
@@ -57,20 +71,6 @@ trait Searchable
         $req = $this->db->query($query . $params);
 
         return $req->fetchAll();
-    }
-
-    /**
-     * Effectue une recherche sur plusieurs tables
-     * @param array $research
-     * @return mixed
-     */
-    public function searchAll(Array $research)
-    {
-        foreach ($research as $table => $infos) {
-            $results[$table] = $this->search($infos['what'], $infos['where'], $infos['get'], $table);
-        }
-
-        return $results;
     }
 
 } 

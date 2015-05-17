@@ -49,19 +49,6 @@ class Votable extends AppModel
     }
 
     /**
-     * Met à jour la note moyenne du ref/ref_id
-     * @param $ref
-     * @param $ref_id
-     */
-    private function updateCount($ref, $ref_id)
-    {
-        $score = $this->getScore($ref, $ref_id);
-        $sql = "UPDATE $ref SET vote = $score WHERE id = :ref_id";
-        $pdost = $this->db->prepare($sql);
-        $pdost->execute([':ref_id' => $ref_id]);
-    }
-
-    /**
      * Met à jour un vote
      * @param $ref
      * @param $ref_id
@@ -90,6 +77,19 @@ class Votable extends AppModel
     }
 
     /**
+     * Met à jour la note moyenne du ref/ref_id
+     * @param $ref
+     * @param $ref_id
+     */
+    private function updateCount($ref, $ref_id)
+    {
+        $score = $this->getScore($ref, $ref_id);
+        $sql = "UPDATE $ref SET vote = $score WHERE id = :ref_id";
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute([':ref_id' => $ref_id]);
+    }
+
+    /**
      * Calcul le socre d'un ref
      * @param $ref
      * @param $ref_id
@@ -109,7 +109,7 @@ class Votable extends AppModel
                 $positifs = $result->count;
             }
         }
-        return round( (($positifs - $negatifs < 0) ? 0 : $positifs - $negatifs) / ($positifs + $negatifs), 4) * 100;
+        return round((($positifs - $negatifs < 0) ? 0 : $positifs - $negatifs) / ($positifs + $negatifs), 4) * 100;
     }
 
     /**
