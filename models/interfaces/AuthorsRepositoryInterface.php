@@ -22,12 +22,8 @@ interface AuthorsRepositoryInterface
      * @param $date_birth
      * @param $date_death
      * @param $bio
+     * @param $user_id
+     * @return
      */
-    public function create($first_name, $last_name, $img, $date_birth, $date_death, $bio);
-
-    /**
-     * @param $author_id
-     * @return mixed
-     */
-    public function find($author_id);
-} 
+    public function create($first_name, $last_name, $img, $date_birth, $date_death, $bio, $user_id);
+}
