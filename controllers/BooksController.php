@@ -232,4 +232,14 @@ class BooksController extends AppController
         $this->redirect('view', 'book', ['id' => $_GET['ref_id']]);
     }
 
+    public function addToReadLater()
+    {
+
+    }
+
+    public function removeToReadLater()
+    {
+
+    }
+
 } 
