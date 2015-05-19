@@ -19,4 +19,4 @@
 </footer>
 </body>
 </html>
-<script type="text/javascript" src="<?= D_ASSETS . DS; ?>js/main.js"></script>
+<script type="text/javascript" src="<?= D_ASSETS . DS; ?>js/app.js"></script>
