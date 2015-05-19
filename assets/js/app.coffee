@@ -1,5 +1,6 @@
 'use strict'
 
+# Fix nav when the page is scrolled
 window.addEventListener(
     "scroll",
     () ->
@@ -21,10 +22,12 @@ window.addEventListener(
             title.style.fontSize = "1em"
             title.style.paddingTop = "0"
     , false)
+
+# Remove alert box on click
 if document.getElementById("alert")
   document.getElementById("alert").addEventListener "click", fadeOut, false
 
-
+# Remove alert function
 fadeOut = ( e ) ->
     e.preventDefault()
     e.target.style.opacity = 0
