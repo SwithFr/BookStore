@@ -51,6 +51,8 @@ return $routes = [
         'B_godelete' => 'goDelete/book',
         'B_voteU' => 'voteUp/book',
         'B_voteD' => 'voteDown/book',
+        'B_addRL' => 'addToReadLater/book',
+        'B_delRL' => 'removeToReadLater/book',
 
         # Authors
         'A_add' => 'add/author',
