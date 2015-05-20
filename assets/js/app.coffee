@@ -24,8 +24,7 @@ window.addEventListener(
     , false)
 
 # Remove alert box on click
-if document.getElementById("alert")
-  document.getElementById("alert").addEventListener "click", fadeOut, false
+if document.getElementById("alert") then document.getElementById("alert").addEventListener "click", ( e ) -> fadeOut e, false
 
 # Remove alert function
 fadeOut = ( e ) ->
@@ -35,3 +34,43 @@ fadeOut = ( e ) ->
       () ->
         e.target.style.display = 'none'
       , 300 )
+
+# Ajax read later
+addReadLaterLink = document.querySelector '#addReadLaterLink'
+removeReadLaterLink = document.querySelector '#removeReadLaterLink'
+
+addReadLaterLink.addEventListener(
+    "click",
+    ( e ) ->
+      setReadLater e
+    , false )
+removeReadLaterLink.addEventListener(
+    "click",
+    ( e ) ->
+      setReadLater e
+    , false )
+
+setReadLater = ( e ) ->
+  e.preventDefault()
+  console.log 'clicked on ' + e.target.id
+  user_id = e.target.dataset.user_id
+  book_id = e.target.dataset.book_id
+  request = new XMLHttpRequest()
+  if e.target.id is 'addReadLaterLink'
+    console.log 'add'
+    request.open "POST", "http://bookstore.dev/index.php?a=addToReadLater&e=book", true
+  else
+    console.log 'remove'
+    request.open "POST", "http://bookstore.dev/index.php?a=removeToReadLater&e=book", true
+  request.onreadystatechange = ->
+    if request.status is 200
+      console.log 'response ' + request.responseText
+      if e.target.id is 'addReadLaterLink'
+        addReadLaterLink.className = 'hidden'
+        removeReadLaterLink.className = 'visible'
+      else if e.target.id is 'removeReadLaterLink'
+        addReadLaterLink.className = 'visible'
+        removeReadLaterLink.className = 'hidden'
+  data = 'user_id=' + user_id + '&book_id=' + book_id
+  request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+  request.send data
