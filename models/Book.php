@@ -317,4 +317,33 @@ class Book extends AppModel implements BooksRepositoryInterface
         return $pdost->fetchAll(\PDO::FETCH_CLASS, __NAMESPACE__ . '\\Entities\\BookEntity');
     }
 
+    /**
+     * Savoir si un livre est déjà dans la liste de lecture
+     * @param $user_id
+     * @param $book_id
+     * @return bool
+     */
+    public function alreadyInReadLater($user_id, $book_id)
+    {
+        $sql = 'SELECT id FROM watch_later WHERE user_id = :user_id AND book_id = :book_id';
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute([':user_id' => $user_id, ':book_id' => $book_id]);
+        if($pdost->fetch()){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Ajoute un livre à la liste de lecture
+     * @param $user_id
+     * @param $book_id
+     */
+    public function addReadLater($user_id, $book_id)
+    {
+        $sql = 'INSERT INTO watch_later (user_id, book_id) VALUES (:user_id, :book_id)';
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute([':user_id' => $user_id, ':book_id' => $book_id]);
+    }
+
 }
