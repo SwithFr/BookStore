@@ -346,4 +346,16 @@ class Book extends AppModel implements BooksRepositoryInterface
         $pdost->execute([':user_id' => $user_id, ':book_id' => $book_id]);
     }
 
+    /**
+     * Supprime un livre de la liste de lecture
+     * @param $user_id
+     * @param $book_id
+     */
+    public function removeReadLater($user_id, $book_id)
+    {
+        $sql = 'DELETE FROM watch_later WHERE user_id = :user_id AND book_id = :book_id';
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute([':user_id' => $user_id, ':book_id' => $book_id]);
+    }
+
 }
