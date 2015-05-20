@@ -190,6 +190,8 @@ class BooksController extends AppController
             $book = null;
         }
 
+        $book->isReadLater = $this->Book->alreadyInReadLater(Session::getId(), $book->id);
+
         $this->loadModel('Comment');
         $nbPerPage = 5;
         $nbPages = ceil($this->Comment->count('ref_id = ' . $book->id . ' AND ref = "book"') / $nbPerPage);
@@ -232,9 +234,20 @@ class BooksController extends AppController
         $this->redirect('view', 'book', ['id' => $_GET['ref_id']]);
     }
 
+    /**
+     * Ajouter un livre à lire plus tard
+     * [AJAX]
+     */
     public function addToReadLater()
     {
+        $this->layout = 'empty';
+        if (!isset($_POST['user_id']) || !isset($_POST['book_id'])) {
+            return false;
+        }
 
+        if (!$this->Book->alreadyInReadLater($_POST['user_id'], $_POST['book_id'])) {
+            $this->Book->addReadLater($_POST['user_id'], $_POST['book_id']);
+        }
     }
 
     public function removeToReadLater()
