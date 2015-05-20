@@ -211,7 +211,7 @@ class Book extends AppModel implements BooksRepositoryInterface
      */
     public function getWithGenre($genre_id, $limit = null)
     {
-        $sql = 'SELECT DISTINCT title, name, books.id, img, summary
+        $sql = 'SELECT DISTINCT title, name, books.id, books.img, summary
                 FROM books
                 LEFT JOIN genres ON genre_id = genres.id
                 WHERE genre_id = ' . $genre_id . '
