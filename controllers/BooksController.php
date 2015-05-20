@@ -250,9 +250,18 @@ class BooksController extends AppController
         }
     }
 
+    /**
+     * Supprimer un livre de lire plus tard
+     * [AJAX]
+     */
     public function removeToReadLater()
     {
+        $this->layout = 'empty';
+        if (!isset($_POST['user_id']) || !isset($_POST['book_id'])) {
+            return false;
+        }
 
+        $this->Book->removeReadLater($_POST['user_id'], $_POST['book_id']);
     }
 
 } 
