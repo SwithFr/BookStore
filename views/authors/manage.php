@@ -23,7 +23,7 @@
                         <td><?= $author->name(); ?></td>
                         </td>
                         <td class="actions">
-                            <a href="<?= $author->link(); ?>">Edit<i
+                            <a href="<?= Html::url('edit', 'author', ['id' => $author->id]); ?>">Edit<i
                                     class="icon-pencil"></i></a>
                             <?php if (!$author->hasBooks): ?>
                                 <a href="<?= Html::url('delete', 'author', ['id' => $author->id]); ?>"
