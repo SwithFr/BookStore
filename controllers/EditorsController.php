@@ -99,4 +99,9 @@ class EditorsController extends AppController
 
         return compact('editor', 'books');
     }
+
+    public function manage()
+    {
+
+    }
 } 
