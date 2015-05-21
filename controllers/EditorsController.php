@@ -102,6 +102,18 @@ class EditorsController extends AppController
 
     public function manage()
     {
+        $nbPerPage = 5;
+        $nbPages = ceil($this->Editor->count('user_id = ' . Session::getId()) / $nbPerPage);
+        $editors = $this->Editor->paginate($nbPages, $nbPerPage, Session::getId());
 
+        foreach ($editors as $a) {
+            if ($this->Editor->getBookCount($a->id) > 0) {
+                $a->hasBooks = true;
+            } else {
+                $a->hasBooks = false;
+            }
+        }
+
+        return compact('editors', 'nbPages');
     }
 } 
