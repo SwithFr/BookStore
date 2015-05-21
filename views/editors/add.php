@@ -1,5 +1,6 @@
 <?php use Helpers\Html; ?>
 <div class="section">
+    <p class="ariane"><a href="<?= Html::url('manage', 'editor'); ?>">Retour</a></p>
     <h2 class="section__title">Ajouter un éditeur</h2>
 
     <form class="form--add" action="<?= Html::url('add', 'editor'); ?>" method="post" enctype="multipart/form-data">
