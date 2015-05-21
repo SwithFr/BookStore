@@ -44,4 +44,45 @@ class Editor extends AppModel implements EditorsRepositoryInterface
         }
         return $letters;
     }
+
+    /**
+     * Pagine les éditeurs pour la page "admin"
+     * @param $nbpages
+     * @param $nbperpage
+     * @param $user_id
+     * @return array
+     */
+    public function paginate($nbpages, $nbperpage, $user_id)
+    {
+        if (!isset($_GET['page']) || $_GET['page'] < 1 || !is_numeric($_GET['page'])) {
+            $_GET['page'] = 1;
+        }
+
+        if ($_GET['page'] > $nbpages && $nbpages != 0) {
+            $_GET['page'] = $nbpages;
+        }
+
+        $sql = "SELECT id, name, website
+                       FROM editors
+                       WHERE user_id = $user_id
+                       LIMIT " . $nbperpage * ($_GET['page'] - 1) . ',' . $nbperpage;
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute();
+        return $pdost->fetchAll();
+    }
+
+
+    /**
+     * Récupère le nombre de livres d'un éditeur
+     * @param $author_id
+     * @return mixed
+     */
+    public function getBookCount($author_id)
+    {
+        $sql = 'SELECT COUNT(id) as count FROM books WHERE editor_id = :editor_id';
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute([':editor_id' => $author_id]);
+
+        return $pdost->fetch()->count;
+    }
 } 
