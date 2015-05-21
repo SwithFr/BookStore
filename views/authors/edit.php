@@ -1,5 +1,6 @@
 <?php use Helpers\Html; ?>
 <div class="section">
+    <p class="ariane"><a href="<?= Html::url('manage', 'author'); ?>">Retour</a></p>
     <h2 class="section__title">Editer un auteur</h2>
 
     <form class="form--add" action="<?= Html::url('edit', 'author', ['id' => $data['author']->id]); ?>" method="post"
