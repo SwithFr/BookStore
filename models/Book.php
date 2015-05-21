@@ -235,7 +235,8 @@ class Book extends AppModel implements BooksRepositoryInterface
                 FROM books
                 JOIN author_book ON book_id = books.id
                 JOIN authors ON author_id = authors.id
-                WHERE authors.id = :author_id';
+                WHERE authors.id = :author_id
+                GROUP BY title';
         $pdost = $this->db->prepare($sql);
         $pdost->execute([':author_id' => $author_id]);
         return $pdost->fetchAll(\PDO::FETCH_CLASS, __NAMESPACE__ . '\\Entities\\BookEntity');
