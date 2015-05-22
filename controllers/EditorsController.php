@@ -64,6 +64,16 @@ class EditorsController extends AppController
     }
 
     /**
+     * EDITER UN EDITEUR
+     */
+    public function edit()
+    {
+        if (!$this->request->id) {
+            $this->redirect('missingParams', 'error');
+        }
+    }
+
+    /**
      * Rechercher un éditeur
      * @return array
      */
@@ -100,6 +110,10 @@ class EditorsController extends AppController
         return compact('editor', 'books');
     }
 
+    /**
+     * Gerer les éditeurs que l'on a ajoutés
+     * @return array
+     */
     public function manage()
     {
         $nbPerPage = 5;
