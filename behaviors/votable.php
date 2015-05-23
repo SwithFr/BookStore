@@ -126,6 +126,4 @@ class Votable extends AppModel
             return $vote->value == 1 ? 'liked' : 'disliked';
         }
     }
-
-
-} 
+}
