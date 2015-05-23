@@ -37,7 +37,7 @@
                id="img"/>
         <img src="<?= $data['author']->img; ?>"
              class="editor__img--small"
-             alt="Photographie de <?= $data['author']->first_name . ' ' . $data['author']->last_name; ?>"/>
+             alt="Photographie de <?= $data['author']->name(); ?>"/>
 
         <label class="form__label" for="date_birth">Date de naissance</label>
         <?= isset($data['errors']['date_birth']) ? '<span class="has-error">' . $data['errors']['date_birth'] . '</span>' : ''; ?></span>
