@@ -85,4 +85,19 @@ class Editor extends AppModel implements EditorsRepositoryInterface
 
         return $pdost->fetch()->count;
     }
+
+    /**
+     * Mettre à jour un éditeur
+     * @param $name
+     * @param $website
+     * @param $history
+     * @param $img
+     * @param $editor_id
+     */
+    public function update($name, $website, $history, $img, $editor_id)
+    {
+        $sql = 'UPDATE editors SET name = :name, website = :website, history = :history, img = :img WHERE id = :editor_id';
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute([':name' => $name, ':website' => $website, ':history' => $history, ':img' => $img, ':editor_id' => $editor_id]);
+    }
 } 
