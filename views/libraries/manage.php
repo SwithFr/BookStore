@@ -2,6 +2,7 @@
 <div class="alert alert--warning">
     Attention avant d'ajouter un livre, assurez-vous que l'auteur, l'éditeur... éxistent déjà, sinon ajoutez les avant !
 </div>
+<p class="ariane"><a href="<?= Html::url('index', 'user'); ?>">Retour</a></p>
 <div class="btn__group">
     <a class="btn btn--add btn--inline"
        href="<?= Html::url('edit', 'librarie', ['library' => $data['library']->id]); ?>">Editer la bibliothèque</a>
