@@ -13,11 +13,13 @@ class DbProvider
      * @var null|DbProvider
      */
     private static $_instance = null;
+
     /**
      * Les paramettres de la connexion à la base de données
      * @var array|mixed
      */
     private $settings = [];
+
     /**
      * La connexion PDO
      * @var null|PDO
@@ -54,5 +56,4 @@ class DbProvider
         }
         return self::$_instance->db;
     }
-
 } 
