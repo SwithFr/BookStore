@@ -115,7 +115,8 @@ class UsersController extends AppController
         $hasLibrary = $this->User->count('user_id = ' . $user_id, 'libraries');
         $hasAuthor = $this->User->count('user_id = ' . $user_id, 'authors');
         $hasEditor = $this->User->count('user_id = ' . $user_id, 'editors');
+        $hasBookToRead = $this->User->count('user_id = ' . $user_id, 'watch_later');
 
-        return compact('user', 'hasLibrary', 'hasAuthor', 'hasEditor');
+        return compact('user', 'hasLibrary', 'hasAuthor', 'hasEditor', 'hasBookToRead');
     }
 } 
