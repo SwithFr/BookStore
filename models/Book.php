@@ -359,4 +359,18 @@ class Book extends AppModel implements BooksRepositoryInterface
         $pdost->execute([':user_id' => $user_id, ':book_id' => $book_id]);
     }
 
+    /**
+     * Récupère tous les livres dans la liste de lecture d'un utilisateur
+     * @param $user_id
+     * @return array
+     */
+    public function getAllToRead($user_id)
+    {
+        $sql = 'SELECT books.id, title FROM books
+                JOIN watch_later ON books.id = book_id
+                WHERE user_id = ' . $user_id;
+        $pdost = $this->db->query($sql);
+        return $pdost->fetchAll(\PDO::FETCH_CLASS, __NAMESPACE__ . '\\Entities\\BookEntity');
+    }
+
 }
