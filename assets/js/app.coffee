@@ -52,19 +52,14 @@ removeReadLaterLink.addEventListener(
 
 setReadLater = ( e ) ->
   e.preventDefault()
-  console.log 'clicked on ' + e.target.id
+  url = e.target.href
+  console.log url
   user_id = e.target.dataset.user_id
   book_id = e.target.dataset.book_id
   request = new XMLHttpRequest()
-  if e.target.id is 'addReadLaterLink'
-    console.log 'add'
-    request.open "POST", "http://bookstore.dev/index.php?a=addToReadLater&e=book", true
-  else
-    console.log 'remove'
-    request.open "POST", "http://bookstore.dev/index.php?a=removeToReadLater&e=book", true
+  request.open "POST", url, true
   request.onreadystatechange = ->
-    if request.status is 200
-      console.log 'response ' + request.responseText
+    if @status is 200
       if e.target.id is 'addReadLaterLink'
         addReadLaterLink.className = 'hidden'
         removeReadLaterLink.className = 'visible'
