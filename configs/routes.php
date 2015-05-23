@@ -68,6 +68,7 @@ return $routes = [
         'E_delete' => 'delete/editor',
         'E_goDelete' => 'goDelete/editor',
         'E_manage' => 'manage/editor',
+        'E_edit' => 'edit/editor',
 
         # Libray
         'L_add' => 'add/librarie',
