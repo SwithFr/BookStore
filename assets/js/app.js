@@ -52,22 +52,16 @@
   }, false);
 
   setReadLater = function(e) {
-    var book_id, data, request, user_id;
+    var book_id, data, request, url, user_id;
     e.preventDefault();
-    console.log('clicked on ' + e.target.id);
+    url = e.target.href;
+    console.log(url);
     user_id = e.target.dataset.user_id;
     book_id = e.target.dataset.book_id;
     request = new XMLHttpRequest();
-    if (e.target.id === 'addReadLaterLink') {
-      console.log('add');
-      request.open("POST", "http://bookstore.dev/index.php?a=addToReadLater&e=book", true);
-    } else {
-      console.log('remove');
-      request.open("POST", "http://bookstore.dev/index.php?a=removeToReadLater&e=book", true);
-    }
+    request.open("POST", url, true);
     request.onreadystatechange = function() {
-      if (request.status === 200) {
-        console.log('response ' + request.responseText);
+      if (this.status === 200) {
         if (e.target.id === 'addReadLaterLink') {
           addReadLaterLink.className = 'hidden';
           return removeReadLaterLink.className = 'visible';
