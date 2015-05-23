@@ -38,33 +38,50 @@ fadeOut = ( e ) ->
 # Ajax read later
 addReadLaterLink = document.querySelector '#addReadLaterLink'
 removeReadLaterLink = document.querySelector '#removeReadLaterLink'
+removeReadLaterLinkFromList = document.querySelectorAll '.removeReadLaterLinkFromList'
 
-addReadLaterLink.addEventListener(
-    "click",
-    ( e ) ->
-      setReadLater e
-    , false )
-removeReadLaterLink.addEventListener(
-    "click",
-    ( e ) ->
-      setReadLater e
-    , false )
+if addReadLaterLink
+  addReadLaterLink.addEventListener(
+      "click",
+      ( e ) ->
+        setReadLater e
+      , false )
 
-setReadLater = ( e ) ->
+if removeReadLaterLink
+  removeReadLaterLink.addEventListener(
+      "click",
+      ( e ) ->
+        setReadLater e
+      , false )
+
+if removeReadLaterLinkFromList
+  for i in removeReadLaterLinkFromList
+    i.addEventListener(
+      "click",
+      ( e ) ->
+        setReadLater e, true
+      , false )
+
+
+setReadLater = ( e, fromList = false ) ->
   e.preventDefault()
   url = e.target.href
   user_id = e.target.dataset.user_id
   book_id = e.target.dataset.book_id
+  id = e.target.id
   request = new XMLHttpRequest()
   request.open "POST", url, true
   request.onreadystatechange = ->
     if @status is 200
-      if e.target.id is 'addReadLaterLink'
-        addReadLaterLink.className = 'hidden'
-        removeReadLaterLink.className = 'visible'
-      else if e.target.id is 'removeReadLaterLink'
-        addReadLaterLink.className = 'visible'
-        removeReadLaterLink.className = 'hidden'
+      if !fromList
+        if id is 'addReadLaterLink'
+          addReadLaterLink.className = 'hidden'
+          removeReadLaterLink.className = 'visible'
+        else if id is 'removeReadLaterLink'
+          addReadLaterLink.className = 'visible'
+          removeReadLaterLink.className = 'hidden'
+      else
+        document.getElementById(book_id).remove()
   data = 'user_id=' + user_id + '&book_id=' + book_id
   request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
   request.send data
