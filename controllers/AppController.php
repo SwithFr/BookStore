@@ -14,16 +14,19 @@ class AppController
      * @var string
      */
     public $layout = "default";
+
     /**
      * La vue à utiliser
      * @var null|string
      */
     public $view = null;
+
     /**
      * Si on a besoin de model ou non ?
      * @var bool
      */
     public $noModel = false;
+
     /**
      * L'objet Request contenant les infos de l'url
      * @var null|Request

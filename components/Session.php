@@ -48,6 +48,12 @@ class Session
         return isset($_SESSION['user_id']) ? $_SESSION['user_id'] : false;
     }
 
+
+    /**
+     * Vérifie si un champ a une erreur ou non
+     * @param $name
+     * @return bool
+     */
     public static function hasError($name)
     {
         return isset($_SESSION['errors'][$name]);
@@ -65,5 +71,4 @@ class Session
         return $error;
 
     }
-
 }

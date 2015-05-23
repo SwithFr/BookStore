@@ -106,5 +106,4 @@ class Request
         }
         return $valid;
     }
-
 } 
