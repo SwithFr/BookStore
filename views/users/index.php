@@ -25,4 +25,9 @@
     <?php else: ?>
         <a class="btn btn--add" href="<?= Html::url('manage', 'editor'); ?>">Gérer vos éditeurs</a>
     <?php endif; ?>
+    <?php if (!$data['hasBookToRead']): ?>
+        <p class="btn btn--add">Vous n'avez pas encore de livre dans votre liste de lecture.</p>
+    <?php else: ?>
+        <a class="btn btn--add" href="<?= Html::url('readLater', 'book'); ?>">Liste de lecture</a>
+    <?php endif; ?>
 </div>
