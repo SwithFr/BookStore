@@ -71,6 +71,72 @@ class EditorsController extends AppController
         if (!$this->request->id) {
             $this->redirect('missingParams', 'error');
         }
+
+        $editor = $this->Editor->find(null,$_GET['id']);
+        if (!$editor) {
+            Session::setFlash('L‘éditeur est introuvable !', 'error');
+        }
+
+        $errors = [];
+
+        if ($this->request->isPost()) {
+            $editor->name = $_POST['name'];
+            $editor->website = $_POST['website'];
+            $editor->history = $_POST['history'];
+            $v = new Validator();
+            if ($v->validate($_POST, $this->Editor->rules)) {
+                if (!empty($_FILES['img']['name'])) {
+                    $name = time() . '.' . pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
+                    $dest = D_ASSETS . DS . 'img' . DS . 'uploads' . DS . 'editors' . DS;
+                    $img = $dest . $name;
+                    Image::uploadImg($dest, $name);
+                } else {
+                    $img = $editor->img;
+                }
+                $this->Editor->update($_POST['name'], $_POST['website'], $_POST['history'], $img, $editor->id);
+                Session::setFlash('Les informations ont été modifiées avec succès !');
+                $this->redirect('manage', 'editor');
+            } else {
+                Session::setFlash('Veuillez vérifier vos informations', 'error');
+                $errors = $v->errors();
+            }
+        }
+
+        return compact('editor', 'errors');
+    }
+
+    /**
+     * Confirmer une suppression
+     * @return array
+     */
+    public function delete()
+    {
+        if (!$this->request->id) {
+            $this->redirect('missingParams', 'error');
+        }
+
+        $editor = $this->Editor->find(null, $_GET['id'], false, 'user_id = ' . Session::getId());
+
+        if (!$editor) {
+            Session::setFlash('Vous ne pouvez supprimer cet editeur', 'error');
+            $this->redirect('manage', 'editor');
+        }
+
+        return compact('editor');
+    }
+
+    /**
+     * Supprimer un éditeur
+     */
+    public function goDelete()
+    {
+        if (!$this->request->id) {
+            $this->redirect('missingParams', 'error');
+        }
+
+        $this->Editor->delete($_GET['id']);
+        Session::setFlash('L‘éditeur a bien été supprimé !');
+        $this->redirect('manage', 'editor');
     }
 
     /**
