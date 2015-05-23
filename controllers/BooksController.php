@@ -264,4 +264,19 @@ class BooksController extends AppController
         $this->Book->removeReadLater($_POST['user_id'], $_POST['book_id']);
     }
 
+    /**
+     * Affiche la liste de lecture
+     */
+    public function readLater()
+    {
+        $readLaterBooks = $this->Book->getAllToRead(Session::getId());
+
+        if(!$readLaterBooks) {
+            Session::setFlash('Vous n‘avez pas encore de livre dans votre liste de lecture !','error');
+            $this->redirect('index','user');
+        }
+
+        return compact('readLaterBooks');
+    }
+
 } 
