@@ -41,9 +41,11 @@ $isReadLater = $data['book']->isReadLater;
                                 pas ce livre</a>
                         </div>
                         <a id="addReadLaterLink" class="<?= $isReadLater ? 'hidden' : 'visible'; ?>"
-                              data-book_id="<?= $data['book']->id; ?>" data-user_id="<?= Session::getId(); ?>" href="#">Ajouter à la liste de lecture</a>
+                           data-book_id="<?= $data['book']->id; ?>" data-user_id="<?= Session::getId(); ?>"
+                           href="<?= Html::url('addToReadLater', 'book'); ?>">Ajouter à la liste de lecture</a>
                         <a id="removeReadLaterLink" class="<?= $isReadLater ? 'visible' : 'hidden'; ?>"
-                              data-book_id="<?= $data['book']->id; ?>" data-user_id="<?= Session::getId(); ?>" href="#">Supprimer de la liste de lecture</a>
+                           data-book_id="<?= $data['book']->id; ?>" data-user_id="<?= Session::getId(); ?>"
+                           href="<?= Html::url('removeToReadLater', 'book'); ?>">Supprimer de la liste de lecture</a>
                     <?php else: ?>
                         <p class="section__block__infos">Connectez-vous ou créez un compte pour voter pour ce livre.</p>
                     <?php endif; ?>
