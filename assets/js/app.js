@@ -55,7 +55,6 @@
     var book_id, data, request, url, user_id;
     e.preventDefault();
     url = e.target.href;
-    console.log(url);
     user_id = e.target.dataset.user_id;
     book_id = e.target.dataset.book_id;
     request = new XMLHttpRequest();
