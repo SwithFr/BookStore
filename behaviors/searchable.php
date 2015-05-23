@@ -72,5 +72,4 @@ trait Searchable
 
         return $req->fetchAll();
     }
-
 } 
