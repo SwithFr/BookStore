@@ -59,4 +59,15 @@ class Location extends AppModel implements LocationsRepositoryInterface
         $pdost->execute([':library_id' => $library_id, ':location_id' => $location_id]);
     }
 
+    /**
+     * Supprimer la realtion location/library
+     * @param $location_id
+     */
+    public function deleteLocationAssoc($location_id)
+    {
+        $sql = 'DELETE FROM location_library WHERE location_id = :location_id';
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute([':location_id' => $location_id]);
+    }
+
 }
