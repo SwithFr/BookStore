@@ -32,6 +32,12 @@ class Request
     public $url = null;
 
     /**
+     * Données envoyées par l'utilisateur
+     * @var bool|\stdClass
+     */
+    public $data = false;
+
+    /**
      * Doit on être connecté pour une action ?
      * @var bool
      */
@@ -58,6 +64,13 @@ class Request
                 } else {
                     $this->needAuth = true;
                 }
+            }
+        }
+
+        if (!empty($_POST)) {
+            $this->data = new \stdClass();
+            foreach ($_POST as $k => $v) {
+                $this->data->$k = $v;
             }
         }
 
