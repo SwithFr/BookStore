@@ -34,7 +34,7 @@ class LocationsController extends AppController
 
             $this->Location->create($_POST['name'], $_GET['library']);
             Session::setFlash('Votre emplacement ' . $_POST['name'] . ' a bien été ajouté !');
-            $this->redirect('manage', 'library');
+            $this->redirect('edit', 'librarie', ['library'=>$_GET['library']]);
         }
     }
 
@@ -60,7 +60,7 @@ class LocationsController extends AppController
             $v = new Validator();
             if ($v->validate($_POST, $this->Location->rules)) {
                 Session::setFlash('L‘emplcament à bien été modifié');
-                $this->Location->update($location->name, $location->id);
+                $this->Location->update($location->id, $location);
             } else {
                 Session::setFlash('Verifiez vos informations', 'error');
                 $errors = $v->errors();
@@ -94,6 +94,16 @@ class LocationsController extends AppController
      */
     public function goDelete()
     {
+        if (!$this->request->id) {
+            $this->redirect('missingParams', 'error');
+        }
 
+        if (!$this->request->checkParams(['library' => 'id'])) {
+            $this->redirect('missingParams', 'error');
+        }
+
+        $this->Location->delete($_GET['id']);
+        Session::setFlash('L‘emplacement a bien été supprimé !');
+        $this->redirect('edit', 'librarie', ['library'=>$_GET['library']]);
     }
 } 

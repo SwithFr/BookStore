@@ -119,12 +119,12 @@ class LibrariesController extends AppController
             $library->address = $_POST['address'];
             $library->tel = $_POST['tel'];
             $library->email = $_POST['email'];
-            $library->private = isset($_POST['private']) ? true : false;
+            $library->private = isset($_POST['private']) ? 1 : 0;
             $v = new Validator();
             if ($v->validate($_POST, $this->Librarie->rules)) {
                 Session::setFlash('Les informations on bien été modifiées.');
-                $this->Librarie->update($library->name, $library->address, $library->tel, $library->email, $library->private, $library->id);
-                $this->redirect('manage', 'librarie');
+                $this->Librarie->update($library->id, $library);
+                $this->redirect('edit', 'librarie', ['library'=>$library->id]);
             } else {
                 Session::setFlash('Verifiez vos informations !', 'error');
                 $errors = $v->errors();
