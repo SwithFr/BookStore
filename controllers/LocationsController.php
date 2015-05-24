@@ -21,7 +21,7 @@ class LocationsController extends AppController
     public function add()
     {
         if (!$this->request->checkParams(['library' => 'id'])) {
-            $this->redirect('missingParams', 'error');
+            $this->redirect('sendError', 'error', ['type' =>'missingParams']);
         }
 
         if ($this->request->isPost()) {
@@ -45,7 +45,7 @@ class LocationsController extends AppController
     public function edit()
     {
         if (!$this->request->id) {
-            $this->redirect('missingParams', 'error');
+            $this->redirect('sendError', 'error', ['type' =>'missingParams']);
         }
 
         $location = $this->Location->find(null, $_GET['id']);
@@ -76,7 +76,7 @@ class LocationsController extends AppController
     public function delete()
     {
         if (!$this->request->id) {
-            $this->redirect('missingParams', 'error');
+            $this->redirect('sendError', 'error', ['type' =>'missingParams']);
         }
 
         $location = $this->Location->find(null, $_GET['id']);
@@ -95,11 +95,11 @@ class LocationsController extends AppController
     public function goDelete()
     {
         if (!$this->request->id) {
-            $this->redirect('missingParams', 'error');
+            $this->redirect('sendError', 'error', ['type' =>'missingParams']);
         }
 
         if (!$this->request->checkParams(['library' => 'id'])) {
-            $this->redirect('missingParams', 'error');
+            $this->redirect('sendError', 'error', ['type' =>'missingParams']);
         }
 
         $this->Location->delete($_GET['id']);

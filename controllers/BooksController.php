@@ -49,7 +49,7 @@ class BooksController extends AppController
     public function edit()
     {
         if (!$this->request->checkParams(['library' => 'id'])) {
-            $this->redirect('missingParams', 'error');
+            $this->redirect('sendError', 'error', ['type' =>'missingParams']);
         }
 
         $this->loadModel('Genre');
@@ -127,7 +127,7 @@ class BooksController extends AppController
     {
 
         if (!$this->request->id) {
-            $this->redirect('missingParams', 'error');
+            $this->redirect('sendError', 'error', ['type' =>'missingParams']);
         }
 
         $book = $this->Book->findBook($_GET['id']);
@@ -146,7 +146,7 @@ class BooksController extends AppController
     public function goDelete()
     {
         if (!$this->request->id) {
-            $this->redirect('missingParams', 'error');
+            $this->redirect('sendError', 'error', ['type' =>'missingParams']);
         }
 
         $this->Book->delete($_GET['id']);
@@ -162,7 +162,7 @@ class BooksController extends AppController
     public function view()
     {
         if (!$this->request->id) {
-            $this->redirect('missingParams', 'error');
+            $this->redirect('sendError', 'error', ['type' =>'missingParams']);
         }
 
         $book = $this->Book->findBook($_GET['id'], true);

@@ -36,7 +36,7 @@ class GenresController extends AppController
     public function view()
     {
         if (!$this->request->id) {
-            $this->redirect('missingParams', 'error');
+            $this->redirect('sendError', 'error', ['type' =>'missingParams']);
         }
 
         $genre = $this->Genre->find(null, $_GET['id']);

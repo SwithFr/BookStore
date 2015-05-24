@@ -69,7 +69,7 @@ class EditorsController extends AppController
     public function edit()
     {
         if (!$this->request->id) {
-            $this->redirect('missingParams', 'error');
+            $this->redirect('sendError', 'error', ['type' =>'missingParams']);
         }
 
         $editor = $this->Editor->find(null,$_GET['id']);
@@ -110,7 +110,7 @@ class EditorsController extends AppController
     public function delete()
     {
         if (!$this->request->id) {
-            $this->redirect('missingParams', 'error');
+            $this->redirect('sendError', 'error', ['type' =>'missingParams']);
         }
 
         $editor = $this->Editor->find(null, $_GET['id'], false, 'user_id = ' . Session::getId());
@@ -129,7 +129,7 @@ class EditorsController extends AppController
     public function goDelete()
     {
         if (!$this->request->id) {
-            $this->redirect('missingParams', 'error');
+            $this->redirect('sendError', 'error', ['type' =>'missingParams']);
         }
 
         $this->Editor->delete($_GET['id']);
@@ -160,7 +160,7 @@ class EditorsController extends AppController
     public function view()
     {
         if (!$this->request->id) {
-            $this->redirect('missingParams', 'error');
+            $this->redirect('sendError', 'error', ['type' =>'missingParams']);
         }
 
         $editor = $this->Editor->find(null, $_GET['id']);

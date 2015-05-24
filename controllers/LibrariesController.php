@@ -56,7 +56,7 @@ class LibrariesController extends AppController
     public function view()
     {
         if (!$this->request->id) {
-            $this->redirect('missingParams', 'error');
+            $this->redirect('sendError', 'error', ['type' =>'missingParams']);
         }
 
         $library = current($this->Librarie->get(['where' => 'id =' . $_GET['id'] . ' AND private = 0']));
@@ -96,7 +96,7 @@ class LibrariesController extends AppController
     public function edit()
     {
         if (!$this->request->checkParams(['library' => 'id'])) {
-            $this->redirect('missingParams', 'error');
+            $this->redirect('sendError', 'error', ['type' =>'missingParams']);
         }
 
         $library = $this->Librarie->find(null, $_GET['library']);

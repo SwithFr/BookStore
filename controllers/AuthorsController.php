@@ -82,7 +82,7 @@ class AuthorsController extends AppController
     public function view()
     {
         if (!$this->request->id) {
-            $this->redirect('missingParams', 'error');
+            $this->redirect('sendError', 'error', ['type' =>'missingParams']);
         }
 
         $author = $this->Author->find('id,last_name, first_name, img, date_birth, date_death, bio, vote', $_GET['id'], 'Author');
@@ -153,7 +153,7 @@ class AuthorsController extends AppController
     public function edit()
     {
         if (!$this->request->id) {
-            $this->redirect('missingParams', 'error');
+            $this->redirect('sendError', 'error', ['type' =>'missingParams']);
         }
 
         $author = $this->Author->find(null, $_GET['id'], 'Author', 'user_id = ' . Session::getId());
@@ -196,7 +196,7 @@ class AuthorsController extends AppController
     public function delete()
     {
         if (!$this->request->id) {
-            $this->redirect('missingParams', 'error');
+            $this->redirect('sendError', 'error', ['type' =>'missingParams']);
         }
 
         $author = $this->Author->find(null, $_GET['id'], 'Author', 'user_id = ' . Session::getId());
@@ -215,7 +215,7 @@ class AuthorsController extends AppController
     public function goDelete()
     {
         if (!$this->request->id) {
-            $this->redirect('missingParams', 'error');
+            $this->redirect('sendError', 'error', ['type' =>'missingParams']);
         }
 
         $this->Author->delete($_GET['id']);

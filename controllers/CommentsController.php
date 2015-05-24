@@ -20,11 +20,11 @@ class CommentsController extends AppController
     public function add()
     {
         if (!$this->request->isPost()) {
-            $this->redirect('wrongMethod', 'error');
+            $this->redirect('sendError', 'error', ['type' =>'wrongMethod']);
         }
 
         if (!$this->request->checkParams(['ref' => 'string', 'ref_id' => 'id'])) {
-            $this->redirect('missingParams', 'error');
+            $this->redirect('sendError', 'error', ['type' =>'missingParams']);
         }
 
         $v = new Validator();
@@ -41,7 +41,7 @@ class CommentsController extends AppController
     public function delete()
     {
         if (!$this->request->checkParams(['ref' => 'string', 'ref_id' => 'id', 'comment_id' => 'id'])) {
-            $this->redirect('missingParams', 'error');
+            $this->redirect('sendError', 'error', ['type' =>'missingParams']);
         }
 
         $this->Comment->delete($_GET['comment_id']);

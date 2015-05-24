@@ -60,7 +60,7 @@ class Request
             # Verification si action permise
             if (!in_array($route, $routes)) {
                 if (!in_array($route, $routes['needConnexion'])) {
-                    header('Location: ' . Html::url('unauthorized', 'error'));
+                    header('Location: ' . Html::url('sendError', 'error', ['type' =>'unauthorized']));
                 } else {
                     $this->needAuth = true;
                 }

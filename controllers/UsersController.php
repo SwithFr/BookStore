@@ -110,7 +110,7 @@ class UsersController extends AppController
         $user_id = Session::getId();
         $user = $this->User->find(null, $user_id);
         if (!$user) {
-            $this->redirect('unauthorized', 'error');
+            $this->redirect('sendError', 'error', ['type' =>'unauthorized']);
         }
         $hasLibrary = $this->User->count('user_id = ' . $user_id, 'libraries');
         $hasAuthor = $this->User->count('user_id = ' . $user_id, 'authors');
