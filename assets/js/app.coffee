@@ -62,7 +62,6 @@ if removeReadLaterLinkFromList
         setReadLater e, true
       , false )
 
-
 setReadLater = ( e, fromList = false ) ->
   e.preventDefault()
   url = e.target.href
