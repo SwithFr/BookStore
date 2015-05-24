@@ -24,7 +24,8 @@ class Author extends AppModel implements AuthorsRepositoryInterface
         ],
         'date_birth' => [
             ['ruleName' => 'notEmpty', 'message' => 'La date de naissance est obligatoire'],
-            ['ruleName' => 'isDate', 'message' => 'La valeur n‘est pas valide']
+            ['ruleName' => 'isDate', 'message' => 'La valeur n‘est pas valide'],
+            ['ruleName' => 'isPastDate', 'message' => 'La date n‘est pas dans le passé']
         ],
         'date_death' => [
             ['ruleName' => 'isDate', 'message' => 'La valeur n‘est pas valide']
