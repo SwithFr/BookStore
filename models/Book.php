@@ -161,33 +161,19 @@ class Book extends AppModel implements BooksRepositoryInterface
 
     /**
      * Met à jour les données d'un livre
-     * @param $data
      * @param $id
-     * @return mixed|void
+     * @param $data
+     * @param null $table
+     * @return bool|mixed|void
      */
-    public function update($data, $id)
+    public function update($id, $data, $table = null)
     {
-        $sql = 'UPDATE books
-                SET title = :title, img = :img, summary = :summary, isbn = :isbn, nbpages = :nbpages,
-                    language_id = :language_id, genre_id = :genre_id, location_id = :location_id, editor_id = :editor_id
-                WHERE books.id = :id';
-        $pdost = $this->db->prepare($sql);
-        $pdost->execute(
-            [
-                ':title' => $data['title'],
-                ':img' => $data['img'],
-                ':summary' => $data['summary'],
-                ':isbn' => $data['isbn'],
-                ':nbpages' => $data['nbpages'],
-                ':language_id' => $data['language_id'],
-                ':genre_id' => $data['genre_id'],
-                ':location_id' => $data['location_id'],
-                ':editor_id' => $data['editor_id'],
-                ':id' => $id
-            ]
-        );
+        $author_id = $data->author_id;
+        unset($data->author_id);
 
-        $this->updateAuthorBook($data['author_id'], $id);
+        parent::update($id, $data, $table);
+
+        $this->updateAuthorBook($author_id, $id);
     }
 
     /**
