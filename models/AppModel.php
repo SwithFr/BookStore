@@ -163,4 +163,31 @@ class AppModel
         $pdost = $this->db->query($sql);
         return $pdost->fetch()->count;
     }
+
+    /**
+     * Met à jour les données
+     * @param  int $id l'id de l'entrée que l'on veut update
+     * @param  $data les données
+     * @param  string $table le nom de la table si besoin
+     * @return bool
+     */
+    public function update($id, $data, $table = null)
+    {
+       $values = $tmp = [];
+
+        foreach ($data as $d => $v) {
+            $values[':' . $d] = $v;
+            $tmp[] = $d . "=:" . $d;
+        }
+
+        $tmp = implode(',', $tmp);
+
+        if ($table == null) {
+            $table = $this->table;
+        }
+
+        $sql = 'UPDATE ' . $table . ' SET ' . $tmp . ' WHERE id = ' . $id;
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute($values);
+    }
 } 
