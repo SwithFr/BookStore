@@ -88,12 +88,10 @@ class EditorsController extends AppController
                 if (!empty($_FILES['img']['name'])) {
                     $name = time() . '.' . pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
                     $dest = D_ASSETS . DS . 'img' . DS . 'uploads' . DS . 'editors' . DS;
-                    $img = $dest . $name;
+                    $editor->img = $dest . $name;
                     Image::uploadImg($dest, $name);
-                } else {
-                    $img = $editor->img;
                 }
-                $this->Editor->update($_POST['name'], $_POST['website'], $_POST['history'], $img, $editor->id);
+                $this->Editor->update($editor->id, $editor);
                 Session::setFlash('Les informations ont été modifiées avec succès !');
                 $this->redirect('manage', 'editor');
             } else {
