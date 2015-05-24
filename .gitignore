@@ -23,3 +23,4 @@ assets/css
 *.jpg
 
 node_modules
+.sass-cache
