@@ -2,6 +2,8 @@
 
 namespace Components;
 
+use Carbon\Carbon;
+
 class Validator
 {
 
@@ -193,6 +195,29 @@ class Validator
             $this->errors[$field] = $message;
             return false;
 
+        }
+    }
+
+    /**
+     * Vérifie qu'une date est bien antérieure à la date du jour
+     * @param $field
+     * @param $value
+     * @param null $message
+     * @return bool
+     */
+    public function isPastDate($field, $value, $message = null)
+    {
+        if ($message == null) {
+            $message = "le champ $field n'est pas une date passée";
+        }
+
+        if(Carbon::now()->gt(Carbon::parse($value))){
+
+            return true;
+
+        } else {
+            $this->errors[$field] = $message;
+            return false;
         }
     }
 
