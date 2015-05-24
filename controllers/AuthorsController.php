@@ -71,7 +71,7 @@ class AuthorsController extends AppController
 
             $this->Author->create($_POST['first_name'], $_POST['last_name'], $dest . $name, $_POST['date_birth'], $_POST['date_death'], $_POST['bio'], Session::getId());
             Session::setFlash('L‘auteur ' . $_POST['first_name'] . ' ' . $_POST['last_name'] . ' a bien été ajouté !');
-            $this->redirect('index', 'user');
+            $this->redirect('manage', 'author');
         }
     }
 
@@ -174,12 +174,10 @@ class AuthorsController extends AppController
                 if (!empty($_FILES['img']['name'])) {
                     $name = time() . '.' . pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
                     $dest = D_ASSETS . DS . 'img' . DS . 'uploads' . DS . 'authors' . DS;
-                    $img = $dest . $name;
+                    $author->img = $dest . $name;
                     Image::uploadImg($dest, $name);
-                } else {
-                    $img = $author->img;
                 }
-                $this->Author->update($_POST['first_name'], $_POST['last_name'], $_POST['bio'], $_POST['date_birth'], $_POST['date_death'], $img, $author->id);
+                $this->Author->update($author->id, $author);
                 Session::setFlash('Les informations ont été modifiées avec succès !');
                 $this->redirect('manage', 'author');
             } else {
