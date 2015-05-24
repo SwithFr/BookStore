@@ -21,3 +21,5 @@ vendor/illuminate/container/
 
 assets/css
 *.jpg
+
+node_modules
