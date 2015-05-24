@@ -2,7 +2,8 @@
 var gulp = require( 'gulp'),
     coffee = require( 'gulp-coffee' ),
     compass = require( 'gulp-compass'),
-    livereload = require( 'gulp-livereload');
+    uglify = require('gulp-uglify'),
+    minifyCss = require('gulp-minify-css');
 
 // Compile scss to css
 gulp.task( 'css', function() {
@@ -12,6 +13,9 @@ gulp.task( 'css', function() {
             sass: 'assets/sass',
             image: 'assets/img'
         } ) )
+        .pipe( minifyCss( {
+                compatibility: 'ie8'
+        } ) )
         .pipe( gulp.dest( 'assets/css' ) );
 } );
 
@@ -19,6 +23,7 @@ gulp.task( 'css', function() {
 gulp.task( 'coffee', function() {
     return gulp.src( 'assets/js/app.coffee')
         .pipe( coffee() )
+        .pipe( uglify() )
         .pipe( gulp.dest( 'assets/js' ) );
 } );
 
@@ -29,4 +34,4 @@ gulp.task( 'watch', function(){
 } );
 
 // Default task
-gulp.task( 'default', [ 'css', 'coffee' ], function() {} );
+gulp.task( 'default', [ 'watch' ], function() {} );
