@@ -1,0 +1,25 @@
+{
+  "name": "Bookstore",
+  "version": "1.0.0",
+  "description": "Projet scolaire dans le cadre du cours de programmation côté serveur.  Le but de l'exercice est de réaliser un site pour la gestion d'une bibliothèque. Le fonctionnement en lui même est plutot libre. La consigne principale est d'utiliser une structure MVC et d'avoir au minimum les fonctionnalités de base (Ajout, édition, suppression).",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SwithFr/BookStore.git"
+  },
+  "author": "Smith Jeremy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SwithFr/BookStore/issues"
+  },
+  "homepage": "https://github.com/SwithFr/BookStore",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-coffee": "^2.3.1",
+    "gulp-compass": "^2.1.0",
+    "gulp-livereload": "^3.8.0"
+  }
+}
