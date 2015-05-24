@@ -103,6 +103,7 @@ class LocationsController extends AppController
         }
 
         $this->Location->delete($_GET['id']);
+        $this->Location->deleteLocationAssoc($_GET['id']);
         Session::setFlash('L‘emplacement a bien été supprimé !');
         $this->redirect('edit', 'librarie', ['library'=>$_GET['library']]);
     }
