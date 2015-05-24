@@ -72,7 +72,7 @@ setReadLater = ( e, fromList = false ) ->
   request = new XMLHttpRequest()
   request.open "POST", url, true
   request.onreadystatechange = ->
-    if @status is 200
+    if @status is 200 and @readyState == 4
       if !fromList
         if id is 'addReadLaterLink'
           addReadLaterLink.className = 'hidden'
