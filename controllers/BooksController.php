@@ -57,7 +57,7 @@ class BooksController extends AppController
         $this->loadModel('Editor');
         $this->loadModel('Location');
         $this->loadModel('Author');
-        $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : $_COOKIE['user_id'];
+        $user_id = Session::getId();
         $genres = $this->Genre->get(['fields' => 'id,name']);
         $languages = $this->Language->get(['fields' => 'id,name']);
         $editors = $this->Editor->get(['fields' => 'id,name']);
@@ -73,69 +73,50 @@ class BooksController extends AppController
         if ($this->request->isGet()) {
             if ($this->request->id) {
                 $book = $this->Book->findBook($_GET['id']);
-                $d['title'] = $book->title;
-                $d['summary'] = $book->summary;
-                $d['img'] = $book->img;
-                $d['isbn'] = $book->isbn;
-                $d['nbpages'] = $book->nbpages;
-                $d['author_id'] = $book->author_id;
-                $d['genre_id'] = $book->genre_id;
-                $d['language_id'] = $book->language_id;
-                $d['editor_id'] = $book->editor_id;
-                $d['location_id'] = $book->location_id;
             }
         }
 
         if ($this->request->isPost()) {
-            $d['title'] = $_POST['title'];
-            $d['summary'] = $_POST['summary'];
-            $d['img'] = $_POST['img'];
-            $d['isbn'] = $_POST['isbn'];
-            $d['nbpages'] = $_POST['nbpages'];
-            $d['author_id'] = $_POST['author_id'];
-            $d['genre_id'] = $_POST['genre_id'];
-            $d['language_id'] = $_POST['language_id'];
-            $d['editor_id'] = $_POST['editor_id'];
-            $d['location_id'] = $_POST['location_id'];
+            $book = $this->request->data;
 
             $v = new Validator();
-            if (!$v->validate($d, $this->Book->rules)) {
+            if (!$v->validate($book, $this->Book->rules)) {
                 $errors = $v->errors();
                 Session::setFlash('Veuillez vérifier vos informations', 'error');
-                return compact('genres', 'languages', 'editors', 'locations', 'authors', 'errors', 'library_id', 'd');
+                return compact('genres', 'languages', 'editors', 'locations', 'authors', 'errors', 'library_id', 'book');
             }
 
             if (!empty($_FILES['img']['name'])) {
                 $name = time() . '.' . pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
                 $dest = D_ASSETS . DS . 'img' . DS . 'uploads' . DS . 'books' . DS;
-                $d['img'] = $dest . $name;
+                $book->img = $dest . $name;
                 Image::uploadImg($dest, $name);
             }
 
             if (!isset($_GET['id'])) {
                 $this->Book->create(
-                    $d['title'],
-                    $d['img'],
-                    $d['summary'],
-                    $d['isbn'],
-                    $d['nbpages'],
-                    $d['language_id'],
-                    $d['genre_id'],
-                    $d['location_id'],
-                    $d['editor_id'],
-                    $d['author_id'],
-                    $library_id
+                    $book->title,
+                    $book->img,
+                    $book->summary,
+                    $book->isbn,
+                    $book->nbpages,
+                    $book->language_id,
+                    $book->genre_id,
+                    $book->location_id,
+                    $book->editor_id,
+                    $book->author_id,
+                    $book->library_id
                 );
 
-                Session::setFlash('Le livre ' . $_POST['title'] . ' a bien été ajouté !');
+                Session::setFlash('Le livre ' . $book->title . ' a bien été ajouté !');
             } elseif (is_numeric($_GET['id'])) {
-                $this->Book->update($d, $_GET['id']);
-                Session::setFlash('Le livre ' . $_POST['title'] . ' a bien été modifié !');
+                $this->Book->update($_GET['id'], $book);
+                Session::setFlash('Le livre ' . $book->title . ' a bien été modifié !');
             }
             $this->redirect('manage', 'librarie');
         }
 
-        return compact('genres', 'languages', 'editors', 'locations', 'authors', 'library_id', 'd');
+        return compact('book', 'genres', 'languages', 'editors', 'locations', 'authors', 'library_id');
     }
 
     /**
