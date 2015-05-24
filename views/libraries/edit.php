@@ -25,7 +25,7 @@
                value="<?= isset($data['library']->email) ? $data['library']->email : ''; ?>"/>
 
         <label class="form__label" for="private">Cette bibliothèque est privée (non visible aux utilisateurs)</label>
-        <input class="form__input form__input--large" type="checkbox" name="private" id="private"/>
+        <input class="form__input form__input--large" <?= $data['library']->private == 1 ? 'checked' : ''; ?> type="checkbox" name="private" id="private"/>
 
         <input class="form__submit btn btn--send" type="submit" value="Editer cette bibliothèque"/>
     </form>
@@ -34,7 +34,7 @@
             Vous n'avez pas encore ajouté d'emplacement à cette bibliothèque
         </p>
     <?php else: ?>
-        <a class="btn btn--add btn--inline" href="<?= Html::url('add', 'location'); ?>">Ajouter un emplacement</a>
+        <a class="btn btn--add btn--inline" href="<?= Html::url('add', 'location', ['library'=>$data['library']->id]); ?>">Ajouter un emplacement</a>
         <div class="section__block section__block--library clearfix">
             <h3 class="section__block__title--library">Vos emplacements</h3>
             <table class="books__list">
