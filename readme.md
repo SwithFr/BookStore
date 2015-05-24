@@ -9,7 +9,7 @@ Il est possible de commenter les livres et les auteurs ainsi que de "voter" pour
 Il est également possible d'ajouter des livres à une liste de lecture, afin se se rappeler des livres qui nous interesse.
 
 #Technologies utilisées
-CodeKit aura été mon compilateur pour un peu tout ;)
+CodeKit aura été mon compilateur pour un peu tout, du moins au départ... Après pour des raisons mystèrieuses, il ne me compilait plus rien... je suis donc passé sur gulp !
 Le départ du projet a été réalisé avec Jade pour le code HTML et pouvoir rapidement générer les première views sans avoir à coder une ligne de PHP.
 Pour le css j'ai utilisé compass et sass.
 Le js au départ du javascript puis je me suis orienté vers la syntaxe coffeescript pour tester.
@@ -25,6 +25,6 @@ Et evidement PHP, composer etc.
 - ~~Ajout des j'aime/j'aime pas~~ **done** 
 - Ajout des évènements **Vais s'en doute pas avoir le temps non plus :/**
 - Faire les vérifications d'existence avant actions en bdd
-- ~~Liste de lecture~~ **done / WIP**  
-- Vérification des dates (Faut vraiment que je m'y mette) 
-- Réussir à dire "anticonstitutionnellement" à l'envers 3 fois de suite
+- ~~Liste de lecture~~ **done**  
+- Vérification des dates **WIP** 
+- ~~Réussir à dire "anticonstitutionnellement" à l'envers 3 fois de suite~~ **done**
