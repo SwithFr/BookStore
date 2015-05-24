@@ -123,23 +123,6 @@ class Author extends AppModel implements AuthorsRepositoryInterface
     }
 
     /**
-     * Met à jour un auteur
-     * @param $first_name
-     * @param $last_name
-     * @param $bio
-     * @param $date_birth
-     * @param $date_death
-     * @param $img
-     * @param $author_id
-     */
-    public function update($first_name, $last_name, $bio, $date_birth, $date_death, $img, $author_id)
-    {
-        $sql = 'UPDATE authors SET first_name = :first_name, last_name = :last_name, bio = :bio, date_birth = :date_birth, date_death = :date_death, img = :img WHERE id = ' . $author_id;
-        $pdost = $this->db->prepare($sql);
-        $pdost->execute(['first_name' => $first_name, 'last_name' => $last_name, 'bio' => $bio, 'date_birth' => $date_birth, 'date_death' => $date_death, 'img' => $img]);
-    }
-
-    /**
      * Pagine les auteurs pour la page "admin"
      * @param $nbpages
      * @param $nbperpage

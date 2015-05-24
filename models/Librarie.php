@@ -36,21 +36,6 @@ class Librarie extends AppModel implements LibrariesRepositoryInterface
     }
 
     /**
-     * Met à jour une bibliothèque
-     * @param $name
-     * @param $address
-     * @param $tel
-     * @param $email
-     * @param $private
-     */
-    public function update($name, $address, $tel, $email, $private, $library_id)
-    {
-        $sql = 'UPDATE libraries SET name = :name, address = :address, tel = :tel, email = :email, private = :private WHERE id = ' . $library_id;
-        $pdost = $this->db->prepare($sql);
-        $pdost->execute([':name' => $name, ':address' => $address, ':tel' => $tel, ':email' => $email, ':private' => intval($private)]);
-    }
-
-    /**
      * Récupère la bibliothèque d'un utilisateur
      * @param $user_id
      * @return mixed
