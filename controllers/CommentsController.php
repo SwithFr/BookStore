@@ -17,6 +17,9 @@ class CommentsController extends AppController
         $this->Comment = $comment;
     }
 
+    /**
+     * Ajouter un commentaire
+     */
     public function add()
     {
         if (!$this->request->isPost()) {
@@ -38,6 +41,9 @@ class CommentsController extends AppController
         $this->redirect('view', $_GET['ref'], ['id' => $_GET['ref_id']]);
     }
 
+    /**
+     * Surpprimer un commentaire
+     */
     public function delete()
     {
         if (!$this->request->checkParams(['ref' => 'string', 'ref_id' => 'id', 'comment_id' => 'id'])) {
