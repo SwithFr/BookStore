@@ -526,3 +526,10 @@
 .visible {
   display: inline;
 }
+
+.readLaterLinks {
+  a:hover {
+    text-decoration: underline;
+    color: #ff4500;
+  }
+}
