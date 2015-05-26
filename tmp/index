@@ -1,0 +1,60 @@
+    <div class="section vedettes">
+        <div class="section__header">
+            <h2 class="section__title title--inline">Livres les mieux notés :</h2>
+            <a href="/index.php?a=populars&e=book" class="section__readMore">Voir tout le classement</a>
+        </div>
+                    <div class="section__block">
+                <img src="./assets/img/uploads/books/1426090907.jpg" class="section__block__img">
+                <h3 class="section__block__title"><a
+                        href="/index.php?a=view&e=book&id=1">Harry potter à l'école des sorciers</a></h3>
+
+                <p class="section__block__author">Joanne K. Rolling</p>
+
+                <p class="section__block__content">
+                    Après la mort tragique de Lily et James Potter, leur fils Harry est recueilli par sa tante Pétunia, la sœur de Lily et son oncle Vernon. Son oncle et sa tante, possédant une haine féroce envers les parents d'Harry, le maltraitent et laissent leur fils Dudley l'humilier. Harry ne sait rien sur ses parents. On lui a toujours dit qu’ils étaient morts dans un accident de voiture.
+
+Le jour de ses onze ans, un demi-géant du nom de Rubeus Hagrid vient le chercher pour l’emmener à&nbsp;&hellip;                </p>
+            </div>
+                    <div class="section__block">
+                <img src="./assets/img/uploads/books/1426090921.jpg" class="section__block__img">
+                <h3 class="section__block__title"><a
+                        href="/index.php?a=view&e=book&id=2">Harry Potter et la chambre des secrets</a></h3>
+
+                <p class="section__block__author">Joanne K. Rolling</p>
+
+                <p class="section__block__content">
+                    Harry Potter passe l'été chez les Dursley.
+
+Le jour de son 12e anniversaire, son oncle Vernon reçoit Mr Mason (un riche promoteur immobilier) et sa femme, avec qui il espère faire des affaires. Pendant leur visite, les Dursley ordonnent à Harry de rester dans sa chambre et de ne pas se faire remarquer.
+
+Mais pendant que les Mason et les Dursley discutent dans le salon, à l'étage Harry reçoit la visite de Dobby, un elfe de maison. Celui-ci met en garde le jeune sorcier et lui&nbsp;&hellip;                </p>
+            </div>
+            </div>
+    <div class="section author">
+        <div class="section__header">
+            <h2 class="section__title title--inline">Auteur le mieux noté</h2>
+            <a href="/index.php?a=view&e=author&id=16" class="section__readMore">Voir plus
+                du même auteur</a>
+        </div>
+        <div class="section__block">
+            <h3 class="section__block__title"><a
+                    href="/index.php?a=view&e=author&id=16">Joanne K. Rolling</a>
+            </h3>
+
+            <p class="section__block__year">1965</p>
+
+            <p class="section__block__content">
+                Née le 31 juillet 1965 dans l’agglomération de Yate, dans le Gloucestershire, en Angleterre, est une romancière britannique, connue sous le pseudonyme J. K. Rowling. Elle doit sa notoriété mondiale à la série Harry Potter, dont les tomes traduits en au moins 67 langues ont été vendus à plus de 450 millions d'exemplaires. Elle a également utilisé les pseudonymes de Kennilworthy Whisp, Newt Scamander (tirés de sa propre œuvre) et Robert Galbraith.
+
+Jeune mère divorcée vivant&nbsp;&hellip;            </p>
+
+            <div class="author__count">
+                <p>Joanne K. Rolling a écrit <a href="/index.php?a=view&e=author&id=16#books__list"><span
+                            class="nb nb-p">3</span></a> livres</p>
+
+                <p><span class='nb nb-p'>100</span> % de satisfaction.</p>
+            </div>
+        </div>
+        <div class="section__block">
+            <img src="./assets/img/uploads/authors/1426086828.jpg" class="section__block__img">        </div>
+    </div>
