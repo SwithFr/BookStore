@@ -18,7 +18,7 @@ set_include_path(
 );
 
 # Chargement automatique des classes
-require('./vendor/autoload.php');
+require('.' . DS . 'vendor' . DS . 'autoload.php');
 use Components\Request;
 
 # Initialisation de la requête
