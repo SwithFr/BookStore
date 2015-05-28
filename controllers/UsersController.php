@@ -127,11 +127,38 @@ class UsersController extends AppController
     public function edit()
     {
         $user = $this->User->find(null, Session::getId());
+        $errors = [];
         if (!$user) {
             Session::setFlash('Utilisateur introuvable !', 'error');
             $this->redirect('index', 'user');
         }
 
-        return compact('user');
+        if ($this->request->isPost()) {
+            if (!$this->request->id) {
+                $this->redirect('sendError', 'error', ['type' =>'missingParams']);
+            }
+            $user = $this->request->data;
+            $user->chgPassword = trim($user->chgPassword);
+            $user->confirm = trim($user->confirm);
+            $v = new Validator();
+            if (!empty($user->chgPassword) || !empty($user->confirm)) {
+                if ($user->chgPassword != $user->confirm) {
+                    Session::setFlash('Vos mot de passes ne sont pas identiques !', 'error');
+                    $errors['passwords'] = 'Les mots de passes ne correspondent pas!';
+                } else {
+                    $user->password = sha1($user->confirm);
+                }
+            }
+            if ($v->validate($user, $this->User->rules) && !$errors) {
+                unset($user->chgPassword);
+                unset($user->confirm);
+                Session::setFlash('Vos informations on bien été modifiées');
+                $this->User->update(Session::getId(), $user);
+            } else {
+                array_push($errors, $v->errors());
+            }
+        }
+
+        return compact('user', 'errors');
     }
 } 
