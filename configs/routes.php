@@ -43,6 +43,7 @@ return $routes = [
 
         # Users
         'U_index' => 'index/user',
+        'U_edit' => 'edit/user',
 
         # Books
         'B_add' => 'add/book',
