@@ -110,7 +110,7 @@ class UsersController extends AppController
         $user_id = Session::getId();
         $user = $this->User->find(null, $user_id);
         if (!$user) {
-            $this->redirect('sendError', 'error', ['type' =>'unauthorized']);
+            $this->redirect('sendError', 'error', ['type' => 'unauthorized']);
         }
         $hasLibrary = $this->User->count('user_id = ' . $user_id, 'libraries');
         $hasAuthor = $this->User->count('user_id = ' . $user_id, 'authors');
@@ -118,5 +118,20 @@ class UsersController extends AppController
         $hasBookToRead = $this->User->count('user_id = ' . $user_id, 'watch_later');
 
         return compact('user', 'hasLibrary', 'hasAuthor', 'hasEditor', 'hasBookToRead');
+    }
+
+    /**
+     * Editez ses informations
+     * @return array
+     */
+    public function edit()
+    {
+        $user = $this->User->find(null, Session::getId());
+        if (!$user) {
+            Session::setFlash('Utilisateur introuvable !', 'error');
+            $this->redirect('index', 'user');
+        }
+
+        return compact('user');
     }
 } 
