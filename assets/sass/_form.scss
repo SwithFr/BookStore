@@ -28,6 +28,12 @@
   display: block;
 }
 
+.form__input--small {
+  width: 50%;
+
+  padding: .5em;
+}
+
 .has-error {
   color: #d04c51;
   font-style: italic;
