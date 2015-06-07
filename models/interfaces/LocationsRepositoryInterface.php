@@ -16,7 +16,13 @@ interface LocationsRepositoryInterface
     /**
      * @param $name
      * @param $library_id
-     * @return mixed
+     * @return mixed|void
      */
     public function create($name, $library_id);
+
+    /**
+     * Supprimer la realtion location/library
+     * @param $location_id
+     */
+    public function deleteLocationAssoc($location_id);
 }
