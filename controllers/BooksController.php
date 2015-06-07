@@ -105,7 +105,7 @@ class BooksController extends AppController
                     $book->location_id,
                     $book->editor_id,
                     $book->author_id,
-                    $book->library_id
+                    $book->library_id = $_GET['library']
                 );
 
                 Session::setFlash('Le livre ' . $book->title . ' a bien été ajouté !');
