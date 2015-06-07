@@ -56,6 +56,6 @@ class AuthorEntity extends AppEntity
      */
     public function img()
     {
-        return '<img src="' . $this->img . '" class="section__block__img">';
+        return '<img src="' . $this->img . '" class="section__block__img" alt=" ' . $this->name() . ' ">';
     }
 }
