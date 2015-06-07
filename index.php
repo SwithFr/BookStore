@@ -7,13 +7,13 @@ include('./configs/constantes.php');
 
 # Ajout des dossier (controller,models) aux chemins d'inclusion
 set_include_path(
-    D_ASSETS . ':' .
-    D_COMPONENTS . ':' .
-    D_CONFIGS . ':' .
-    D_CONTROLLERS . ':' .
-    D_HELPERS . ':' .
-    D_MODELS . ':' .
-    D_VIEWS . ':' .
+    D_ASSETS . PATH_SEPARATOR .
+    D_COMPONENTS . PATH_SEPARATOR .
+    D_CONFIGS . PATH_SEPARATOR .
+    D_CONTROLLERS . PATH_SEPARATOR .
+    D_HELPERS . PATH_SEPARATOR .
+    D_MODELS . PATH_SEPARATOR .
+    D_VIEWS . PATH_SEPARATOR .
     get_include_path()
 );
 
