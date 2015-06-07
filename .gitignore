@@ -11,16 +11,10 @@
 
 *.psd
 
-configs/database.php
 0-TEMPLATE
 *.ids
 
 vendor/illuminate/container/
-
-*.css
-
-assets/css
-*.jpg
 
 node_modules
 .sass-cache
