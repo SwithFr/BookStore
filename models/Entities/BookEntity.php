@@ -34,7 +34,7 @@ class BookEntity extends AppEntity
      */
     public function img($class = 'section__block__img')
     {
-        return '<img src="' . $this->img . '" class="' . $class . '">';
+        return '<img src="' . $this->img . '" class="' . $class . '" alt=" ' . $this->title . ' ">';
     }
 
     /**
