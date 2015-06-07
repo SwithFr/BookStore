@@ -2,7 +2,7 @@
 
 return $routes = [
     # Routes pages
-    'default' => 'index/page',
+    'default' => 'index/book',
     'searchAll' => 'searchAll/page',
 
     # Routes authors
