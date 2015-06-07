@@ -24,11 +24,11 @@ $isReadLater = $data['book']->isReadLater;
                 </div>
             </div>
             <div class="section__block infos">
-                <img src="<?= $data['book']->img; ?>" class="section__block__img">
+                <img src="<?= $data['book']->img; ?>" class="section__block__img clearfix">
 
-                <p><span class="info__name">Numéro ISBN : </span><?= $data['book']->isbn; ?></p>
+                <p class="clearfix"><span class="info__name">Numéro ISBN : </span><?= $data['book']->isbn; ?></p>
 
-                <p><span class="info__name">Nombre de pages : </span><?= $data['book']->nbpages; ?></p>
+                <p class="clearfix"><span class="info__name">Nombre de pages : </span><?= $data['book']->nbpages; ?></p>
 
                 <div class="votes">
                     <?php if (Session::isLogged()): ?>
