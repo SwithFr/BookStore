@@ -9,14 +9,6 @@ class PagesController extends AppController
     public $noModel = true;
 
     /**
-     * Renvoi la page d'accueil
-     */
-    public function index()
-    {
-        $this->redirect('index', 'book');
-    }
-
-    /**
      * Formulaire de recherche général
      * @return array
      */
