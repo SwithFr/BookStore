@@ -5,11 +5,11 @@
         <p class="alert alert--warning clearfix">
             Vous n'avez pas encore ajouté d'éditeur
         </p>
-        <a class="btn btn--add btn--inline" href="<?= Html::url('add', 'author'); ?>">Ajouter un auteur</a>
+        <a class="btn btn--add btn--inline" href="<?= Html::url('add', 'author'); ?>">Ajouter un éditeur</a>
     <?php else: ?>
-        <a class="btn btn--add btn--inline" href="<?= Html::url('add', 'author'); ?>">Ajouter un auteur</a>
+        <a class="btn btn--add btn--inline" href="<?= Html::url('add', 'author'); ?>">Ajouter un éditeur</a>
         <div class="section__block section__block--library clearfix">
-            <h3 class="section__block__title--library">Auteurs que vous avez ajoutés</h3>
+            <h3 class="section__block__title--library">Editeurs que vous avez ajoutés</h3>
             <table class="books__list">
                 <thead>
                 <tr>
