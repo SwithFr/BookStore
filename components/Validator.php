@@ -166,6 +166,8 @@ class Validator
      */
     public function isDate($field, $value, $message = null)
     {
+        $value = trim($value);
+
         if ($message == null) {
             $message = "le champ $field n'est pas une date valide (AAAA-MM-JJ)";
         }
@@ -186,7 +188,7 @@ class Validator
             return false;
         }
 
-        if (checkdate($date[1], $date[2], $date[0]) ||  empty(trim($value))) {
+        if (checkdate($date[1], $date[2], $date[0]) || empty($value)) {
 
             return true;
 
